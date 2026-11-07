@@ -82,7 +82,7 @@ Aquí el `items` correcto es `androidx.compose.foundation.lazy.grid.items` (borr
 - en la **tableta** (o el móvil en horizontal) hay varias;
 - todo se ve y se puede usar en los dos (nada cortado, botones accesibles).
 
-Haz una captura en cada dispositivo (botón de cámara del emulador): las enseñarás en clase.
+Haz una captura en cada dispositivo (botón de cámara del emulador) y compáralas.
 
 **Si te falla…** *No tienes AVD de tableta o el emulador no va*: añade una vista previa con otro ancho:
 

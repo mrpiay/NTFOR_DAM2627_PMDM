@@ -46,7 +46,7 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 | Mié 4 nov, 09:20 | **Paso 6** (navegación lista → detalle). |
 | Mié 4 nov, 10:10 | **Paso 7** (formulario con validación). |
 | Vie 6 nov, 13:00 | Terminar los pasos 6 y 7. |
-| Vie 6 nov, 13:50 | Terminar el **paso 7** y **enseñar en clase el estado del proyecto** (ver [`entrega.md`](entrega.md)). Cierre: lo que hemos conseguido y qué viene, la 2.ª parte. |
+| Vie 6 nov, 13:50 | Terminar el **paso 7**. Cierre: lo que hemos conseguido y qué viene, la 2.ª parte. |
 
 **El ritmo:** el proyecto se hace en clase, paso a paso, siguiendo el plan de sesiones. Si terminas el paso del día antes de tiempo y quieres seguir, puedes adelantar el siguiente.
 
