@@ -50,8 +50,6 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 | Vie 6 nov, 13:00 | Terminar los pasos 6 y 7. |
 | Vie 6 nov, 13:50 | Terminar el **paso 7** y repasar la lista final («Cómo comprobarlo»). |
 
-**El ritmo:** el proyecto se hace en clase, paso a paso, siguiendo el plan de sesiones.
-
 **Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior.
 
 **Descargas.** Con toda la clase en la misma red, las descargas de Gradle tardan. Haz el *Sync* de 5.1 y 6.1 al principio de la sesión del miércoles, no a mitad.
@@ -70,7 +68,7 @@ Todo se hace en **Android Studio**, el entorno de desarrollo oficial de Android.
 
 ## Cómo está escrito cada paso
 
-**Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y alternativas).
+**Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y cómo resolverlos).
 
 En la plantilla, los comentarios `// TODO Paso N` marcan dónde va cada cambio; los de los pasos 8 y 9 son de la 2.ª parte: déjalos como están. Para crear un archivo nuevo: clic derecho en el paquete `com.example.centroacogida` → *New → Kotlin Class/File* → **File**, con el nombre indicado; pega el código debajo de la línea `package` que crea Android Studio. Los imports que queden en gris ya no se usan: bórralos con *Code → Optimize Imports*.
 
@@ -84,9 +82,9 @@ El código usa el paquete `com.example.centroacogida`. Cuando Android Studio mar
 
 **Pista.**
 
-1. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), descomprímelo y copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`).
+1. **Si tienes tu propia app del centro de acogida**: cambia el nombre de su carpeta a `CentroAcogida-anterior` y guárdala para consultarla. El proyecto se hace en `CentroAcogida`, desde la plantilla.
+2. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), descomprímelo y copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`).
    **Ábrelo en Android Studio**: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`, y pulsa *OK*. Si pregunta si confías en el proyecto, *Trust Project*.
-2. **Si tienes tu propia app del centro de acogida**: cambia el nombre de su carpeta a `CentroAcogida-anterior` y guárdala para consultarla. El proyecto se hace en `CentroAcogida`, desde la plantilla.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
 4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
 5. Ejecuta la app (**Run**) en el móvil.
@@ -99,7 +97,7 @@ Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un 
 
 **Si te falla…**
 
-- *El emulador no arranca o va muy lento*: la virtualización (Intel VT-x o AMD-V) tiene que estar activada en la BIOS/UEFI. Alternativas: un móvil Android real con **depuración USB**, las vistas previas (`@Preview`) o el emulador del compañero.
+- *El emulador no arranca o va muy lento*: la virtualización (Intel VT-x o AMD-V) tiene que estar activada en la BIOS/UEFI.
 - *Error de Gradle al hacer el Sync*: lee la primera línea roja de la pestaña *Build*. Si habla de `jlink` o del JDK, en *File > Settings > Build, Execution, Deployment > Build Tools > Gradle* elige como **Gradle JDK** el que trae Android Studio (`jbr`).
 
 ---
@@ -187,7 +185,7 @@ Y en `onCreate`, después de `super.onCreate(savedInstanceState)`: `Log.d(TAG, "
 
 Experimento: ejecuta la app, abre **Logcat** con el filtro `tag:Ciclo`, activa el interruptor y **gira** el emulador.
 
-**Comprueba que…** aparecen `onPause`, `onStop`, `onDestroy` y luego `onCreate`, `onStart`, `onResume`: al girar, la actividad **se destruye y se vuelve a crear**. Y el interruptor vuelve a estar desactivado: el estado guardado con `remember` se ha perdido. (Otra solución rápida es `rememberSaveable`, pero para el estado de la pantalla usaremos un ViewModel.)
+**Comprueba que…** aparecen `onPause`, `onStop`, `onDestroy` y luego `onCreate`, `onStart`, `onResume`: al girar, la actividad **se destruye y se vuelve a crear**. Y el interruptor vuelve a estar desactivado: el estado guardado con `remember` se ha perdido. (Otra solución rápida es `rememberSaveable`, pero para el estado de la pantalla se usa un ViewModel, en el paso 5.)
 
 **Si te falla…**
 
@@ -478,7 +476,7 @@ Cada pantalla es un **destino** con una **ruta** (`"lista"`, `"detalle/{animalId
 
 **Si te falla…**
 
-- *`Icons` o `Icons.AutoMirrored...` en rojo (`Unresolved reference 'icons'`)*: falta la biblioteca de iconos de 6.1 o no has pulsado *Sync Now*. Los imports son `androidx.compose.material.icons.Icons` y `androidx.compose.material.icons.automirrored.filled.ArrowBack`. Alternativa: `TextButton(onClick = onVolver) { Text("Volver") }`.
+- *`Icons` o `Icons.AutoMirrored...` en rojo (`Unresolved reference 'icons'`)*: falta la biblioteca de iconos de 6.1 o no has pulsado *Sync Now*. Los imports son `androidx.compose.material.icons.Icons` y `androidx.compose.material.icons.automirrored.filled.ArrowBack`.
 - *La app se cierra al pulsar una tarjeta*: mira en Logcat el error rojo (`FATAL EXCEPTION`). Lo habitual es que la ruta de `navigate` no coincida con la del `composable`.
 - *Siempre sale «Animal no encontrado»*: revisa que cada animal tiene un `id` distinto y que el argumento se llama igual en la ruta (`{animalId}`) y en `getInt("animalId")`.
 

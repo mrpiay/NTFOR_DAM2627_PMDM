@@ -18,7 +18,7 @@ Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar
 
 ---
 
-**1.** ¿Cómo se comprueba que la app funciona en dos tamaños de pantalla? Si no tienes emulador de tableta, ¿qué alternativa da el paso 8 y qué indica `widthDp = 840`?
+**1.** ¿Cómo se comprueba que la app funciona en dos tamaños de pantalla? ¿Para qué sirve la vista previa `ListaTabletaPreview` del paso 8 y qué indica `widthDp = 840`?
 
 **2.** En `PantallaLista.kt`, ¿qué hace `LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 320.dp), …)`? ¿Cuántas columnas salen en el móvil en vertical y cuántas en la tableta? ¿Por qué no hace falta ningún `if`?
 

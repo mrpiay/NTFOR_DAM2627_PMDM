@@ -50,7 +50,7 @@ Añadir a la app:
 
 ## Cómo está escrito cada paso
 
-**Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y alternativas).
+**Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y cómo resolverlos).
 
 El código usa el paquete `com.example.centroacogida`. Cuando Android Studio marque en rojo un nombre, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`.
 
@@ -89,7 +89,7 @@ Borra los imports `androidx.compose.foundation.lazy.LazyColumn` y `androidx.comp
 
 Haz una captura en cada dispositivo (botón de cámara del emulador) y compáralas.
 
-**Si te falla…** *No tienes AVD de tableta o el emulador no va*: añade una vista previa con otro ancho:
+**Y una vista previa de tableta.** Al final de `PantallaLista.kt`, añade una vista previa con el ancho de una tableta: así ves la cuadrícula con varias columnas sin ejecutar la app.
 
 ```kotlin
 @Preview(name = "Tableta", widthDp = 840, heightDp = 1200, showBackground = true)
@@ -100,6 +100,8 @@ fun ListaTabletaPreview() {
     }
 }
 ```
+
+Imports: `androidx.compose.ui.tooling.preview.Preview` y `com.example.centroacogida.ui.theme.CentroAcogidaTheme`. Ábrela en modo *Split* para verla.
 
 ---
 
@@ -459,11 +461,9 @@ Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la mism
 
 **Explícalo tú:** ¿qué pasa si deniegas el permiso? ¿Y si lo concedes «solo esta vez»?
 
-El resto de la UD3 (servicios REST con Retrofit, DataStore, WorkManager, sensores, Bluetooth y localización) se trabaja dentro del proyecto integrado de la UD4, según la programación.
-
 ---
 
-## Para quien termine (opcional)
+## Extras
 
 **Extra A · Buscador.** Un `OutlinedTextField` encima de la lista que filtre por nombre. Necesitas cuatro piezas:
 
