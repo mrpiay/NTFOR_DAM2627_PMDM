@@ -14,8 +14,8 @@ Del 10 al 13 de noviembre. Cada paso trae una pista y qué hacer si algo falla.
 
 ## Con qué trabajas
 
-- **Si terminaste la 1.ª parte y funciona**: sigue con tu proyecto. Haz antes una copia de la carpeta (por ejemplo `CentroAcogida2`) y trabaja sobre la copia.
-- **Si no la terminaste o no te funciona**: descarga el repositorio del módulo (*Code → Download ZIP*), copia `2026_11_09-13/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `// TODO Paso 8` y `// TODO Paso 9.1` marcan dónde se añade código.
+- **Si terminaste la 1.ª parte y funciona**: sigue con tu proyecto, en la misma carpeta.
+- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_09-13/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `// TODO Paso 8` y `// TODO Paso 9.1` marcan dónde se añade código.
 
 ## Objetivo
 

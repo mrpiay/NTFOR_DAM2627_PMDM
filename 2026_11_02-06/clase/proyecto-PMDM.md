@@ -72,8 +72,8 @@ El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa
 
 **Pista.**
 
-1. **Si tienes tu app del centro de acogida y funciona**: haz una copia de la carpeta (por ejemplo `CentroAcogida2`) y ábrela con *File > Open*. Trabaja sobre la copia.
-2. **Si no la tienes o no la terminaste**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Si pregunta si confías en el proyecto, *Trust Project*.
+1. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Si pregunta si confías en el proyecto, *Trust Project*.
+2. **Si quieres seguir con tu propia app del centro de acogida** y funciona: haz una copia de su carpeta con el nombre `CentroAcogida-personal` y ábrela con *File > Open*. Trabaja sobre la copia.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
 4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
 5. Ejecuta la app (**Run**) en el móvil.
