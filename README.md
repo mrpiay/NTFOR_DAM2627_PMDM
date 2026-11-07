@@ -19,6 +19,7 @@ Junto a cada archivo, GitHub muestra cuándo cambió por última vez y qué se c
 | Semana | Clase | Estudio | Soluciones |
 |---|---|---|---|
 | Del 2 al 6 de noviembre | [clase](2026_11_02-06/clase) | [estudio](2026_11_02-06/estudio) | [soluciones](2026_11_02-06/soluciones) |
+| Del 9 al 13 de noviembre | [clase](2026_11_09-13/clase) | [estudio](2026_11_09-13/estudio) | [soluciones](2026_11_09-13/soluciones) |
 
 ## Cómo usar los materiales
 
