@@ -11,7 +11,7 @@
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
-**Evaluación continua.** En la última clase de cada semana respondes en clase a una pregunta de la autoevaluación que hayas entregado. Esta vez es distinto: el **viernes 13 de noviembre** hay una **prueba escrita, en papel,** sobre la 1.ª parte del proyecto (pasos 0 a 7): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación) y el propio proyecto.
+**Evaluación continua.** El último día de algunas semanas hay una **prueba escrita, en papel,** sobre lo trabajado; se avisa con antelación. La primera es el **viernes 13 de noviembre**, sobre la 1.ª parte del proyecto (pasos 0 a 7): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación) y el propio proyecto.
 
 **Y la UD2.** Su nota sale de su entrega y su examen de octubre. Si te falta alguna de las dos, la sustituyen los pasos 1 a 3 y 5 a 7 de este proyecto, corregidos con los criterios de la UD2: por eso conviene hacerlos bien y entregarlos.
 
