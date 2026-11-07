@@ -58,23 +58,25 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 
 **Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y alternativas).
 
+En la plantilla, los comentarios `// TODO Paso N` marcan dónde va cada cambio; los de los pasos 8 y 9 son de la 2.ª parte: déjalos como están. Para crear un archivo nuevo: clic derecho en el paquete `com.example.centroacogida` → *New → Kotlin Class/File* → **File**, con el nombre indicado; pega el código debajo de la línea `package` que crea Android Studio. Los imports que queden en gris ya no se usan: bórralos con *Code → Optimize Imports*.
+
 El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa el tuyo. Cuando Android Studio marque en rojo un nombre, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`.
 
 ---
 
-## Paso 0 · Abrir la app y preparar los emuladores
+## Paso 0 · Abrir la app y preparar el emulador
 
 **Objetivo.** Tener tu app (o la plantilla) ejecutándose en el emulador de móvil.
 
 **Pista.**
 
 1. **Si tienes tu app del centro de acogida y funciona**: haz una copia de la carpeta (por ejemplo `CentroAcogida2`) y ábrela con *File > Open*. Trabaja sobre la copia.
-2. **Si no la tienes o no la terminaste**: descarga el repositorio del módulo (*Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`.
+2. **Si no la tienes o no la terminaste**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Si pregunta si confías en el proyecto, *Trust Project*.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
 4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
 5. Ejecuta la app (**Run**) en el móvil.
 
-La plantilla está probada con **Android Studio 2026.2** (*Help > About*). Con una versión anterior, el *Sync* puede fallar con un error de versión del plugin de Android (AGP): actualiza Android Studio. Si partes de tu app y el *Sync* de los pasos 5, 6 o 9 falla por versiones (`compileSdk`, AGP, Kotlin), pasa a la plantilla: no pierdas la clase con las versiones.
+La plantilla está probada con **Android Studio 2026.2** (*Help > About*). Con una versión anterior, el *Sync* puede fallar con un error de versión del plugin de Android (AGP): actualiza Android Studio. Si partes de tu app y el *Sync* de los pasos 5 o 6 falla por versiones (`compileSdk`, AGP, Kotlin), pasa a la plantilla: no pierdas la clase con las versiones.
 
 Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un dispositivo si su API es igual o mayor que el `minSdk` del proyecto (en `app/build.gradle.kts`).
 
@@ -99,7 +101,7 @@ Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un 
 
 **Si usas tu app**: necesitas un campo `id: Int` (distinto en cada animal) y conviene añadir `descripcion: String = ""`, como en la plantilla. Los usarás en los pasos 6 y 7.
 
-**Pequeño cambio.** Añade un noveno animal. Prueba en `MainActivity.onCreate` este mini-repaso de Kotlin y mira el resultado en Logcat:
+**Pequeño cambio.** Añade un noveno animal: copia la última línea de `DatosAnimales` y cambia el id a `9`, el nombre y los datos. Cada animal necesita un id distinto: la lista lo usa como clave y, si se repite, la app se cierra. Prueba en `MainActivity.onCreate` este mini-repaso de Kotlin y mira el resultado en Logcat:
 
 ```kotlin
 val urgentes = DatosAnimales.animales.filter { it.urgente }       // lambda: lista nueva
@@ -143,7 +145,7 @@ Log.d("Repaso", "Urgentes: ${urgentes.size}, id 2: $nombre")
 
 **Si usas tu app**: deja `PantallaLista` con un parámetro `onAnimalClick: (Animal) -> Unit` que se pasa a cada tarjeta, y en `MainActivity` llámala con `PantallaLista(onAnimalClick = { })`. Si tu `MainActivity` tiene otro `Scaffold` con `Greeting`, quítalo: la pantalla ya trae el suyo.
 
-**Pequeño cambio.** Cambia el texto de la barra superior y añade debajo del interruptor un `Text("Mostrando ${visibles.size} animales")`.
+**Pequeño cambio.** Cambia el texto de la barra superior y añade un `Text("Mostrando ${visibles.size} animales")` después del `}` que cierra la `Row` del interruptor, antes de la `LazyColumn`.
 
 **Comprueba que…** el contador cambia al activar y desactivar el interruptor.
 
@@ -191,13 +193,13 @@ Experimento: ejecuta la app, abre **Logcat** con el filtro `tag:Ciclo`, activa e
 
 ### 5.1 · Dependencia
 
-En `gradle/libs.versions.toml`, sección `[libraries]` (la versión `lifecycleRuntimeKtx` ya existe y se reutiliza):
+En `gradle/libs.versions.toml`, sección `[libraries]`, en lugar del comentario `# TODO Paso 5.1` (la versión `lifecycleRuntimeKtx` ya existe y se reutiliza):
 
 ```toml
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 ```
 
-En `app/build.gradle.kts`, dentro de `dependencies { }`: `implementation(libs.androidx.lifecycle.viewmodel.compose)`. Pulsa **Sync Now** (mejor junto con 6.1, al empezar la sesión).
+En `app/build.gradle.kts`, dentro de `dependencies { }`, la línea ya está en un comentario `// TODO Paso 5.1:`: borra ese comienzo para que quede `implementation(libs.androidx.lifecycle.viewmodel.compose)`. Pulsa **Sync Now** (mejor junto con 6.1, al empezar la sesión).
 
 No copies números de versión de internet al azar. Si tu `libs.versions.toml` no tiene `lifecycleRuntimeKtx`, añade en `[versions]` una entrada `lifecycle` con la **última versión estable** de developer.android.com/jetpack/androidx/releases/lifecycle y usa `version.ref = "lifecycle"`.
 
@@ -293,7 +295,7 @@ setContent {
 
 ### 6.1 · Dependencias
 
-En `gradle/libs.versions.toml`:
+En `gradle/libs.versions.toml`, cada línea va en su sección, en lugar de los comentarios `# TODO Paso 6.1`. **No copies las líneas** `[versions]` y `[libraries]`: ya existen.
 
 ```toml
 [versions]
@@ -304,14 +306,14 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core" }
 ```
 
-En `app/build.gradle.kts`:
+En `app/build.gradle.kts`, las dos líneas ya están en comentarios `// TODO Paso 6.1:`: borra ese comienzo en cada una para que queden así:
 
 ```kotlin
 implementation(libs.androidx.navigation.compose)
 implementation(libs.androidx.compose.material.icons.core)
 ```
 
-Y **Sync Now**. Otra forma para la navegación: *File > Project Structure > Dependencies > app > + > Library Dependency*, buscar `navigation-compose` y elegir la versión estable; Android Studio lo añade al catálogo.
+Y **Sync Now**.
 
 La biblioteca de iconos hace falta para la flecha de «Volver» (`Icons.AutoMirrored.Filled.ArrowBack`), porque `material3` ya no la incluye. No lleva versión: como `ui` y `material3`, la fija el **Compose BOM** (`platform(libs.androidx.compose.bom)`), que da versiones compatibles entre sí.
 
@@ -319,6 +321,31 @@ La biblioteca de iconos hace falta para la flecha de «Volver» (`Icons.AutoMirr
 
 ```kotlin
 // PantallaDetalle.kt
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaDetalle(
@@ -484,7 +511,7 @@ data class FormularioUiState(
 
 ### 7.2 · Funciones en el ViewModel
 
-Añade a `AcogidaViewModel`:
+Añade dentro de la clase `AcogidaViewModel`, antes de la última `}`:
 
 ```kotlin
 private val _formulario = MutableStateFlow(FormularioUiState())
@@ -516,6 +543,32 @@ fun reiniciarFormulario() {
 
 ```kotlin
 // PantallaSolicitud.kt
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaSolicitud(
@@ -608,8 +661,6 @@ fun PantallaSolicitud(
     }
 }
 ```
-
-`KeyboardOptions` se importa de `androidx.compose.foundation.text` y `KeyboardType` de `androidx.compose.ui.text.input`.
 
 ### 7.4 · Nuevo destino en el NavHost
 

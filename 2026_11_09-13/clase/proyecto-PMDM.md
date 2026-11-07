@@ -42,7 +42,7 @@ Añadir a la app:
 | Mié 11 nov, 09:20 y 10:10 | UD4, según el plan del curso. |
 | Vie 13 nov, 13:00 y 13:50 | Terminar el **paso 9** y hacer los extras. |
 
-**Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior. Si terminas el paso del día antes de tiempo, puedes adelantar el siguiente o hacer los extras.
+**Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior. Si terminas antes, haz los extras.
 
 **Descargas.** Con toda la clase en la misma red, las descargas de Gradle tardan. Haz el *Sync* de 9.1 al principio de la sesión del martes, no a mitad.
 
@@ -58,7 +58,9 @@ El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa
 
 **Objetivo.** Que la lista aproveche el ancho de una tableta y probarlo en el móvil y en una tableta. El emulador de tableta se crea como explica [`software-PMDM.md`](software-PMDM.md).
 
-**Pista.** Cambia la `LazyColumn` de `PantallaLista` por una cuadrícula adaptativa:
+Antes de empezar, haz **9.1** (dependencias y *Sync Now*); mientras descarga, sigue aquí.
+
+**Pista.** En `PantallaLista.kt`, cambia la `LazyColumn` (donde está el comentario `// TODO Paso 8`) por una cuadrícula adaptativa:
 
 ```kotlin
 LazyVerticalGrid(
@@ -72,14 +74,15 @@ LazyVerticalGrid(
 }
 ```
 
-Aquí el `items` correcto es `androidx.compose.foundation.lazy.grid.items` (borra el import de `lazy.items` si queda sin usar).
+Borra los imports `androidx.compose.foundation.lazy.LazyColumn` y `androidx.compose.foundation.lazy.items` y añade `androidx.compose.foundation.lazy.grid.LazyVerticalGrid`, `androidx.compose.foundation.lazy.grid.GridCells` y `androidx.compose.foundation.lazy.grid.items`.
 
-`GridCells.Adaptive(320.dp)` mete tantas columnas como quepan con un mínimo de 320 dp: en el móvil sale una y en la tableta dos o tres, sin ningún `if`. Los **dp** miden lo mismo en pantallas con distinta resolución. En el detalle y en el formulario puedes añadir `.widthIn(max = 600.dp)` al `Modifier` de la `Column` para que en la tableta no queden líneas larguísimas.
+`GridCells.Adaptive(320.dp)` mete tantas columnas como quepan con un mínimo de 320 dp: en el móvil sale una y en la tableta dos o tres, sin ningún `if`. Los **dp** miden lo mismo en pantallas con distinta resolución. Para que en la tableta no queden líneas larguísimas, en `PantallaDetalle.kt` y en `PantallaSolicitud.kt` añade `.widthIn(max = 600.dp)` al final del `Modifier` de la `Column` principal, después de `.verticalScroll(rememberScrollState())` (import `androidx.compose.foundation.layout.widthIn`).
 
 **Comprueba que…**
 
 - en el **móvil** en vertical hay una columna;
 - en la **tableta** (o el móvil en horizontal) hay varias;
+- en la tableta, el detalle y el formulario no ocupan todo el ancho;
 - todo se ve y se puede usar en los dos (nada cortado, botones accesibles).
 
 Haz una captura en cada dispositivo (botón de cámara del emulador) y compáralas.
@@ -114,7 +117,7 @@ Room genera el resto del código al compilar, con **KSP**. Acceder a la base de 
 
 Añádelas al empezar la primera sesión y pulsa *Sync Now*: mientras descarga, haz el paso 8. Son las versiones probadas con esta plantilla.
 
-En `gradle/libs.versions.toml`:
+En `gradle/libs.versions.toml` hay tres comentarios `# TODO Paso 9.1`, uno en cada sección. Cambia cada comentario por las líneas de su sección. **No copies los encabezados** `[versions]`, `[libraries]` y `[plugins]`: ya existen.
 
 ```toml
 [versions]
@@ -130,9 +133,9 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ```
 
-En el `build.gradle.kts` del proyecto (el de la raíz), dentro de `plugins { }`: `alias(libs.plugins.ksp) apply false`.
+En los dos `build.gradle.kts`, la línea ya está escrita en un comentario `// TODO Paso 9.1:`: borra ese comienzo para activarla. En el del proyecto (el de la raíz), dentro de `plugins { }`: `alias(libs.plugins.ksp) apply false`.
 
-En `app/build.gradle.kts`, dentro de `plugins { }`: `alias(libs.plugins.ksp)`. Y dentro de `dependencies { }`:
+En `app/build.gradle.kts`, dentro de `plugins { }`: `alias(libs.plugins.ksp)`. Y dentro de `dependencies { }`, en lugar del comentario `// TODO Paso 9.1: Room …`:
 
 ```kotlin
 implementation(libs.androidx.room.runtime)
@@ -145,6 +148,8 @@ ksp(libs.androidx.room.compiler)
 **Si el *Sync* falla por KSP** (por ejemplo, *Plugin [id: 'com.google.devtools.ksp'] was not found*): comprueba las tres piezas de arriba (el plugin en `[plugins]` del catálogo y en los dos `build.gradle.kts`) y vuelve a pulsar *Sync Now*. No sigas con 9.2 hasta que el *Sync* termine bien.
 
 ### 9.2 · La entidad y el DAO
+
+Para crear cada archivo nuevo: clic derecho en el paquete `com.example.centroacogida` → *New → Kotlin Class/File* → *File*, con el nombre indicado; pega el código sustituyendo todo.
 
 Crea `Solicitud.kt`:
 
@@ -220,7 +225,7 @@ abstract class AcogidaDatabase : RoomDatabase() {
 
 Para abrir la base de datos, el ViewModel necesita el contexto de la aplicación. Por eso pasa de `ViewModel()` a **`AndroidViewModel(application)`**: `viewModel()` lo crea igual, sin cambiar nada más.
 
-En `AcogidaViewModel.kt`, cambia la cabecera de la clase y añade el DAO y la lista de solicitudes:
+En `AcogidaViewModel.kt`, cambia la cabecera de la clase y añade, justo debajo, el DAO y la lista de solicitudes. No borres nada de lo que ya hay:
 
 ```kotlin
 class AcogidaViewModel(application: Application) : AndroidViewModel(application) {
@@ -234,7 +239,7 @@ class AcogidaViewModel(application: Application) : AndroidViewModel(application)
     // ... lo que ya tenías (uiState, formulario, etc.)
 ```
 
-Y cambia `enviarSolicitud` para que reciba el animal y guarde la solicitud si es válida:
+Y **sustituye la función `enviarSolicitud()` entera** (son 3 líneas) por esta, que recibe el animal y guarda la solicitud si es válida:
 
 ```kotlin
     fun enviarSolicitud(animal: Animal?) {
@@ -254,6 +259,8 @@ Y cambia `enviarSolicitud` para que reciba el animal y guarde la solicitud si es
 ```
 
 Imports nuevos: `android.app.Application`, `androidx.lifecycle.AndroidViewModel`, `androidx.lifecycle.viewModelScope`, `kotlinx.coroutines.flow.SharingStarted`, `kotlinx.coroutines.flow.stateIn` y `kotlinx.coroutines.launch`. Quita el de `androidx.lifecycle.ViewModel`.
+
+Ahora `AcogidaApp.kt` no compila, porque `enviarSolicitud` necesita el animal. Arréglalo en `composable(route = "solicitud/{animalId}")`: justo debajo de `val id = …`, añade `val animal = viewModel.buscarAnimal(id)`; en `PantallaSolicitud(…)` pon `animal = animal` y cambia `onEnviar = viewModel::enviarSolicitud` por `onEnviar = { viewModel.enviarSolicitud(animal) }`. Así el proyecto vuelve a compilar.
 
 ### 9.5 · La pantalla «Mis solicitudes» y su ruta
 
@@ -321,7 +328,7 @@ fun PantallaSolicitudes(solicitudes: List<Solicitud>, onVolver: () -> Unit) {
 }
 ```
 
-En `PantallaLista.kt`, añade el parámetro `onVerSolicitudes: () -> Unit = {}` y un botón en la barra superior (import `androidx.compose.material3.TextButton`):
+En `PantallaLista.kt`, añade el parámetro `onVerSolicitudes: () -> Unit = {}` al final de los parámetros de `fun PantallaLista(`, después de `onAnimalClick: (Animal) -> Unit` y con una coma. Después, dentro de `topBar = { }`, sustituye `TopAppBar(title = { Text("Centro de acogida") })` por esta barra con un botón (import `androidx.compose.material3.TextButton`):
 
 ```kotlin
 TopAppBar(
@@ -333,9 +340,10 @@ TopAppBar(
 En `AcogidaApp.kt`:
 
 - debajo de `val formulario by …`: `val solicitudes by viewModel.solicitudes.collectAsState()`;
-- en `PantallaLista(…)`: `onVerSolicitudes = { navController.navigate("solicitudes") }`;
-- un destino nuevo en el `NavHost`: `composable("solicitudes") { PantallaSolicitudes(solicitudes = solicitudes, onVolver = { navController.popBackStack() }) }`;
-- en el destino de la solicitud, guarda el animal en una variable (`val animal = viewModel.buscarAnimal(id)`), pásalo como `animal = animal` y cambia `onEnviar = viewModel::enviarSolicitud` por `onEnviar = { viewModel.enviarSolicitud(animal) }`.
+- en `PantallaLista(…)`, después de `onAnimalClick = …` (pon una coma al final de esa línea): `onVerSolicitudes = { navController.navigate("solicitudes") }`;
+- un destino nuevo en el `NavHost`, después del bloque `composable("lista") { … }`: `composable("solicitudes") { PantallaSolicitudes(solicitudes = solicitudes, onVolver = { navController.popBackStack() }) }`.
+
+Cuando tengas los cuatro archivos nuevos, borra `PasosSiguientes.kt`: solo era la lista de lo que faltaba.
 
 **Comprueba que…**
 
@@ -360,7 +368,7 @@ En `AcogidaApp.kt`:
 
 ## Lo vemos juntos: pedir un permiso y hacer una foto (UD3 y UD4, miércoles, 15 min, con el docente)
 
-Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. El docente lo ejecuta y recorremos el código; no hay que escribir nada. No entra en la prueba escrita del viernes 20: se trabaja en la UD4.
+Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. El docente lo ejecuta y recorremos el código; no hay que escribir nada. No entra en la prueba escrita del viernes 20: se trabaja en la UD4. El código completo está en `soluciones/` desde el martes 17 de noviembre (`PantallaDetalle.kt` y `AndroidManifest.xml`).
 
 | Dónde | Qué hay que saber |
 |---|---|
@@ -375,7 +383,12 @@ El resto de la UD3 (servicios REST con Retrofit, DataStore, WorkManager, sensore
 
 ## Para quien termine (opcional)
 
-**Extra A · Buscador.** Un `OutlinedTextField` encima de la lista que filtre por nombre. Pista: un campo `textoBusqueda` en `AcogidaUiState` y, en `animalesVisibles`, un segundo `filter { it.nombre.contains(textoBusqueda, ignoreCase = true) }`.
+**Extra A · Buscador.** Un `OutlinedTextField` encima de la lista que filtre por nombre. Necesitas cuatro piezas:
+
+1. En `AcogidaUiState`, un campo `val textoBusqueda: String = ""`, y `animalesVisibles` pasa a ser: `get() = animales.filter { !soloUrgentes || it.urgente }.filter { it.nombre.contains(textoBusqueda, ignoreCase = true) }`.
+2. En `AcogidaViewModel`, una función como `cambiarSoloUrgentes`: `fun cambiarBusqueda(texto: String) { _uiState.update { it.copy(textoBusqueda = texto) } }`.
+3. En `PantallaLista`, un parámetro `onBuscar: (String) -> Unit = {}` y, encima de la cuadrícula, `OutlinedTextField(value = uiState.textoBusqueda, onValueChange = onBuscar, label = { Text("Buscar por nombre") })` (import `androidx.compose.material3.OutlinedTextField`).
+4. En `AcogidaApp.kt`, en `PantallaLista(…)`: `onBuscar = viewModel::cambiarBusqueda`.
 
 **Extra B · Flutter (comparación).** Si tienes Flutter instalado (`flutter doctor` sin errores graves), crea un proyecto con `flutter create acogida_flutter`, ejecútalo y busca en `lib/main.dart` el equivalente de: un composable (widget), `remember`/`mutableStateOf` (`StatefulWidget` y `setState`) y `LazyColumn` (`ListView.builder`). Escribe tres líneas comparando. Si no lo tienes, sáltatelo: es opcional.
 
