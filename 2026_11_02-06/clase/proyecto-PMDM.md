@@ -64,14 +64,14 @@ El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa
 
 ## Paso 0 · Abrir la app y preparar los emuladores
 
-**Objetivo.** Tener tu app (o la plantilla) ejecutándose en el emulador, y dos AVD: un móvil y una tableta.
+**Objetivo.** Tener tu app (o la plantilla) ejecutándose en el emulador de móvil.
 
 **Pista.**
 
 1. **Si tienes tu app del centro de acogida y funciona**: haz una copia de la carpeta (por ejemplo `CentroAcogida2`) y ábrela con *File > Open*. Trabaja sobre la copia.
 2. **Si no la tienes o no la terminaste**: descarga el repositorio del módulo (*Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
-4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no los tienes, un **Pixel** (*Phone*) y una **tableta** (*Tablet*, por ejemplo *Pixel Tablet*) con la misma imagen de sistema, para no descargar otra.
+4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
 5. Ejecuta la app (**Run**) en el móvil.
 
 La plantilla está probada con **Android Studio 2026.2** (*Help > About*). Con una versión anterior, el *Sync* puede fallar con un error de versión del plugin de Android (AGP): actualiza Android Studio. Si partes de tu app y el *Sync* de los pasos 5, 6 o 9 falla por versiones (`compileSdk`, AGP, Kotlin), pasa a la plantilla: no pierdas la clase con las versiones.

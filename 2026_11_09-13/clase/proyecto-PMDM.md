@@ -56,7 +56,7 @@ El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa
 
 ## Paso 8 · Dos tamaños de pantalla
 
-**Objetivo.** Que la lista aproveche el ancho de una tableta y probarlo en los dos AVD del paso 0.
+**Objetivo.** Que la lista aproveche el ancho de una tableta y probarlo en el móvil y en una tableta. El emulador de tableta se crea como explica [`software-PMDM.md`](software-PMDM.md).
 
 **Pista.** Cambia la `LazyColumn` de `PantallaLista` por una cuadrícula adaptativa:
 
