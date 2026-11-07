@@ -57,7 +57,7 @@ Cada unidad tiene una nota de 0 a 10, que se reparte entre estas partes según c
 
 - **Examen de la unidad**: los criterios que la programación evalúa con *prueba escrita*.
 - **Entrega**: los criterios que evalúa con *lista de cotejo* (una lista de puntos concretos en la que cada uno se cumple o no se cumple) o con *rúbrica* (cada criterio tiene niveles descritos, de insuficiente a excelente).
-- **Trabajo en clase**: los criterios que evalúa con *tabla de observación*: el docente anota cómo se trabaja en clase.
+- **Trabajo en clase**: los criterios que evalúa con *tabla de observación*: se anota cómo se trabaja en clase.
 
 En la unidad 6 la programación no tiene prueba escrita: el examen es práctico y se corrige con rúbrica, igual que la entrega; por eso valen lo mismo. La UD3 tampoco tiene prueba escrita en la programación; en 2026-27 se califica con una prueba escrita sobre el proyecto de diagnóstico y con el proyecto integrado de la UD4 (ver abajo).
 
@@ -86,7 +86,7 @@ Los coeficientes de la nota final son los del apartado 6.1 de la programación. 
 
 ## Uso de la IA y autoría
 
-- **Uso de la inteligencia artificial:** en cada entrega se indicará si se puede usar la IA, con qué límites y cómo hay que declarar su uso. En cualquier caso, **hay que poder explicar todo lo que se entrega**: el docente puede pedir una explicación, una defensa o una modificación en clase (manual interno del centro, anexo I).
+- **Uso de la inteligencia artificial:** en cada entrega se indicará si se puede usar la IA, con qué límites y cómo hay que declarar su uso. En cualquier caso, **hay que poder explicar todo lo que se entrega**: se puede pedir una explicación, una defensa o una modificación en clase (manual interno del centro, anexo I).
 - **Autoría:** si se demuestra un uso excesivo de la IA que impide comprender y explicar lo generado y entregado, la actividad queda como no evaluada (equivale a un 0), con las consecuencias que eso tiene para la evaluación continua.
 
 ## Si no se aprueba
@@ -100,7 +100,7 @@ Según el apartado 6.1 de la programación:
 
 ## Libros recomendados
 
-Libros digitales recomendados por el docente para estudiar el módulo (teoría, ejercicios y casos prácticos):
+Libros digitales recomendados para estudiar el módulo (teoría, ejercicios y casos prácticos):
 
 - *Programación multimedia y dispositivos móviles*. Libro digital interactivo. McGraw-Hill, 2022. ISBN 9788448626754.
 - *Programación multimedia y dispositivos móviles* (contenido actualizado). J. D. Cabrera Rodríguez. Síntesis, 2024. Libro digital, ISBN 9788413578873.

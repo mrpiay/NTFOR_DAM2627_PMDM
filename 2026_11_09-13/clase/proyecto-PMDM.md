@@ -2,7 +2,7 @@
 
 ## Punto de partida
 
-Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 7): la app del centro de acogida con el estado en un ViewModel, la navegación lista → detalle y el formulario «Solicitar adopción» con validación. En esta 2.ª parte la lista se adapta a **dos tamaños de pantalla** (UD2), las solicitudes se guardan en una **base de datos con Room** (UD3) y, con el docente, vemos un **permiso** y la **cámara** (inicio de la UD4). El resto de la UD3 lo trabajaremos dentro del proyecto integrado de la UD4 (del 17 de noviembre al 2 de diciembre).
+Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 7): la app del centro de acogida con el estado en un ViewModel, la navegación lista → detalle y el formulario «Solicitar adopción» con validación. En esta 2.ª parte la lista se adapta a **dos tamaños de pantalla** (UD2), las solicitudes se guardan en una **base de datos con Room** (UD3) y la app pide un **permiso** y usa la **cámara** (inicio de la UD4). El resto de la UD3 lo trabajaremos dentro del proyecto integrado de la UD4 (del 17 de noviembre al 2 de diciembre).
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
@@ -31,8 +31,8 @@ Añadir a la app:
 | UD1 · Tecnologías y entornos | AVD de distintos tamaños | Paso 8 |
 | UD2 · Compose y adaptación a tamaños | `LazyVerticalGrid`, `GridCells.Adaptive`, dp, vistas previas | Paso 8 |
 | UD2 · Flutter | Solo como extra opcional | Extra B |
-| UD3 · Persistencia y servicios del dispositivo | Room (entidad, DAO, base de datos) y corrutinas (paso 9); permisos en tiempo de ejecución («Lo vemos juntos»); servicios web (Extra C) | Paso 9, «Lo vemos juntos» y Extra C |
-| UD4 · Multimedia (inicio) | Capturar una imagen con la cámara | «Lo vemos juntos» |
+| UD3 · Persistencia y servicios del dispositivo | Room (entidad, DAO, base de datos) y corrutinas (paso 9); permisos en tiempo de ejecución («Un permiso y la cámara»); servicios web (Extra C) | Paso 9, «Un permiso y la cámara» y Extra C |
+| UD4 · Multimedia (inicio) | Capturar una imagen con la cámara | «Un permiso y la cámara» |
 
 ## Plan por sesiones (50 minutos cada una)
 
@@ -40,7 +40,7 @@ Añadir a la app:
 |---|---|
 | Mar 10 nov, 08:30 | Al empezar: añadir las dependencias de **9.1** y pulsar *Sync Now*. Mientras descarga, **paso 8** (dos tamaños de pantalla). |
 | Mar 10 nov, 09:20 | **Paso 9** (Room: 9.2 a 9.4). |
-| Mié 11 nov, 08:30 | **Paso 9** (9.5, «Mis solicitudes») y **Lo vemos juntos: un permiso y la cámara** (15 min, con el docente). |
+| Mié 11 nov, 08:30 | **Paso 9** (9.5, «Mis solicitudes») y **Un permiso y la cámara** (15 min). |
 | Mié 11 nov, 09:20 y 10:10 | UD4, según el plan del curso. |
 | Vie 13 nov, 13:00 y 13:50 | Terminar el **paso 9** y hacer los extras. |
 
@@ -368,9 +368,9 @@ Cuando tengas los cuatro archivos nuevos, borra `PasosSiguientes.kt`: solo era l
 
 ---
 
-## Lo vemos juntos: pedir un permiso y hacer una foto (UD3 y UD4, miércoles, 15 min, con el docente)
+## Un permiso y la cámara (UD3 y UD4, miércoles, 15 min)
 
-Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. El docente lo ejecuta y recorremos el código; no hay que escribir nada. No entra en la prueba escrita del viernes 20: se trabaja en la UD4. El código completo está en `soluciones/` desde el martes 17 de noviembre (`PantallaDetalle.kt` y `AndroidManifest.xml`).
+Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. Este apartado no se programa: se ve la app funcionando y se lee su código con esta tabla. No entra en la prueba escrita del viernes 20: se trabaja en la UD4. El código completo está en `soluciones/` desde el martes 17 de noviembre (`PantallaDetalle.kt` y `AndroidManifest.xml`).
 
 | Dónde | Qué hay que saber |
 |---|---|

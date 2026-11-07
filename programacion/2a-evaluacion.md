@@ -29,7 +29,7 @@ Peso de estas unidades en el módulo: 52 % (la suma de los pesos de sus unidades
 
 | UD | Entrega | Qué incluye |
 |---|---|---|
-| UD4 | Proyecto integrado de aplicación Android | Aplicación Android funcional, repositorio del proyecto, documentación técnica breve y presentación/defensa. En 2026-27 continúa la app del centro de acogida e incluye lo que falta de la UD3: datos desde un servicio REST (Retrofit), preferencias con DataStore, la ubicación o un sensor y una tarea en segundo plano con WorkManager; Bluetooth, visto en clase con el docente. |
+| UD4 | Proyecto integrado de aplicación Android | Aplicación Android funcional, repositorio del proyecto, documentación técnica breve y presentación/defensa. En 2026-27 continúa la app del centro de acogida e incluye lo que falta de la UD3: datos desde un servicio REST (Retrofit), preferencias con DataStore, la ubicación o un sensor y una tarea en segundo plano con WorkManager; Bluetooth, visto en clase. |
 | UD5 | Mini-reto: modificación de un juego existente | Versión modificada de un juego existente y breve explicación de los cambios realizados. |
 | UD6 | Proyecto integrado de videojuego móvil | Videojuego 2D o 3D funcional para Android, repositorio del proyecto, documentación técnica y presentación/defensa |
 

@@ -50,7 +50,7 @@ Peso de estas unidades en el módulo: 48 % (la suma de los pesos de sus unidades
 | Del 19 al 23 de octubre | UD3 · Ejecución en segundo plano seguridady permisos<br>UD3 · Comunicación mediante Bluetooth<br>UD3 · Sensores del dispositivo<br>UD3 · Localización y mapas |
 | Del 26 al 30 de octubre | UD3 · Miniaplicación de integración de las capacidades del dispositivo<br>UD4 · Ecosistema multimedia en Android<br>UD4 · Captura de imagen y vídeo con CameraX |
 | [Del 2 al 6 de noviembre](../2026_11_02-06) | **puesta en común y proyecto de diagnóstico** (no se avanza: se repasa y se completa lo que tocaba hasta la fecha) |
-| [Del 9 al 13 de noviembre](../2026_11_09-13) | **proyecto de diagnóstico, 2.ª parte** (pasos 8 y 9: dos tamaños de pantalla y Room; con el docente, un permiso y la cámara)<br>UD4 · Reproducción de audio y vídeo con Media3<br>UD4 · Procesamiento y conversión de contenidos multimedia |
+| [Del 9 al 13 de noviembre](../2026_11_09-13) | **proyecto de diagnóstico, 2.ª parte** (pasos 8 y 9: dos tamaños de pantalla y Room; un permiso y la cámara)<br>UD4 · Reproducción de audio y vídeo con Media3<br>UD4 · Procesamiento y conversión de contenidos multimedia |
 | Del 16 al 20 de noviembre | UD4 · Animaciones e interacción multimedia<br>UD4 · Proyecto integrado de aplicación Android<br>**prueba escrita de la UD3** |
 | Del 23 al 27 de noviembre | UD4 · Proyecto integrado de aplicación Android |
 | Del 30 de noviembre al 4 de diciembre | UD4 · Proyecto integrado de aplicación Android<br>UD5 · Arquitectura de los videojuegos y motores de desarrollo<br>**repaso** o terminar lo pendiente · 1ª evaluación |
