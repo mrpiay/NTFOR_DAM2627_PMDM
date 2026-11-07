@@ -8,5 +8,6 @@
 
 | Qué | Cuándo |
 |---|---|
-| **Prueba escrita**, en papel, sobre la 1.ª parte del proyecto (pasos 0 a 7): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación) y el propio proyecto | **Viernes 13 de noviembre**, en clase |
 | Autoevaluación de esta semana y de la anterior ([semana del 2 al 6](../../2026_11_02-06/estudio/autoevaluacion.md)), en una sola tarea de Teams | Hasta el **lunes 16 de noviembre**, a las 23:59 |
+
+La prueba escrita sobre las dos partes del proyecto es el **viernes 20 de noviembre**, después de que se publiquen las soluciones: está en las fechas importantes del repositorio.

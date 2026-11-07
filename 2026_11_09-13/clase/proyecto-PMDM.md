@@ -6,7 +6,7 @@ Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
-**Evaluación continua.** El último día de algunas semanas hay una **prueba escrita, en papel,** sobre lo trabajado; se avisa con antelación. La primera es el **viernes 13 de noviembre**, sobre la 1.ª parte del proyecto (pasos 0 a 7): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación) y el propio proyecto. Esta 2.ª parte no entra en la prueba.
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra; se avisa con antelación. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
 
 Del 10 al 13 de noviembre. Cada paso trae una pista y qué hacer si algo falla.
 
@@ -40,7 +40,7 @@ Añadir a la app:
 | Mar 10 nov, 09:20 | **Paso 9** (Room: 9.2 a 9.4). |
 | Mié 11 nov, 08:30 | **Paso 9** (9.5, «Mis solicitudes») y **Lo vemos juntos: un permiso y la cámara** (15 min, con el docente). |
 | Mié 11 nov, 09:20 y 10:10 | UD4, según el plan del curso. |
-| Vie 13 nov, 13:00 y 13:50 | **Evaluación continua: prueba escrita**, en papel, sobre la 1.ª parte del proyecto (ver [`entrega.md`](entrega.md)). El resto del tiempo, terminar el paso 9 o hacer los extras. |
+| Vie 13 nov, 13:00 y 13:50 | Terminar el **paso 9** y hacer los extras. |
 
 **Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior. Si terminas el paso del día antes de tiempo, puedes adelantar el siguiente o hacer los extras.
 
@@ -360,7 +360,7 @@ En `AcogidaApp.kt`:
 
 ## Lo vemos juntos: pedir un permiso y hacer una foto (UD3 y UD4, miércoles, 15 min, con el docente)
 
-Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. El docente lo ejecuta y recorremos el código; no hay que escribir nada. No entra en la prueba escrita del viernes 13: se trabaja en la UD4.
+Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. El docente lo ejecuta y recorremos el código; no hay que escribir nada. No entra en la prueba escrita del viernes 20: se trabaja en la UD4.
 
 | Dónde | Qué hay que saber |
 |---|---|
