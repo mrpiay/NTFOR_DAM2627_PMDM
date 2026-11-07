@@ -70,7 +70,7 @@ En la unidad 6 la programación no tiene prueba escrita: el examen es práctico 
 | UD5 | 30 % | 60 % | 10 % |
 | UD6 | 50 % | 50 % | — |
 
-**UD2:** se califica con lo que conste de su entrega y su examen (entrega del 7 de octubre y examen del 16 de octubre). A quien le falte alguna de las dos partes, la sustituyen los pasos 1 a 3 y 5 a 7 del proyecto de la semana de diagnóstico, corregidos con los criterios de la UD2.
+**UD2:** se califica con lo que conste de su entrega y su examen (entrega del 7 de octubre y examen del 16 de octubre). A quien le falte alguna de las dos partes, la sustituyen las preguntas de la prueba escrita del viernes 20 de noviembre sobre los pasos 1 a 3 y 5 a 7 del proyecto de la semana de diagnóstico, corregidas con los criterios de la UD2.
 
 **UD3:** en lugar del examen, el viernes 20 de noviembre hay una **prueba escrita**, en papel, sobre las dos partes del proyecto de diagnóstico, después de publicar sus soluciones (lo que solo se ve en una demostración no entra). La prueba califica la persistencia (CA2.6, el 20 % de la UD3). Los permisos, las conexiones HTTP, los sensores, la comunicación inalámbrica y el despliegue en un móvil real (CA2.3, CA2.4, CA2.5, CA2.8 y CA2.10, el 80 %) se califican en el proyecto integrado de la UD4, sobre la misma app. La nota de la UD3 se completa así antes del examen final de la 1ª evaluación. La entrega de la UD3, prevista antes del 3 de noviembre, no se tiene en cuenta.
 
