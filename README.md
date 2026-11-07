@@ -2,6 +2,16 @@
 
 Materiales del módulo de **Programación multimedia y dispositivos móviles (PMDM)**, con una carpeta por semana.
 
+## Fechas importantes
+
+Todas las semanas: el cuestionario de autoevaluación está disponible desde el primer día, sus respuestas se suben a Teams antes del martes siguiente (hasta el lunes a las 23:59) y el martes se publican sus soluciones. Además:
+
+| Fecha | Qué |
+|---|---|
+| Viernes 13 de noviembre | **Prueba escrita**, en papel, sobre la 1.ª parte del proyecto «Centro de acogida 2.0»: Android Studio, Kotlin, la arquitectura típica de una app y el propio proyecto |
+| Lunes 16 de noviembre, 23:59 | Entrega en Teams de las autoevaluaciones de las semanas del 2 al 6 y del 9 al 13, en una sola tarea |
+| Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones |
+
 ## Cómo está organizado
 
 Cada semana tiene su carpeta, con las fechas de lunes a viernes: `2026_11_02-06` es la semana del 2 al 6 de noviembre. Dentro hay tres carpetas:
