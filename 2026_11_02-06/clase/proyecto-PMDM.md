@@ -62,23 +62,23 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 
 En la plantilla, los comentarios `// TODO Paso N` marcan dónde va cada cambio; los de los pasos 8 y 9 son de la 2.ª parte: déjalos como están. Para crear un archivo nuevo: clic derecho en el paquete `com.example.centroacogida` → *New → Kotlin Class/File* → **File**, con el nombre indicado; pega el código debajo de la línea `package` que crea Android Studio. Los imports que queden en gris ya no se usan: bórralos con *Code → Optimize Imports*.
 
-El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa el tuyo. Cuando Android Studio marque en rojo un nombre, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`.
+El código usa el paquete `com.example.centroacogida`. Cuando Android Studio marque en rojo un nombre, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`.
 
 ---
 
 ## Paso 0 · Abrir la app y preparar el emulador
 
-**Objetivo.** Tener tu app (o la plantilla) ejecutándose en el emulador de móvil.
+**Objetivo.** Tener la app ejecutándose en el emulador de móvil.
 
 **Pista.**
 
 1. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Si pregunta si confías en el proyecto, *Trust Project*.
-2. **Si quieres seguir con tu propia app del centro de acogida** y funciona: haz una copia de su carpeta con el nombre `CentroAcogida-personal` y ábrela con *File > Open*. Trabaja sobre la copia.
+2. **Si tienes tu propia app del centro de acogida**: cambia el nombre de su carpeta a `CentroAcogida-anterior` y guárdala para consultarla. El proyecto se hace en `CentroAcogida`, desde la plantilla.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
 4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
 5. Ejecuta la app (**Run**) en el móvil.
 
-La plantilla está probada con **Android Studio 2026.2** (*Help > About*). Con una versión anterior, el *Sync* puede fallar con un error de versión del plugin de Android (AGP): actualiza Android Studio. Si partes de tu app y el *Sync* de los pasos 5 o 6 falla por versiones (`compileSdk`, AGP, Kotlin), pasa a la plantilla: no pierdas la clase con las versiones.
+La plantilla está probada con **Android Studio 2026.2** (*Help > About*). Con una versión anterior, el *Sync* puede fallar con un error de versión del plugin de Android (AGP): actualiza Android Studio.
 
 Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un dispositivo si su API es igual o mayor que el `minSdk` del proyecto (en `app/build.gradle.kts`).
 
@@ -100,8 +100,6 @@ Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un 
 - ¿Qué aporta `data class` frente a una clase normal? (Pista: `toString`, `equals`, `copy`.)
 - ¿Por qué `descripcion` tiene un valor por defecto (`= ""`) y los demás campos no?
 - ¿Qué es `R.drawable...` y dónde están esas imágenes? (Código en `app/src/main/java`, recursos en `app/src/main/res`, la actividad principal declarada en `AndroidManifest.xml`, dependencias en `build.gradle.kts` y `gradle/libs.versions.toml`.)
-
-**Si usas tu app**: necesitas un campo `id: Int` (distinto en cada animal) y conviene añadir `descripcion: String = ""`, como en la plantilla. Los usarás en los pasos 6 y 7.
 
 **Pequeño cambio.** Añade un noveno animal: copia la última línea de `DatosAnimales` y cambia el id a `9`, el nombre y los datos. Cada animal necesita un id distinto: la lista lo usa como clave y, si se repite, la app se cierra. Prueba en `MainActivity.onCreate` este mini-repaso de Kotlin y mira el resultado en Logcat:
 
@@ -127,8 +125,6 @@ Log.d("Repaso", "Urgentes: ${urgentes.size}, id 2: $nombre")
 
 **Pista.** Un composable es una función que **describe** la interfaz: recibe datos (`animal`) y avisa de los eventos con lambdas (`onClick`). El parámetro `modifier` permite que quien lo usa decida márgenes o tamaño. Localiza en el código: la `Card`, la `Image` con `painterResource`, un estilo de `MaterialTheme.typography`, un color de `MaterialTheme.colorScheme` y una forma de `MaterialTheme.shapes`.
 
-**Si usas tu app**: tu tarjeta necesita un parámetro `onClick: () -> Unit` y `.clickable { onClick() }` en el `Modifier` de la `Card`. Lo usarás en el paso 6.
-
 **Pequeño cambio.** Abre la vista previa (`TarjetaAnimalPreview`, modo *Split*) y cambia el tamaño de la imagen de `72.dp` a `96.dp`, o el estilo del nombre a `titleLarge`.
 
 **Comprueba que…** la vista previa cambia sin ejecutar la app.
@@ -144,8 +140,6 @@ Log.d("Repaso", "Urgentes: ${urgentes.size}, id 2: $nombre")
 **Objetivo.** Entender `PantallaLista.kt` y cómo funciona el interruptor.
 
 **Pista.** Cuando cambia `soloUrgentes`, Compose **recompone** (vuelve a ejecutar) las funciones que lo leen y la lista se actualiza sola. `remember` hace que el valor no se pierda en cada recomposición. `Modifier.padding(innerPadding)` evita que la lista quede debajo de la `TopAppBar`.
-
-**Si usas tu app**: deja `PantallaLista` con un parámetro `onAnimalClick: (Animal) -> Unit` que se pasa a cada tarjeta, y en `MainActivity` llámala con `PantallaLista(onAnimalClick = { })`. Si tu `MainActivity` tiene otro `Scaffold` con `Greeting`, quítalo: la pantalla ya trae el suyo.
 
 **Pequeño cambio.** Cambia el texto de la barra superior y añade un `Text("Mostrando ${visibles.size} animales")` después del `}` que cierra la `Row` del interruptor, antes de la `LazyColumn`.
 

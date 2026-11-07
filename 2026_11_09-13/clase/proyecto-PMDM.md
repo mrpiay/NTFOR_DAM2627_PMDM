@@ -52,7 +52,7 @@ Añadir a la app:
 
 **Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y alternativas).
 
-El código usa el paquete `com.example.centroacogida`; si tu app tiene otro, usa el tuyo. Cuando Android Studio marque en rojo un nombre, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`.
+El código usa el paquete `com.example.centroacogida`. Cuando Android Studio marque en rojo un nombre, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`.
 
 ---
 
