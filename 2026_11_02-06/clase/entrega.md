@@ -1,8 +1,13 @@
 # Entrega · semana del 2 al 6 de noviembre
 
-| Qué | Cómo | Cuándo |
-|---|---|---|
-| **Lo que has hecho** | Enséñalo en clase: tu app funcionando en el emulador o en el móvil. No hace falta que esté terminada; la puedes completar después, pero hay que enseñarla | En la última clase de la semana: **viernes 6** |
-| **Autoevaluación** | Esta semana es especial: sus respuestas se entregan junto con las de la semana del 9 al 13, en una sola tarea de Teams (ver el `entrega.md` de esa semana) | Hasta el **lunes 16 de noviembre**, a las 23:59 |
+## Todas las semanas
 
-La solución de la 1.ª parte del proyecto ya está en [`soluciones/`](../soluciones). Las soluciones de la autoevaluación se publican allí el martes 17 de noviembre, por la mañana.
+- **Autoevaluación.** El cuestionario está en [`estudio/autoevaluacion.md`](../estudio/autoevaluacion.md) desde el primer día de la semana. Respóndelo y sube tus respuestas, con el número de cada pregunta, a la tarea de Teams de la semana **antes del martes siguiente** (hasta el lunes a las 23:59). El martes se publican las soluciones en [`soluciones/`](../soluciones).
+- **Tu proyecto.** Enséñalo en clase el último día de la semana, tal como lo tengas. No hace falta que esté terminado; lo puedes completar después.
+
+## Esta semana
+
+| Qué | Cuándo |
+|---|---|
+| Enseñar el proyecto en clase | **Viernes 6 de noviembre** |
+| Autoevaluación: esta semana se entrega junto con la de la semana del 9 al 13, en una sola tarea de Teams | Hasta el **lunes 16 de noviembre**, a las 23:59 |
