@@ -7,7 +7,7 @@
 | UD | Inicio | Fin | Sesiones | Peso | Entrega |
 |---|---|---|---|---|---|
 | UD4 · Desarrollo de aplicaciones multimedia | vie 30 oct | mié 2 dic | 20 | 22 % | Proyecto integrado de aplicación Android |
-| UD5 · Arquitectura y motores de juegos 2D y 3D | mié 2 dic | mié 13 ene | 9 | 8 % | Mini-reto: modificación de un juego existente |
+| UD5 · Arquitectura y motores de juegos 2D y 3D | mié 16 dic | mié 13 ene | 8 | 8 % | Mini-reto: modificación de un juego existente |
 | UD6 · Desarrollo e implantación de juegos 2D y 3D | mié 13 ene | vie 5 feb | 23 | 22 % | Proyecto integrado de videojuego móvil |
 
 Peso de estas unidades en el módulo: 52 % (la suma de los pesos de sus unidades, apartado 2.1 de la programación).

@@ -53,9 +53,9 @@ Peso de estas unidades en el módulo: 48 % (la suma de los pesos de sus unidades
 | [Del 9 al 13 de noviembre](../2026_11_09-13) | **proyecto de diagnóstico, 2.ª parte** (pasos 8 y 9: dos tamaños de pantalla y Room; un permiso y la cámara)<br>UD4 · Reproducción de audio y vídeo con Media3<br>UD4 · Procesamiento y conversión de contenidos multimedia |
 | Del 16 al 20 de noviembre | UD4 · Animaciones e interacción multimedia<br>UD4 · Proyecto integrado de aplicación Android<br>**prueba escrita de la UD3** |
 | Del 23 al 27 de noviembre | UD4 · Proyecto integrado de aplicación Android |
-| Del 30 de noviembre al 4 de diciembre | UD4 · Proyecto integrado de aplicación Android<br>UD5 · Arquitectura de los videojuegos y motores de desarrollo<br>**repaso** o terminar lo pendiente · 1ª evaluación |
+| Del 30 de noviembre al 4 de diciembre | UD4 · Proyecto integrado de aplicación Android<br>**repaso** o terminar lo pendiente · 1ª evaluación |
 | Del 7 al 11 de diciembre | **repaso** o terminar lo pendiente · 1ª evaluación<br>**examen final** · 1ª evaluación |
-| Del 14 al 18 de diciembre | **examen de la UD4**<br>UD5 · Primeros pasos con Unity 6<br>UD5 · GameObjects, componentes, prefabs y C# |
+| Del 14 al 18 de diciembre | **examen de la UD4**<br>UD5 · Arquitectura de los videojuegos y motores de desarrollo<br>UD5 · Primeros pasos con Unity 6<br>UD5 · GameObjects, componentes, prefabs y C# |
 
 ## Qué se aprende y cómo se evalúa en cada unidad
 
