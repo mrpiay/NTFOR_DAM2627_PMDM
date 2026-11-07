@@ -2,7 +2,17 @@
 
 Preguntas sobre la 1.ª parte del proyecto «Centro de acogida 2.0». Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 
-En las preguntas con código, pega el código en `MainActivity`, dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)`; antes, borra el de la pregunta anterior. Ejecuta la app y, en Logcat, filtra por `tag:Pregunta`. Copia en tu respuesta los mensajes (el texto que va después de `Pregunta`) y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA.
+En las preguntas con código, abre `MainActivity.kt` (en `app/src/main/java/com/example/centroacogida`) y pega el código dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)`, así:
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // aquí va el código de la pregunta
+    Log.d(TAG, "onCreate")
+    ...
+```
+
+Antes de pegar el de una pregunta, borra el de la anterior. Ejecuta la app y, en Logcat, filtra por `tag:Pregunta`. Copia en tu respuesta los mensajes (el texto que va después de `Pregunta`) y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA. Cuando termines, borra el código de las preguntas.
 
 Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
 
@@ -24,7 +34,7 @@ Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar
 
 **8.** ¿Qué hace `remember`? ¿Qué es la recomposición y cuándo ocurre?
 
-**9.** Pega este código y ejecuta la app. Copia los mensajes de Logcat.
+**9.** Pega este código en `MainActivity.kt`, dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)` (borra antes el código de la pregunta anterior). Ejecuta la app y copia los mensajes de Logcat con el filtro `tag:Pregunta`.
 
 ```kotlin
 val luna = Animal(1, "Luna", "Perro", 3, R.drawable.ic_launcher_foreground, urgente = true)
@@ -34,7 +44,7 @@ Log.d("Pregunta", "Iguales: ${luna == luna.copy()}, ${luna == copia}")
 Log.d("Pregunta", "Descripción: '${luna.descripcion}'")
 ```
 
-**10.** Pega este código y ejecuta la app. Copia los mensajes de Logcat.
+**10.** Pega este código en `MainActivity.kt`, dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)` (borra antes el código de la pregunta anterior). Ejecuta la app y copia los mensajes de Logcat con el filtro `tag:Pregunta`.
 
 ```kotlin
 val animales = listOf(
@@ -53,7 +63,7 @@ Log.d("Pregunta", "Edad del id 7: ${buscado?.edad}")
 
 **12.** En `AcogidaViewModel`, ¿por qué hay dos variables, `_uiState` (`MutableStateFlow`, privada) y `uiState` (`StateFlow`, pública)? ¿Qué hace `_uiState.update { it.copy(soloUrgentes = valor) }`?
 
-**13.** Pega este código y ejecuta la app. Copia los mensajes de Logcat.
+**13.** Pega este código en `MainActivity.kt`, dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)` (borra antes el código de la pregunta anterior). Ejecuta la app y copia los mensajes de Logcat con el filtro `tag:Pregunta`.
 
 ```kotlin
 val estado = AcogidaUiState(
@@ -74,7 +84,7 @@ Log.d("Pregunta", "Animales: ${estado.animales.size} y ${urgente.animales.size}"
 
 **16.** En la lista pulsas en Misi y, en su detalle, «Solicitar adopción». ¿Qué pantallas hay en la pila de navegación? ¿A dónde lleva la flecha de «Volver» (`popBackStack()`)? ¿Y el botón «Volver a la lista» (`popBackStack("lista", inclusive = false)`)?
 
-**17.** Pega este código y ejecuta la app. Copia los mensajes de Logcat.
+**17.** Pega este código en `MainActivity.kt`, dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)` (borra antes el código de la pregunta anterior). Ejecuta la app y copia los mensajes de Logcat con el filtro `tag:Pregunta`.
 
 ```kotlin
 val form = FormularioUiState(nombre = "Ana", email = "ana@correo", telefono = "612345678")
@@ -85,7 +95,7 @@ Log.d("Pregunta", "Condiciones: ${form.errorCondiciones}")
 Log.d("Pregunta", "Válido: ${form.esValido}")
 ```
 
-**18.** Pega este código y ejecuta la app. Copia los mensajes de Logcat.
+**18.** Pega este código en `MainActivity.kt`, dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)` (borra antes el código de la pregunta anterior). Ejecuta la app y copia los mensajes de Logcat con el filtro `tag:Pregunta`.
 
 ```kotlin
 val vm = AcogidaViewModel()
