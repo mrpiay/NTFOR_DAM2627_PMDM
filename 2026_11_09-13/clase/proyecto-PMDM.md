@@ -2,20 +2,20 @@
 
 ## Punto de partida
 
-Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 7): la app del centro de acogida con el estado en un ViewModel, la navegación lista → detalle y el formulario «Solicitar adopción» con validación. En esta 2.ª parte la lista se adapta a **dos tamaños de pantalla** (UD2), las solicitudes se guardan en una **base de datos con Room** (UD3) y la app pide un **permiso** y usa la **cámara** (inicio de la UD4). El resto de la UD3 lo trabajaremos dentro del proyecto integrado de la UD4 (del 17 de noviembre al 2 de diciembre).
+Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 7): la app del centro de acogida con el estado en un ViewModel, la navegación lista → detalle y el formulario «Solicitar adopción» con validación. En esta 2.ª parte la lista se adapta a **dos tamaños de pantalla** (UD2), las solicitudes se guardan en una **base de datos con Room** (UD3) y la app pide un **permiso** y usa la **cámara** (inicio de la UD4). El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios de autoevaluación y preparar la prueba escrita.
 
-**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra; se avisa con antelación. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
 
 Del 10 al 13 de noviembre. Cada paso trae una pista y qué hacer si algo falla.
 
 ## Con qué trabajas
 
 - **Si terminaste la 1.ª parte y funciona**: sigue con tu proyecto, en la misma carpeta.
-- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_09-13/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y ábrela en Android Studio: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), y elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `// TODO Paso 8` y `// TODO Paso 9.1` marcan dónde se añade código.
+- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_09-13/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y ábrela en Android Studio: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), y elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `TODO Paso 8` y `TODO Paso 9…` (con `//` en Kotlin y `#` en `libs.versions.toml`) marcan dónde se añade código.
 
 ## Objetivo
 
@@ -41,10 +41,10 @@ Añadir a la app:
 | Mar 10 nov, 08:30 | Al empezar: añadir las dependencias de **9.1** y pulsar *Sync Now*. Mientras descarga, **paso 8** (dos tamaños de pantalla). |
 | Mar 10 nov, 09:20 | **Paso 9** (Room: 9.2 a 9.4). |
 | Mié 11 nov, 08:30 | **Paso 9** (9.5, «Mis solicitudes») y **Un permiso y la cámara** (15 min). |
-| Mié 11 nov, 09:20 y 10:10 | UD4, según el plan del curso. |
+| Mié 11 nov, 09:20 y 10:10 | Sesiones de la UD4, fuera de este proyecto (ver `programacion/`, en la raíz del repositorio). |
 | Vie 13 nov, 13:00 y 13:50 | Terminar el **paso 9** y hacer los extras. |
 
-**Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior. Si terminas antes, haz los extras.
+**Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior.
 
 **Descargas.** Con toda la clase en la misma red, las descargas de Gradle tardan. Haz el *Sync* de 9.1 al principio de la sesión del martes, no a mitad.
 
@@ -351,7 +351,7 @@ Cuando tengas los cuatro archivos nuevos, borra `PasosSiguientes.kt`: solo era l
 
 - envías una solicitud válida y aparece en «Mis solicitudes», con el animal, tus datos y la fecha;
 - si cierras la app desde Recientes y la vuelves a abrir, la solicitud sigue ahí;
-- en *App Inspection > Database Inspector* (con la app abierta en el emulador) aparece la tabla `solicitudes`.
+- en *View > Tool Windows > App Inspection*, pestaña *Database Inspector* (con la app abierta en el emulador) aparece la tabla `solicitudes`.
 
 **Si te falla…**
 
@@ -370,16 +370,96 @@ Cuando tengas los cuatro archivos nuevos, borra `PasosSiguientes.kt`: solo era l
 
 ## Un permiso y la cámara (UD3 y UD4, miércoles, 15 min)
 
-Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app ampliada. En el detalle de cada animal, «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede. Este apartado no se programa: se ve la app funcionando y se lee su código con esta tabla. No entra en la prueba escrita del viernes 20: se trabaja en la UD4. El código completo está en `soluciones/` desde el martes 17 de noviembre (`PantallaDetalle.kt` y `AndroidManifest.xml`).
+Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app. No entra en la prueba escrita del viernes 20: se trabaja en la UD4.
 
-| Dónde | Qué hay que saber |
-|---|---|
-| `AndroidManifest.xml` | Un permiso peligroso, como `CAMERA`, se declara aquí **y además** se pide mientras se usa la app |
-| `PantallaDetalle.kt` · `FotoDelAnimal` | `rememberLauncherForActivityResult` con `RequestPermission` (el diálogo del sistema) y con `TakePicturePreview` (la cámara) |
+**Objetivo.** En el detalle de cada animal, un botón «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede.
+
+**Pista.**
+
+1. En `app/src/main/AndroidManifest.xml`, encima de `<application`, declara el permiso. Un permiso peligroso, como `CAMERA`, se declara aquí **y además** se pide mientras se usa la app:
+
+   ```xml
+   <uses-permission android:name="android.permission.CAMERA" />
+   <uses-feature android:name="android.hardware.camera" android:required="false" />
+   ```
+
+2. Al final de `PantallaDetalle.kt`, fuera de `PantallaDetalle`, añade este composable. `rememberLauncherForActivityResult` lanza algo del sistema y recibe su resultado: con `RequestPermission`, el diálogo «¿Permitir…?»; con `TakePicturePreview`, la cámara, que devuelve una foto pequeña.
+
+   ```kotlin
+   @Composable
+   fun FotoDelAnimal(animal: Animal) {
+       val context = LocalContext.current
+       // rememberSaveable: la foto y el aviso no se pierden al girar la pantalla
+       var foto by rememberSaveable { mutableStateOf<Bitmap?>(null) }
+       var aviso by rememberSaveable { mutableStateOf<String?>(null) }
+
+       // Abre la cámara del sistema y devuelve una foto pequeña (o null si se cancela)
+       val hacerFoto = rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+           foto = bitmap
+       }
+       // Muestra el diálogo del sistema «¿Permitir que la app haga fotos?»
+       val pedirPermiso = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { concedido ->
+           if (concedido) hacerFoto.launch(null)
+           else aviso = "Sin permiso de cámara no se puede hacer la foto."
+       }
+
+       OutlinedButton(
+           onClick = {
+               aviso = null
+               val tengoPermiso = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) ==
+                   PackageManager.PERMISSION_GRANTED
+               if (tengoPermiso) hacerFoto.launch(null) else pedirPermiso.launch(Manifest.permission.CAMERA)
+           },
+           modifier = Modifier.fillMaxWidth()
+       ) {
+           Text("Hacer una foto de ${animal.nombre}")
+       }
+       aviso?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+       foto?.let {
+           Image(
+               bitmap = it.asImageBitmap(),
+               contentDescription = "Foto de ${animal.nombre}",
+               modifier = Modifier.fillMaxWidth().height(200.dp).clip(MaterialTheme.shapes.medium),
+               contentScale = ContentScale.Crop
+           )
+       }
+   }
+   ```
+
+   Los imports nuevos, junto a los demás del archivo:
+
+   ```kotlin
+   import android.Manifest
+   import android.content.pm.PackageManager
+   import android.graphics.Bitmap
+   import androidx.activity.compose.rememberLauncherForActivityResult
+   import androidx.activity.result.contract.ActivityResultContracts
+   import androidx.compose.material3.OutlinedButton
+   import androidx.compose.runtime.getValue
+   import androidx.compose.runtime.mutableStateOf
+   import androidx.compose.runtime.saveable.rememberSaveable
+   import androidx.compose.runtime.setValue
+   import androidx.compose.ui.graphics.asImageBitmap
+   import androidx.compose.ui.platform.LocalContext
+   import androidx.core.content.ContextCompat
+   ```
+
+3. En `PantallaDetalle`, justo después del `}` que cierra el botón «Solicitar adopción», llama al composable: `FotoDelAnimal(animal)`.
+
+**Comprueba que…**
+
+- la primera vez, el botón muestra el diálogo del permiso;
+- si lo deniegas, sale el aviso en rojo;
+- si lo concedes, se abre la cámara y, al aceptar la foto, aparece debajo del botón. El emulador tiene una cámara simulada: muestra una habitación virtual.
+
+**Si te falla…**
+
+- *La cámara no se abre en el emulador*: en *Device Manager*, edita el dispositivo (*Edit*) y, en *Advanced Settings*, elige *VirtualScene* o *Emulated* en *Back camera*.
+- *Ya no sale el diálogo del permiso*: el sistema recuerda la respuesta. Para volver a probar, en el emulador: mantén pulsado el icono de la app → *Información de la app* → *Permisos* → *Cámara*.
 
 **Explícalo tú:** ¿qué pasa si deniegas el permiso? ¿Y si lo concedes «solo esta vez»?
 
-El resto de la UD3 (servicios REST con Retrofit, DataStore, WorkManager, sensores, Bluetooth y localización) lo trabajaremos dentro del proyecto integrado de la UD4, del 17 de noviembre al 2 de diciembre, continuando esta misma app.
+El resto de la UD3 (servicios REST con Retrofit, DataStore, WorkManager, sensores, Bluetooth y localización) se trabaja dentro del proyecto integrado de la UD4, según la programación.
 
 ---
 

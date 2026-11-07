@@ -7,13 +7,13 @@
 - **UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles**, **UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario** y **UD3 · Persistencia, conectividad y servicios del dispositivo móvil**, completas.
 - **UD4 · Desarrollo de aplicaciones multimedia**, empezada.
 
-**La idea.** Esta semana es un **punto de control** para **ponernos al día con la programación, en la medida de lo posible**: un proyecto que repasa lo que se debería haber dado hasta ahora, continuando vuestra app del centro de acogida (o recuperándola con la plantilla, si no la tenéis) para completar la UD2. El proyecto tiene **dos partes**: esta semana, los pasos 0 a 7 (UD1 y UD2); la semana del 9 al 13 de noviembre, los pasos 8 y 9 (dos tamaños de pantalla y Room, de la UD3) y un permiso y la cámara, que es el inicio de la UD4. El resto de la UD3 lo trabajaremos dentro del proyecto integrado de la UD4 (del 17 de noviembre al 2 de diciembre). Lo que ya sabéis, lo afianzáis; lo que no se llegó a dar, **se explica en el paso donde aparece**.
+**La idea.** Esta semana es un **punto de control** para **ponernos al día con la programación, en la medida de lo posible**: un proyecto que repasa lo que se debería haber dado hasta ahora, continuando vuestra app del centro de acogida (o recuperándola con la plantilla, si no la tenéis) para completar la UD2. El proyecto tiene **dos partes**: esta semana, los pasos 0 a 7 (UD1 y UD2); la semana del 9 al 13 de noviembre, los pasos 8 y 9 (dos tamaños de pantalla, de la UD2, y Room, de la UD3) y un permiso y la cámara, que es el inicio de la UD4. El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación. Lo que ya sabéis, lo afianzáis; lo que no se llegó a dar, **se explica en el paso donde aparece**.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios de autoevaluación y preparar la prueba escrita.
 
-**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra; se avisa con antelación. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
 
 **Y la UD2.** Su nota sale de su entrega y su examen de octubre. Si te falta alguna de las dos, la sustituyen las preguntas de la prueba escrita del viernes 20 de noviembre sobre los pasos 1 a 3 y 5 a 7 de este proyecto, corregidas con los criterios de la UD2.
 
@@ -33,7 +33,7 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 
 | Unidad | Qué repasamos | Dónde |
 |---|---|---|
-| UD1 · Tecnologías y entornos | Android Studio, abrir y ejecutar un proyecto, Gradle, Logcat, AVD, estructura del proyecto, ciclo de vida, modificar una app ya hecha | Pasos 0, 1 y 4 |
+| UD1 · Tecnologías y entornos | Android Studio, abrir y ejecutar un proyecto, Gradle, Logcat, AVD, estructura del proyecto, ciclo de vida, modificar una app ya hecha | Pasos 0, 1, 4, 5 y 6 |
 | UD2 · Kotlin | null safety, data class, `listOf`, `filter`, `find`, lambdas | Pasos 1, 5 y 6 |
 | UD2 · Compose, estado y Material | composables, `Modifier`, `Image`, `remember`, `mutableStateOf`, recomposición, `Switch`, `TextField`, validación, `LazyColumn`, `Card`, `Scaffold`, `TopAppBar`, `MaterialTheme` | Pasos 2, 3 y 7 |
 | UD2 · ViewModel y navegación | ViewModel, UI State, StateFlow, flujo unidireccional de datos, Navigation Compose | Pasos 5 y 6 |
@@ -42,15 +42,15 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 
 | Día y hora | Qué hacemos |
 |---|---|
-| Mar 3 nov, 08:30 | Dónde deberíamos estar (el punto de partida), dónde estamos de verdad (puesta en común), qué necesitamos para seguir (contenidos y software) y qué vamos a hacer esta semana (30 min). Presentación del proyecto y **Paso 0** (abrir la app y AVD, 20 min); quien tenga que instalar algo, lo hace mientras. |
+| Mar 3 nov, 08:30 | Leer «Punto de partida», «Objetivo» y «Las herramientas» (30 min). **Paso 0** (abrir la app y AVD, 20 min); quien tenga que instalar algo, lo hace mientras. |
 | Mar 3 nov, 09:20 | **Pasos 1–3** (repaso de lo ya hecho) y empezar el **Paso 4** (ciclo de vida). |
 | Mié 4 nov, 08:30 | Al empezar: añadir las dependencias de **5.1 y 6.1** y pulsar *Sync Now*. Mientras descarga, **paso 4** (ciclo de vida). Después, **paso 5** (ViewModel y StateFlow). |
 | Mié 4 nov, 09:20 | **Paso 6** (navegación lista → detalle). |
 | Mié 4 nov, 10:10 | **Paso 7** (formulario con validación). |
 | Vie 6 nov, 13:00 | Terminar los pasos 6 y 7. |
-| Vie 6 nov, 13:50 | Terminar el **paso 7**. Cierre: lo que hemos conseguido y qué viene, la 2.ª parte. |
+| Vie 6 nov, 13:50 | Terminar el **paso 7** y repasar la lista final («Cómo comprobarlo»). |
 
-**El ritmo:** el proyecto se hace en clase, paso a paso, siguiendo el plan de sesiones. Si terminas el paso del día antes de tiempo y quieres seguir, puedes adelantar el siguiente.
+**El ritmo:** el proyecto se hace en clase, paso a paso, siguiendo el plan de sesiones.
 
 **Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior.
 
@@ -65,7 +65,7 @@ Todo se hace en **Android Studio**, el entorno de desarrollo oficial de Android.
 | **Android Studio** | El programa donde se abre el proyecto, se escribe el código y se ejecuta la app | El panel **Project** (a la izquierda, con la vista *Android*) muestra los archivos; el botón **Run** (el triángulo verde de arriba, o `Mayús + F10`) ejecuta la app | Todos |
 | **Gradle** | La herramienta que construye la app y descarga las bibliotecas que usa. Se configura con `gradle/libs.versions.toml` y `app/build.gradle.kts` | Al cambiar esos archivos, sale arriba un aviso: **Sync Now**. Los errores, en la pestaña *Build* (abajo) | 0, 5.1 y 6.1 |
 | **Emulador** (AVD, *Android Virtual Device*) | Un móvil Android simulado en el ordenador, para ejecutar la app | *View > Tool Windows > Device Manager*. Al ejecutar, sale en la ventana *Running Devices* | 0 y siguientes |
-| **Logcat** | Los mensajes que escribe la app mientras se ejecuta (con `Log.d`) y sus errores | *View > Tool Windows > Logcat* (abajo) | 1 y 4 |
+| **Logcat** | Los mensajes que escribe la app mientras se ejecuta (con `Log.d`) y sus errores | *View > Tool Windows > Logcat* (abajo) | 1, 4, 5 y 6 |
 | **Vista previa** | Dibuja un composable sin ejecutar la app | En un archivo con `@Preview`, el modo **Split** o **Design** (arriba a la derecha del editor) | 2 |
 
 ## Cómo está escrito cada paso
@@ -210,7 +210,7 @@ androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "l
 
 En `app/build.gradle.kts`, dentro de `dependencies { }`, la línea ya está en un comentario `// TODO Paso 5.1:`: borra ese comienzo para que quede `implementation(libs.androidx.lifecycle.viewmodel.compose)`. Pulsa **Sync Now** (mejor junto con 6.1, al empezar la sesión).
 
-No copies números de versión de internet al azar. Si tu `libs.versions.toml` no tiene `lifecycleRuntimeKtx`, añade en `[versions]` una entrada `lifecycle` con la **última versión estable** de developer.android.com/jetpack/androidx/releases/lifecycle y usa `version.ref = "lifecycle"`.
+No copies números de versión de internet al azar.
 
 ### 5.2 · Estado de la pantalla y ViewModel
 
@@ -265,7 +265,7 @@ En `PantallaLista`:
    )
    ```
 
-2. Borra el `var soloUrgentes by remember ...` y el `val visibles = ...`, y en el contador del paso 3 cambia `visibles.size` por `uiState.animalesVisibles.size`.
+2. Borra el `var soloUrgentes by remember ...` y el `val visibles = ...`, con el comentario que tienen encima, y en el contador del paso 3 cambia `visibles.size` por `uiState.animalesVisibles.size`.
 3. El interruptor: `Switch(checked = uiState.soloUrgentes, onCheckedChange = onCambiarUrgentes)`.
 4. La lista: `items(uiState.animalesVisibles, key = { it.id }) { ... }`.
 
