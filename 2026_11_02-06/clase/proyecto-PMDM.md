@@ -56,6 +56,18 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 
 **Descargas.** Con toda la clase en la misma red, las descargas de Gradle tardan. Haz el *Sync* de 5.1 y 6.1 al principio de la sesión del miércoles, no a mitad.
 
+## Las herramientas
+
+Todo se hace en **Android Studio**, el entorno de desarrollo oficial de Android. Cómo instalarlo y crear el emulador: [`software-PMDM.md`](software-PMDM.md).
+
+| Herramienta | Qué es | Dónde está en Android Studio | Pasos |
+|---|---|---|---|
+| **Android Studio** | El programa donde se abre el proyecto, se escribe el código y se ejecuta la app | El panel **Project** (a la izquierda, con la vista *Android*) muestra los archivos; el botón **Run** (el triángulo verde de arriba, o `Mayús + F10`) ejecuta la app | Todos |
+| **Gradle** | La herramienta que construye la app y descarga las bibliotecas que usa. Se configura con `gradle/libs.versions.toml` y `app/build.gradle.kts` | Al cambiar esos archivos, sale arriba un aviso: **Sync Now**. Los errores, en la pestaña *Build* (abajo) | 0, 5.1 y 6.1 |
+| **Emulador** (AVD, *Android Virtual Device*) | Un móvil Android simulado en el ordenador, para ejecutar la app | *View > Tool Windows > Device Manager*. Al ejecutar, sale en la ventana *Running Devices* | 0 y siguientes |
+| **Logcat** | Los mensajes que escribe la app mientras se ejecuta (con `Log.d`) y sus errores | *View > Tool Windows > Logcat* (abajo) | 1 y 4 |
+| **Vista previa** | Dibuja un composable sin ejecutar la app | En un archivo con `@Preview`, el modo **Split** o **Design** (arriba a la derecha del editor) | 2 |
+
 ## Cómo está escrito cada paso
 
 **Objetivo** (qué consigues), **Pista** (código o explicación corta), **Comprueba que…** (cómo saber que está bien) y **Si te falla…** (errores típicos y alternativas).
@@ -72,7 +84,8 @@ El código usa el paquete `com.example.centroacogida`. Cuando Android Studio mar
 
 **Pista.**
 
-1. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre con *File > Open* la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Si pregunta si confías en el proyecto, *Trust Project*.
+1. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), descomprímelo y copia `2026_11_02-06/clase/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`).
+   **Ábrelo en Android Studio**: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`, y pulsa *OK*. Si pregunta si confías en el proyecto, *Trust Project*.
 2. **Si tienes tu propia app del centro de acogida**: cambia el nombre de su carpeta a `CentroAcogida-anterior` y guárdala para consultarla. El proyecto se hace en `CentroAcogida`, desde la plantilla.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
 4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
