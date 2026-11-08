@@ -80,3 +80,13 @@ Log.d("Pregunta", "Después de launch")
 **19.** ¿Por qué las solicitudes siguen ahí después de cerrar la app y el interruptor «Adopciones urgentes» no? Las pantallas no saben que existe Room: ¿quién habla con la base de datos? ¿Qué cambiaría si mañana los animales vinieran de un servicio web?
 
 **20.** Para hacer una foto, ¿dónde se declara el permiso de cámara y por qué, además, hay que pedirlo mientras se usa la app? ¿Qué pasa si lo deniegas?
+
+## Repaso de la UD3
+
+Estas preguntas se responden con los repasos de `estudio/`.
+
+**21.** ¿Cuándo usarías DataStore y cuándo Room? Pon un ejemplo de cada uno en la app del centro de acogida.
+
+**22.** ¿Qué diferencia hay entre un permiso normal y uno peligroso? Pon un ejemplo de cada uno. ¿Qué tres respuestas puede dar la persona cuando se le pide uno peligroso?
+
+**23.** ¿Qué hace falta para que una app hable con un servicio web y por qué HTTPS? ¿Qué diferencia hay entre un APK y un AAB, y entre una versión de depuración y una de publicación?

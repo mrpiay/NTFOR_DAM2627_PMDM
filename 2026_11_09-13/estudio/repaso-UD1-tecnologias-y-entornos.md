@@ -108,6 +108,6 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 **Lo que tienes que saber**
 
 - **Tamaño** (móvil, plegable, tableta) y **orientación** (vertical u horizontal).
-- **Densidad:** los píxeles por pulgada. Por eso los tamaños se dan en **dp** (píxeles independientes de la densidad) y los textos en **sp**: miden lo mismo a la vista en cualquier pantalla.
+- **Densidad:** los píxeles por pulgada. Por eso los tamaños se dan en **dp** (píxeles independientes de la densidad) y los textos en **sp**: miden lo mismo a la vista en cualquier pantalla. Los **sp**, además, crecen o encogen con el tamaño de letra que la persona elige en los ajustes del móvil (por accesibilidad).
 - **Recursos alternativos:** carpetas con sufijo (`values-es`, `drawable-xxhdpi`, `values-night`) que Android elige según el idioma, la densidad o el modo oscuro.
 - En el emulador se crean perfiles (*Pixel*, *Pixel Tablet*…) para probar la app en distintos dispositivos.

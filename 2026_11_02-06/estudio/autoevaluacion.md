@@ -113,3 +113,19 @@ Log.d("Pregunta", "4: '${vm.formulario.value.telefono}' ${vm.formulario.value.in
 **19.** Cuenta, paso a paso, qué pasa desde que escribes una cifra en el campo «Teléfono» hasta que aparece en pantalla. Di qué función de qué archivo se ejecuta en cada paso. ¿Por qué no se puede escribir una letra?
 
 **20.** Cuenta, paso a paso, qué pasa al pulsar «Enviar» con el formulario vacío: qué función se ejecuta, qué cambia en el estado y por qué ahora sí se ven los errores. ¿Para qué se llama a `viewModel.reiniciarFormulario()` antes de abrir el formulario?
+
+## Repaso de la UD1 y UD2
+
+Estas preguntas se responden con los repasos de `estudio/`.
+
+**21.** Di cuatro limitaciones de un móvil frente a un ordenador y cómo afecta cada una a cómo se programa una app.
+
+**22.** ¿En qué se diferencian una app nativa, una multiplataforma y una web (PWA)? Di una tecnología de cada una.
+
+**23.** ¿Qué capas tiene Android? ¿Qué es el nivel de API? ¿Qué diferencia hay entre `targetSdk` y `compileSdk`?
+
+**24.** ¿Qué son los **sp** y en qué se diferencian de los dp? ¿Para qué sirven carpetas de recursos como `values-es` o `values-night`?
+
+**25.** ¿Qué hay en `AndroidManifest.xml` y qué en la carpeta `res`? ¿Cómo se usa desde el código una imagen de `res/drawable`?
+
+**26.** ¿Qué hace `!!` en Kotlin y por qué conviene evitarlo? ¿Qué se pierde al girar el móvil si se guarda con `remember`, y qué no se pierde con `rememberSaveable` o con un ViewModel?
