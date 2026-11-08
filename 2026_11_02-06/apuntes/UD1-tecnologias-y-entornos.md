@@ -64,6 +64,7 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 
 - **Android Studio:** el entorno oficial. Trae el **SDK** de Android y un **JDK**.
 - **Gradle:** construye la app y descarga las librerías. Se configura en **`gradle/libs.versions.toml`** (el catálogo de versiones) y **`app/build.gradle.kts`** (las dependencias que usa la app). Tras cambiarlos: **Sync Now**.
+- **Compose BOM** (`platform(libs.androidx.compose.bom)`): una lista de versiones de las bibliotecas de Compose que funcionan juntas. Por eso las dependencias de Compose (`ui`, `material3`, los iconos) se escriben sin versión: la pone el BOM.
 - **Emulador** (AVD, *Android Virtual Device*): un móvil simulado, que se crea en el *Device Manager*. Necesita la virtualización activada en el ordenador. También se puede probar en un **móvil real** con la depuración USB activada.
 - **Logcat:** los mensajes de la app mientras funciona (`Log.d(TAG, "…")`) y sus errores. Se filtra con `tag:`.
 - **Vista previa** (`@Preview`): dibuja un composable sin ejecutar la app.

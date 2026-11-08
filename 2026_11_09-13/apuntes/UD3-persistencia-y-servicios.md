@@ -35,9 +35,10 @@ Los apartados 1 a 3 se practican en el proyecto. Los apartados 4 y 5 se trabajan
 
 - **Entidad** (`@Entity`): una tabla. Cada objeto es una fila. `Solicitud`, con `@PrimaryKey(autoGenerate = true)` para que la base de datos ponga el id.
 - **DAO** (`@Dao`): las operaciones, con anotaciones (`@Insert`, `@Query("SELECT …")`).
-- **Base de datos** (`@Database`): une las entidades y los DAO. Hay **una sola** instancia para toda la app.
-- Room genera el código al compilar, con **KSP** (un plugin de Gradle).
+- **Base de datos** (`@Database`): une las entidades y los DAO. Hay **una sola** instancia para toda la app: se crea la primera vez y después se devuelve la misma. Si cada pantalla creara la suya, habría varias conexiones al mismo archivo, gastando memoria, y lo que guarda una podría no avisar a las demás.
+- Room genera el código al compilar, con **KSP** (un plugin de Gradle). Un plugin se **declara** en el `build.gradle.kts` del proyecto, la raíz, con `apply false` (su versión, para todo el proyecto), y se **aplica** en el de `app`, que es donde está el código que procesa.
 - Una consulta que devuelve un **`Flow`** avisa cada vez que cambian los datos, y la pantalla se actualiza sola.
+- En el ViewModel, **`stateIn`** convierte ese `Flow` en un **`StateFlow`**, que siempre tiene un valor y que la pantalla lee con `collectAsState()`. `SharingStarted.WhileSubscribed(5_000)` hace que escuche a la base de datos mientras alguna pantalla lo lee, y 5 segundos más, para no cortar al girar la pantalla. El último argumento es el valor inicial, el que tiene antes de que llegue la primera lista (por ejemplo, `emptyList()`).
 - Con el **Database Inspector** de Android Studio se ve la base de datos de la app en el emulador.
 
 ---
@@ -65,7 +66,7 @@ Los apartados 1 a 3 se practican en el proyecto. Los apartados 4 y 5 se trabajan
 - Todos los permisos se declaran en **`AndroidManifest.xml`** (`<uses-permission …/>`).
 - Los **normales** (como Internet) se conceden solos al instalar.
 - Los **peligrosos** (cámara, ubicación, micrófono…) se piden **mientras se usa la app**, con el diálogo del sistema, justo cuando hacen falta. La persona puede concederlos, concederlos solo esta vez o denegarlos, y la app tiene que funcionar en los tres casos.
-- En Compose se piden con `rememberLauncherForActivityResult` y `RequestPermission`.
+- En Compose se piden con un **lanzador**: `rememberLauncherForActivityResult` lanza algo del sistema y recibe su resultado. Con `RequestPermission` muestra el diálogo «¿Permitir…?» y devuelve si se ha concedido; con otros contratos abre otras cosas del sistema, como la cámara (`TakePicturePreview`, que devuelve una foto pequeña).
 
 **Compara**
 

@@ -7,7 +7,7 @@
 - **UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles**, **UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario** y **UD3 · Persistencia, conectividad y servicios del dispositivo móvil**, completas.
 - **UD4 · Desarrollo de aplicaciones multimedia**, empezada.
 
-**La idea.** Esta semana es un **punto de control** para **ponernos al día con la programación, en la medida de lo posible**: un proyecto que repasa lo que se debería haber dado hasta ahora, partiendo de la plantilla de la app del centro de acogida (si tienes tu propia app, se guarda para consultarla) para completar la UD2. El proyecto tiene **dos partes**: esta semana, los pasos 0 a 7 (UD1 y UD2); la semana del 9 al 13 de noviembre, los pasos 8 a 10 (dos tamaños de pantalla, de la UD2; Room, de la UD3, y un buscador) y un permiso y la cámara, que es el inicio de la UD4. El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación. Lo que ya sabéis, lo afianzáis; lo que no se llegó a dar, **se explica en el paso donde aparece**.
+**La idea.** Esta semana es un **punto de control** para **ponernos al día con la programación, en la medida de lo posible**: un proyecto que repasa lo que se debería haber dado hasta ahora, partiendo de la plantilla de la app del centro de acogida (si tienes tu propia app, se guarda para consultarla) para completar la UD2. El proyecto tiene **dos partes**: esta semana, los pasos 0 a 7 (UD1 y UD2); la semana del 9 al 13 de noviembre, los pasos 8 a 10 (dos tamaños de pantalla, de la UD2; Room, de la UD3, y un buscador) y un permiso y la cámara, que es el inicio de la UD4. El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación. Lo que ya sabéis, lo afianzáis; lo que no se llegó a dar está en los **apuntes de la semana**, y cada paso enlaza a lo que necesita.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
@@ -60,13 +60,15 @@ Cada sesión dura 50 minutos.
 
 Todo se hace en **Android Studio**, el entorno de desarrollo oficial de Android. Cómo instalarlo y crear el emulador: [`software-PMDM.md`](software-PMDM.md).
 
-| Herramienta | Qué es | Dónde está en Android Studio | Pasos |
-|---|---|---|---|
-| **Android Studio** | El programa donde se abre el proyecto, se escribe el código y se ejecuta la app | El panel **Project** (a la izquierda, con la vista *Android*) muestra los archivos; el botón **Run** (el triángulo verde de arriba, o `Mayús + F10`) ejecuta la app | Todos |
-| **Gradle** | La herramienta que construye la app y descarga las bibliotecas que usa. Se configura con `gradle/libs.versions.toml` y `app/build.gradle.kts` | Al cambiar esos archivos, sale arriba un aviso: **Sync Now**. Los errores, en la pestaña *Build* (abajo) | 0, 5.1 y 6.1 |
-| **Emulador** (AVD, *Android Virtual Device*) | Un móvil Android simulado en el ordenador, para ejecutar la app | *View > Tool Windows > Device Manager*. Al ejecutar, sale en la ventana *Running Devices* | 0 y siguientes |
-| **Logcat** | Los mensajes que escribe la app mientras se ejecuta (con `Log.d`) y sus errores | *View > Tool Windows > Logcat* (abajo) | 1, 4, 5 y 6 |
-| **Vista previa** | Dibuja un composable sin ejecutar la app | En un archivo con `@Preview`, el modo **Split** o **Design** (arriba a la derecha del editor) | 2 |
+Qué es cada herramienta: [UD1, apartado 4](../apuntes/UD1-tecnologias-y-entornos.md#4-el-entorno-android-studio-gradle-el-emulador-y-logcat).
+
+| Herramienta | Dónde está en Android Studio | Pasos |
+|---|---|---|
+| **Android Studio** | El panel **Project** (a la izquierda, con la vista *Android*) muestra los archivos; el botón **Run** (el triángulo verde de arriba, o `Mayús + F10`) ejecuta la app | Todos |
+| **Gradle** | Se configura con `gradle/libs.versions.toml` y `app/build.gradle.kts`. Al cambiar esos archivos, sale arriba un aviso: **Sync Now**. Los errores, en la pestaña *Build* (abajo) | 0, 5.1 y 6.1 |
+| **Emulador** (AVD, *Android Virtual Device*) | *View > Tool Windows > Device Manager*. Al ejecutar, sale en la ventana *Running Devices* | 0 y siguientes |
+| **Logcat** | *View > Tool Windows > Logcat* (abajo) | 1, 4, 5 y 6 |
+| **Vista previa** | En un archivo con `@Preview`, el modo **Split** o **Design** (arriba a la derecha del editor) | 2 |
 
 ## Cómo está escrito cada paso
 
@@ -93,7 +95,7 @@ El código usa el paquete `com.example.centroacogida`. Cuando Android Studio mar
 
 La plantilla está probada con **Android Studio 2026.2** (*Help > About*). Con una versión anterior, el *Sync* puede fallar con un error de versión del plugin de Android (AGP): actualiza Android Studio.
 
-Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un dispositivo si su API es igual o mayor que el `minSdk` del proyecto (en `app/build.gradle.kts`).
+Elige una imagen de sistema con un nivel de API igual o mayor que el `minSdk` del proyecto, que está en `app/build.gradle.kts` ([UD1, apartado 3](../apuntes/UD1-tecnologias-y-entornos.md#3-android-y-sus-versiones)).
 
 **Comprueba que…** aparece la lista de animales y el interruptor «Adopciones urgentes» filtra.
 
@@ -110,9 +112,11 @@ Cada imagen de sistema corresponde a un **nivel de API**. Tu app funciona en un 
 
 **Pista.** Abre los dos archivos y piensa:
 
-- ¿Qué aporta `data class` frente a una clase normal? (Pista: `toString`, `equals`, `copy`.)
+- ¿Qué aporta `data class` frente a una clase normal?
 - ¿Por qué `descripcion` tiene un valor por defecto (`= ""`) y los demás campos no?
-- ¿Qué es `R.drawable...` y dónde están esas imágenes? (Código en `app/src/main/java`, recursos en `app/src/main/res`, la actividad principal declarada en `AndroidManifest.xml`, dependencias en `build.gradle.kts` y `gradle/libs.versions.toml`.)
+- ¿Qué es `R.drawable...` y dónde están esas imágenes?
+
+Las respuestas están en [UD2, apartado 1](../apuntes/UD2-kotlin-y-compose.md#1-kotlin-lo-básico) y [UD1, apartado 5](../apuntes/UD1-tecnologias-y-entornos.md#5-la-estructura-de-un-proyecto-android).
 
 **Pequeño cambio.** Añade un noveno animal: copia la última línea de `DatosAnimales` y cambia el id a `9`, el nombre y los datos. Cada animal necesita un id distinto: la lista lo usa como clave y, si se repite, la app se cierra. Prueba en `MainActivity.onCreate` este mini-repaso de Kotlin y mira el resultado en Logcat:
 
@@ -136,7 +140,7 @@ Log.d("Repaso", "Urgentes: ${urgentes.size}, id 2: $nombre")
 
 **Objetivo.** Entender `TarjetaAnimal.kt`.
 
-**Pista.** Un composable es una función que **describe** la interfaz: recibe datos (`animal`) y avisa de los eventos con lambdas (`onClick`). El parámetro `modifier` permite que quien lo usa decida márgenes o tamaño. Localiza en el código: la `Card`, la `Image` con `painterResource`, un estilo de `MaterialTheme.typography`, un color de `MaterialTheme.colorScheme` y una forma de `MaterialTheme.shapes`.
+**Pista.** Qué es un composable y para qué sirve el parámetro `modifier`: [UD2, apartado 2](../apuntes/UD2-kotlin-y-compose.md#2-jetpack-compose). Localiza en el código: la `Card`, la `Image` con `painterResource`, un estilo de `MaterialTheme.typography`, un color de `MaterialTheme.colorScheme` y una forma de `MaterialTheme.shapes`.
 
 **Pequeño cambio.** Abre la vista previa (`TarjetaAnimalPreview`, modo *Split*) y cambia el tamaño de la imagen de `72.dp` a `96.dp`, o el estilo del nombre a `titleLarge`.
 
@@ -152,7 +156,7 @@ Log.d("Repaso", "Urgentes: ${urgentes.size}, id 2: $nombre")
 
 **Objetivo.** Entender `PantallaLista.kt` y cómo funciona el interruptor.
 
-**Pista.** Cuando cambia `soloUrgentes`, Compose **recompone** (vuelve a ejecutar) las funciones que lo leen y la lista se actualiza sola. `remember` hace que el valor no se pierda en cada recomposición. `Modifier.padding(innerPadding)` evita que la lista quede debajo de la `TopAppBar`.
+**Pista.** `Modifier.padding(innerPadding)` evita que la lista quede debajo de la `TopAppBar`. Por qué la lista se actualiza sola al cambiar `soloUrgentes` (la recomposición y `remember`): [UD2, apartado 3](../apuntes/UD2-kotlin-y-compose.md#3-el-estado-y-la-recomposición).
 
 **Pequeño cambio.** Cambia el texto de la barra superior y añade un `Text("Mostrando ${visibles.size} animales")` después del `}` que cierra la `Row` del interruptor, antes de la `LazyColumn`.
 
@@ -187,7 +191,7 @@ Y en `onCreate`, después de `super.onCreate(savedInstanceState)`: `Log.d(TAG, "
 
 Experimento: ejecuta la app, abre **Logcat** con el filtro `tag:Ciclo`, activa el interruptor y **gira** el emulador.
 
-**Comprueba que…** aparecen `onPause`, `onStop`, `onDestroy` y luego `onCreate`, `onStart`, `onResume`: al girar, la actividad **se destruye y se vuelve a crear**. Y el interruptor vuelve a estar desactivado: el estado guardado con `remember` se ha perdido. (Otra solución rápida es `rememberSaveable`, pero para el estado de la pantalla se usa un ViewModel, en el paso 5.)
+**Comprueba que…** aparecen `onPause`, `onStop`, `onDestroy` y luego `onCreate`, `onStart`, `onResume`, y que el interruptor vuelve a estar desactivado. Por qué pasa: [UD1, apartado 6](../apuntes/UD1-tecnologias-y-entornos.md#6-el-ciclo-de-vida-de-una-actividad) y [UD2, apartado 3](../apuntes/UD2-kotlin-y-compose.md#3-el-estado-y-la-recomposición).
 
 **Si te falla…**
 
@@ -249,7 +253,7 @@ class AcogidaViewModel : ViewModel() {
 }
 ```
 
-`_uiState` es **privado y modificable**; `uiState` es **público y de solo lectura**: solo el ViewModel cambia el estado. `copy(...)` crea una copia cambiando un campo. El ViewModel **sobrevive al giro**: la actividad se recrea, pero el ViewModel es el mismo.
+`copy(...)` crea una copia cambiando un campo. Por qué `_uiState` es privado y `uiState` público, y por qué el ViewModel sobrevive al giro: [UD2, apartado 4](../apuntes/UD2-kotlin-y-compose.md#4-viewmodel-estado-de-la-ui-y-flujo-unidireccional).
 
 ### 5.3 · La pantalla recibe el estado
 
@@ -293,7 +297,7 @@ setContent {
 
 - *`viewModel()` en rojo*: falta la dependencia de 5.1 (¿has pulsado *Sync Now*?) o el import `androidx.lifecycle.viewmodel.compose.viewModel`.
 - *`by` en rojo*: añade el import `androidx.compose.runtime.getValue`.
-- *`collectAsState` en rojo*: import `androidx.compose.runtime.collectAsState`. (Existe también `collectAsStateWithLifecycle`, recomendado en la documentación, pero necesita la dependencia `lifecycle-runtime-compose`.)
+- *`collectAsState` en rojo*: import `androidx.compose.runtime.collectAsState`.
 - *El interruptor no se mueve*: comprueba que `onCheckedChange` llama al ViewModel y que el `Switch` lee `uiState.soloUrgentes`.
 
 ---
@@ -324,7 +328,7 @@ implementation(libs.androidx.compose.material.icons.core)
 
 Y **Sync Now**.
 
-La biblioteca de iconos hace falta para la flecha de «Volver» (`Icons.AutoMirrored.Filled.ArrowBack`), porque `material3` ya no la incluye. No lleva versión: como `ui` y `material3`, la fija el **Compose BOM** (`platform(libs.androidx.compose.bom)`), que da versiones compatibles entre sí.
+La biblioteca de iconos hace falta para la flecha de «Volver» (`Icons.AutoMirrored.Filled.ArrowBack`), porque `material3` ya no la incluye. No lleva versión: la fija el Compose BOM ([UD1, apartado 4](../apuntes/UD1-tecnologias-y-entornos.md#4-el-entorno-android-studio-gradle-el-emulador-y-logcat)).
 
 ### 6.2 · Pantalla de detalle
 
@@ -468,7 +472,7 @@ setContent {
 }
 ```
 
-Cada pantalla es un **destino** con una **ruta** (`"lista"`, `"detalle/{animalId}"`). `navigate(...)` apila una pantalla y `popBackStack()` vuelve a la anterior. Las pantallas no conocen el `navController`: solo reciben lambdas, así se pueden previsualizar por separado. El ViewModel se crea fuera del `NavHost`, así que **las dos pantallas comparten el mismo**.
+El ViewModel se crea fuera del `NavHost`, así que **las dos pantallas comparten el mismo**. Rutas, `navigate` y `popBackStack`: [UD2, apartado 5](../apuntes/UD2-kotlin-y-compose.md#5-navegación).
 
 **Comprueba que…**
 
@@ -710,7 +714,7 @@ composable(
 }
 ```
 
-El campo de texto **no guarda** lo que escribes: cada tecla llama a `onValueChange`, el ViewModel actualiza el estado y Compose vuelve a dibujar el campo con el valor nuevo. Por eso `cambiarTelefono` puede impedir que se escriban letras.
+El campo solo muestra lo que hay en el estado; por eso `cambiarTelefono` puede impedir que se escriban letras ([UD2, apartados 3](../apuntes/UD2-kotlin-y-compose.md#3-el-estado-y-la-recomposición) y [6](../apuntes/UD2-kotlin-y-compose.md#6-formularios-y-validación)).
 
 **Comprueba que…**
 

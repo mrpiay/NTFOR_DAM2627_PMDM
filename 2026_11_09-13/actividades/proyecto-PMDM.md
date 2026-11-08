@@ -113,13 +113,7 @@ Imports: `androidx.compose.ui.tooling.preview.Preview` y `com.example.centroacog
 
 **Objetivo.** Que las solicitudes de adopción del formulario se guarden en una base de datos del móvil y se vean en una pantalla nueva, «Mis solicitudes». Tienen que seguir ahí aunque se cierre la app.
 
-**Mini-explicación.** **Room** es la forma recomendada de usar una base de datos SQLite en Android. Se escribe en tres piezas:
-
-- la **entidad** (`@Entity`): una tabla; cada objeto es una fila;
-- el **DAO** (`@Dao`): las consultas;
-- la **base de datos** (`@Database`): une las dos.
-
-Room genera el resto del código al compilar, con **KSP**. Acceder a la base de datos puede tardar, así que no se hace en el hilo de la interfaz, sino en una **corrutina** (`suspend` y `viewModelScope.launch`).
+**Mini-explicación.** Room guarda los datos en SQLite con tres piezas, la entidad, el DAO y la base de datos, y genera el resto del código al compilar, con KSP. Como acceder a la base de datos puede tardar, se hace en una corrutina. Todo esto está en [UD3, apartados 2 y 3](../apuntes/UD3-persistencia-y-servicios.md#2-room).
 
 ### 9.1 · Dependencias (al empezar el martes)
 
@@ -141,7 +135,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ```
 
-En los dos `build.gradle.kts`, la línea ya está escrita en un comentario `// TODO Paso 9.1:`: borra ese comienzo para activarla. En el del proyecto (el de la raíz), dentro de `plugins { }`: `alias(libs.plugins.ksp) apply false`. `apply false` declara el plugin y su versión para todo el proyecto, pero no lo aplica ahí: la raíz no tiene código. Se aplica en `app`, que es donde está el código que KSP procesa.
+En los dos `build.gradle.kts`, la línea ya está escrita en un comentario `// TODO Paso 9.1:`: borra ese comienzo para activarla. En el del proyecto (el de la raíz), dentro de `plugins { }`: `alias(libs.plugins.ksp) apply false`. En la raíz se declara y en `app` se aplica ([UD3, apartado 2](../apuntes/UD3-persistencia-y-servicios.md#2-room)).
 
 En `app/build.gradle.kts`, dentro de `plugins { }`: `alias(libs.plugins.ksp)`. Y dentro de `dependencies { }`, en lugar del comentario `// TODO Paso 9.1: Room …`:
 
@@ -247,7 +241,7 @@ class AcogidaViewModel(application: Application) : AndroidViewModel(application)
     // ... lo que ya tenías (uiState, formulario, etc.)
 ```
 
-`stateIn` convierte el `Flow` de Room en un `StateFlow`, que siempre tiene un valor y que la pantalla lee con `collectAsState()`, como `uiState`. `WhileSubscribed(5_000)` hace que escuche a la base de datos mientras alguna pantalla lo está leyendo, y 5 segundos más, para no cortar y volver a empezar al girar la pantalla. `emptyList()` es el valor que tiene antes de que llegue la primera lista de Room.
+`stateIn` deja las solicitudes como un `StateFlow` que la pantalla lee con `collectAsState()`, igual que `uiState`. Qué hacen `WhileSubscribed(5_000)` y `emptyList()`: [UD3, apartado 2](../apuntes/UD3-persistencia-y-servicios.md#2-room).
 
 Desde aquí, `AcogidaViewModel` necesita la aplicación: si en algún sitio se crea a mano con `AcogidaViewModel()` (por ejemplo, para probar algo en `MainActivity`), ahora hay que escribir `AcogidaViewModel(application)`.
 
@@ -386,14 +380,14 @@ Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la mism
 
 **Pista.**
 
-1. En `app/src/main/AndroidManifest.xml`, encima de `<application`, declara el permiso. Un permiso peligroso, como `CAMERA`, se declara aquí **y además** se pide mientras se usa la app:
+1. En `app/src/main/AndroidManifest.xml`, encima de `<application`, declara el permiso. Como `CAMERA` es un permiso peligroso, además se pide mientras se usa la app ([UD3, apartado 4](../apuntes/UD3-persistencia-y-servicios.md#4-permisos)):
 
    ```xml
    <uses-permission android:name="android.permission.CAMERA" />
    <uses-feature android:name="android.hardware.camera" android:required="false" />
    ```
 
-2. Al final de `PantallaDetalle.kt`, fuera de `PantallaDetalle`, añade este composable. `rememberLauncherForActivityResult` lanza algo del sistema y recibe su resultado: con `RequestPermission`, el diálogo «¿Permitir…?»; con `TakePicturePreview`, la cámara, que devuelve una foto pequeña.
+2. Al final de `PantallaDetalle.kt`, fuera de `PantallaDetalle`, añade este composable. Usa dos lanzadores (`rememberLauncherForActivityResult`, [UD3, apartado 4](../apuntes/UD3-persistencia-y-servicios.md#4-permisos)): uno pide el permiso y el otro abre la cámara; los comentarios del código dicen qué hace cada uno.
 
    ```kotlin
    @Composable
@@ -528,7 +522,7 @@ Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la mism
    onBuscar = viewModel::cambiarBusqueda
    ```
 
-El campo no guarda el texto: lo muestra desde `uiState.textoBusqueda` y, cuando escribes, `onValueChange` avisa al ViewModel, que cambia el estado, y Compose vuelve a dibujar la lista. Es el **flujo unidireccional de datos**: el estado baja a la pantalla y los eventos suben al ViewModel.
+El campo solo muestra `uiState.textoBusqueda`: al escribir, `onValueChange` avisa al ViewModel, que cambia el estado, y la lista se vuelve a dibujar. Es el **flujo unidireccional de datos**: el estado baja a la pantalla y los eventos suben al ViewModel.
 
 **Comprueba que…**
 
