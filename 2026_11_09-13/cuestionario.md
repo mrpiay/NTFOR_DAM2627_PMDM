@@ -83,12 +83,14 @@ Log.d("Pregunta", "Después de launch")
 
 **20.** Para hacer una foto, ¿dónde se declara el permiso de cámara y por qué, además, hay que pedirlo mientras se usa la app? ¿Qué pasa si lo deniegas?
 
+**21.** En el paso 10, ¿por qué `animalesVisibles` encadena dos `filter`? ¿Qué sale con el texto vacío? Cuenta qué pasa desde que escribes una letra en el campo de búsqueda hasta que la lista cambia: qué hacen `onValueChange`, `onBuscar`, `cambiarBusqueda` y `uiState`.
+
 ## Cuestiones sobre los apuntes
 
 Estas preguntas se responden con los apuntes de cada unidad, en `apuntes/`.
 
-**21.** ¿Cuándo usarías DataStore y cuándo Room? Pon un ejemplo de cada uno en la app del centro de acogida.
+**22.** ¿Cuándo usarías DataStore y cuándo Room? Pon un ejemplo de cada uno en la app del centro de acogida.
 
-**22.** ¿Qué diferencia hay entre un permiso normal y uno peligroso? Pon un ejemplo de cada uno. ¿Qué tres respuestas puede dar la persona cuando se le pide uno peligroso?
+**23.** ¿Qué diferencia hay entre un permiso normal y uno peligroso? Pon un ejemplo de cada uno. ¿Qué tres respuestas puede dar la persona cuando se le pide uno peligroso?
 
-**23.** ¿Qué hace falta para que una app hable con un servicio web y por qué HTTPS? ¿Qué diferencia hay entre un APK y un AAB, y entre una versión de depuración y una de publicación?
+**24.** ¿Qué hace falta para que una app hable con un servicio web y por qué HTTPS? ¿Qué diferencia hay entre un APK y un AAB, y entre una versión de depuración y una de publicación?

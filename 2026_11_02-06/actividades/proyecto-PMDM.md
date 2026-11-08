@@ -2,18 +2,18 @@
 
 ## Punto de partida
 
-**Hasta esta fecha, según la programación del módulo, deberíais haber estudiado:**
+**Hasta esta fecha, según la programación del módulo, se tendrían que haber estudiado:**
 
 - **UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles**, **UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario** y **UD3 · Persistencia, conectividad y servicios del dispositivo móvil**, completas.
 - **UD4 · Desarrollo de aplicaciones multimedia**, empezada.
 
-**La idea.** Esta semana es un **punto de control** para **ponernos al día con la programación, en la medida de lo posible**: un proyecto que repasa lo que se debería haber dado hasta ahora, continuando vuestra app del centro de acogida (o recuperándola con la plantilla, si no la tenéis) para completar la UD2. El proyecto tiene **dos partes**: esta semana, los pasos 0 a 7 (UD1 y UD2); la semana del 9 al 13 de noviembre, los pasos 8 y 9 (dos tamaños de pantalla, de la UD2, y Room, de la UD3) y un permiso y la cámara, que es el inicio de la UD4. El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación. Lo que ya sabéis, lo afianzáis; lo que no se llegó a dar, **se explica en el paso donde aparece**.
+**La idea.** Esta semana es un **punto de control** para **ponernos al día con la programación, en la medida de lo posible**: un proyecto que repasa lo que se debería haber dado hasta ahora, partiendo de la plantilla de la app del centro de acogida (si tienes tu propia app, se guarda para consultarla) para completar la UD2. El proyecto tiene **dos partes**: esta semana, los pasos 0 a 7 (UD1 y UD2); la semana del 9 al 13 de noviembre, los pasos 8 a 10 (dos tamaños de pantalla, de la UD2; Room, de la UD3, y un buscador) y un permiso y la cámara, que es el inicio de la UD4. El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación. Lo que ya sabéis, lo afianzáis; lo que no se llegó a dar, **se explica en el paso donde aparece**.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios de autoevaluación y preparar la prueba escrita.
 
-**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 10): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
 
 **Y la UD2.** Su nota sale de su entrega y su examen de octubre. Si te falta alguna de las dos, la sustituyen las preguntas de la prueba escrita del viernes 20 de noviembre sobre los pasos 1 a 3 y 5 a 7 de este proyecto, corregidas con los criterios de la UD2.
 
@@ -27,11 +27,11 @@ Partir de la app «Centro de acogida» (lista de animales con `LazyColumn`, `Car
 2. una pantalla de **detalle** de cada animal, a la que se llega **navegando** desde la lista;
 3. un **formulario «Solicitar adopción»** con campos de texto y **validación**.
 
-Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo se repasan. Desde el paso 4 se completa lo que falta. En la 2.ª parte, la lista se adaptará a dos tamaños de pantalla y las solicitudes se guardarán con Room.
+Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo se repasan. Desde el paso 4 se completa lo que falta. En la 2.ª parte, la lista se adaptará a dos tamaños de pantalla, las solicitudes se guardarán con Room y la lista tendrá un buscador.
 
 ## Qué se trabaja
 
-| Unidad | Qué repasamos | Dónde |
+| Unidad | Qué se trabaja | Dónde |
 |---|---|---|
 | UD1 · Tecnologías y entornos | Android Studio, abrir y ejecutar un proyecto, Gradle, Logcat, AVD, estructura del proyecto, ciclo de vida, modificar una app ya hecha | Pasos 0, 1, 4, 5 y 6 |
 | UD2 · Kotlin | null safety, data class, `listOf`, `filter`, `find`, lambdas | Pasos 1, 5 y 6 |
@@ -42,7 +42,7 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 
 Cada sesión dura 50 minutos.
 
-| Día y hora | Qué hacemos |
+| Día y hora | Qué se hace |
 |---|---|
 | Mar 3 nov, 08:30 | Leer «Punto de partida», «Objetivo» y «Las herramientas» (30 min). **Paso 0** (abrir la app y AVD, 20 min); quien tenga que instalar algo, lo hace mientras. |
 | Mar 3 nov, 09:20 | **Pasos 1–3** (repaso de lo ya hecho) y empezar el **Paso 4** (ciclo de vida). |

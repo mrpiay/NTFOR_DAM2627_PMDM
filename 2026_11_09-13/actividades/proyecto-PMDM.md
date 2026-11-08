@@ -39,7 +39,7 @@ Añadir a la app:
 
 Cada sesión dura 50 minutos.
 
-| Día y hora | Qué hacemos |
+| Día y hora | Qué se hace |
 |---|---|
 | Mar 10 nov, 08:30 | Al empezar: añadir las dependencias de **9.1** y pulsar *Sync Now*. Mientras descarga, **paso 8** (dos tamaños de pantalla). |
 | Mar 10 nov, 09:20 | **Paso 9** (Room: 9.2 a 9.4). |
@@ -141,7 +141,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ```
 
-En los dos `build.gradle.kts`, la línea ya está escrita en un comentario `// TODO Paso 9.1:`: borra ese comienzo para activarla. En el del proyecto (el de la raíz), dentro de `plugins { }`: `alias(libs.plugins.ksp) apply false`.
+En los dos `build.gradle.kts`, la línea ya está escrita en un comentario `// TODO Paso 9.1:`: borra ese comienzo para activarla. En el del proyecto (el de la raíz), dentro de `plugins { }`: `alias(libs.plugins.ksp) apply false`. `apply false` declara el plugin y su versión para todo el proyecto, pero no lo aplica ahí: la raíz no tiene código. Se aplica en `app`, que es donde está el código que KSP procesa.
 
 En `app/build.gradle.kts`, dentro de `plugins { }`: `alias(libs.plugins.ksp)`. Y dentro de `dependencies { }`, en lugar del comentario `// TODO Paso 9.1: Room …`:
 
@@ -246,6 +246,10 @@ class AcogidaViewModel(application: Application) : AndroidViewModel(application)
 
     // ... lo que ya tenías (uiState, formulario, etc.)
 ```
+
+`stateIn` convierte el `Flow` de Room en un `StateFlow`, que siempre tiene un valor y que la pantalla lee con `collectAsState()`, como `uiState`. `WhileSubscribed(5_000)` hace que escuche a la base de datos mientras alguna pantalla lo está leyendo, y 5 segundos más, para no cortar y volver a empezar al girar la pantalla. `emptyList()` es el valor que tiene antes de que llegue la primera lista de Room.
+
+Desde aquí, `AcogidaViewModel` necesita la aplicación: si en algún sitio se crea a mano con `AcogidaViewModel()` (por ejemplo, para probar algo en `MainActivity`), ahora hay que escribir `AcogidaViewModel(application)`.
 
 Y **sustituye la función `enviarSolicitud()` entera** (son 3 líneas) por esta, que recibe el animal y guarda la solicitud si es válida:
 
@@ -376,7 +380,7 @@ Cuando tengas los cuatro archivos nuevos, borra `PasosSiguientes.kt`: solo era l
 
 ## Un permiso y la cámara (UD3 y UD4, miércoles, 15 min)
 
-Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app. No entra en la prueba escrita del viernes 20: se trabaja en la UD4.
+Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la misma app. Se trabaja más a fondo en la UD4.
 
 **Objetivo.** En el detalle de cada animal, un botón «Hacer una foto» **pide el permiso de cámara**. Si lo concedes, abre la cámara y muestra la foto; si no, explica por qué no puede.
 
@@ -518,7 +522,7 @@ Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la mism
 
    Imports: `androidx.compose.material3.OutlinedTextField` y `androidx.compose.foundation.layout.fillMaxWidth`.
 
-4. En `AcogidaApp.kt`, en la llamada a `PantallaLista(…)`, pasa la función del ViewModel:
+4. En `AcogidaApp.kt`, en la llamada a `PantallaLista(…)`, pasa la función del ViewModel (pon una coma al final de la línea anterior, `onVerSolicitudes = …`):
 
    ```kotlin
    onBuscar = viewModel::cambiarBusqueda
@@ -535,6 +539,8 @@ El campo no guarda el texto: lo muestra desde `uiState.textoBusqueda` y, cuando 
 | `to` | desactivado | Toby |
 | `to` | activado | ninguno (Toby no es urgente) |
 | (nada) | activado | Luna, Nala y Kira |
+
+Son los animales de la plantilla. Si en la 1.ª parte añadiste otro, también sale cuando su nombre coincide.
 
 Y que, si giras la pantalla o vas al detalle de un animal y vuelves, el texto y la lista filtrada siguen igual: el estado está en el ViewModel, no en la pantalla.
 

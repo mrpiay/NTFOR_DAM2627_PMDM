@@ -56,4 +56,4 @@ fun PantallaLista(onAnimalClick: (Animal) -> Unit) {
     }
 }
 
-// TODO Paso 8: añadir una vista previa con ancho de tableta (opcional).
+// TODO Paso 8: añadir una vista previa con ancho de tableta.

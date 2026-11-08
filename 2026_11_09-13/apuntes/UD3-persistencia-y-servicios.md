@@ -50,7 +50,8 @@ Los apartados 1 a 3 se practican en el proyecto. Los apartados 4 y 5 se trabajan
 
 - El **hilo principal** dibuja la interfaz y atiende los toques; si se bloquea, la app se congela.
 - Una función **`suspend`** puede pausarse mientras espera, sin bloquear el hilo.
-- Desde el ViewModel se lanza con **`viewModelScope.launch { … }`**: la corrutina se cancela sola si el ViewModel desaparece.
+- Desde el ViewModel se lanza con **`viewModelScope.launch { … }`**: la corrutina se cancela sola si el ViewModel desaparece. Desde una actividad, lo mismo con **`lifecycleScope.launch { … }`**.
+- `launch` empieza la corrutina en ese momento; cuando llega a una función `suspend` que tiene que esperar (como guardar en Room), se suspende, y el código que va después de `launch` sigue. Cuando termina la espera, la corrutina continúa donde se quedó.
 - Room no deja acceder a la base de datos desde el hilo principal: da el error *Cannot access database on the main thread*.
 
 ---
