@@ -29,7 +29,7 @@ Partir de la app «Centro de acogida» (lista de animales con `LazyColumn`, `Car
 
 Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo se repasan. Desde el paso 4 se completa lo que falta. En la 2.ª parte, la lista se adaptará a dos tamaños de pantalla y las solicitudes se guardarán con Room.
 
-## Qué se repasa de cada unidad
+## Qué se trabaja
 
 | Unidad | Qué repasamos | Dónde |
 |---|---|---|
@@ -38,7 +38,9 @@ Los pasos 1 a 3 ya están hechos (son la tarea «App centro de acogida»): solo 
 | UD2 · Compose, estado y Material | composables, `Modifier`, `Image`, `remember`, `mutableStateOf`, recomposición, `Switch`, `TextField`, validación, `LazyColumn`, `Card`, `Scaffold`, `TopAppBar`, `MaterialTheme` | Pasos 2, 3 y 7 |
 | UD2 · ViewModel y navegación | ViewModel, UI State, StateFlow, flujo unidireccional de datos, Navigation Compose | Pasos 5 y 6 |
 
-## Plan por sesiones (50 minutos cada una)
+## Plan de la semana
+
+Cada sesión dura 50 minutos.
 
 | Día y hora | Qué hacemos |
 |---|---|

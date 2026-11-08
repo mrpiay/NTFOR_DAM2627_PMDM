@@ -24,7 +24,7 @@ Añadir a la app:
 1. una lista que se adapta al ancho de la pantalla, probada en **dos tamaños** (móvil y tableta);
 2. las solicitudes guardadas en una **base de datos con Room**, que siguen ahí aunque se cierre la app.
 
-## Qué se repasa de cada unidad
+## Qué se trabaja
 
 | Unidad | Qué repasamos | Dónde |
 |---|---|---|
@@ -34,7 +34,9 @@ Añadir a la app:
 | UD3 · Persistencia y servicios del dispositivo | Room (entidad, DAO, base de datos) y corrutinas (paso 9); permisos en tiempo de ejecución («Un permiso y la cámara»); servicios web (Extra C) | Paso 9, «Un permiso y la cámara» y Extra C |
 | UD4 · Multimedia (inicio) | Capturar una imagen con la cámara | «Un permiso y la cámara» |
 
-## Plan por sesiones (50 minutos cada una)
+## Plan de la semana
+
+Cada sesión dura 50 minutos.
 
 | Día y hora | Qué hacemos |
 |---|---|
