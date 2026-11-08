@@ -114,9 +114,9 @@ Log.d("Pregunta", "4: '${vm.formulario.value.telefono}' ${vm.formulario.value.in
 
 **20.** Cuenta, paso a paso, qué pasa al pulsar «Enviar» con el formulario vacío: qué función se ejecuta, qué cambia en el estado y por qué ahora sí se ven los errores. ¿Para qué se llama a `viewModel.reiniciarFormulario()` antes de abrir el formulario?
 
-## Repaso de la UD1 y UD2
+## UD1 y UD2
 
-Estas preguntas se responden con los repasos de `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
 **21.** Di cuatro limitaciones de un móvil frente a un ordenador y cómo afecta cada una a cómo se programa una app.
 

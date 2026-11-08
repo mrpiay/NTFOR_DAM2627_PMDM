@@ -4,12 +4,12 @@ Las guías para estudiar lo visto esta semana, reunidas en un solo sitio.
 
 | Archivo | Qué es |
 |---|---|
-| [`repaso-UD1-tecnologias-y-entornos.md`](repaso-UD1-tecnologias-y-entornos.md) | Lo básico de la UD1: limitaciones de los móviles, tecnologías de desarrollo, versiones de Android, Android Studio, Gradle, emulador y Logcat, estructura de un proyecto, ciclo de vida y perfiles de dispositivo |
-| [`repaso-UD2-kotlin-y-compose.md`](repaso-UD2-kotlin-y-compose.md) | Lo básico de la UD2: Kotlin, Jetpack Compose, estado y recomposición, ViewModel y flujo unidireccional, navegación, formularios y pruebas en el emulador |
-| [`repaso-UD3-persistencia-y-servicios.md`](repaso-UD3-persistencia-y-servicios.md) | Lo básico de la UD3: guardar datos (DataStore y Room), corrutinas, permisos, conectividad, sensores y despliegue |
+| [`UD1-tecnologias-y-entornos.md`](UD1-tecnologias-y-entornos.md) | Lo básico de la UD1: limitaciones de los móviles, tecnologías de desarrollo, versiones de Android, Android Studio, Gradle, emulador y Logcat, estructura de un proyecto, ciclo de vida y perfiles de dispositivo |
+| [`UD2-kotlin-y-compose.md`](UD2-kotlin-y-compose.md) | Lo básico de la UD2: Kotlin, Jetpack Compose, estado y recomposición, ViewModel y flujo unidireccional, navegación, formularios y pruebas en el emulador |
+| [`UD3-persistencia-y-servicios.md`](UD3-persistencia-y-servicios.md) | Lo básico de la UD3: guardar datos (DataStore y Room), corrutinas, permisos, conectividad, sensores y despliegue |
 | [`autoevaluacion.md`](autoevaluacion.md) | Preguntas para comprobar lo que has aprendido. Sus respuestas se entregan en Teams (ver [`entrega.md`](../clase/entrega.md)) |
 
-Los repasos tienen lo básico de cada unidad. Las preguntas del cuestionario de autoevaluación se responden con ellos y con el proyecto, y las de la prueba escrita salen de lo mismo.
+Los apuntes de cada unidad (los archivos que empiezan por `UD`) tienen lo básico. Las preguntas del cuestionario de autoevaluación se responden con ellos y con el proyecto, y las de la prueba escrita salen de lo mismo.
 
 ## Dónde consultar
 

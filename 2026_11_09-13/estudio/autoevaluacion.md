@@ -81,9 +81,9 @@ Log.d("Pregunta", "Después de launch")
 
 **20.** Para hacer una foto, ¿dónde se declara el permiso de cámara y por qué, además, hay que pedirlo mientras se usa la app? ¿Qué pasa si lo deniegas?
 
-## Repaso de la UD3
+## UD3
 
-Estas preguntas se responden con los repasos de `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
 **21.** ¿Cuándo usarías DataStore y cuándo Room? Pon un ejemplo de cada uno en la app del centro de acogida.
 
