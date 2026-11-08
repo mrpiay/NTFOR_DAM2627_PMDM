@@ -1,6 +1,6 @@
 # Autoevaluación · semana del 2 al 6 de noviembre
 
-Preguntas sobre la 1.ª parte del proyecto «Centro de acogida 2.0». Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
+Preguntas sobre la 1.ª parte del proyecto «Centro de acogida 2.0» y sobre los apuntes. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 
 En las preguntas con código, abre `MainActivity.kt` (en `app/src/main/java/com/example/centroacogida`) y pega el código dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)`, así:
 
@@ -17,6 +17,8 @@ Antes de pegar el de una pregunta, borra el de la anterior. Ejecuta la app y, en
 Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
 
 ---
+
+## Cuestiones sobre el proyecto
 
 **1.** ¿Qué hace el *Sync* de Gradle? ¿Qué se pone en `gradle/libs.versions.toml` y qué en `app/build.gradle.kts`? Para añadir Navigation Compose, ¿qué cambiaste en cada uno?
 
@@ -114,7 +116,7 @@ Log.d("Pregunta", "4: '${vm.formulario.value.telefono}' ${vm.formulario.value.in
 
 **20.** Cuenta, paso a paso, qué pasa al pulsar «Enviar» con el formulario vacío: qué función se ejecuta, qué cambia en el estado y por qué ahora sí se ven los errores. ¿Para qué se llama a `viewModel.reiniciarFormulario()` antes de abrir el formulario?
 
-## UD1 y UD2
+## Cuestiones sobre los apuntes
 
 Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 

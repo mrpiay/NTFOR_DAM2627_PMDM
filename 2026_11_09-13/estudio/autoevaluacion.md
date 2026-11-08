@@ -1,6 +1,6 @@
 # Autoevaluación · semana del 9 al 13 de noviembre
 
-Preguntas sobre la 2.ª parte del proyecto «Centro de acogida 2.0». Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
+Preguntas sobre la 2.ª parte del proyecto «Centro de acogida 2.0» y sobre los apuntes. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 
 En las preguntas con código, abre `MainActivity.kt` (en `app/src/main/java/com/example/centroacogida`) y pega el código dentro de `onCreate`, justo después de `super.onCreate(savedInstanceState)`, así:
 
@@ -17,6 +17,8 @@ Antes de pegar el de una pregunta, borra el de la anterior. Si algo sale en rojo
 Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
 
 ---
+
+## Cuestiones sobre el proyecto
 
 **1.** ¿Cómo se comprueba que la app funciona en dos tamaños de pantalla? ¿Para qué sirve la vista previa `ListaTabletaPreview` del paso 8 y qué indica `widthDp = 840`?
 
@@ -81,7 +83,7 @@ Log.d("Pregunta", "Después de launch")
 
 **20.** Para hacer una foto, ¿dónde se declara el permiso de cámara y por qué, además, hay que pedirlo mientras se usa la app? ¿Qué pasa si lo deniegas?
 
-## UD3
+## Cuestiones sobre los apuntes
 
 Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
