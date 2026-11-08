@@ -24,6 +24,7 @@ fun AcogidaApp(viewModel: AcogidaViewModel = viewModel()) {
                 uiState = uiState,
                 onCambiarUrgentes = viewModel::cambiarSoloUrgentes,
                 onAnimalClick = { animal -> navController.navigate("detalle/${animal.id}") }
+                // TODO Paso 10: onBuscar
             )
         }
 

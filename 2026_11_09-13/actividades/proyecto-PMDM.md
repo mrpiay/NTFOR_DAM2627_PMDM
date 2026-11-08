@@ -8,30 +8,31 @@ Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios de autoevaluación y preparar la prueba escrita.
 
-**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 9): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 10): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
 
 Del 10 al 13 de noviembre. Cada paso trae una pista y qué hacer si algo falla.
 
 ## Con qué trabajas
 
 - **Si terminaste la 1.ª parte y funciona**: sigue con tu proyecto, en la misma carpeta.
-- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_09-13/actividades/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y ábrela en Android Studio: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), y elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `TODO Paso 8` y `TODO Paso 9…` (con `//` en Kotlin y `#` en `libs.versions.toml`) marcan dónde se añade código.
+- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_09-13/actividades/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y ábrela en Android Studio: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), y elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `TODO Paso 8`, `TODO Paso 9…` y `TODO Paso 10` (con `//` en Kotlin y `#` en `libs.versions.toml`) marcan dónde se añade código.
 
 ## Objetivo
 
 Añadir a la app:
 
 1. una lista que se adapta al ancho de la pantalla, probada en **dos tamaños** (móvil y tableta);
-2. las solicitudes guardadas en una **base de datos con Room**, que siguen ahí aunque se cierre la app.
+2. las solicitudes guardadas en una **base de datos con Room**, que siguen ahí aunque se cierre la app;
+3. un **buscador** que filtra la lista por nombre.
 
 ## Qué se trabaja
 
-| Unidad | Qué repasamos | Dónde |
+| Unidad | Qué | Dónde |
 |---|---|---|
 | UD1 · Tecnologías y entornos | AVD de distintos tamaños | Paso 8 |
 | UD2 · Compose y adaptación a tamaños | `LazyVerticalGrid`, `GridCells.Adaptive`, dp, vistas previas | Paso 8 |
-| UD2 · Flutter | Solo como extra opcional | Extra B |
-| UD3 · Persistencia y servicios del dispositivo | Room (entidad, DAO, base de datos) y corrutinas (paso 9); permisos en tiempo de ejecución («Un permiso y la cámara»); servicios web (Extra C) | Paso 9, «Un permiso y la cámara» y Extra C |
+| UD2 · Estado y flujo unidireccional | El texto de búsqueda en el estado, el ViewModel y un `OutlinedTextField` | Paso 10 |
+| UD3 · Persistencia y servicios del dispositivo | Room (entidad, DAO, base de datos) y corrutinas (paso 9); permisos en tiempo de ejecución («Un permiso y la cámara») | Paso 9 y «Un permiso y la cámara» |
 | UD4 · Multimedia (inicio) | Capturar una imagen con la cámara | «Un permiso y la cámara» |
 
 ## Plan de la semana
@@ -44,7 +45,8 @@ Cada sesión dura 50 minutos.
 | Mar 10 nov, 09:20 | **Paso 9** (Room: 9.2 a 9.4). |
 | Mié 11 nov, 08:30 | **Paso 9** (9.5, «Mis solicitudes») y **Un permiso y la cámara** (15 min). |
 | Mié 11 nov, 09:20 y 10:10 | Sesiones de la UD4, fuera de este proyecto (ver `programacion/`, en la raíz del repositorio). |
-| Vie 13 nov, 13:00 y 13:50 | Terminar el **paso 9** y hacer los extras. |
+| Vie 13 nov, 13:00 | **Paso 10** (buscar por nombre). |
+| Vie 13 nov, 13:50 | Comprobar todo con la lista final («Cómo comprobarlo»). |
 
 **Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior.
 
@@ -465,18 +467,83 @@ Lo que queda de la UD3 (permisos) y el inicio de la UD4 (multimedia), en la mism
 
 ---
 
-## Extras
+## Paso 10 · Buscar por nombre
 
-**Extra A · Buscador.** Un `OutlinedTextField` encima de la lista que filtre por nombre. Necesitas cuatro piezas:
+**Objetivo.** Un campo de texto encima de la lista que la filtre por nombre mientras se escribe, junto con el interruptor «Adopciones urgentes».
 
-1. En `AcogidaUiState`, un campo `val textoBusqueda: String = ""`, y `animalesVisibles` pasa a ser: `get() = animales.filter { !soloUrgentes || it.urgente }.filter { it.nombre.contains(textoBusqueda, ignoreCase = true) }`.
-2. En `AcogidaViewModel`, una función como `cambiarSoloUrgentes`: `fun cambiarBusqueda(texto: String) { _uiState.update { it.copy(textoBusqueda = texto) } }`.
-3. En `PantallaLista`, un parámetro `onBuscar: (String) -> Unit = {}` y, encima de la cuadrícula, `OutlinedTextField(value = uiState.textoBusqueda, onValueChange = onBuscar, label = { Text("Buscar por nombre") })` (import `androidx.compose.material3.OutlinedTextField`).
-4. En `AcogidaApp.kt`, en `PantallaLista(…)`: `onBuscar = viewModel::cambiarBusqueda`.
+**Pista.** Es el mismo camino que ya sigue el interruptor: el texto se guarda en el **estado** (`AcogidaUiState`), lo cambia el **ViewModel** y la pantalla solo lo muestra y avisa cuando cambia. Son cuatro cambios, uno en cada archivo.
 
-**Extra B · Flutter (comparación).** Si tienes Flutter instalado (`flutter doctor` sin errores graves), crea un proyecto con `flutter create acogida_flutter`, ejecútalo y busca en `lib/main.dart` el equivalente de: un composable (widget), `remember`/`mutableStateOf` (`StatefulWidget` y `setState`) y `LazyColumn` (`ListView.builder`). Escribe tres líneas comparando. Si no lo tienes, sáltatelo: es opcional.
+1. En `AcogidaUiState.kt`, añade el texto de búsqueda al estado y úsalo para filtrar:
 
-**Extra C · Avance de UD3 (solo leer y pensar).** Las solicitudes ya están en Room, pero los animales siguen escritos en el código. Piensa: ¿qué cambiaría si los animales vinieran de un servicio web (Retrofit)? ¿Qué parte de tu código cambiaría y cuál no? (Pista: si el ViewModel da los datos a las pantallas, las pantallas no tendrían que cambiar.)
+   ```kotlin
+   data class AcogidaUiState(
+       val animales: List<Animal> = DatosAnimales.animales,
+       val soloUrgentes: Boolean = false,
+       val textoBusqueda: String = ""
+   ) {
+       val animalesVisibles: List<Animal>
+           get() = animales
+               .filter { !soloUrgentes || it.urgente }
+               .filter { it.nombre.contains(textoBusqueda.trim(), ignoreCase = true) }
+   }
+   ```
+
+   Los dos `filter` se encadenan: primero, los urgentes (si el interruptor está activado); después, los que contienen el texto, sin distinguir mayúsculas. Con el texto vacío, `contains("")` es verdadero para todos: no se quita ninguno.
+
+2. En `AcogidaViewModel.kt`, debajo de `cambiarSoloUrgentes`, una función igual para el texto:
+
+   ```kotlin
+   fun cambiarBusqueda(texto: String) {
+       _uiState.update { it.copy(textoBusqueda = texto) }
+   }
+   ```
+
+3. En `PantallaLista.kt`, añade un parámetro al final de `PantallaLista`, después de `onVerSolicitudes`:
+
+   ```kotlin
+   onBuscar: (String) -> Unit = {}
+   ```
+
+   Y, dentro de la `Column`, justo antes de la `Row` del interruptor, el campo de texto:
+
+   ```kotlin
+   OutlinedTextField(
+       value = uiState.textoBusqueda,
+       onValueChange = onBuscar,
+       label = { Text("Buscar por nombre") },
+       singleLine = true,
+       modifier = Modifier.fillMaxWidth()
+   )
+   ```
+
+   Imports: `androidx.compose.material3.OutlinedTextField` y `androidx.compose.foundation.layout.fillMaxWidth`.
+
+4. En `AcogidaApp.kt`, en la llamada a `PantallaLista(…)`, pasa la función del ViewModel:
+
+   ```kotlin
+   onBuscar = viewModel::cambiarBusqueda
+   ```
+
+El campo no guarda el texto: lo muestra desde `uiState.textoBusqueda` y, cuando escribes, `onValueChange` avisa al ViewModel, que cambia el estado, y Compose vuelve a dibujar la lista. Es el **flujo unidireccional de datos**: el estado baja a la pantalla y los eventos suben al ViewModel.
+
+**Comprueba que…**
+
+| Escribes | Interruptor «Adopciones urgentes» | Sale |
+|---|---|---|
+| `na` | desactivado | Luna y Nala |
+| `LUNA` | desactivado | Luna |
+| `to` | desactivado | Toby |
+| `to` | activado | ninguno (Toby no es urgente) |
+| (nada) | activado | Luna, Nala y Kira |
+
+Y que, si giras la pantalla o vas al detalle de un animal y vuelves, el texto y la lista filtrada siguen igual: el estado está en el ViewModel, no en la pantalla.
+
+**Si te falla…**
+
+- *Al escribir no aparece nada en el campo*: falta `onBuscar = viewModel::cambiarBusqueda` en `AcogidaApp.kt`, o `cambiarBusqueda` no hace el `copy`. El campo solo muestra lo que hay en el estado.
+- *`LUNA` no encuentra a Luna*: falta `ignoreCase = true`.
+- *Con el interruptor activado salen animales que no son urgentes*: el primer `filter` no está; tienen que ir los dos.
+- *`No value passed for parameter 'onBuscar'`* en la vista previa: falta el `= {}` del parámetro.
 
 ---
 
@@ -491,3 +558,4 @@ Qué se entrega esta semana y cuándo: [`entrega.md`](entrega.md).
 | El proyecto compila y se ejecuta en un AVD (o en un móvil real) |  |
 | La lista se ve en una columna en el móvil y en varias en la tableta |  |
 | Las solicitudes se guardan con Room, salen en «Mis solicitudes» y siguen al cerrar la app |  |
+| El buscador filtra por nombre, sin distinguir mayúsculas, junto con el interruptor de urgentes |  |

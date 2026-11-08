@@ -32,6 +32,7 @@ fun PantallaLista(
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp)
         ) {
+            // TODO Paso 10: el campo «Buscar por nombre»
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("Adopciones urgentes", modifier = Modifier.weight(1f))
                 Switch(checked = uiState.soloUrgentes, onCheckedChange = onCambiarUrgentes)
@@ -47,4 +48,4 @@ fun PantallaLista(
 }
 
 
-// TODO Paso 8: añadir una vista previa con ancho de tableta (opcional).
+// TODO Paso 8: añadir una vista previa con ancho de tableta.

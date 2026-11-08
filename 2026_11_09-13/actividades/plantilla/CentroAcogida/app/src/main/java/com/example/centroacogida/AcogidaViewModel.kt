@@ -16,6 +16,8 @@ class AcogidaViewModel : ViewModel() {
         _uiState.update { it.copy(soloUrgentes = valor) }
     }
 
+    // TODO Paso 10: cambiarBusqueda
+
     fun buscarAnimal(id: Int): Animal? =
         _uiState.value.animales.find { it.id == id }
 
