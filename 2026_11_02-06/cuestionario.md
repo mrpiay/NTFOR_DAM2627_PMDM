@@ -14,7 +14,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 Antes de pegar el de una pregunta, borra el de la anterior. Ejecuta la app y, en Logcat, filtra por `tag:Pregunta`. Copia en tu respuesta los mensajes (el texto que va después de `Pregunta`) y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA. Cuando termines, borra el código de las preguntas.
 
-Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
+Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `apuntes/`](apuntes/README.md).
 
 ---
 
@@ -118,7 +118,7 @@ Log.d("Pregunta", "4: '${vm.formulario.value.telefono}' ${vm.formulario.value.in
 
 ## Cuestiones sobre los apuntes
 
-Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `apuntes/`.
 
 **21.** Di cuatro limitaciones de un móvil frente a un ordenador y cómo afecta cada una a cómo se programa una app.
 

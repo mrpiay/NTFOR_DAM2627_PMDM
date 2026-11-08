@@ -14,7 +14,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 Antes de pegar el de una pregunta, borra el de la anterior. Si algo sale en rojo, pon el cursor encima y pulsa **Alt + Intro** para añadir el `import`. Ejecuta la app y, en Logcat, filtra por `tag:Pregunta`. Copia en tu respuesta los mensajes (el texto que va después de `Pregunta`) y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA. Cuando termines, borra el código de las preguntas.
 
-Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
+Si en una pregunta aparece algo que no has visto, búscalo en «Dónde consultar», en el [README de `apuntes/`](apuntes/README.md).
 
 ---
 
@@ -85,7 +85,7 @@ Log.d("Pregunta", "Después de launch")
 
 ## Cuestiones sobre los apuntes
 
-Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `apuntes/`.
 
 **21.** ¿Cuándo usarías DataStore y cuándo Room? Pon un ejemplo de cada uno en la app del centro de acogida.
 
