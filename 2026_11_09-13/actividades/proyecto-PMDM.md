@@ -15,7 +15,7 @@ Del 10 al 13 de noviembre. Cada paso trae una pista y qué hacer si algo falla.
 ## Con qué trabajas
 
 - **Si terminaste la 1.ª parte y funciona**: sigue con tu proyecto, en la misma carpeta.
-- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), copia `2026_11_09-13/actividades/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y ábrela en Android Studio: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), y elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `TODO Paso 8`, `TODO Paso 9…` y `TODO Paso 10` (con `//` en Kotlin y `#` en `libs.versions.toml`) marcan dónde se añade código.
+- **Si no la terminaste o no te funciona**: cambia el nombre de tu carpeta a `CentroAcogida-anterior`. Descarga la plantilla, [`plantilla.zip`](https://github.com/mrpiay/NTFOR_DAM2627_PMDM/raw/main/2026_11_09-13/actividades/plantilla.zip), descomprímela (clic derecho → *Extraer todo…*) en una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`) y abre la carpeta `CentroAcogida` que queda dentro en Android Studio: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), y elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`. Es la 1.ª parte terminada; los comentarios `TODO Paso 8`, `TODO Paso 9…` y `TODO Paso 10` (con `//` en Kotlin y `#` en `libs.versions.toml`) marcan dónde se añade código.
 
 ## Objetivo
 

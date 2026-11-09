@@ -87,7 +87,7 @@ El código usa el paquete `com.example.centroacogida`. Cuando Android Studio mar
 **Pista.**
 
 1. **Si tienes tu propia app del centro de acogida**: cambia el nombre de su carpeta a `CentroAcogida-anterior` y guárdala para consultarla. El proyecto se hace en `CentroAcogida`, desde la plantilla.
-2. **El proyecto**: descarga el repositorio del módulo (https://github.com/mrpiay/NTFOR_DAM2627_PMDM → *Code → Download ZIP*), descomprímelo y copia `2026_11_02-06/actividades/plantilla/CentroAcogida` a una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`).
+2. **El proyecto**: descarga la plantilla, [`plantilla.zip`](https://github.com/mrpiay/NTFOR_DAM2627_PMDM/raw/main/2026_11_02-06/actividades/plantilla.zip), y descomprímela (clic derecho → *Extraer todo…*) en una carpeta sin tildes ni espacios (por ejemplo, `Documentos\PMDM`). Dentro queda la carpeta del proyecto, `CentroAcogida`.
    **Ábrelo en Android Studio**: en la pantalla de bienvenida, **Open** (si ya hay un proyecto abierto, *File > Open*), elige la carpeta `CentroAcogida`, la que contiene `settings.gradle.kts`, y pulsa *OK*. Si pregunta si confías en el proyecto, *Trust Project*.
 3. Espera a que termine el **Sync** de Gradle (barra inferior).
 4. En **Device Manager** (*View > Tool Windows > Device Manager*) crea, si no lo tienes, un **Pixel** (*Phone*), como explica [`software-PMDM.md`](software-PMDM.md).
