@@ -10,7 +10,8 @@ Todas las semanas: el cuestionario de autoevaluación está disponible desde el 
 |---|---|
 | Lunes 16 de noviembre, 23:59 | Entrega en Teams de las autoevaluaciones de las semanas del 2 al 6 y del 9 al 13, en una sola tarea |
 | Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones y el proyecto «Centro de acogida 2.0» completo |
-| Viernes 20 de noviembre (las dos sesiones) | **Prueba escrita**, en papel, sobre las dos partes del proyecto «Centro de acogida 2.0»: Android Studio, Kotlin, la arquitectura típica de una app, varios tamaños de pantalla, Room y el propio proyecto |
+| Viernes 20 de noviembre (13:00 y 13:50) | **Prueba escrita**, en papel, sobre las dos partes del proyecto «Centro de acogida 2.0»: Android Studio, Kotlin, la arquitectura típica de una app, varios tamaños de pantalla, Room y el propio proyecto |
+| Viernes 11 de diciembre | **Examen final de la 1.ª evaluación** (el 4 y el 9 de diciembre, repaso) |
 
 ## Programación
 
