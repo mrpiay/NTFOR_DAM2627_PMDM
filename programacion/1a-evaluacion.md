@@ -54,7 +54,7 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 | **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 5,7 %, «Tarea 1» (Julia) 1,1 %<br>P2 · vie 20 nov: 16,2 %<br>P3 · vie 4 dic: 13,1 %<br>Contenidos que solo entran en F: 3,8 % |
 | **A** · actividades guiadas | 20 % | 5 actividades, 4 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
 | **F** · examen final | 30 % | vie 11 dic |
-| **R** · revisión | 10 % | Revisión de cada cuestionario y de cada examen parcial, una vez devuelto corregido: 7 revisiones, 1,4 % cada una |
+| **R** · revisión | 10 % | De cada cuestionario (C) y cada examen parcial (P), una vez devuelto corregido: 7 revisiones, 1,4 % cada una |
 | **C** · cuestionarios | — | 5 cuestionarios. Su entrega es obligatoria; cuentan a través de su revisión (R) |
 
 Porcentajes sobre la nota de la evaluación.
@@ -70,7 +70,7 @@ Porcentajes sobre la nota de la evaluación.
 | 23–27 nov | UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD4 · Reproducción de audio y vídeo, eventos y animaciones<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A4 (4 %), C4, R de C3 (1,4 %), R de P2 (1,4 %) |
 | 30 nov–4 dic | UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD3 · Bluetooth y desplegar en un móvil real<br>UD4 · Desplegar, depurar y documentar | A5 (4 %), C5, P3 (13,1 %), R de C4 (1,4 %) |
 | 7–11 dic | Repaso (mié 9) | F (30 % + 3,8 %), R de C5 (1,4 %), R de P3 (1,4 %) |
-| 14–18 dic | UD5 · Arquitectura y motores de juegos (2ª evaluación, desde mar 15) | Cierre de la 1ª evaluación · jue 17 |
+| 14–18 dic | UD5 · Arquitectura y motores de juegos | Cierre de la 1ª evaluación · jue 17 |
 
 ## Notas
 
