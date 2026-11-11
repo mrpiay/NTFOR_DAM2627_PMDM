@@ -7,7 +7,7 @@ Los apuntes de las unidades de esta semana.
 | [`UD1-tecnologias-y-entornos.md`](UD1-tecnologias-y-entornos.md) | Lo básico de la UD1: limitaciones de los móviles, tecnologías de desarrollo, versiones de Android, Android Studio, Gradle, emulador y Logcat, estructura de un proyecto, ciclo de vida y perfiles de dispositivo |
 | [`UD2-kotlin-y-compose.md`](UD2-kotlin-y-compose.md) | Lo básico de la UD2: Kotlin, Jetpack Compose, estado y recomposición, ViewModel y flujo unidireccional, navegación, formularios y pruebas en el emulador |
 
-Cada archivo tiene lo básico de una unidad. Las preguntas del [cuestionario](../cuestionario.md) se responden con ellos y con el proyecto, y las de la prueba escrita salen de lo mismo.
+Cada archivo tiene lo básico de una unidad. Las preguntas del [cuestionario](../cuestionario.md) se responden con ellos y con el proyecto, y las de los exámenes salen de lo mismo.
 
 ## Dónde consultar
 

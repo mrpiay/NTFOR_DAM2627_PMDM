@@ -11,11 +11,9 @@
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
-**El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios de autoevaluación y preparar la prueba escrita.
+**El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios y preparar los exámenes.
 
-**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre **las dos partes del proyecto** (pasos 0 a 10): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla, Room y el propio proyecto.
-
-**Y la UD2.** Su nota sale de su entrega y su examen de octubre. Si te falta alguna de las dos, la sustituyen las preguntas de la prueba escrita del viernes 20 de noviembre sobre los pasos 1 a 3 y 5 a 7 de este proyecto, corregidas con los criterios de la UD2.
+**Evaluación.** Esta actividad guiada (**A1**) se evalúa con su lista de cotejo: cada «Comprueba que…» se cumple o no. El cuestionario de la semana (**C1**) se entrega hasta el lunes 16 de noviembre, junto con el de la otra semana. El **viernes 20 de noviembre** hay un examen parcial, **P2**, en papel, sobre las dos partes de esta actividad (pasos 0 a 10): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla y Room; y los apuntes de la UD1 a la UD3. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
 
 Semana del 3 al 6 de noviembre. Repasamos y completamos lo que falta de la UD2, paso a paso.
 

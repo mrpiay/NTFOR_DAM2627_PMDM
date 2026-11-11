@@ -6,18 +6,15 @@
 
 | UD | Inicio | Fin | Sesiones | Peso | Entrega |
 |---|---|---|---|---|---|
-| UD4 · Desarrollo de aplicaciones multimedia | vie 30 oct | mié 2 dic | 20 | 22 % | Proyecto integrado de aplicación Android |
 | UD5 · Arquitectura y motores de juegos 2D y 3D | mié 16 dic | mié 13 ene | 8 | 8 % | Mini-reto: modificación de un juego existente |
 | UD6 · Desarrollo e implantación de juegos 2D y 3D | mié 13 ene | vie 5 feb | 23 | 22 % | Proyecto integrado de videojuego móvil |
 
-Peso de estas unidades en el módulo: 52 % (la suma de los pesos de sus unidades, apartado 2.1 de la programación).
+Peso de estas unidades en el módulo: 30 % (la suma de los pesos de sus unidades, apartado 2.1 de la programación).
 
 ## Exámenes y entregas
 
 | Fecha | Qué | Detalle |
 |---|---|---|
-| mié 2 dic | Entrega UD4 | Proyecto integrado de aplicación Android |
-| mar 15 dic | Examen UD4 | Desarrollo de aplicaciones multimedia |
 | mié 13 ene | Entrega UD5 | Mini-reto: modificación de un juego existente |
 | mié 20 ene | Examen UD5 | Arquitectura y motores de juegos 2D y 3D |
 | vie 5 feb | Entrega UD6 | Proyecto integrado de videojuego móvil |
@@ -29,7 +26,6 @@ Peso de estas unidades en el módulo: 52 % (la suma de los pesos de sus unidades
 
 | UD | Entrega | Qué incluye |
 |---|---|---|
-| UD4 | Proyecto integrado de aplicación Android | Aplicación Android funcional, repositorio del proyecto, documentación técnica breve y presentación/defensa. En 2026-27 continúa la app del centro de acogida e incluye lo que falta de la UD3: datos desde un servicio REST (Retrofit), preferencias con DataStore, la ubicación o un sensor y una tarea en segundo plano con WorkManager; Bluetooth, visto en clase. |
 | UD5 | Mini-reto: modificación de un juego existente | Versión modificada de un juego existente y breve explicación de los cambios realizados. |
 | UD6 | Proyecto integrado de videojuego móvil | Videojuego 2D o 3D funcional para Android, repositorio del proyecto, documentación técnica y presentación/defensa |
 
@@ -49,33 +45,6 @@ Peso de estas unidades en el módulo: 52 % (la suma de los pesos de sus unidades
 ## Qué se aprende y cómo se evalúa en cada unidad
 
 Resultados de aprendizaje (RA) y criterios de evaluación (CA) de cada unidad, con el instrumento con el que se evalúa cada criterio.
-
-### UD4 · Desarrollo de aplicaciones multimedia
-
-**RA2** · Desarrolla aplicaciones para dispositivos móviles analizando y empleando las tecnologías y librerías específicas
-
-| Criterio | Cómo se evalúa | Peso |
-|---|---|---|
-| **CA2.1** Se ha generado la estructura de clases necesaria para la aplicación. | Rúbrica | 7 % |
-| **CA2.2** Se han analizado y utilizado las clases que modelan ventanas, menús, alertas y controles para el desarrollo de aplicaciones gráficas sencillas. | Rúbrica | 7 % |
-| **CA2.5** Se han utilizado las clases necesarias para establecer conexiones y comunicaciones HTTP y HTTPS. | Rúbrica | 6 % |
-| **CA2.6** Se han utilizado las clases necesarias para establecer conexiones con almacenes de datos garantizando la persistencia. | Rúbrica | 6 % |
-| **CA2.7** Se han realizado pruebas de interacción usuario-aplicación para optimizar las aplicaciones desarrolladas a partir de emuladores. | Tabla de observación | 6 % |
-| **CA2.8** Se han empaquetado y desplegado las aplicaciones desarrolladas en dispositivos móviles reales. | Lista de cotejo | 5 % |
-| **CA2.9** Se han documentado los procesos necesarios para el desarrollo de las aplicaciones. | Rúbrica | 5 % |
-
-**RA3** · Desarrolla programas que integran contenidos multimedia analizando y empleando las tecnologías y las librerías específicas
-
-| Criterio | Cómo se evalúa | Peso |
-|---|---|---|
-| **CA3.1** Se han analizado entornos de desarrollo multimedia. | Prueba escrita | 6 % |
-| **CA3.2** Se han reconocido las clases que permiten la captura, el procesamiento y el almacenamiento de datos multimedia. | Rúbrica | 8 % |
-| **CA3.3** Se han utilizado clases para la conversión de datos multimedia de un formato a otro. | Rúbrica | 7 % |
-| **CA3.4** Se han utilizado clases para procesar datos multimedia. | Rúbrica | 8 % |
-| **CA3.5** Se han utilizado clases para el control de eventos, tipos de media, excepciones etc. | Rúbrica | 7 % |
-| **CA3.6** Se han utilizado clases para la creación y control de animaciones. | Rúbrica | 5 % |
-| **CA3.7** Se han utilizado clases para reproducir contenidos multimedia. | Rúbrica | 7 % |
-| **CA3.8** Se han depurado y documentado los programas desarrollados. | Rúbrica | 10 % |
 
 ### UD5 · Arquitectura y motores de juegos 2D y 3D
 

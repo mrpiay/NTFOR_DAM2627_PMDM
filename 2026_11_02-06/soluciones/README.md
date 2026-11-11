@@ -8,4 +8,4 @@ Cómo debe quedar lo de esta semana y las soluciones del [cuestionario](../cuest
 
 Los «pequeños cambios» de los pasos 1 a 3 (el noveno animal, el título, el contador…) son tuyos: no están en la solución.
 
-Las soluciones de la autoevaluación se publican aquí el **martes 17 de noviembre**, junto con el proyecto completo en la semana del 9 al 13.
+Las soluciones del cuestionario se publican aquí el **martes 17 de noviembre**, junto con el proyecto completo en la semana del 9 al 13.

@@ -2,106 +2,80 @@
 
 [← Programación](README.md)
 
-## Unidades
+Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unidad se muestran sus contenidos, cada uno agrupando los criterios de evaluación que le corresponden; su porcentaje es la suma de los pesos de esos criterios en la programación oficial del módulo. La planificación empieza el 2 de noviembre; lo que ya evaluó Julia (exámenes y tareas de Teams) aparece marcado como «(Julia)».
 
-| UD | Inicio | Fin | Sesiones | Peso | Entrega |
-|---|---|---|---|---|---|
-| UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles | vie 11 sep | mié 23 sep | 12 | 10 % | Microproyecto: análisis y modificación de una aplicación existente |
-| UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario | mié 23 sep | vie 9 oct | 16 | 20 % | Miniaplicación Android integradora |
-| UD3 · Persistencia, conectividad y servicios del dispositivo móvil | mar 13 oct | mié 28 oct | 17 | 18 % | Miniaplicación de integración de las capacidades del dispositivo |
-
-Peso de estas unidades en el módulo: 48 % (la suma de los pesos de sus unidades, apartado 2.1 de la programación).
-
-**UD3:** en la 2.ª parte del proyecto de diagnóstico (10, 11 y 13 de noviembre) se trabaja Room, y los permisos se ven en una demostración. El viernes 20 de noviembre, en lugar del examen, hay una **prueba escrita**, en papel, sobre las dos partes del proyecto de diagnóstico (incluidos Room y el `ViewModel`), después de publicar sus soluciones. La prueba califica la persistencia (CA2.6, el 20 % de la UD3). Los permisos, las conexiones HTTP, los sensores, la comunicación inalámbrica y el despliegue en un móvil real (CA2.3, CA2.4, CA2.5, CA2.8 y CA2.10, el 80 %) se califican en el proyecto integrado de la UD4, sobre la misma app. La entrega de la UD3, prevista antes del 3 de noviembre, no se tiene en cuenta. Lo que falta de la UD3 (permisos, servicios REST con Retrofit, DataStore, WorkManager, sensores, localización y Bluetooth) se trabaja dentro del **proyecto integrado de la UD4** (del 17 de noviembre al 2 de diciembre), que continúa la app del centro de acogida, antes del repaso de la 1ª evaluación. Así la UD3 queda vista entera y entra en el examen final.
-
-## Exámenes y entregas
-
-| Fecha | Qué | Detalle |
-|---|---|---|
-| mié 9 sep | **Presentación** | Presentación del módulo y preparación del ordenador |
-| mié 23 sep | Entrega UD1 | Microproyecto: análisis y modificación de una aplicación existente |
-| mié 30 sep | Examen UD1 | Tecnologías y entornos de desarrollo para dispositivos móviles |
-| mié 7 oct | Entrega UD2 | Miniaplicación Android integradora |
-| vie 16 oct | Examen UD2 | Desarrollo de aplicaciones móviles e interfaces de usuario |
-| mié 28 oct | Entrega UD3 | Miniaplicación de integración de las capacidades del dispositivo |
-| 3–6 nov | **Puesta en común y proyecto de diagnóstico** | No se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes |
-| vie 20 nov | Prueba UD3 | Persistencia, conectividad y servicios del dispositivo móvil: prueba escrita sobre las dos partes del proyecto de diagnóstico, en lugar del examen |
-| vie 4 dic y mié 9 dic | **Repaso** | 1ª evaluación |
-| vie 11 dic | **Examen final** | 1ª evaluación |
-
-## Qué incluye cada entrega
-
-| UD | Entrega | Qué incluye |
-|---|---|---|
-| UD1 | Microproyecto: análisis y modificación de una aplicación existente | Aplicación modificada y funcional acompañada de una breve relación de las modificaciones y pruebas realizadas. |
-| UD2 | Miniaplicación Android integradora | Aplicación Android funcional y README o memoria técnica breve. |
-| UD3 | Miniaplicación de integración de las capacidades del dispositivo | Aplicación Android integrada, funcional e instalada en un dispositivo real. |
-
-## Semana a semana
-
-| Semana | Qué se hace |
-|---|---|
-| Del 7 al 11 de septiembre | **Presentación** del módulo y preparación del ordenador<br>UD1 · Dispositivos y tecnologías de desarrollo móvil |
-| Del 14 al 18 de septiembre | UD1 · Android: arquitectura y compatibilidad<br>UD1 · Puesta en marcha del entorno Android<br>UD1 · Emuladores, configuraciones y perfiles de dispositivo<br>UD1 · Anatomía y ciclo de vida de una aplicación Android |
-| Del 21 al 25 de septiembre | UD1 · Microproyecto: análisis y modificación de una aplicación existente<br>UD2 · Kotlin imprescindible para Android<br>UD2 · Interfaces con Jetpack Compose |
-| Del 28 de septiembre al 2 de octubre | UD2 · Interacción, entrada y estado<br>**examen de la UD1**<br>UD2 · Listas, componentes reutilizables y Material Design<br>UD2 · Arquitectura, navegación, adaptación y pruebas |
-| Del 5 al 9 de octubre | UD2 · Arquitectura, navegación, adaptación y pruebas<br>UD2 · Miniaplicación Android integradora<br>UD2 · Desarrollo multiplataforma con Flutter |
-| Del 12 al 16 de octubre | UD3 · Asincronía, Internet y servicios REST<br>UD3 · Persistencia local con Room y DataStore<br>**examen de la UD2** |
-| Del 19 al 23 de octubre | UD3 · Ejecución en segundo plano seguridady permisos<br>UD3 · Comunicación mediante Bluetooth<br>UD3 · Sensores del dispositivo<br>UD3 · Localización y mapas |
-| Del 26 al 30 de octubre | UD3 · Miniaplicación de integración de las capacidades del dispositivo<br>UD4 · Ecosistema multimedia en Android<br>UD4 · Captura de imagen y vídeo con CameraX |
-| [Del 2 al 6 de noviembre](../2026_11_02-06) | **puesta en común y proyecto de diagnóstico** (no se avanza: se repasa y se completa lo que tocaba hasta la fecha) |
-| [Del 9 al 13 de noviembre](../2026_11_09-13) | **proyecto de diagnóstico, 2.ª parte** (pasos 8 y 9: dos tamaños de pantalla y Room; un permiso y la cámara)<br>UD4 · Reproducción de audio y vídeo con Media3<br>UD4 · Procesamiento y conversión de contenidos multimedia<br>**proyecto de diagnóstico, 2.ª parte** (paso 10: buscar por nombre)<br>**proyecto de diagnóstico, 2.ª parte** (comprobar todo con la lista final) |
-| Del 16 al 20 de noviembre | UD4 · Animaciones e interacción multimedia<br>UD4 · Proyecto integrado de aplicación Android<br>**prueba escrita de la UD3** |
-| Del 23 al 27 de noviembre | UD4 · Proyecto integrado de aplicación Android |
-| Del 30 de noviembre al 4 de diciembre | UD4 · Proyecto integrado de aplicación Android<br>**repaso** o terminar lo pendiente · 1ª evaluación |
-| Del 7 al 11 de diciembre | **repaso** o terminar lo pendiente · 1ª evaluación<br>**examen final** · 1ª evaluación |
-| Del 14 al 18 de diciembre | **examen de la UD4**<br>UD5 · Arquitectura de los videojuegos y motores de desarrollo<br>UD5 · Primeros pasos con Unity 6<br>UD5 · GameObjects, componentes, prefabs y C# |
-
-## Qué se aprende y cómo se evalúa en cada unidad
-
-Resultados de aprendizaje (RA) y criterios de evaluación (CA) de cada unidad, con el instrumento con el que se evalúa cada criterio.
+## Qué entra
 
 ### UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles
 
-**RA1** · Aplica tecnologías de desarrollo para dispositivos móviles evaluando sus características y sus capacidades
+14,3 % de la evaluación (10 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA1.1** Se han analizado las limitaciones que presenta la ejecución de aplicaciones en los dispositivos móviles. | Prueba escrita | 10 % |
-| **CA1.2** Se han identificado las tecnologías de desarrollo de aplicaciones para dispositivos móviles. | Prueba escrita | 10 % |
-| **CA1.3** Se han instalado, configurado y utilizado entornos de trabajo para el desarrollo de aplicaciones para dispositivos móviles. | Lista de cotejo | 15 % |
-| **CA1.4** Se han identificado configuraciones que clasifican los dispositivos móviles en base a sus características. | Lista de cotejo | 10 % |
-| **CA1.5** Se han descrito perfiles que establecen la relación entre el dispositivo y la aplicación. | Lista de cotejo | 10 % |
-| **CA1.6** Se ha analizado la estructura de aplicaciones existentes para dispositivos móviles identificando las clases utilizadas. | Rúbrica | 20 % |
-| **CA1.7** Se han realizado modificaciones sobre aplicaciones existentes. | Rúbrica | 15 % |
-| **CA1.8** Se han utilizado emuladores para comprobar el funcionamiento de las aplicaciones. | Tabla de observación | 10 % |
+| Limitaciones, configuraciones, perfiles y estructura de una app | P1 (Julia) + P2 | 50 % |
+| Entorno, modificar una app y emuladores | «Tarea 1» (Julia) + P2 | 40 % |
+| Tecnologías de desarrollo: nativas y multiplataforma (Flutter) | P2 + F | 10 % |
 
 ### UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario
 
-**RA1** · Aplica tecnologías de desarrollo para dispositivos móviles evaluando sus características y sus capacidades
+28,6 % de la evaluación (20 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA1.2** Se han identificado las tecnologías de desarrollo de aplicaciones para dispositivos móviles. | Prueba escrita | 15 % |
-
-**RA2** · Desarrolla aplicaciones para dispositivos móviles analizando y empleando las tecnologías y librerías específicas
-
-| Criterio | Cómo se evalúa | Peso |
-|---|---|---|
-| **CA2.1** Se ha generado la estructura de clases necesaria para la aplicación. | Rúbrica | 25 % |
-| **CA2.2** Se han analizado y utilizado las clases que modelan ventanas, menús, alertas y controles para el desarrollo de aplicaciones gráficas sencillas. | Rúbrica | 35 % |
-| **CA2.7** Se han realizado pruebas de interacción usuario-aplicación para optimizar las aplicaciones desarrolladas a partir de emuladores. | Lista de cotejo | 15 % |
-| **CA2.9** Se han documentado los procesos necesarios para el desarrollo de las aplicaciones. | Rúbrica | 10 % |
+| Kotlin y Compose: estructura de clases e interfaz | P1 (Julia) + P2 | 75 % |
+| Pruebas en emuladores y documentar | P2 | 25 % |
 
 ### UD3 · Persistencia, conectividad y servicios del dispositivo móvil
 
-**RA2** · Desarrolla aplicaciones para dispositivos móviles analizando y empleando las tecnologías y librerías específicas
+25,7 % de la evaluación (18 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA2.3** Se han utilizado las clases necesarias para la conexión y la comunicación con dispositivos inalámbricos. | Rúbrica | 10 % |
-| **CA2.4** Se han desarrollado aplicaciones que hacen uso de las funcionalidades proporcionadas por los sensores. | Rúbrica | 20 % |
-| **CA2.5** Se han utilizado las clases necesarias para establecer conexiones y comunicaciones HTTP y HTTPS. | Rúbrica | 20 % |
-| **CA2.6** Se han utilizado las clases necesarias para establecer conexiones con almacenes de datos garantizando la persistencia. | Rúbrica | 20 % |
-| **CA2.8** Se han empaquetado y desplegado las aplicaciones desarrolladas en dispositivos móviles reales. | Rúbrica | 10 % |
-| **CA2.10** Se han establecido los permisos requeridos para el funcionamiento de las aplicaciones. | Rúbrica | 20 % |
+| Persistencia: Room y preferencias | P2 | 20 % |
+| Permisos, tareas en segundo plano y localización | P2 + P3 | 20 % |
+| Conexiones HTTP y sensores | P2 + P3 | 40 % |
+| Bluetooth y desplegar en un móvil real | P2 + F | 20 % |
+
+### UD4 · Desarrollo de aplicaciones multimedia
+
+31,4 % de la evaluación (22 % del módulo).
+
+| Contenido | Se evalúa con | Peso en la unidad |
+|---|---|---|
+| Captura, procesado y conversión de imágenes | P3 | 29 % |
+| Reproducción de audio y vídeo, eventos y animaciones | P3 | 19 % |
+| Estructura, interfaz, HTTP, persistencia y pruebas en la app | P3 | 32 % |
+| Desplegar, depurar y documentar | F | 20 % |
+
+## Cómo se evalúa
+
+| Parte | Peso | Qué incluye |
+|---|---|---|
+| **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 5,7 %, «Tarea 1» (Julia) 1,1 %<br>P2 · vie 20 nov: 16,2 %<br>P3 · vie 4 dic: 13,1 %<br>Contenidos que solo entran en F: 3,8 % |
+| **A** · actividades guiadas | 20 % | 5 actividades, 4 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
+| **F** · examen final | 30 % | vie 11 dic |
+| **C** · cuestionarios | 10 % | 5 cuestionarios, 2 % cada uno |
+
+Porcentajes sobre la nota de la evaluación.
+
+## Planificación semanal
+
+| Semana | Qué se da | Qué se evalúa |
+|---|---|---|
+| Antes del 2 nov | Lo evaluado por Julia | P1 (Julia) (5,7 %), «Tarea 1» (Julia) (1,1 %) |
+| [2–6 nov](../2026_11_02-06) | UD1 · Limitaciones, configuraciones, perfiles y estructura de una app<br>UD1 · Entorno, modificar una app y emuladores<br>UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD2 · Kotlin y Compose: estructura de clases e interfaz<br>UD2 · Pruebas en emuladores y documentar | A1 (4 %), C1 (2 %) |
+| [9–13 nov](../2026_11_09-13) | UD3 · Persistencia: Room y preferencias<br>UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD3 · Bluetooth y desplegar en un móvil real | A2 (4 %), C2 (2 %) |
+| 16–20 nov | UD3 · Persistencia: Room y preferencias<br>UD3 · Permisos, tareas en segundo plano y localización<br>UD4 · Captura, procesado y conversión de imágenes<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A3 (4 %), C3 (2 %), P2 (16,2 %) |
+| 23–27 nov | UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD4 · Reproducción de audio y vídeo, eventos y animaciones<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A4 (4 %), C4 (2 %) |
+| 30 nov–4 dic | UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD3 · Bluetooth y desplegar en un móvil real<br>UD4 · Desplegar, depurar y documentar | A5 (4 %), C5 (2 %), P3 (13,1 %) |
+| 7–11 dic | Repaso (mié 9) | F (30 % + 3,8 %) |
+| 14–18 dic | UD5 · Arquitectura y motores de juegos (2ª evaluación, desde mar 15) | Cierre de la 1ª evaluación · jue 17 |
+
+## Notas
+
+- **Cuestionarios (C).** Hay uno cada semana en la que se facilitan apuntes o actividades guiadas nuevas, con preguntas sobre ellos. Se entrega hasta el lunes siguiente a su semana.
+- **Exámenes escritos** (parciales, **P**, y final, **F**). Son en papel e incluyen preguntas similares a las de los cuestionarios. Cada pregunta indica los puntos que vale: los contenidos con más porcentaje tienen preguntas que valen más.
+- **Actividades guiadas (A).** La marcha y el cumplimiento de cada actividad se evalúan con una lista de cotejo: cada «Comprueba que…» de cada paso se cumple o no. La nota de cada actividad es el porcentaje de puntos cumplidos (de 0 a 10), y el mínimo de 4 se aplica a la media de las actividades de la evaluación.
+- «App Centro Acogida» no se entregó: sus contenidos se evalúan con la P1 (Julia) y la P2.
+- Los exámenes parciales preguntan todo lo trabajado en clase desde el 2 de noviembre, también los contenidos que ya evaluó Julia. Esos contenidos aparecen en «Qué entra» con dos instrumentos (por ejemplo, «P1 (Julia) + P2»): la mitad de su nota sale de lo de Julia y la otra mitad del examen parcial. Si no se hizo el examen de Julia o no se entregó su tarea, en esa mitad se obtiene un 5.
+- Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).
