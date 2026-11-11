@@ -1,27 +1,28 @@
 # Programación · PMDM
 
-Qué se trabaja en cada evaluación, cuándo y cómo se califica, según la programación del módulo.
+Qué unidades entran en cada evaluación y cómo se califica, según la programación del módulo.
 
-- [1ª evaluación](1a-evaluacion.md): UD1, UD2, UD3, UD4 · cierre el 17 de diciembre
-- [2ª evaluación](2a-evaluacion.md): UD5, UD6 · cierre el 25 de febrero
 - [Rúbricas](rubricas.md)
 - [Currículo oficial del módulo](curriculo-oficial.md): resultados de aprendizaje, criterios de evaluación, contenidos básicos y orientaciones, tal como los publica el DOG (Decreto 105/2011)
 - [Módulo de Proyecto](proyecto-final-oficial.md): el proyecto final del ciclo, tal como lo publica el DOG
 
-## Fechas clave
+## Unidades de cada evaluación
+
+Peso de cada unidad en el módulo, según la programación oficial. La 1ª evaluación tiene su detalle (qué entra, cómo se evalúa y planificación semanal) en [1ª evaluación](1a-evaluacion.md).
+
+| Evaluación | Unidades | Cierre |
+|---|---|---|
+| [1ª](1a-evaluacion.md) | UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles (10 %)<br>UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario (20 %)<br>UD3 · Persistencia, conectividad y servicios del dispositivo móvil (18 %)<br>UD4 · Desarrollo de aplicaciones multimedia (22 %) | 17 de diciembre |
+| 2ª | UD5 · Arquitectura y motores de juegos 2D y 3D (8 %)<br>UD6 · Desarrollo e implantación de juegos 2D y 3D (22 %) | 25 de febrero |
+
+## Fechas clave de la 1ª evaluación
 
 | Fecha | Qué |
 |---|---|
-| 3–6, 10, 11 y 13 nov | Puesta en común y proyecto de diagnóstico, en dos partes (no se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes) |
 | vie 20 nov | **P2** · examen parcial de la 1ª evaluación (16,2 % de la nota) |
 | vie 4 dic | **P3** · examen parcial de la 1ª evaluación (13,1 % de la nota) |
 | vie 11 dic | **F** · examen final de la 1ª evaluación |
 | jue 17 dic | Cierre de la 1ª evaluación (sesión de evaluación) |
-| mar 16 feb y mié 17 feb | Repaso de la 2ª evaluación |
-| vie 19 feb | Examen final de la 2ª evaluación |
-| 23–25 feb | Últimas clases en el centro: revisar, recuperar y cerrar notas (después, formación en empresa) |
-| jue 25 feb | Cierre de la 2ª evaluación (sesión de evaluación) |
-| vie 11 jun | Sesión de evaluación final del curso |
 
 ## Cómo se califica
 
