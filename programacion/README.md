@@ -12,8 +12,6 @@ Qué se trabaja en cada evaluación, cuándo y cómo se califica, según la prog
 
 | Fecha | Qué |
 |---|---|
-| mié 9 sep | Presentación del módulo y preparación del ordenador |
-| mar 6 oct | Sesión de evaluación inicial (diagnóstica) |
 | 3–6, 10, 11 y 13 nov | Puesta en común y proyecto de diagnóstico, en dos partes (no se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes) |
 | vie 20 nov | **P2** · examen parcial de la 1ª evaluación (16,2 % de la nota) |
 | vie 4 dic | **P3** · examen parcial de la 1ª evaluación (13,1 % de la nota) |
