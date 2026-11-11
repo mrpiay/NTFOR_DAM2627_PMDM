@@ -8,7 +8,7 @@ Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder los cuestionarios y preparar los exámenes.
 
-**Evaluación.** Esta actividad guiada (**A2**) se evalúa con su lista de cotejo: cada «Comprueba que…» se cumple o no. El cuestionario de la semana (**C2**) se entrega hasta el lunes 16 de noviembre, junto con el de la otra semana. El **viernes 20 de noviembre** hay un examen parcial, **P2**, en papel, sobre las dos partes de esta actividad (pasos 0 a 10): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla y Room; y los apuntes de la UD1 a la UD3. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
+**Evaluación.** Esta actividad guiada (**A2**) se evalúa con su lista de cotejo: cada «Comprueba que…» se cumple o no. El cuestionario de la semana (**C2**) se entrega hasta el lunes 16 de noviembre, junto con el de la otra semana. El **viernes 4 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también las dos partes de esta actividad (pasos 0 a 10): Android Studio, Kotlin, la arquitectura típica de una app (pantallas, ViewModel, estado y navegación), la adaptación a varios tamaños de pantalla y Room; y los apuntes de la UD1 a la UD3. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
 
 Del 10 al 13 de noviembre. Cada paso trae una pista y qué hacer si algo falla.
 

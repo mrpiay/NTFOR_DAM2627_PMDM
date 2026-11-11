@@ -6,6 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, viernes 4 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el viernes 11 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
 | 11 nov | La **revisión (R)** de los cuestionarios y de los exámenes parciales corregidos es el 10 % de la nota; la entrega de los cuestionarios es obligatoria |
@@ -21,9 +22,8 @@ Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (
 |---|---|
 | Lunes 16 de noviembre, 23:59 | Entrega en Teams de los cuestionarios C1 y C2 (semanas del 2 al 6 y del 9 al 13), en una sola tarea |
 | Martes 17 de noviembre | Se publican las soluciones de C1 y C2 y la actividad guiada «Centro de acogida 2.0» completa |
-| Viernes 20 de noviembre (13:00 y 13:50) | **P2** · examen parcial, en papel: lo trabajado en las semanas del 2 al 6 y del 9 al 13 |
-| Viernes 4 de diciembre | **P3** · examen parcial, en papel: lo trabajado del 16 de noviembre al 3 de diciembre |
-| Viernes 11 de diciembre | **F** · examen final de la 1ª evaluación |
+| Viernes 4 de diciembre (13:00 y 13:50) | **P2** · examen parcial, en papel: todo lo de la 1ª evaluación que no evaluó Julia |
+| Viernes 11 de diciembre (13:00 y 13:50) | **F** · examen final de la 1ª evaluación |
 
 ## Programación
 
