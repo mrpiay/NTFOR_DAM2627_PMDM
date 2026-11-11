@@ -6,11 +6,11 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
 | 11 nov | La **revisión (R)** de los cuestionarios y de los exámenes parciales corregidos es el 10 % de la nota; la entrega de los cuestionarios es obligatoria |
 | 11 nov | La 1ª evaluación en detalle: qué entra, cómo se evalúa y planificación semanal, con enlaces a los apuntes y actividades de cada semana ([programacion/1a-evaluacion.md](programacion/1a-evaluacion.md)) |
 | 10 nov | Fechas de los exámenes parciales y del examen final de la 1ª evaluación |
-| 9 nov | Currículo oficial del módulo ([programacion/curriculo-oficial.md](programacion/curriculo-oficial.md)) |
 
 ## Fechas importantes
 
@@ -45,7 +45,7 @@ Junto a cada archivo, GitHub muestra cuándo cambió por última vez y qué se c
 
 | Semana | Actividades | Apuntes | Cuestionario | Soluciones |
 |---|---|---|---|---|
-| Repaso Julia | — | [apuntes](repaso-julia/apuntes) | — | — |
+| Repaso Julia | — | [apuntes](repaso-julia/apuntes) | [examen de octubre](examen-julia/enunciado.md) | [solución](examen-julia/solucion.md) |
 | Del 2 al 6 de noviembre | [actividades](2026_11_02-06/actividades) | [apuntes](2026_11_02-06/apuntes) | [cuestionario](2026_11_02-06/cuestionario.md) | [soluciones](2026_11_02-06/soluciones) |
 | Del 9 al 13 de noviembre | [actividades](2026_11_09-13/actividades) | [apuntes](2026_11_09-13/apuntes) | [cuestionario](2026_11_09-13/cuestionario.md) | [soluciones](2026_11_09-13/soluciones) |
 
