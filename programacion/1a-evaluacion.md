@@ -61,16 +61,16 @@ Porcentajes sobre la nota de la evaluación.
 
 ## Planificación semanal
 
-| Semana | Qué se da | Qué se evalúa |
-|---|---|---|
-| Antes del 2 nov<br>[repaso Julia](../repaso-julia/apuntes)<br>[examen de octubre](../examen-julia/enunciado.md) | Lo evaluado por Julia | P1 (Julia) (11,4 %), «Tarea 1» (Julia) (2,3 %) |
-| [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Limitaciones, configuraciones, perfiles y estructura de una app<br>UD1 · Entorno, modificar una app y emuladores<br>UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD2 · Kotlin y Compose: estructura de clases e interfaz<br>UD2 · Pruebas en emuladores y documentar | A1 (4 %), C1 |
-| [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD3 · Persistencia: Room y preferencias<br>UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD3 · Bluetooth y desplegar en un móvil real | A2 (4 %), C2 |
-| 16–20 nov | UD3 · Persistencia: Room y preferencias<br>UD3 · Permisos, tareas en segundo plano y localización<br>UD4 · Captura, procesado y conversión de imágenes<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A3 (4 %), C3, R de C1 (1,7 %), R de C2 (1,7 %) |
-| 23–27 nov | UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD4 · Reproducción de audio y vídeo, eventos y animaciones<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A4 (4 %), C4, R de C3 (1,7 %) |
-| 30 nov–4 dic | UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD3 · Bluetooth y desplegar en un móvil real<br>UD4 · Desplegar, depurar y documentar | A5 (4 %), C5, P2 (26,3 %), R de C4 (1,7 %) |
-| 7–11 dic | Repaso (mié 9) | F (30 %), R de C5 (1,7 %), R de P2 (1,7 %) |
-| 14–18 dic | UD5 · Arquitectura y motores de juegos | Cierre de la 1ª evaluación · jue 17 |
+| Semana | Qué se trabaja | Cómo se evalúa | Exámenes |
+|---|---|---|---|
+| Antes del 2 nov<br>[repaso Julia](../repaso-julia/apuntes)<br>[examen de octubre](../examen-julia/enunciado.md) | Lo evaluado por Julia | «Tarea 1» (Julia) (2,3 %) | **P1 (Julia)** (11,4 %) |
+| [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Limitaciones, configuraciones, perfiles y estructura de una app<br>UD1 · Entorno, modificar una app y emuladores<br>UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD2 · Kotlin y Compose: estructura de clases e interfaz<br>UD2 · Pruebas en emuladores y documentar | A1 (4 %), C1 | — |
+| [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD3 · Persistencia: Room y preferencias<br>UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD3 · Bluetooth y desplegar en un móvil real | A2 (4 %), C2 | — |
+| 16–20 nov | UD3 · Persistencia: Room y preferencias<br>UD3 · Permisos, tareas en segundo plano y localización<br>UD4 · Captura, procesado y conversión de imágenes<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A3 (4 %), C3, R de C1 (1,7 %), R de C2 (1,7 %) | — |
+| 23–27 nov | UD3 · Permisos, tareas en segundo plano y localización<br>UD3 · Conexiones HTTP y sensores<br>UD4 · Reproducción de audio y vídeo, eventos y animaciones<br>UD4 · Estructura, interfaz, HTTP, persistencia y pruebas en la app | A4 (4 %), C4, R de C3 (1,7 %) | — |
+| 30 nov–4 dic | UD1 · Tecnologías de desarrollo: nativas y multiplataforma (Flutter)<br>UD3 · Bluetooth y desplegar en un móvil real<br>UD4 · Desplegar, depurar y documentar | A5 (4 %), C5, R de C4 (1,7 %) | **P2** (26,3 %), vie 4 dic |
+| 7–11 dic | Repaso (mié 9) | R de C5 (1,7 %), R de P2 (1,7 %) | **F** (30 %), vie 11 dic |
+| 14–18 dic | UD5 · Arquitectura y motores de juegos | Cierre de la 1ª evaluación · jue 17 | — |
 
 ## Notas
 
