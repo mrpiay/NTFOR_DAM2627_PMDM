@@ -1,6 +1,6 @@
 # UD3 · Conectividad, sensores y segundo plano
 
-La UD3 se completa esta semana. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de la app del Centro de acogida del proyecto. Las preguntas para comprobar que lo entiendes están en el cuestionario de la semana, en «Cuestiones sobre los apuntes».
+La UD3 se completa esta semana. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de la app del Centro de acogida del proyecto. Las preguntas para comprobar que lo entiendes están en el [cuestionario](../cuestionario.md) de la semana, en «Cuestiones sobre los apuntes».
 
 Los apartados 1, 3 y 4 se practican en el proyecto (pasos 11, 12 y 13). Los apartados 2 y 5 se estudian solo aquí: en el examen, las preguntas sobre ellos son de conceptos y criterio, no de código.
 

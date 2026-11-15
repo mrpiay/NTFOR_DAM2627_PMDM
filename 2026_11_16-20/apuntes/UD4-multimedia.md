@@ -1,6 +1,6 @@
 # UD4 · Aplicaciones multimedia
 
-Lo básico de la UD4. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de la app del Centro de acogida del proyecto. Las preguntas para comprobar que lo entiendes están en el cuestionario de la semana, en «Cuestiones sobre los apuntes».
+Lo básico de la UD4. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de la app del Centro de acogida del proyecto. Las preguntas para comprobar que lo entiendes están en el [cuestionario](../cuestionario.md) de la semana, en «Cuestiones sobre los apuntes».
 
 Los apartados 2, 3, 5 y 6 se practican en el proyecto (pasos 14 y 15). Los apartados 1 y 4 se estudian solo aquí: en el examen, las preguntas sobre ellos son de conceptos y criterio, no de código.
 

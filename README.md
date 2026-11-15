@@ -6,6 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 15 nov | Semana del 16 al 20: la 3.ª parte del proyecto (pasos 11 a 15: la lista desde Internet, agitar para recargar, la distancia al centro, la foto, un sonido y una animación, Logcat, el APK y la documentación), con plantilla para quien no terminó la 2.ª, y el cuestionario C3 ([2026_11_16-20](2026_11_16-20)) |
 | 15 nov | Apuntes de la semana del 16 al 20: Internet con Retrofit, segundo plano, sensores, ubicación, Wi-Fi, Bluetooth y NFC (UD3); imágenes, audio, vídeo, animaciones, depurar y empaquetar (UD4); y Flutter (UD1) ([2026_11_16-20/apuntes](2026_11_16-20/apuntes)) |
 | 15 nov | Nueva planificación: del 16 al 20, un caso práctico corto de cada tema de la UD3 y la UD4 en la app del centro de acogida (Internet, un sensor, la ubicación, la foto, un sonido y una animación, el APK de la app); el segundo plano, Bluetooth, mapas, vídeo y Flutter, en teoría. Del 23 al 27, el martes 1 y el miércoles 2, repaso; el examen parcial, el viernes 4 de diciembre. La app integrada se hace al final del curso |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, viernes 4 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el viernes 11 de diciembre |
@@ -51,7 +52,7 @@ Junto a cada archivo, GitHub muestra cuándo cambió por última vez y qué se c
 | Repaso Julia | — | [apuntes](repaso-julia/apuntes) | [examen de octubre](examen-julia/enunciado.md) | [solución](examen-julia/solucion.md) |
 | Del 2 al 6 de noviembre | [actividades](2026_11_02-06/actividades) | [apuntes](2026_11_02-06/apuntes) | [cuestionario](2026_11_02-06/cuestionario.md) | [soluciones](2026_11_02-06/soluciones) |
 | Del 9 al 13 de noviembre | [actividades](2026_11_09-13/actividades) | [apuntes](2026_11_09-13/apuntes) | [cuestionario](2026_11_09-13/cuestionario.md) | [soluciones](2026_11_09-13/soluciones) |
-| Del 16 al 20 de noviembre | — | [apuntes](2026_11_16-20/apuntes) | — | — |
+| Del 16 al 20 de noviembre | [actividades](2026_11_16-20/actividades) | [apuntes](2026_11_16-20/apuntes) | [cuestionario](2026_11_16-20/cuestionario.md) | [soluciones](2026_11_16-20/soluciones) |
 
 ## Cómo usar los materiales
 

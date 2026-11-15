@@ -8,7 +8,7 @@ Los apuntes de las unidades de esta semana.
 | [`UD4-multimedia.md`](UD4-multimedia.md) | La UD4: formatos y librerías multimedia, imágenes (capturar, procesar y convertir), audio, vídeo, animaciones, y depurar, empaquetar y documentar |
 | [`UD1-multiplataforma.md`](UD1-multiplataforma.md) | Nativo o multiplataforma: Flutter, Kotlin Multiplatform y React Native |
 
-Continúan los apuntes de la [semana del 2 al 6](../../2026_11_02-06/apuntes) (UD1 y UD2) y de la [semana del 9 al 13](../../2026_11_09-13/apuntes) (UD3). Las preguntas del cuestionario se responden con ellos y con el proyecto, y las de los exámenes salen de lo mismo. De lo que se estudia solo en los apuntes (segundo plano, mapas, Bluetooth, NFC, vídeo y Flutter), las preguntas son de conceptos y criterio, no de código.
+Continúan los apuntes de la [semana del 2 al 6](../../2026_11_02-06/apuntes) (UD1 y UD2) y de la [semana del 9 al 13](../../2026_11_09-13/apuntes) (UD3). Las preguntas del [cuestionario](../cuestionario.md) se responden con ellos y con el proyecto, y las de los exámenes salen de lo mismo. De lo que se estudia solo en los apuntes (segundo plano, mapas, Bluetooth, NFC, vídeo y Flutter), las preguntas son de conceptos y criterio, no de código.
 
 ## Dónde consultar
 

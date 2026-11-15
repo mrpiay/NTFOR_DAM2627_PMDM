@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nombre": "Luna",
+    "especie": "Perro",
+    "edad": 3,
+    "urgente": true,
+    "descripcion": "Muy cariñosa. Se lleva bien con niños."
+  },
+  {
+    "id": 2,
+    "nombre": "Misi",
+    "especie": "Gato",
+    "edad": 1,
+    "urgente": false,
+    "descripcion": "Tranquila y curiosa."
+  },
+  {
+    "id": 3,
+    "nombre": "Toby",
+    "especie": "Perro",
+    "edad": 5,
+    "urgente": false,
+    "descripcion": "Le encanta pasear y jugar con la pelota."
+  },
+  {
+    "id": 4,
+    "nombre": "Nala",
+    "especie": "Gato",
+    "edad": 2,
+    "urgente": true,
+    "descripcion": "Algo tímida al principio; después, muy mimosa."
+  },
+  {
+    "id": 5,
+    "nombre": "Rocky",
+    "especie": "Perro",
+    "edad": 8,
+    "urgente": false,
+    "descripcion": "Mayor y tranquilo. Ideal para un piso."
+  },
+  {
+    "id": 6,
+    "nombre": "Coco",
+    "especie": "Conejo",
+    "edad": 1,
+    "urgente": false,
+    "descripcion": "Come de todo y se deja coger."
+  },
+  {
+    "id": 7,
+    "nombre": "Kira",
+    "especie": "Perro",
+    "edad": 4,
+    "urgente": true,
+    "descripcion": "Necesita una casa con patio."
+  },
+  {
+    "id": 8,
+    "nombre": "Simba",
+    "especie": "Gato",
+    "edad": 6,
+    "urgente": false,
+    "descripcion": "Independiente; convive bien con otros gatos."
+  },
+  {
+    "id": 9,
+    "nombre": "Bruno",
+    "especie": "Perro",
+    "edad": 2,
+    "urgente": true,
+    "descripcion": "Llegó la semana pasada. Muy juguetón."
+  },
+  {
+    "id": 10,
+    "nombre": "Lola",
+    "especie": "Cobaya",
+    "edad": 1,
+    "urgente": false,
+    "descripcion": "Pequeña y sociable; mejor en pareja."
+  }
+]

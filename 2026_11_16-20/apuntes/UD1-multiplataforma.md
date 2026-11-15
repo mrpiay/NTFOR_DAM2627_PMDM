@@ -1,6 +1,6 @@
 # UD1 · Desarrollo multiplataforma: Flutter y otras opciones
 
-Amplía el apartado 2 de los [apuntes de la UD1 de la semana del 2 al 6](../../2026_11_02-06/apuntes/UD1-tecnologias-y-entornos.md) (las tecnologías de desarrollo). Se estudia solo aquí: en el examen, las preguntas son de conceptos y criterio, no de código. Las preguntas para comprobar que lo entiendes están en el cuestionario de la semana.
+Amplía el apartado 2 de los [apuntes de la UD1 de la semana del 2 al 6](../../2026_11_02-06/apuntes/UD1-tecnologias-y-entornos.md) (las tecnologías de desarrollo). Se estudia solo aquí: en el examen, las preguntas son de conceptos y criterio, no de código. Las preguntas para comprobar que lo entiendes están en el [cuestionario](../cuestionario.md) de la semana.
 
 ---
 
