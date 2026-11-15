@@ -206,16 +206,19 @@ init {
 
 // Pide la lista de animales al servidor, en una corrutina (fuera del hilo principal)
 fun cargarAnimales() {
+    // Si ya se está cargando (por ejemplo, al agitar el móvil varias veces), no se empieza otra carga
+    if (_uiState.value.cargando) return
+    _uiState.update { it.copy(cargando = true, aviso = null) }
+
     viewModelScope.launch {
-        _uiState.update { it.copy(cargando = true, aviso = null) }
         try {
             val lista = Red.servicio.animales()
             Log.d("CentroAcogida", "Animales cargados de Internet: ${lista.size}")
             _uiState.update { it.copy(animales = lista, aviso = "Lista actualizada: ${lista.size} animales") }
         } catch (e: Exception) {
-            // Sin conexión o respuesta inesperada: se quedan los animales que ya había
+            // Sin conexión, error del servidor o JSON inesperado: se quedan los animales que ya había
             Log.e("CentroAcogida", "No se ha podido cargar la lista", e)
-            _uiState.update { it.copy(aviso = "Sin conexión: se muestran los animales guardados en la app") }
+            _uiState.update { it.copy(aviso = "No se ha podido actualizar la lista: se muestran los animales guardados en la app") }
         } finally {
             _uiState.update { it.copy(cargando = false) }
         }
@@ -254,13 +257,13 @@ onRecargar = viewModel::cargarAnimales
 
 - al abrir la app, durante un momento se ve la barra de progreso y después el aviso «**Lista actualizada: 10 animales**»;
 - en la lista están **Bruno** (perro, urgente) y **Lola** (cobaya), que no están en `DatosAnimales.kt`;
-- con el emulador **sin conexión** (desliza desde arriba y activa el **modo avión**), al cerrar y abrir la app sale «**Sin conexión: se muestran los animales guardados en la app**» y los ocho animales de siempre. La app no se cierra. Vuelve a desactivar el modo avión;
+- con el emulador **sin conexión** (desliza desde arriba y activa el **modo avión**), al cerrar y abrir la app sale «**No se ha podido actualizar la lista: se muestran los animales guardados en la app**» y los ocho animales de siempre. La app no se cierra. Vuelve a desactivar el modo avión;
 - sabes explicar por qué la petición va en una corrutina y qué hace el conversor.
 
 **Si te falla…**
 
 - *`Unresolved reference: serialization`* o *`Plugin … was not found`*: falta el plugin en uno de los dos `build.gradle.kts`, o no has pulsado *Sync Now*.
-- *Siempre sale «Sin conexión»*: mira la línea roja de Logcat (paso 15) debajo de «No se ha podido cargar la lista». Si dice `SecurityException` o `Permission denied`, falta el permiso `INTERNET` (desinstala la app del emulador y vuelve a ejecutarla). Si dice `UnknownHostException`, el emulador no tiene Internet: comprueba que no esté en modo avión. Si dice `Serializer for class 'Animal' is not found`, falta `@Serializable` o el plugin.
+- *Siempre sale «No se ha podido actualizar la lista»*: mira la línea roja de Logcat (paso 15) debajo de «No se ha podido cargar la lista». Si dice `SecurityException` o `Permission denied`, falta el permiso `INTERNET` (desinstala la app del emulador y vuelve a ejecutarla). Si dice `UnknownHostException`, el emulador no tiene Internet: comprueba que no esté en modo avión. Si dice `Serializer for class 'Animal' is not found`, falta `@Serializable` o el plugin.
 - *`Field 'imagen' is required`*: falta `@Transient` o el valor por defecto de `imagen`.
 - *La app se cierra con `NetworkOnMainThreadException`*: la llamada a `Red.servicio.animales()` no está dentro de `viewModelScope.launch`.
 

@@ -20,7 +20,11 @@ Continúan los [apuntes de la UD3 de la semana del 9 al 13](../../2026_11_09-13/
 - **Lo que pide Android:**
   - el permiso **`INTERNET`** en el manifiesto (es normal: se concede al instalar);
   - la petición **fuera del hilo principal**: si se hace en él, la app se congela y Android lanza `NetworkOnMainThreadException`. Con Retrofit, la función es `suspend` y se llama desde una corrutina (`viewModelScope.launch`);
-  - tratar el **error**: sin conexión, servidor caído o respuesta inesperada, la app avisa y no se cierra (`try`/`catch`).
+  - tratar el **error**: sin conexión, servidor caído o respuesta inesperada, la app avisa y no se cierra (`try`/`catch`). Cada problema lanza un tipo de **excepción** distinto, y se pueden recoger por separado para dar un aviso más preciso:
+    - **sin conexión** (no hay respuesta: modo avión, sin Wi-Fi, servidor que no existe): `IOException`;
+    - el servidor **responde con un error** (404, 500…): `HttpException`, de Retrofit, que trae el código en `e.code()`;
+    - la respuesta llega, pero **no es el JSON esperado** (falta un campo, un tipo no coincide): `SerializationException`, de kotlinx.serialization.
+  - no empezar **dos peticiones a la vez**: si ya hay una en marcha (`cargando` vale `true`), una nueva petición, por ejemplo al pulsar dos veces el botón, no hace nada.
 - **Retrofit** convierte una API web en una **interfaz de Kotlin**: se declara la función con una anotación y Retrofit escribe el código que hace la petición. Sus piezas:
   - la **interfaz**: `@GET("animales.json") suspend fun animales(): List<Animal>`;
   - el objeto **`Retrofit`**, con la **URL base** (la parte común de todas las direcciones) y un **conversor**, que pasa el JSON a objetos (`Animal`) y al revés. Hay conversores para Gson, Moshi o kotlinx.serialization;
