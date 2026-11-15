@@ -6,6 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 15 nov | Nueva planificación: del 16 al 20, un caso práctico corto de cada tema de la UD3 y la UD4 en la app del centro de acogida (Internet, un sensor, la ubicación, una notificación, la foto, un sonido y una animación, el móvil real); Bluetooth, mapas, vídeo y Flutter, en teoría. Del 23 al 27, el martes 1 y el miércoles 2, repaso; el examen parcial, el viernes 4 de diciembre. La app integrada se hace al final del curso |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, viernes 4 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el viernes 11 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
@@ -21,7 +22,7 @@ Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (
 | Fecha | Qué |
 |---|---|
 | Lunes 16 de noviembre, 23:59 | Entrega en Teams de los cuestionarios C1 y C2 (semanas del 2 al 6 y del 9 al 13), en una sola tarea |
-| Martes 17 de noviembre | Se publican las soluciones de C1 y C2 y la actividad guiada «Centro de acogida 2.0» completa |
+| Martes 17 de noviembre | Se publican las soluciones de C1 y C2 y la 2.ª parte de la actividad guiada «Centro de acogida 2.0» terminada |
 | Viernes 4 de diciembre (13:00 y 13:50) | **P2** · examen parcial, en papel: todo lo de la 1ª evaluación que no evaluó Julia |
 | Viernes 11 de diciembre (13:00 y 13:50) | **F** · examen final de la 1ª evaluación |
 

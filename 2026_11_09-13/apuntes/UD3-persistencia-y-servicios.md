@@ -2,7 +2,7 @@
 
 Lo básico que hay que saber de la UD3. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de la app del Centro de acogida del proyecto. Las preguntas para comprobar que lo entiendes están en el [cuestionario](../cuestionario.md) de la semana, en «Cuestiones sobre los apuntes».
 
-Los apartados 1 a 3 se practican en el proyecto. Los apartados 4 y 5 se trabajan a fondo en el proyecto integrado de la UD4; aquí está lo básico.
+Los apartados 1 a 3 se practican en el proyecto. Los apartados 4 y 5 se practican en la 3.ª parte del proyecto, la semana del 16 al 20 de noviembre; aquí está lo básico.
 
 ---
 

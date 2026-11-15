@@ -2,7 +2,7 @@
 
 ## Punto de partida
 
-Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 7): la app del centro de acogida con el estado en un ViewModel, la navegación lista → detalle y el formulario «Solicitar adopción» con validación. En esta 2.ª parte la lista se adapta a **dos tamaños de pantalla** (UD2), las solicitudes se guardan en una **base de datos con Room** (UD3) y la app pide un **permiso** y usa la **cámara** (inicio de la UD4). El resto de la UD3 se trabaja dentro del proyecto integrado de la UD4, según la programación.
+Es la continuación de la 1.ª parte (semana del 2 al 6 de noviembre, pasos 0 a 7): la app del centro de acogida con el estado en un ViewModel, la navegación lista → detalle y el formulario «Solicitar adopción» con validación. En esta 2.ª parte la lista se adapta a **dos tamaños de pantalla** (UD2), las solicitudes se guardan en una **base de datos con Room** (UD3) y la app pide un **permiso** y usa la **cámara** (inicio de la UD4). El resto de la UD3 se trabaja en la 3.ª parte del proyecto, la semana del 16 al 20 de noviembre.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele los **pasos necesarios** para implementar cada cosa y que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**: es la única forma de familiarizarte con tu entorno. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**: es lo que te van a pedir después.
 
