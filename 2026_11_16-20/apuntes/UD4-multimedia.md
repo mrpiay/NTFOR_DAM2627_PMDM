@@ -114,6 +114,8 @@ Los apartados 2, 3, 5 y 6 se practican en el proyecto (pasos 14 y 15). Los apart
 
 - **Logcat:** el registro de mensajes del dispositivo, en Android Studio. La app escribe con `Log.d("CentroAcogida", "Animales cargados: ${lista.size}")`. Cada mensaje tiene una **etiqueta** (para filtrarlos) y un **nivel**: `Log.v` (detalle), `Log.d` (depuración), `Log.i` (información), `Log.w` (aviso), `Log.e` (error). Cuando la app se cierra sola, Logcat muestra la **excepción** y la **línea** donde ocurrió.
 - **El depurador:** un **punto de interrupción** (*breakpoint*, clic junto al número de línea) para la app en esa línea; con *Debug* se ve el valor de cada variable y se avanza paso a paso.
+- **La configuración de ejecución:** lo que usan los botones *Run* (▶) y *Debug* para saber qué compilar, dónde instalarlo y qué pantalla abrir. Se llama `app` y aparece a la izquierda de ▶; se cambia o se crea en *Edit Configurations…*. Si se borra (*Delete*), *Run* deja de funcionar hasta crearla otra vez.
+- **El Profiler:** ejecuta la app midiendo cuánta **CPU** y **memoria** usa, para encontrar lo que va lento o gasta demasiado. *Profileable* mide con poco impacto, con tiempos parecidos a los de un móvil real; *debuggable* da todo el detalle (cada objeto en memoria), pero la app va más lenta mientras mide, y sirve para buscar **fugas de memoria** (objetos que ya no se usan y no se liberan).
 - **Empaquetar:**
   - **APK** (*Android Package*): el archivo que se instala en un móvil. *Build → Build App Bundle(s) / APK(s) → Build APK(s)* lo genera en `app/build/outputs/apk/debug/`;
   - **AAB** (*Android App Bundle*): el formato para publicar en Google Play, que genera un APK a medida de cada móvil;
