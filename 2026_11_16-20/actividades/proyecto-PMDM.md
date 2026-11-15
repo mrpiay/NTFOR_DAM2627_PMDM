@@ -688,7 +688,21 @@ tag~:^CentroAcogida$
 
 Recarga la lista (agitando o con el botón) y mira las líneas `D` («Animales cargados de Internet: 10»). Activa el modo avión, recarga y mira la línea `E` y la excepción que la acompaña. Desactiva el modo avión.
 
-**15.2 · El APK.** *Build > Generate App Bundles or APKs > Generate APKs*. Al terminar, abajo a la derecha sale un aviso con el enlace **locate**: abre la carpeta `app\build\outputs\apk\debug\`, con `app-debug.apk`. Si tienes un móvil Android, puedes copiarlo al móvil e instalarlo (pide permitir instalar apps de esa fuente).
+**15.2 · El APK.** *Build > Generate App Bundles or APKs > Generate APKs*. Al terminar, abajo a la derecha sale un aviso con el enlace **locate**: abre la carpeta `app\build\outputs\apk\debug\`, con `app-debug.apk`.
+
+Instálalo **en el emulador**, sin Android Studio, como se instalaría en un móvil:
+
+1. En el emulador, mantén pulsado el icono de «Centro de acogida» → *App info* → **Uninstall** (o arrástralo a *Uninstall*). Así se comprueba que lo que se instala es el APK y no lo que dejó Android Studio.
+2. Arrastra `app-debug.apk` desde la carpeta hasta la ventana del emulador. Sale un aviso de que se está instalando.
+3. Desliza hacia arriba en la pantalla de inicio del emulador para ver todas las apps y abre «Centro de acogida» desde ahí.
+
+**Si además tienes un móvil Android**, instálalo también en él:
+
+1. Copia `app-debug.apk` al móvil: con el cable USB (en el móvil, elige *Transferencia de archivos*) a la carpeta `Download`, o enviándotelo por correo o a tu nube.
+2. En el móvil, abre la app **Archivos** (o el correo) y toca `app-debug.apk`.
+3. Si avisa de que no se permite instalar apps de esa fuente, toca **Ajustes**, activa **Permitir de esta fuente** y vuelve atrás.
+4. Toca **Instalar**. Si Play Protect avisa de que la app es desconocida, toca **Instalar de todas formas**: es tu app, sin firmar para publicar.
+5. Ábrela. En un móvil real, agitar recarga la lista y la distancia sale con tu ubicación de verdad.
 
 **15.3 · La documentación.** En la raíz del proyecto (la carpeta que contiene `settings.gradle.kts`), crea el archivo `DOCUMENTACION.md` (en el panel *Project*, cambia la vista de *Android* a *Project* arriba a la izquierda; clic derecho sobre `CentroAcogida` → *New > File*) con esta estructura, completada con lo tuyo:
 
@@ -735,12 +749,15 @@ solicitar una adopción, ver mis solicitudes.)
 
 - en Logcat, con el filtro `tag~:^CentroAcogida$`, sale una línea `D` por cada recarga, y una `E` con la excepción cuando no hay conexión;
 - existe `app-debug.apk` en `app\build\outputs\apk\debug\` y sabes decir qué es y en qué se diferencia de una versión *release*;
+- después de desinstalar la app, el APK arrastrado al emulador la instala y se abre desde la lista de apps, con los 10 animales;
 - `DOCUMENTACION.md` tiene las cinco secciones completas y la tabla de pruebas con las ocho filas hechas y su resultado.
 
 **Si te falla…**
 
 - *Logcat no muestra nada*: arriba de Logcat, el desplegable del dispositivo tiene que ser tu emulador, y el de la app, `com.example.centroacogida`. Borra el filtro y vuelve a escribirlo.
 - *No aparece el menú Generate…*: en algunas versiones de Android Studio está en *Build > Build App Bundle(s) / APK(s) > Build APK(s)*.
+- *Al arrastrar el APK no pasa nada o sale «Install failed»*: espera a que el emulador esté en la pantalla de inicio, comprueba que desinstalaste la app antes y vuelve a arrastrarlo.
+- *En el móvil sale «App no instalada»*: hay otra versión de la app instalada desde otro ordenador; desinstálala del móvil y vuelve a tocar el APK.
 
 ---
 
