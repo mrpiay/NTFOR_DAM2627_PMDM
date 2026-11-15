@@ -694,7 +694,7 @@ Instálalo **en el emulador**, sin Android Studio, como se instalaría en un mó
 
 1. En el emulador, mantén pulsado el icono de «Centro de acogida» → *App info* → **Uninstall** (o arrástralo a *Uninstall*). Así se comprueba que lo que se instala es el APK y no lo que dejó Android Studio.
 2. Arrastra `app-debug.apk` desde la carpeta hasta la ventana del emulador. Sale un aviso de que se está instalando.
-3. Desliza hacia arriba en la pantalla de inicio del emulador para ver todas las apps y abre «Centro de acogida» desde ahí.
+3. Desliza hacia arriba en la pantalla de inicio del emulador para ver todas las apps y abre «Centro de acogida» desde ahí. No pulses **Run** en Android Studio: volvería a instalar la app y ya no estarías probando el APK.
 
 **Si además tienes un móvil Android**, instálalo también en él:
 
@@ -757,6 +757,7 @@ solicitar una adopción, ver mis solicitudes.)
 - *Logcat no muestra nada*: arriba de Logcat, el desplegable del dispositivo tiene que ser tu emulador, y el de la app, `com.example.centroacogida`. Borra el filtro y vuelve a escribirlo.
 - *No aparece el menú Generate…*: en algunas versiones de Android Studio está en *Build > Build App Bundle(s) / APK(s) > Build APK(s)*.
 - *Al arrastrar el APK no pasa nada o sale «Install failed»*: espera a que el emulador esté en la pantalla de inicio, comprueba que desinstalaste la app antes y vuelve a arrastrarlo.
+- *El botón Run (▶) no hace nada y a su izquierda ya no pone «app»*: se ha borrado la configuración de ejecución (pasa al elegir **Delete** en el menú de los tres puntos de «app», junto a ▶). Para crearla otra vez: *Run > Edit Configurations…* → **+** → **Android App**; en *Name* escribe `app`, en *Module* elige `CentroAcogida.app` y pulsa **OK**. Al lado de ▶ vuelve a salir **app**.
 - *En el móvil sale «App no instalada»*: hay otra versión de la app instalada desde otro ordenador; desinstálala del móvil y vuelve a tocar el APK.
 
 ---
