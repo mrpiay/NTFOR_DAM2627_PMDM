@@ -681,8 +681,10 @@ Imports (con Alt + Intro): los de `androidx.compose.animation.core` (`rememberIn
 **15.1 · Logcat.** Con la app en marcha, abre **Logcat** (*View > Tool Windows > Logcat*). En el campo de filtro, escribe:
 
 ```
-tag:CentroAcogida
+tag~:^CentroAcogida$
 ```
+
+`tag~:` busca con una expresión regular: `^` es el principio de la etiqueta y `$` el final, así que solo salen los mensajes cuya etiqueta es exactamente `CentroAcogida`. Con `tag:CentroAcogida` también saldrían los que el sistema escribe sobre la app, como los de la memoria («GC freed…»), porque su etiqueta contiene el nombre de la app.
 
 Recarga la lista (agitando o con el botón) y mira las líneas `D` («Animales cargados de Internet: 10»). Activa el modo avión, recarga y mira la línea `E` y la excepción que la acompaña. Desactiva el modo avión.
 
@@ -731,7 +733,7 @@ solicitar una adopción, ver mis solicitudes.)
 
 **Comprueba que…**
 
-- en Logcat, con el filtro `tag:CentroAcogida`, sale una línea `D` por cada recarga, y una `E` con la excepción cuando no hay conexión;
+- en Logcat, con el filtro `tag~:^CentroAcogida$`, sale una línea `D` por cada recarga, y una `E` con la excepción cuando no hay conexión;
 - existe `app-debug.apk` en `app\build\outputs\apk\debug\` y sabes decir qué es y en qué se diferencia de una versión *release*;
 - `DOCUMENTACION.md` tiene las cinco secciones completas y la tabla de pruebas con las ocho filas hechas y su resultado.
 
