@@ -6,16 +6,13 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
-| 15 nov | Semana del 16 al 20: la 3.ª parte del proyecto (pasos 11 a 15: la lista desde Internet, agitar para recargar, la distancia al centro, la foto, un sonido y una animación, Logcat, el APK y la documentación), con plantilla para quien no terminó la 2.ª, y el cuestionario C3 ([2026_11_16-20](2026_11_16-20)) |
-| 15 nov | Apuntes de la semana del 16 al 20: Internet con Retrofit, segundo plano, sensores, ubicación, Wi-Fi, Bluetooth y NFC (UD3); imágenes, audio, vídeo, animaciones, depurar y empaquetar (UD4); y Flutter (UD1) ([2026_11_16-20/apuntes](2026_11_16-20/apuntes)) |
+| 15 nov | Semana del 16 al 20: apuntes de la UD3 (Internet con Retrofit, segundo plano, sensores, ubicación, Wi-Fi, Bluetooth y NFC), la UD4 (imágenes, audio, vídeo, animaciones, depurar y empaquetar) y Flutter (UD1); la 3.ª parte del proyecto (pasos 11 a 15: la lista desde Internet, agitar para recargar, la distancia al centro, la foto, un sonido y una animación, Logcat, el APK y la documentación), con plantilla para quien no terminó la 2.ª, y el cuestionario C3 ([2026_11_16-20](2026_11_16-20)) |
 | 15 nov | Nueva planificación: del 16 al 20, un caso práctico corto de cada tema de la UD3 y la UD4 en la app del centro de acogida (Internet, un sensor, la ubicación, la foto, un sonido y una animación, el APK de la app); el segundo plano, Bluetooth, mapas, vídeo y Flutter, en teoría. Del 23 al 27, el martes 1 y el miércoles 2, repaso; el examen parcial, el viernes 4 de diciembre. La app integrada se hace al final del curso |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, viernes 4 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el viernes 11 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
 | 11 nov | La **revisión (R)** de los cuestionarios y de los exámenes parciales corregidos es el 10 % de la nota; la entrega de los cuestionarios es obligatoria |
 | 11 nov | La 1ª evaluación en detalle: qué entra, cómo se evalúa y planificación semanal, con enlaces a los apuntes y actividades de cada semana ([programacion/1a-evaluacion.md](programacion/1a-evaluacion.md)) |
-| 10 nov | Fechas de los exámenes parciales y del examen final de la 1ª evaluación |
-| 9 nov | Currículo oficial del módulo ([programacion/curriculo-oficial.md](programacion/curriculo-oficial.md)) |
 
 ## Fechas importantes
 
