@@ -53,7 +53,7 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 | **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 12,7 %, «Tarea 1» (Julia) 2,5 %<br>P2 · vie 4 dic: 24,8 % |
 | **A** · actividades guiadas | 20 % | 3 actividades, 6,7 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
 | **F** · examen final | 30 % | vie 11 dic |
-| **AE** · autoevaluación | 10 % | Una sola, la semana del examen final: una tarea de Teams con la [plantilla de autoevaluación](autoevaluacion-1a.xlsx) |
+| **R** · autoevaluación | 10 % | Una sola, la semana del examen final: una tarea de Teams con la [plantilla de autoevaluación](autoevaluacion-1a.xlsx) |
 | **C** · cuestionarios | — | 3 cuestionarios. Su entrega es obligatoria; no tienen nota propia |
 
 Porcentajes sobre la nota de la evaluación.
@@ -68,13 +68,13 @@ Porcentajes sobre la nota de la evaluación.
 | [16–20 nov](../2026_11_16-20)<br>[apuntes](../2026_11_16-20/apuntes) · [actividades](../2026_11_16-20/actividades) | UD1 · Multiplataforma (Flutter): la teoría<br>UD2 · Probar la app y documentarla<br>UD3 · La ubicación, con su permiso; el segundo plano (WorkManager) y los mapas, en teoría<br>UD3 · Cargar los animales desde Internet (Retrofit) y un sensor: agitar para refrescar<br>UD3 · Generar el APK de la app; Bluetooth, en teoría<br>UD4 · La foto del animal: reducirla a JPEG y mostrarla; los formatos, en teoría<br>UD4 · Un sonido al adoptar y una animación en la tarjeta; el vídeo, en teoría<br>UD4 · Generar el APK, depurar con Logcat, probar y documentar | A3 (6,7 %), C3 | — |
 | 23–27 nov | Repaso de toda la evaluación | — | — |
 | 30 nov–4 dic | Repaso (mar 1 y mié 2) | — | **P2** (24,8 %), vie 4 dic |
-| 7–11 dic | Repaso (mié 9) | AE (10 %) | **F** (30 %), vie 11 dic |
+| 7–11 dic | Repaso (mié 9) | R (10 %) | **F** (30 %), vie 11 dic |
 | 14–18 dic | UD5 · Arquitectura y motores de juegos | Cierre de la 1ª evaluación · jue 17 | — |
 
 ## Notas
 
 - **Cuestionarios (C).** Hay uno cada semana en la que se facilitan apuntes o actividades guiadas nuevas, con preguntas sobre ellos. Su entrega es obligatoria, hasta el lunes siguiente a su semana, salvo que se indique otra fecha (ver las notas). No cuentan por sí mismos para la nota.
-- **Autoevaluación (AE).** Una sola, la semana del examen final, en una tarea de Teams: la [plantilla de autoevaluación](autoevaluacion-1a.xlsx), que cada alumno rellena en su propia copia. Por cada tema de cada unidad, el nivel de comprensión y el tipo de fallo principal; la frecuencia de 15 hábitos de estudio, y una reflexión general sobre qué hacer para mejorar en la 2ª evaluación. Forma el 10 % de autoevaluación del apartado 6.1 de la programación oficial. La mitad de su nota es la hoja completa; la otra mitad, la reflexión, si es concreta. Lo marcado en cada tema y en cada hábito no cambia la nota.
+- **Autoevaluación (R).** La R es de reflexión. Una sola, la semana del examen final, en una tarea de Teams: la [plantilla de autoevaluación](autoevaluacion-1a.xlsx), que cada alumno rellena en su propia copia. Por cada tema de cada unidad, el nivel de comprensión y el tipo de fallo principal; la frecuencia de 15 hábitos de estudio, y una reflexión general sobre qué hacer para mejorar en la 2ª evaluación. Forma el 10 % de autoevaluación del apartado 6.1 de la programación oficial. La mitad de su nota es la hoja completa; la otra mitad, la reflexión, si es concreta. Lo marcado en cada tema y en cada hábito no cambia la nota.
 - **Exámenes escritos** (parciales, **P**, y final, **F**). Son en papel e incluyen preguntas similares a las de los cuestionarios. Cada pregunta indica los puntos que vale: los contenidos con más porcentaje tienen preguntas que valen más.
 - **Actividades guiadas (A).** La marcha y el cumplimiento de cada actividad se evalúan con una lista de cotejo: cada «Comprueba que…» de cada paso se cumple o no. La nota de cada actividad es el porcentaje de puntos cumplidos (de 0 a 10), y el mínimo de 4 se aplica a la media de las actividades de la evaluación.
 - El C1 se entrega junto con el C2, el lunes 16 de noviembre.
