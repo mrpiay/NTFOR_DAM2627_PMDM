@@ -6,6 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 16 nov | Los **cuestionarios (C)** son requisito de la **autoevaluación (R)**: sin todos los cuestionarios entregados, la autoevaluación (R) es un 0 |
 | 16 nov | La **autoevaluación (R)**, el 10 % de la nota, pasa a ser una sola, la semana del examen final: una [plantilla](programacion/autoevaluacion-1a.xlsx) en Teams con el nivel y el tipo de fallo de cada tema, los hábitos de estudio y una reflexión sobre qué hacer para mejorar. Sustituye a la revisión de cada cuestionario y examen ([cómo se califica](programacion/rubricas.md)) |
 | 15 nov | Semana del 16 al 20: apuntes de la UD3 (Internet con Retrofit, segundo plano, sensores, ubicación, Wi-Fi, Bluetooth y NFC), la UD4 (imágenes, audio, vídeo, animaciones, depurar y empaquetar) y Flutter (UD1); la 3.ª parte del proyecto (pasos 11 a 15: la lista desde Internet, agitar para recargar, la distancia al centro, la foto, un sonido y una animación, Logcat, el APK y la documentación), con plantilla para quien no terminó la 2.ª, y el cuestionario C3 ([2026_11_16-20](2026_11_16-20)) |
 | 15 nov | Nueva planificación: del 16 al 20, un caso práctico corto de cada tema de la UD3 y la UD4 en la app del centro de acogida (Internet, un sensor, la ubicación, la foto, un sonido y una animación, el APK de la app); el segundo plano, Bluetooth, mapas, vídeo y Flutter, en teoría. Del 23 al 27, el martes 1 y el miércoles 2, repaso; el examen parcial, el viernes 4 de diciembre. La app integrada se hace al final del curso |
@@ -17,7 +18,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 ## Fechas importantes
 
-Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (C), disponible desde el primer día. Su entrega es obligatoria, en Teams, hasta el lunes siguiente a las 23:59, y el martes se publican sus soluciones. Además:
+Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (C), disponible desde el primer día. Su entrega es obligatoria, en Teams, hasta el lunes siguiente a las 23:59, y el martes se publican sus soluciones. No tienen nota propia, pero sin todos los cuestionarios entregados, la autoevaluación (R) es un 0. Además:
 
 | Fecha | Qué |
 |---|---|
