@@ -6,6 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 16 nov | Las **actividades guiadas (A)** se califican por el nivel de cumplimiento de sus pasos: nada (0), poco (2,5), medio (5), alto (7,5) o completo (10). Qué supone cada nivel: [rúbricas](programacion/rubricas.md) |
 | 16 nov | Los **cuestionarios (C)** son requisito de la **autoevaluación (R)**: sin todos los cuestionarios entregados, la autoevaluación (R) es un 0 |
 | 16 nov | La **autoevaluación (R)**, el 10 % de la nota, pasa a ser una sola, la semana del examen final: una [plantilla](programacion/autoevaluacion-1a.xlsx) en Teams con el nivel y el tipo de fallo de cada tema, los hábitos de estudio y una reflexión sobre qué hacer para mejorar. Sustituye a la revisión de cada cuestionario y examen ([cómo se califica](programacion/rubricas.md)) |
 | 15 nov | Semana del 16 al 20: apuntes de la UD3 (Internet con Retrofit, segundo plano, sensores, ubicación, Wi-Fi, Bluetooth y NFC), la UD4 (imágenes, audio, vídeo, animaciones, depurar y empaquetar) y Flutter (UD1); la 3.ª parte del proyecto (pasos 11 a 15: la lista desde Internet, agitar para recargar, la distancia al centro, la foto, un sonido y una animación, Logcat, el APK y la documentación), con plantilla para quien no terminó la 2.ª, y el cuestionario C3 ([2026_11_16-20](2026_11_16-20)) |
