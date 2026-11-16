@@ -2,51 +2,11 @@
 
 [← Programación](README.md)
 
-Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unidad se muestran sus contenidos, cada uno agrupando los criterios de evaluación que le corresponden; su porcentaje es la suma de los pesos de esos criterios en la programación oficial del módulo. La planificación empieza el 2 de noviembre; lo que ya evaluó Julia (exámenes y tareas de Teams) aparece marcado como «(Julia)».
+Cómo se calcula la nota de la 1ª evaluación, qué contenidos entran en los exámenes y planificación semanal. La planificación empieza el 2 de noviembre; lo que ya evaluó Julia (exámenes y tareas de Teams) aparece marcado como «(Julia)».
 
-## Qué entra
+## Cómo se evalúa: de dónde sale la nota
 
-### UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles
-
-15,9 % de la evaluación (10 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Limitaciones, configuraciones, perfiles y estructura de una app | P1 (Julia) | 50 % |
-| Entorno, modificar una app y emuladores | «Tarea 1» (Julia) | 40 % |
-| Tecnologías de desarrollo: nativas y multiplataforma (Flutter) | P2 | 10 % |
-
-### UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario
-
-31,8 % de la evaluación (20 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Kotlin y Compose: estructura de clases e interfaz | P1 (Julia) | 75 % |
-| Pruebas en emuladores y documentar | P2 | 25 % |
-
-### UD3 · Persistencia, conectividad y servicios del dispositivo móvil
-
-28,6 % de la evaluación (18 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Persistencia: Room y preferencias | P2 | 20 % |
-| Permisos, tareas en segundo plano y localización | P2 | 20 % |
-| Conexiones HTTP y sensores | P2 | 40 % |
-| Bluetooth y desplegar en un móvil real | P2 | 20 % |
-
-### UD4 · Desarrollo de aplicaciones multimedia
-
-23,8 % de la evaluación (22 % del módulo; en la 1ª evaluación cuenta un 15 %, lo que se da).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Captura, procesado y conversión de imágenes | P2 | 43 % |
-| Reproducción de audio y vídeo, eventos y animaciones | P2 | 28 % |
-| Desplegar, depurar y documentar | P2 | 29 % |
-
-## Cómo se evalúa
+Porcentajes sobre la nota de la evaluación: entre todas las partes suman 100 %.
 
 | Parte | Peso | Qué incluye |
 |---|---|---|
@@ -56,7 +16,49 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 | **R** · autoevaluación | 10 % | Una sola, la semana del examen final: una tarea de Teams con la [plantilla de autoevaluación](autoevaluacion-1a.xlsx) |
 | **C** · cuestionarios | — | 3 cuestionarios. No tienen nota propia, pero su entrega es obligatoria: sin todos ellos entregados, la R es un 0 |
 
-Porcentajes sobre la nota de la evaluación.
+## Qué entra en los exámenes
+
+Los porcentajes de esta sección no son partes de la nota: dicen cuánto pesa cada unidad y cada contenido **dentro de los exámenes**. Con ellos se reparte el 40 % de los exámenes parciales (P) entre lo que evaluó Julia y el examen parcial, y valen igual para el examen final (F), que pregunta todas las unidades: los contenidos con más porcentaje tienen preguntas que valen más. Cada porcentaje es la suma de los pesos de sus criterios de evaluación en la programación oficial. Las actividades guiadas (A) y la autoevaluación (R) cuentan aparte, como se indica en «Cómo se evalúa».
+
+### UD1 · Tecnologías y entornos de desarrollo para dispositivos móviles
+
+Pesa un 15,9 % en los exámenes (10 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Limitaciones, configuraciones, perfiles y estructura de una app | P1 (Julia) | 50 % |
+| Entorno, modificar una app y emuladores | «Tarea 1» (Julia) | 40 % |
+| Tecnologías de desarrollo: nativas y multiplataforma (Flutter) | P2 | 10 % |
+
+### UD2 · Desarrollo de aplicaciones móviles e interfaces de usuario
+
+Pesa un 31,8 % en los exámenes (20 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Kotlin y Compose: estructura de clases e interfaz | P1 (Julia) | 75 % |
+| Pruebas en emuladores y documentar | P2 | 25 % |
+
+### UD3 · Persistencia, conectividad y servicios del dispositivo móvil
+
+Pesa un 28,6 % en los exámenes (18 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Persistencia: Room y preferencias | P2 | 20 % |
+| Permisos, tareas en segundo plano y localización | P2 | 20 % |
+| Conexiones HTTP y sensores | P2 | 40 % |
+| Bluetooth y desplegar en un móvil real | P2 | 20 % |
+
+### UD4 · Desarrollo de aplicaciones multimedia
+
+Pesa un 23,8 % en los exámenes (22 % del módulo; en la 1ª evaluación cuenta un 15 %, lo que se da).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Captura, procesado y conversión de imágenes | P2 | 43 % |
+| Reproducción de audio y vídeo, eventos y animaciones | P2 | 28 % |
+| Desplegar, depurar y documentar | P2 | 29 % |
 
 ## Planificación semanal
 
@@ -80,5 +82,5 @@ Porcentajes sobre la nota de la evaluación.
 - El C1 se entrega junto con el C2, el lunes 16 de noviembre.
 - En la 1ª evaluación, la semana del 16 al 20 se toca cada tema con un caso práctico corto en la app del centro de acogida (Internet, un sensor, la ubicación, la foto, un sonido y una animación, generar el APK y depurarla), con el código técnico ya hecho; el segundo plano, Bluetooth, los mapas, el vídeo y Flutter se dan en teoría, con preguntas de conceptos y criterio en el examen. La app integrada de la UD4 se aplaza al final del curso; la UD4 cuenta en la 1ª evaluación con el 68 % de su peso.
 - «App Centro Acogida» no se entregó: sus contenidos se evalúan con la P1 (Julia) y la P2.
-- El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (lo marcado «(Julia)» en «Qué entra») cuenta con esa nota; si no se hizo ese examen o no se entregó esa tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
+- El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (lo marcado «(Julia)» en «Qué entra en los exámenes») cuenta con esa nota; si no se hizo ese examen o no se entregó esa tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
 - Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).
