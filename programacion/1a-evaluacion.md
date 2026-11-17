@@ -74,36 +74,35 @@ En papel. Cada pregunta indica los puntos que vale: los contenidos con más porc
 
 Se califican una vez terminadas, por su **nivel de implementación y comprensión**, y cómo depende del tipo de actividad:
 
-- **Proyecto de progresión continuada** (un mismo proyecto que avanza de una actividad a la siguiente): se califica **hasta dónde se ha implementado la solución final del proyecto**, no cada actividad por separado. Todas sus actividades tienen el mismo nivel.
+- **Proyecto de progresión continuada** (un mismo proyecto que avanza de una actividad a la siguiente): se califica **hasta dónde se ha implementado la solución final del proyecto**, no cada actividad por separado. Todas sus actividades tienen la misma nota.
 - **Actividad independiente:** se califica su propio resultado.
 
 La nota tiene dos mitades:
 
-- **Implementación (50 %):** con el proyecto propio, en el ordenador, se muestra por orden lo que pide cada nivel (las tablas de abajo). Cada nivel tiene 3 comprobaciones y se alcanza mostrando al menos 2, si los niveles anteriores también se han alcanzado; la nota es la del último nivel alcanzado.
+- **Implementación (50 %):** con el proyecto propio, en el ordenador, se muestran, por orden, las comprobaciones de las tablas de abajo: 12 por proyecto o actividad, 3 en cada nivel (del 1, lo más básico, al 4). Cada comprobación que sale bien suma por sí misma, aunque falle alguna de un nivel anterior: la nota de implementación es las que salen bien entre 12, por 10.
 - **Comprensión (50 %):** cuánto se sabe explicar. Se hacen 4 preguntas sobre el diseño y la arquitectura, una por nivel, sobre lo que se muestra en ese nivel; se hacen las cuatro aunque no se haya alcanzado el nivel. Cada respuesta bien dada vale 2,5. De qué trata cada pregunta, en las tablas de abajo.
 
 #### A1–A3 · Proyecto «Centro de acogida 2.0»
 
-Proyecto de progresión continuada: A1, A2 y A3 tienen el mismo nivel, el de hasta dónde se implementa el proyecto.
+Proyecto de progresión continuada: A1, A2 y A3 tienen la misma nota, la del proyecto entero.
 
-**Implementación**
+**Implementación** (12 comprobaciones; cada una que sale bien suma 10/12)
 
-| Nivel | Nota | Muestra que… (al menos 2 de 3) |
-|---|---|---|
-| **Bajo** | 2,5 | • el interruptor «Adopciones urgentes» filtra la lista y no pierde su valor al girar<br>• al pulsar una tarjeta se abre el detalle de ese animal<br>• el formulario «Solicitar adopción» marca los errores y confirma la solicitud |
-| **Medio** | 5 | • la app se adapta al móvil en vertical (una columna) y a la tableta o en horizontal (varias)<br>• una solicitud enviada aparece en «Mis solicitudes»<br>• sigue ahí al cerrar y volver a abrir la app |
-| **Alto** | 7,5 | • al abrir, la lista se carga de Internet: «Lista actualizada: 10 animales», con Bruno y Lola<br>• sin conexión, sale el aviso y la app no se cierra<br>• agitar el móvil, o el botón de recargar, vuelve a cargar la lista |
-| **Máximo** | 10 | • la foto de un animal se ve y sigue ahí al volver a entrar<br>• suena el sonido al enviar una solicitud<br>• «Adopción urgente» se anima en la lista |
-| **Nada** | 0 | No se alcanza el nivel bajo |
+| Nivel | Muestra que… |
+|---|---|
+| **1** | • el interruptor «Adopciones urgentes» filtra la lista y no pierde su valor al girar<br>• al pulsar una tarjeta se abre el detalle de ese animal<br>• el formulario «Solicitar adopción» marca los errores y confirma la solicitud |
+| **2** | • la app se adapta al móvil en vertical (una columna) y a la tableta o en horizontal (varias)<br>• una solicitud enviada aparece en «Mis solicitudes»<br>• sigue ahí al cerrar y volver a abrir la app |
+| **3** | • al abrir, la lista se carga de Internet: «Lista actualizada: 10 animales», con Bruno y Lola<br>• sin conexión, sale el aviso y la app no se cierra<br>• agitar el móvil, o el botón de recargar, vuelve a cargar la lista |
+| **4** | • la foto de un animal se ve y sigue ahí al volver a entrar<br>• suena el sonido al enviar una solicitud<br>• «Adopción urgente» se anima en la lista |
 
 **Comprensión** (una pregunta por nivel; se hacen las cuatro)
 
 | Nivel | La pregunta trata sobre… |
 |---|---|
-| Bajo | Cómo se conserva el estado al girar |
-| Medio | Cómo guarda Room las solicitudes |
-| Alto | Por qué la descarga va en una corrutina y qué pasa sin conexión |
-| Máximo | Dónde se guarda la foto y por qué no se pierde |
+| 1 | Cómo se conserva el estado al girar |
+| 2 | Cómo guarda Room las solicitudes |
+| 3 | Por qué la descarga va en una corrutina y qué pasa sin conexión |
+| 4 | Dónde se guarda la foto y por qué no se pierde |
 
 | Comprensión | Nota |
 |---|---|
@@ -139,7 +138,7 @@ La autoevaluación (R) se hace una sola vez, la semana del examen final, con la 
 - **Cuestionarios (C).** Hay uno cada semana en la que se facilitan apuntes o actividades guiadas nuevas, con preguntas sobre ellos. Su entrega es obligatoria, hasta el lunes siguiente a su semana, salvo que se indique otra fecha (ver las notas). No tienen nota propia, pero sin todos los cuestionarios entregados, la autoevaluación (R) es un 0.
 - **Autoevaluación (R).** La R es de reflexión. Una sola, la semana del examen final, en una tarea de Teams: la [plantilla de autoevaluación](autoevaluacion-1a.xlsx), que cada estudiante rellena en su propia copia. Por cada tema de cada unidad, el nivel de comprensión y el tipo de fallo principal; la frecuencia de 15 hábitos de estudio, y una reflexión general sobre qué hacer para mejorar en la 2ª evaluación. Forma el 10 % de autoevaluación del apartado 6.1 de la programación oficial. La mitad de su nota es la hoja completa; la otra mitad, la reflexión, si es concreta. Requisito: tener entregados todos los cuestionarios (C); si falta alguno, la R es un 0. Lo marcado en cada tema y en cada hábito no cambia la nota.
 - **Exámenes escritos** (parciales, **P**, y final, **F**). Son en papel e incluyen preguntas similares a las de los cuestionarios. Cada pregunta indica los puntos que vale: los contenidos con más porcentaje tienen preguntas que valen más.
-- **Actividades guiadas (A).** Se califican, una vez terminadas, por su nivel de implementación y comprensión, al 50 %. Si son partes de un proyecto de progresión continuada, se califica hasta dónde se ha implementado la solución final del proyecto, con el mismo nivel para todas; si son independientes, cada una por su resultado. Niveles: nada (0), bajo (2,5), medio (5), alto (7,5) o máximo (10); comprensión: 4 preguntas sobre el diseño y la arquitectura (2,5 cada una). Cada nivel tiene 3 comprobaciones y se alcanza con 2, si los anteriores también se han alcanzado; qué pide cada nivel, en las [rúbricas](#rúbricas). Detalle, en las [rúbricas](#rúbricas). El mínimo de 4 se aplica a la media de las actividades de la evaluación.
+- **Actividades guiadas (A).** Se califican, una vez terminadas, por su nivel de implementación y comprensión, al 50 %. Si son partes de un proyecto de progresión continuada, se califica hasta dónde se ha implementado la solución final del proyecto, con la misma nota para todas; si son independientes, cada una por su resultado. Implementación: 12 comprobaciones ordenadas en 4 niveles; cada una que sale bien suma 10/12. Comprensión: 4 preguntas sobre el diseño y la arquitectura, una por nivel (2,5 cada una); qué pide cada nivel, en las [rúbricas](#rúbricas). Detalle, en las [rúbricas](#rúbricas). El mínimo de 4 se aplica a la media de las actividades de la evaluación.
 - El C1 se entrega junto con el C2, el lunes 16 de noviembre.
 - En la 1ª evaluación, la semana del 16 al 20 se toca cada tema con un caso práctico corto en la app del centro de acogida (Internet, un sensor, la ubicación, la foto, un sonido y una animación, generar el APK y depurarla), con el código técnico ya hecho; el segundo plano, Bluetooth, los mapas, el vídeo y Flutter se dan en teoría, con preguntas de conceptos y criterio en el examen. La app integrada de la UD4 se aplaza al final del curso; la UD4 cuenta en la 1ª evaluación con el 68 % de su peso.
 - «App Centro Acogida» no se entregó: sus contenidos se evalúan con la P1 (Julia) y la P2.
