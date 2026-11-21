@@ -15,6 +15,8 @@ El desarrollo se divide en dos partes:
 
 No es necesario tener experiencia previa con Android Studio. La guía explica desde la preparación del entorno hasta la obtención de la aplicación terminada, incluyendo comprobaciones y ejemplos para facilitar el seguimiento.
 
+Al final, un paso más **anima las barras** del recuento con Compose, para que se vea qué cambia de una evaluación a otra.
+
 Al finalizar, tendrás una aplicación funcional y una visión general de cómo se integran la interfaz, la lógica de la aplicación, el acceso a Internet y el almacenamiento local en un proyecto Android.
 
 ## Índice
@@ -41,6 +43,7 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
   - [Paso 11 · Probar la app](#paso-11--probar-la-app)
   - [Paso 12 · Generar e instalar el APK](#paso-12--generar-e-instalar-el-apk)
   - [Paso 13 · Las valoraciones reales](#paso-13--las-valoraciones-reales)
+  - [Paso 14 · Animar las barras](#paso-14--animar-las-barras)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
 
@@ -77,6 +80,7 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
 | R6 | Si la descarga falla, la app avisa del motivo y sigue con lo guardado. No se cierra. Sin conexión, el aviso es «Sin conexión: se muestran las valoraciones guardadas»; si el servidor da un error, «Error del servidor (código)…»; si el archivo no tiene el formato esperado, «Los datos descargados no tienen el formato esperado…». |
 | R7 | Al girar la pantalla no se pierde nada ni se vuelve a descargar. Si en horizontal no cabe todo, se puede desplazar hacia abajo. |
 | R8 | Las valoraciones son **anónimas**: solo un número para distinguirlas y la nota. |
+| R9 | Las barras del recuento están **animadas**: al aparecer crecen desde 0 y, al cambiar de pestaña, pasan poco a poco de su tamaño anterior al nuevo. Si el sistema tiene las animaciones desactivadas, cambian de golpe (paso 14). |
 
 ## 2. De dónde salen los datos
 
@@ -153,6 +157,7 @@ Estas son las piezas que usa la app:
 | **Flow** y **StateFlow** | Un **Flow** es un dato que avisa: quien lo usa no lo lee una sola vez, sino que recibe cada valor nuevo cuando cambia. Un **StateFlow** es un Flow que siempre tiene un valor actual. | Room entrega las valoraciones como Flow; el ViewModel entrega el estado como StateFlow (`uiState`) |
 | **Activity** | La ventana de una app Android: lo primero que abre Android al pulsar el icono. | `MainActivity`, que solo muestra `PantallaValora` |
 | **Logcat** | Una ventana de Android Studio donde se ven los mensajes que escribe la app mientras funciona. | Dice cuántas valoraciones ha descargado de cada evaluación |
+| **Animación** | Un valor que, en lugar de saltar, va cambiando poco a poco hasta su objetivo, y la pantalla se dibuja con cada paso. En Compose, con funciones `animate…AsState` | Las barras del recuento (paso 14) |
 
 ### 3.2 · Las capas
 
@@ -234,6 +239,8 @@ Nada de esto usa Internet.
 
 **Si la descarga falla (R6):** Kotlin lanza una **excepción**, que es su forma de avisar de un error. Hay un tipo de excepción para cada problema: `IOException` si no hay conexión, `HttpException` si el servidor responde con un error y `SerializationException` si el JSON no es como se esperaba. El ViewModel las recoge (`catch`) para que la app no se cierre, pone en el estado el aviso que corresponde y no toca Room: lo guardado sigue en pantalla.
 
+**Al cambiar las barras (R9):** cuando el estado trae otra proporción para una barra (otra pestaña, otros datos), la barra no la dibuja de golpe: `animateFloatAsState` va del valor que tenía al nuevo en 600 milisegundos, y la fila se dibuja en cada paso. El estado no sabe nada de la animación.
+
 **Al girar el móvil (R7):** Android destruye la ventana y la vuelve a crear con la nueva orientación. La pantalla se dibuja otra vez, pero el ViewModel no se ha destruido: tiene el mismo estado, así que se ve lo mismo y no se descarga nada.
 
 ## 5. Decisiones de diseño
@@ -253,6 +260,10 @@ Nada de esto usa Internet.
 | Un **aviso distinto** para cada error | Sin conexión, error del servidor y formato incorrecto se arreglan de forma distinta: el aviso y Logcat dicen cuál ha sido (R6). |
 | Escala de **1 a 5** estrellas | Como en cualquier valoración con estrellas, la mínima es una. Por eso el recuento tiene cinco filas, una por estrella. |
 | Valoraciones **anónimas** | Solo un número y la nota (R8): nada en los datos dice quién valoró. |
+| **Animar** las barras | Al cambiar de pestaña, el movimiento enseña qué notas suben y cuáles bajan entre una evaluación y otra; un salto de golpe no se ve. |
+| La animación, **solo en la pantalla** | Es cómo se dibuja, no qué datos hay: el estado y el ViewModel no cambian (R9). |
+| **600 ms** y con curva que frena | Lo bastante para verse, sin que la app parezca lenta. Frenar al final se ve más natural que una velocidad constante. |
+| Se **respeta** «Quitar animaciones» del sistema | A algunas personas el movimiento en pantalla les marea o les distrae. Compose lo hace solo: si el sistema las desactiva, las barras cambian de golpe. |
 
 ## 6. Configuración de librerías y dependencias
 
@@ -1474,6 +1485,123 @@ Lo que ya estaba guardado en Room de los ejemplos se sustituye al pulsar ↻ en 
 
 **Comprueba que…** tras pulsar ↻, Logcat muestra las evaluaciones que se han descargado de `valora/`.
 
+## Paso 14 · Animar las barras
+
+Hasta aquí, al cambiar de pestaña o al recargar, las barras del recuento saltan de golpe a su nuevo tamaño. En este paso se **animan**: al aparecer crecen desde 0 y, al cambiar de pestaña, pasan poco a poco del tamaño que tenían al nuevo. Así se ve qué ha cambiado entre una evaluación y otra.
+
+**Cómo anima Compose.** Una animación es un valor que no salta, sino que **va cambiando poco a poco** hasta llegar a su objetivo. En Compose se hace con **`animateFloatAsState`**: se le da el valor objetivo (la proporción de la barra, de 0 a 1) y devuelve el valor que hay que dibujar en cada momento. Cuando el objetivo cambia, ese valor va del que tenía al nuevo, y cada vez que avanza, la fila **se vuelve a dibujar**, unas 60 veces por segundo, durante el tiempo que dure. La pantalla sigue sin calcular nada: el objetivo llega del estado, como antes; solo cambia cómo se llega a él.
+
+**Que crezcan al aparecer.** `animateFloatAsState` solo anima cuando el objetivo **cambia**. La primera vez que se dibuja una fila, empieza ya en su valor, sin animación. Para que crezca desde 0, la fila recuerda si ya se ha mostrado (`mostrada`, que empieza en `false`): mientras no, el objetivo es 0; en cuanto se dibuja por primera vez, `LaunchedEffect` pone `mostrada` a `true` y el objetivo pasa a ser su proporción.
+
+**Un ejemplo, paso a paso.** En la 1ª evaluación, la nota 5 tiene 3 de 13 valoraciones (proporción 0.23); en la 2ª, 6 de 13 (0.46). Al pasar de la pestaña 1ª a la 2ª, el estado cambia el objetivo de esa barra de 0.23 a 0.46, y el valor que se dibuja va así:
+
+```
+tiempo (ms)    0      100    200    300    400    500    600
+se dibuja    0.23   0.25   0.34   0.41   0.44   0.46   0.46
+                    └ arranca ┘└ rápido ┘└─ frena al final ─┘
+```
+
+Entre una columna y otra hay unos seis dibujos más: la barra se dibuja unas 60 veces por segundo. Del 100 al 300 avanza mucho, y del 400 al 600 casi nada: así frena.
+
+En `PantallaValora.kt`, cambia la función **`FilaRecuento`** por esta, con la constante de encima:
+
+**Las piezas del código:**
+
+| Pieza | Qué hace |
+|---|---|
+| `private const val DURACION_MS = 600` | Lo que tarda la animación: 600 milisegundos, poco más de medio segundo. Con menos, apenas se ve; con más, la app parece lenta |
+| `remember { mutableStateOf(false) }` | Un estado que la fila **recuerda** entre un dibujo y el siguiente: si no, volvería a `false` cada vez. Al cambiar, la fila se vuelve a dibujar |
+| `var mostrada by …` | Con `by`, `mostrada` se usa como una variable normal (`mostrada = true`), aunque por dentro sea un estado |
+| `LaunchedEffect(Unit) { mostrada = true }` | Ejecuta su bloque una sola vez, justo después de que la fila se dibuje por primera vez. Con `Unit` no se repite nunca más mientras la fila exista |
+| `animateFloatAsState(targetValue = …)` | Devuelve el valor animado. `targetValue` es el objetivo: 0 hasta que la fila se muestra, y después `fila.proporcion` |
+| `tween(durationMillis = …, easing = FastOutSlowInEasing)` | Cómo se anima: en un tiempo fijo (`tween`) y con una **curva** (`easing`). `FastOutSlowInEasing` arranca suave, va rápido y frena al final, como un objeto real que se pone en marcha y se detiene: se ve más natural que a velocidad constante |
+| `label = "barra de la nota ${fila.nota}"` | Un nombre para la animación. No se ve en la app; sirve para reconocerla en las herramientas de Android Studio |
+| `progress = { proporcion }` | La barra dibuja el valor animado, no `fila.proporcion` directamente |
+
+Añade también estos `import` al principio del archivo, con los demás (o escribe el código y pulsa **Alt + Intro** sobre lo que salga en rojo):
+
+```kotlin
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+```
+
+```kotlin
+// Cuánto tarda una barra en llegar a su tamaño, en milisegundos
+private const val DURACION_MS = 600
+
+// ── Una fila del recuento: la nota, su barra y cuántas veces se ha dado ──
+// La barra está animada (paso 14): al aparecer, crece desde 0; al cambiar de pestaña
+// o al recargar, pasa poco a poco de su tamaño de antes al nuevo, en lugar de saltar
+@Composable
+fun FilaRecuento(fila: FilaNota) {
+    // Al principio, la barra vacía; en cuanto la fila se dibuja por primera vez, su valor
+    var mostrada by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) { mostrada = true }
+
+    // El valor que se dibuja: va del que tenía al objetivo en DURACION_MS,
+    // rápido al principio y más despacio al final (FastOutSlowInEasing)
+    val proporcion by animateFloatAsState(
+        targetValue = if (mostrada) fila.proporcion else 0f,
+        animationSpec = tween(durationMillis = DURACION_MS, easing = FastOutSlowInEasing),
+        label = "barra de la nota ${fila.nota}"
+    )
+
+    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text("${fila.nota}", style = MaterialTheme.typography.titleMedium, modifier = Modifier.width(20.dp))
+        Icon(Icons.Filled.Star, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+        // La misma barra que la de carga; la parte llena (de 0 a 1) es la animada
+        LinearProgressIndicator(
+            progress = { proporcion },
+            modifier = Modifier
+                .weight(1f)              // ocupa todo el ancho que dejan el número y la estrella
+                .height(12.dp)
+                .padding(horizontal = 8.dp),
+            // Barra lisa: sin hueco entre la parte llena y el resto, ni punto al final
+            gapSize = 0.dp,
+            drawStopIndicator = {}
+        )
+        Text("${fila.veces}", style = MaterialTheme.typography.titleMedium, modifier = Modifier.width(28.dp))
+    }
+}
+```
+
+No hace falta añadir ninguna librería: las animaciones son parte de Compose, que ya está en el proyecto desde el paso 2.
+
+**Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
+
+1. En la pestaña 1ª, la nota 4 tiene 6 de 13 valoraciones; en la 2ª, también 6 de 13. Al pasar de una a otra, ¿se mueve su barra? ¿Y la de la nota 5?
+2. ¿Qué pasaría si `mostrada` se declarara como `var mostrada = false`, sin `remember` ni `mutableStateOf`?
+3. ¿Por qué hace falta `mostrada`, si `animateFloatAsState` ya anima?
+4. ¿Por qué el ViewModel y el estado no cambian para animar las barras?
+
+<details>
+<summary>Respuestas</summary>
+
+1. La de la nota 4, no: su objetivo es el mismo (6 / 13), así que no hay nada que animar. La de la nota 5 sí: pasa de 3 / 13 a 6 / 13, y crece hasta el doble.
+2. Cada vez que la fila se volviera a dibujar, `mostrada` volvería a ser `false` y el objetivo, 0: la barra no llegaría a su tamaño. Además, cambiarla no avisaría a Compose para volver a dibujar. `remember` la conserva entre dibujos y `mutableStateOf` avisa cuando cambia.
+3. Porque `animateFloatAsState` solo anima cuando el objetivo cambia. La primera vez, la barra empezaría ya en su tamaño. Con `mostrada`, el primer objetivo es 0 y, justo después, la proporción: el objetivo cambia, y la barra crece.
+4. Porque la animación es cómo se dibuja, no qué datos hay: el estado sigue diciendo cuánto tiene que medir cada barra, y la pantalla decide cómo llegar ahí. Es la misma regla de siempre: el estado calcula y la pantalla dibuja.
+
+</details>
+
+**Probar las animaciones.** Pulsa ▶ y hazlas en orden:
+
+| Nº | Prueba | Cómo | Resultado esperado |
+|---|---|---|---|
+| 1 | Al abrir | Abrir la app con las valoraciones ya guardadas | Las barras crecen desde la izquierda hasta su tamaño, en algo más de medio segundo, más despacio al final |
+| 2 | Cambiar de pestaña | De la 1ª a la 2ª y otra vez a la 1ª | Las barras que cambian crecen o encogen hasta su nuevo tamaño: la de la nota 5 crece (de 3 a 6); la de la 3, encoge (de 3 a 1); la de la 4 no se mueve (6 en las dos) |
+| 3 | Recargar | Pulsar ↻ | Si los datos no han cambiado, las barras no se mueven: su objetivo es el mismo |
+| 4 | Girar | Girar el emulador | Las barras vuelven a crecer desde 0: al girar, la pantalla se dibuja de nuevo. Los datos no se pierden ni se descargan (R7) |
+| 5 | A cámara lenta | Cambiar `DURACION_MS` a `3000`, pulsar ▶ y cambiar de pestaña | Se ve despacio cómo cada barra va de su tamaño al nuevo: arranca suave, acelera y frena al final, como en la tabla del ejemplo. Vuelve a dejarlo en `600` |
+| 6 | Sin animaciones | En el emulador, **Settings → Accessibility** y activar **Remove animations** (en algunas versiones está dentro de **Color and motion**). Volver a la app y cambiar de pestaña | Las barras cambian de golpe, sin animar: Compose respeta el ajuste del sistema. Desactívalo después |
+
+**Comprueba que…** las seis pruebas dan el resultado esperado.
+
 ---
 
 ## Si algo falla
@@ -1492,6 +1620,8 @@ Lo que ya estaba guardado en Room de los ejemplos se sustituye al pulsar ↻ en 
 | La app se cierra al abrirla | En Logcat, sin filtro, busca la línea roja `FATAL EXCEPTION`: debajo está el error y el archivo y la línea donde ocurrió. |
 | El botón ▶ no hace nada y a su izquierda ya no pone «app» | Se ha borrado la configuración de ejecución (pasa al elegir **Delete** en el menú de los tres puntos de «app»). *Run > Edit Configurations…* → **+** → **Android App**; en *Name*, `app`; en *Module*, `ValoraPMDM.app`; **OK**. |
 | Al instalar sale «Can't find service: package» o «Activity class … does not exist» | El emulador no ha terminado de arrancar. Espera a ver la pantalla de inicio y pulsa ▶ otra vez. Si se repite: *Device Manager* → los tres puntos del Pixel 9 → **Cold Boot Now**. |
+| Las barras no se animan (paso 14) | Comprueba que la barra usa `progress = { proporcion }`, el valor animado, y no `fila.proporcion`. Si aun así cambian de golpe, mira que no esté activado **Remove animations** en *Settings → Accessibility*, ni a 0 las escalas de animación de las *Developer options* |
+| Las barras no crecen al abrir la app, pero sí al cambiar de pestaña | Falta `LaunchedEffect(Unit) { mostrada = true }`, o `targetValue` no usa `mostrada` |
 | Después de cambiar un archivo en GitHub, la app sigue mostrando lo anterior | GitHub guarda los archivos en caché unos minutos. Espera y vuelve a pulsar ↻. |
 
 ## Los archivos del proyecto
@@ -1513,7 +1643,7 @@ C:\dam2627\pmdm\ValoraPMDM
 │       │   │               ├── ui
 │       │   │               │   └── theme                 colores y letras (no se tocan)
 │       │   │               ├── MainActivity.kt           el punto de entrada (paso 10)
-│       │   │               ├── PantallaValora.kt         la pantalla, solo dibuja (paso 9)
+│       │   │               ├── PantallaValora.kt         la pantalla, solo dibuja (pasos 9 y 14)
 │       │   │               ├── ServicioValora.kt         Retrofit y la URL base (paso 6)
 │       │   │               ├── Valora.kt                 ValoraJson, Valora y aValora (paso 4)
 │       │   │               ├── ValoraDao.kt              las consultas de Room (paso 5)
