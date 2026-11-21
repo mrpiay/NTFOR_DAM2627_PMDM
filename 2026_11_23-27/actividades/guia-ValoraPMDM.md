@@ -67,7 +67,7 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
 └──────────────────────────────────────┘
 ```
 
-| N.º | Requisito |
+| Nº | Requisito |
 |---|---|
 | R1 | Al abrir, la app muestra las valoraciones **guardadas en el móvil**. No descarga nada. |
 | R2 | La primera vez, sin nada guardado, dice «No hay valoraciones guardadas» y que se pulse el botón de recargar. |
@@ -1411,7 +1411,7 @@ class MainActivity : ComponentActivity() {
 
 **11.1 · Las pruebas.** Hazlas en orden:
 
-| N.º | Prueba | Cómo | Resultado esperado |
+| Nº | Prueba | Cómo | Resultado esperado |
 |---|---|---|---|
 | 1 | Primera apertura | Abrir la app | «No hay valoraciones guardadas · Pulsa el botón de recargar para descargarlas». Sin pestañas. |
 | 2 | Descargar | Pulsar ↻ | Un momento la barra de progreso y el botón ↻ en gris; después, las pestañas **1ª evaluación** y **2ª evaluación**. No hay 3ª. |
