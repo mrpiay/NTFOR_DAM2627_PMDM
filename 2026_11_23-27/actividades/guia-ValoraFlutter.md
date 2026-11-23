@@ -54,6 +54,7 @@ Antes, hay que haber hecho **«Hola Flutter»** (Flutter instalado y el contador
 │             ★ ★ ★ ★ ☆                │
 │           13 valoraciones            │
 │  ──────────────────────────────────  │
+│  Toca una fila para ver las …        │
 │  5 ★ ███████░░░░░░░░░░░░░░░░░░  3    │
 │  4 ★ ██████████████░░░░░░░░░░░  6    │
 │  3 ★ ███████░░░░░░░░░░░░░░░░░░  3    │
@@ -119,6 +120,7 @@ MaterialApp
                             ├── Estrellas ── Row ── Icon ×5
                             ├── Text "13 valoraciones"
                             ├── Divider
+                            ├── Text "Toca una fila…"
                             └── FilaRecuento ×5 ── Row
                                 ├── Text "5", Icon ★
                                 ├── Expanded ── LinearProgressIndicator
@@ -397,6 +399,7 @@ No se cambia nada: son exactamente los mismos archivos (paso 3 y paso 4 de Valor
 | `const Aviso(this.texto, {super.key});` | Constructor con un argumento posicional (el texto) y uno con nombre (`key`) |
 | `evaluacion.media!` | En una pestaña siempre hay valoraciones, así que la media no es `null` |
 | `Theme.of(context).textTheme.displayMedium` | Un estilo de letra grande, del tema de la app |
+| `Text('Toca una fila…', style: …bodySmall?.copyWith(color: …onSurfaceVariant))` | Un texto pequeño y gris, debajo de la línea, para que se sepa que las filas se pueden tocar. `copyWith` copia el estilo cambiando solo el color, y `?.` es porque el estilo podría ser `null` |
 | `for (final nota in recuento.keys) FilaRecuento(…)` | Una fila por cada nota del recuento, de la 5 a la 1 |
 | `mainAxisSize: MainAxisSize.min` | La fila de estrellas ocupa solo lo que necesita, y así `Center` la centra |
 | `LinearProgressIndicator(value: veces / total, minHeight: 12)` | La barra: llena en la proporción de esa nota (`/` en Dart da decimal) |
@@ -408,7 +411,7 @@ No se cambia nada: son exactamente los mismos archivos (paso 3 y paso 4 de Valor
 | `ModalRoute.of(context)!.settings.arguments as DatosNota` | Recoge los datos que se pasaron al navegar. `ModalRoute.of(context)` es la ruta de esta pantalla; `as DatosNota` dice de qué tipo son |
 | `.where((v) => v.nota == datos.nota).toList()` | Se queda solo con las valoraciones de esa nota |
 | `ListView.builder(itemCount: …, itemBuilder: (context, indice) { … })` | La lista: `itemCount` filas, y para cada posición, `itemBuilder` devuelve su widget |
-| `ListTile(leading: …, title: …, subtitle: …, trailing: …)` | Cada fila: el icono, «Valoración 2», «5 de 5» y sus estrellas |
+| `ListTile(leading: …, title: …, subtitle: …)` | Cada fila: el icono, «Valoración 2» y «5 de 5». Sin estrellas: todas las de la lista tienen la misma nota, que ya está en el título |
 
 ```dart
 // ValoraFlutter: las valoraciones de PMDM de cada evaluación, en una app de Flutter.
@@ -591,6 +594,16 @@ class ResumenEvaluacion extends StatelessWidget {
           child: Text(total == 1 ? '1 valoración' : '$total valoraciones'),
         ),
         const Divider(height: 32),
+        // Para que se sepa que las filas se pueden tocar
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: Text(
+            'Toca una fila para ver las valoraciones con esa nota',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ),
         // Una fila por nota, de la 5 a la 1: el for dentro de la lista crea un widget por cada una
         for (final nota in evaluacion.recuento.keys)
           FilaRecuento(evaluacion: evaluacion, nota: nota),
@@ -708,7 +721,6 @@ class PantallaNota extends StatelessWidget {
             leading: const Icon(Icons.person_outline),
             title: Text('Valoración ${valoracion.id}'),
             subtitle: Text('${valoracion.nota} de 5'),
-            trailing: Estrellas(valoracion.nota),
           );
         },
       ),
@@ -839,7 +851,7 @@ Arranca el emulador (`flutter emulators --launch Pixel_9`), abre `lib/main.dart`
 | 5 | Sin conexión | Modo avión en el emulador (desliza desde arriba) y ↻ | «No se han podido descargar las valoraciones.» y el motivo (`ClientException…`). Quita el modo avión y ↻: vuelven los datos |
 | 6 | Girar | Elegir la 2ª y girar el emulador | Sigue en la 2ª, sin círculo de progreso: no se ha descargado nada. Se puede desplazar hasta la fila de la nota 1 |
 | 7 | Hot reload | Cambia `Colors.teal` por `Colors.orange` en `ValoraApp` y guarda | La app cambia de color al momento y sigue en la misma pestaña |
-| 8 | Detalle de una nota | En la 1ª evaluación, tocar la fila del **4** | Se abre «Nota 4 · 1ª evaluación» con **6** valoraciones, cada una con «4 de 5» y cuatro estrellas |
+| 8 | Detalle de una nota | En la 1ª evaluación, tocar la fila del **4** | Se abre «Nota 4 · 1ª evaluación» con **6** valoraciones, cada una con «4 de 5» |
 | 9 | Volver | La flecha de arriba, y después lo mismo con el botón «atrás» del móvil | Se vuelve a la principal, en la misma pestaña, sin círculo de progreso |
 | 10 | Una nota sin valoraciones | En la 1ª evaluación, tocar la fila del **1** (0 veces) | No pasa nada: no hay nada que mostrar |
 

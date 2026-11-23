@@ -1197,7 +1197,7 @@ La pantalla está hecha con **Compose**: cada función `@Composable` dibuja una 
 | `Column` y `Row` | Colocan lo que tienen dentro uno debajo de otro (`Column`) o uno al lado de otro (`Row`). |
 | `Modifier` | Ajusta un elemento: `padding` (margen), `fillMaxWidth` (todo el ancho), `width` y `height` (tamaño fijo), `weight(1f)` (el espacio que sobra), `verticalScroll(rememberScrollState())` (desplazar hacia abajo lo que no cabe; `rememberScrollState` recuerda hasta dónde se ha desplazado). |
 | `PrimaryTabRow` y `Tab` | La fila de pestañas y cada pestaña. |
-| `LinearProgressIndicator` | Una barra horizontal. Sin `progress`, se mueve sola (la de carga); con `progress`, está llena hasta ese punto, de 0 a 1 (las del recuento). Material 3 dibuja, por defecto, un hueco entre la parte llena y el resto y un punto al final; `gapSize = 0.dp` y `drawStopIndicator = {}` los quitan y dejan la barra lisa. |
+| `LinearProgressIndicator` | Una barra horizontal. Sin `progress`, se mueve sola (la de carga); con `progress`, está llena hasta ese punto, de 0 a 1 (las del recuento). Material 3 dibuja, por defecto, los extremos redondos, un hueco entre la parte llena y el resto y un punto al final. `strokeCap = StrokeCap.Butt` pone los extremos rectos, `gapSize = 0.dp` quita el hueco (con extremos redondos, Material lo deja igual) y `drawStopIndicator = {}` quita el punto: la barra queda lisa. |
 | `onClick = { viewModel.cargar() }` | Lo que va entre llaves es una **lambda**: un trozo de código que se ejecuta después, cuando se pulsa. |
 | `if`, `for`, `?.let` | Dentro de una función `@Composable`, deciden qué se dibuja: solo si se cumple algo, una vez por cada elemento o solo si no es `null`. |
 
@@ -1234,6 +1234,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -1350,7 +1351,9 @@ fun FilaRecuento(fila: FilaNota) {
                 .weight(1f)              // ocupa todo el ancho que dejan el número y la estrella
                 .height(12.dp)
                 .padding(horizontal = 8.dp),
-            // Barra lisa: sin hueco entre la parte llena y el resto, ni punto al final
+            // Barra lisa: extremos rectos, sin hueco entre la parte llena y el resto, ni punto al final.
+            // Con extremos redondos (los de por defecto), Material deja siempre un hueco, aunque gapSize sea 0
+            strokeCap = StrokeCap.Butt,
             gapSize = 0.dp,
             drawStopIndicator = {}
         )
@@ -1568,7 +1571,9 @@ fun FilaRecuento(fila: FilaNota) {
                 .weight(1f)              // ocupa todo el ancho que dejan el número y la estrella
                 .height(12.dp)
                 .padding(horizontal = 8.dp),
-            // Barra lisa: sin hueco entre la parte llena y el resto, ni punto al final
+            // Barra lisa: extremos rectos, sin hueco entre la parte llena y el resto, ni punto al final.
+            // Con extremos redondos (los de por defecto), Material deja siempre un hueco, aunque gapSize sea 0
+            strokeCap = StrokeCap.Butt,
             gapSize = 0.dp,
             drawStopIndicator = {}
         )
@@ -1671,6 +1676,20 @@ Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
                                FilaRecuento(fila, onClick = { onNota(fila.nota) })
    ```
 
+   Y, para que se sepa que las filas se pueden tocar, justo debajo de la línea de `HorizontalDivider`, un texto pequeño:
+
+   ```kotlin
+                       // Para que se sepa que las filas se pueden tocar (paso 15)
+                       Text(
+                           "Toca una fila para ver las valoraciones con esa nota",
+                           style = MaterialTheme.typography.bodySmall,
+                           color = MaterialTheme.colorScheme.onSurfaceVariant,
+                           modifier = Modifier.padding(bottom = 12.dp)
+                       )
+   ```
+
+   `bodySmall` es el estilo de texto pequeño del tema, y `onSurfaceVariant`, el color gris de los textos secundarios: es una ayuda, no un dato.
+
 4. `FilaRecuento` recibe qué hacer al tocarla. Cambia su cabecera y el principio de su `Row`:
 
    ```kotlin
@@ -1696,7 +1715,7 @@ Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
 | `TopAppBar(…, navigationIcon = { IconButton(onClick = onVolver) { … } })` | La barra de arriba, con la flecha de volver a la izquierda del título |
 | `Icons.AutoMirrored.Filled.ArrowBack` | La flecha de volver. *AutoMirrored*: en idiomas que se escriben de derecha a izquierda, se da la vuelta |
 | `LazyColumn { items(valoraciones) { … } }` | Una lista que solo dibuja las filas que se ven: para cada valoración, una fila |
-| `ListItem(leadingContent = …, headlineContent = …, supportingContent = …, trailingContent = …)` | Una fila estándar de Material: icono, título, subtítulo y algo a la derecha (aquí, las estrellas, con el `Estrellas` del paso 9) |
+| `ListItem(leadingContent = …, headlineContent = …, supportingContent = …)` | Una fila estándar de Material: icono, título y subtítulo. No lleva estrellas: todas las de la lista tienen la misma nota, que ya está en el título |
 
 ```kotlin
 package com.example.valorapmdm
@@ -1746,8 +1765,7 @@ fun PantallaNota(viewModel: ValoraViewModel, nota: Int, onVolver: () -> Unit) {
                 ListItem(
                     leadingContent = { Icon(Icons.Filled.Person, contentDescription = null) },
                     headlineContent = { Text("Valoración ${valoracion.id}") },
-                    supportingContent = { Text("${valoracion.nota} de 5") },
-                    trailingContent = { Estrellas(valoracion.nota) }
+                    supportingContent = { Text("${valoracion.nota} de 5") }
                 )
             }
         }
@@ -1827,7 +1845,7 @@ fun NavegacionValora() {
 
 | Nº | Prueba | Cómo | Resultado esperado |
 |---|---|---|---|
-| 1 | Una nota | En la 1ª evaluación, tocar la fila del **5** | Se abre «Nota 5 · 1ª evaluación» con **3** valoraciones (la 2, la 6 y la 10), cada una con «5 de 5» y cinco estrellas |
+| 1 | Una nota | En la 1ª evaluación, tocar la fila del **5** | Se abre «Nota 5 · 1ª evaluación» con **3** valoraciones (la 2, la 6 y la 10), cada una con «5 de 5» |
 | 2 | Otra pestaña | Volver, pasar a la 2ª evaluación y tocar la fila del **5** | «Nota 5 · 2ª evaluación», con **6** valoraciones |
 | 3 | Volver | La flecha de arriba, y después lo mismo con el botón «atrás» del móvil | Se vuelve a la principal, en la misma pestaña, sin descargar nada |
 | 4 | Una nota sin valoraciones | En la 1ª evaluación, tocar la fila del **1** (0 veces) | No pasa nada |
