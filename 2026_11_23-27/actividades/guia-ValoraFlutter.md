@@ -11,7 +11,7 @@ El objetivo no es solo que la app funcione, sino entender cómo se construye una
 El desarrollo se divide en dos partes:
 
 - **Parte 1. Diseño y funcionamiento:** qué hace la app, los widgets, cómo se organiza el código y cómo se mueve la información, y la comparación con ValoraPMDM.
-- **Parte 2. Implementación paso a paso:** se crea el proyecto, se reutiliza el código de ValoraDart, se escribe la pantalla, se prueba y se genera el APK.
+- **Parte 2. Implementación paso a paso:** se crea el proyecto, se reutiliza el código de ValoraDart, se escribe la pantalla, se prueba, se genera el APK y, al final, la misma app se ejecuta en el navegador.
 
 La teoría sale del libro de McGraw-Hill, *Programación multimedia y dispositivos móviles*, **unidad 4, apartados 3 «Widgets» y 4 «Navegación, listas y bibliotecas»**. Su caso práctico 3, «Mejorando la app del tiempo», es una app con la misma estructura que esta: un widget con estado, un `FutureBuilder` que espera a la descarga y un botón o un gesto para actualizar. La segunda pantalla usa las rutas, `ListView.builder` y `ListTile` de los ejemplos del apartado 4 (`rutas.dart`, `listas.dart` y `listas2.dart`).
 
@@ -35,6 +35,7 @@ Antes, hay que haber hecho **«Hola Flutter»** (Flutter instalado y el contador
   - [Paso 5 · Una prueba automática](#paso-5--una-prueba-automática)
   - [Paso 6 · Probar la app](#paso-6--probar-la-app)
   - [Paso 7 · Generar el APK](#paso-7--generar-el-apk)
+  - [Paso 8 · La misma app en el navegador](#paso-8--la-misma-app-en-el-navegador)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
 
@@ -881,6 +882,51 @@ Genera la versión final de la app (*release*), compilada con AOT. Tarda unos mi
 
 **Comprueba que…** la app instalada desde el APK abre sin la etiqueta **DEBUG** y descarga las valoraciones.
 
+## Paso 8 · La misma app en el navegador
+
+En «Hola Flutter» (paso 9), el contador se ejecutó también en el navegador sin cambiar el código. Aquí se hace lo mismo con una app de verdad, que descarga datos de Internet y tiene dos pantallas, para comprobar que **el código de `lib` sirve igual para Android y para la web**.
+
+1. Para la app del emulador: en la barra de depuración de VS Code, el cuadrado rojo (**Stop**).
+2. En la terminal de VS Code, en la carpeta del proyecto:
+
+   ```powershell
+   flutter create --platforms web .
+   flutter run -d chrome
+   ```
+
+   Como en «Hola Flutter»: la primera orden añade la plataforma web al proyecto (la carpeta `web`) sin tocar `lib` ni `android`, y la segunda compila la app para la web y la abre en Chrome (con Edge, `-d edge`).
+3. Para terminar, pulsa `q` en la terminal.
+
+**Comprueba que…** en Chrome se ven las pestañas de la 1ª y la 2ª evaluación con las mismas medias y el mismo recuento que en el emulador (3.8 y 4.4), las barras crecen, ↻ vuelve a descargar, al tocar la fila del **4** se abre «Nota 4 · 1ª evaluación» con 6 valoraciones, y la flecha de arriba vuelve a la principal.
+
+**La misma app, en Android y en la web.** El código de `lib` es el mismo; lo que cambia es todo lo de alrededor:
+
+| | En Android | En la web |
+|---|---|---|
+| Qué hace falta para ejecutarla | El SDK de Android (el que instala Android Studio) y un emulador o un móvil | Un navegador |
+| En qué se convierte el código de Dart | En código nativo del procesador del móvil (AOT) | En JavaScript (o WebAssembly), que es lo que entiende el navegador |
+| La versión final | `flutter build apk`: un archivo, `app-release.apk` (paso 7) | `flutter build web`: una carpeta, `build\web`, con `index.html` y los archivos de la app («Hola Flutter», paso 9) |
+| Cómo llega a quien la usa | Se instala el APK en el móvil, o se publica en una tienda como Google Play | Se sube la carpeta `build\web` a un servidor web y se abre con su dirección. No se instala nada |
+| Permiso para usar Internet | Hay que pedirlo en `AndroidManifest.xml` (paso 2) | No existe: ese archivo es solo de Android. En cambio, quien decide si la página puede leer los datos es el **servidor** de los datos (CORS, debajo) |
+| Lo que hay que cambiar en `lib` | Nada | Nada |
+
+**CORS.** Por seguridad, cuando una página web pide datos a **otro sitio** (aquí, la app en `localhost` pide los JSON a `raw.githubusercontent.com`), el navegador solo se los entrega si ese servidor lo permite, con una cabecera de su respuesta: `Access-Control-Allow-Origin`. GitHub responde `Access-Control-Allow-Origin: *`, es decir, «cualquier página puede leerlos», y por eso la app funciona en el navegador. Una app de Android no pasa por esa comprobación: es una regla de los navegadores.
+
+**Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
+
+1. ¿Por qué en la web no hace falta el permiso de Internet del paso 2?
+2. Si los JSON estuvieran en un servidor que no enviase `Access-Control-Allow-Origin`, ¿qué pasaría en el emulador y qué en Chrome?
+3. ¿Qué se le da a alguien para que use la app en su móvil Android, y qué para que la use en el navegador?
+
+<details>
+<summary>Respuestas</summary>
+
+1. Porque `AndroidManifest.xml` es solo de Android: en la web no se usa. En el navegador, una página siempre puede hacer peticiones; lo que se comprueba es si el servidor de los datos las permite (CORS).
+2. En el emulador, nada cambiaría: las apps de Android no comprueban CORS. En Chrome, el navegador no entregaría los datos a la app, la descarga fallaría y saldría el aviso «No se han podido descargar las valoraciones.».
+3. Para Android, el APK (o la app publicada en Google Play), que se instala. Para la web, solo una dirección: la del servidor donde está la carpeta `build\web`.
+
+</details>
+
 ---
 
 ## Si algo falla
@@ -893,6 +939,7 @@ Genera la versión final de la app (*release*), compilada con AOT. Tarda unos mi
 | La app se queda siempre en el círculo | La descarga no termina: comprueba la conexión del emulador (abre el navegador del emulador) |
 | Sale siempre «No se han podido descargar…», con conexión | La URL base de `servicio_valora.dart` está mal: ábrela en el navegador con `valora1.json` al final |
 | El APK no descarga nada, y en modo *debug* sí | Falta el permiso de Internet en el manifiesto (paso 2) |
+| En Chrome sale «No se han podido descargar…», y en el emulador funciona | El servidor de los datos no permite que una página web los lea (CORS, paso 8). Con los archivos de GitHub no pasa: comprueba la URL base de `servicio_valora.dart` |
 | `The getter '…' isn't defined` o algo en rojo | Un nombre mal escrito: compara con el código de la guía. Dart distingue mayúsculas de minúsculas |
 | Al tocar una fila, `Could not find a generator for route RouteSettings("/nota", …)` | Falta la ruta `/nota` en el mapa `routes` de `MaterialApp`, o está escrita de otra forma |
 | `Null check operator used on a null value` en `PantallaNota` | Se ha llegado a `/nota` sin `arguments`: el `pushNamed` de `FilaRecuento` tiene que llevar `arguments: DatosNota(…)` |
@@ -906,6 +953,7 @@ C:\dam2627\pmdm\valora_flutter
 ├── android
 │   └── app\src\main
 │       └── AndroidManifest.xml   el permiso de Internet (paso 2)
+├── web                           la página que carga la app en el navegador (paso 8)
 ├── lib
 │   ├── main.dart                 la interfaz: la app, sus dos pantallas y sus widgets (paso 4)
 │   ├── servicio_valora.dart      la descarga, de ValoraDart (paso 3)
@@ -913,5 +961,5 @@ C:\dam2627\pmdm\valora_flutter
 ├── test
 │   └── widget_test.dart          las pruebas del resumen y de la navegación (paso 5)
 ├── pubspec.yaml                  las dependencias: material_ui y http (paso 2)
-└── build                         lo compilado: el APK (paso 7)
+└── build                         lo compilado: el APK (paso 7) y, con `flutter build web`, la versión web
 ```
