@@ -475,11 +475,23 @@ Flutter es **multiplataforma**: el mismo código sirve para Android, iOS, la web
 
 **Qué ha cambiado al compilar.** Para Android, Dart se compila a **código nativo** del procesador del móvil (AOT, MGH 1.1). Para la web, se compila a **JavaScript** (o WebAssembly), que es lo que entiende el navegador. El código de la app es el mismo: lo que cambia es la capa de abajo, el *embedder* de cada plataforma (Parte 1, punto 2).
 
-**La versión final para la web.** `flutter build web` genera en `build\web` los archivos de una página web (`index.html`, `main.dart.js`…), listos para subirlos a cualquier servidor web. Si se abre `index.html` con doble clic, no funciona: el navegador necesita que esos archivos le lleguen desde un servidor.
+**La versión final para la web.** `flutter build web` genera en `build\web` los archivos de una página web (`index.html`, `main.dart.js`…), listos para subirlos a cualquier servidor web (por ejemplo, GitHub Pages).
+
+**Por qué no se abre con doble clic.** Abierto desde el disco (`file:///C:/…/index.html`), el navegador muestra la página en blanco. Una página normal sí carga desde el disco sus imágenes, estilos y scripts, pero una app de Flutter, al arrancar, pide con JavaScript (`fetch`) su motor gráfico (un archivo WebAssembly), sus fuentes y la lista de sus recursos, y registra un *service worker*. Por seguridad, los navegadores no permiten nada de eso en páginas abiertas desde el disco: solo en las que llegan de un **servidor** (`http://` o `https://`). `flutter run -d chrome` ya arranca uno pequeño en el propio ordenador: por eso la app se ve.
+
+**Probar la versión final con un servidor de prueba.** Python, que ya está instalado para DI, trae uno:
+
+```powershell
+flutter build web
+cd build\web
+python -m http.server 8000
+```
+
+En el navegador, `http://localhost:8000`: es la app final, sin la etiqueta **DEBUG**. Para parar el servidor, `Ctrl + C` en la terminal, y `cd ..\..` para volver a la carpeta del proyecto.
 
 **¿Y iOS?** `flutter create --platforms ios .` crea igual la carpeta `ios`, con el proyecto de Xcode, y el código de `lib` también es el mismo. Pero para compilar una app de iOS hace falta un **Mac con Xcode**: Apple no permite hacerlo en Windows ni en Linux. Lo mismo pasa con las apps de escritorio de Windows, que necesitan Visual Studio: es la línea con `[X]` de `flutter doctor` (paso 3).
 
-**Comprueba que…** en Chrome se abre la misma app, con la etiqueta **DEBUG**, y el botón **+** aumenta el número; en el proyecto ha aparecido la carpeta `web`.
+**Comprueba que…** en Chrome se abre la misma app, con la etiqueta **DEBUG**, y el botón **+** aumenta el número; en el proyecto ha aparecido la carpeta `web`; y en `http://localhost:8000` se abre la versión final, sin **DEBUG**.
 
 **Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
 
@@ -509,6 +521,8 @@ Flutter es **multiplataforma**: el mismo código sirve para Android, iOS, la web
 | `Android license status unknown` | `flutter doctor --android-licenses` y acepta todas con `y` |
 | VS Code dice *Could not find a Flutter SDK* | Cierra y abre VS Code. Si sigue, **Locate SDK** → `C:\dam2627\flutter` |
 | Al pulsar F5 la app se abre en Chrome | El dispositivo de la barra de estado de VS Code (abajo a la derecha) es Chrome: elige el emulador. Si no sale, arráncalo con `flutter emulators --launch Pixel_9` |
+| Al abrir `build\web\index.html` con doble clic, la página sale en blanco | Es normal: necesita un servidor. Usa `python -m http.server 8000` en `build\web` y abre `http://localhost:8000` (paso 9) |
+| `python` no se reconoce al arrancar el servidor | Python no está instalado o no está en el `Path`: es el mismo que se usa en DI |
 | `flutter run -d chrome` dice que no encuentra el dispositivo | Falta Chrome, o Flutter no lo encuentra: prueba con Edge, `flutter run -d edge` |
 | La primera ejecución parece no avanzar | Es normal: la primera compilación tarda entre 5 y 10 minutos. En la consola de depuración se ve `Running Gradle task 'assembleDebug'…` |
 | El *hot reload* no hace nada | El archivo no se ha guardado, o la app no se ejecutó con F5 (en modo *debug*). Con `flutter run` en el terminal, pulsa `r` |
