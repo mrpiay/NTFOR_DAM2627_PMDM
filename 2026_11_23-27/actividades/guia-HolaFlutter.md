@@ -11,7 +11,7 @@ El objetivo no es solo que la app funcione, sino entender qué es Flutter, cómo
 El desarrollo se divide en dos partes:
 
 - **Parte 1. Qué es Flutter:** qué es, su arquitectura, las herramientas del SDK y cómo es un proyecto, antes de instalar nada.
-- **Parte 2. Instalación y primera app paso a paso:** se instala el SDK, se comprueba con `flutter doctor`, se crea el proyecto, se ejecuta en el emulador, se prueba el *hot reload* y se lee el código.
+- **Parte 2. Instalación y primera app paso a paso:** se instala el SDK, se comprueba con `flutter doctor`, se crea el proyecto, se ejecuta en el emulador, se prueba el *hot reload*, se lee el código y, al final, la misma app se ejecuta en el navegador.
 
 La teoría sale del libro de McGraw-Hill, *Programación multimedia y dispositivos móviles*, **unidad 4, apartado 1 «Introducción a Flutter»**, y sus casos prácticos «Instalación del plugin de Flutter en Visual Studio Code» y «Creación de proyectos, ejecución y Hot Reload», que conviene tener a mano. El libro está hecho con una versión anterior de Flutter: donde cambia algo, la guía lo dice.
 
@@ -36,6 +36,7 @@ Al finalizar, tendrás Flutter instalado y funcionando, y la base para la guía 
   - [Paso 6 · Ejecutar en el emulador](#paso-6--ejecutar-en-el-emulador)
   - [Paso 7 · El hot reload](#paso-7--el-hot-reload)
   - [Paso 8 · Leer el código](#paso-8--leer-el-código)
+  - [Paso 9 · La misma app en el navegador](#paso-9--la-misma-app-en-el-navegador)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
 
@@ -102,6 +103,7 @@ El SDK se descarga de la web de Flutter y se organiza en **canales**: el **estab
 | `flutter clean` | Borra lo compilado, para empezar de cero |
 | `flutter devices` | Los dispositivos conectados donde se puede ejecutar la app |
 | `flutter emulators` | Los emuladores disponibles, y con `--launch` arranca uno |
+| `flutter create --platforms web .` | Añade otra plataforma (aquí, la web) a un proyecto que ya existe (paso 9) |
 
 Para programar, Flutter se integra con **Android Studio**, **VS Code** y Emacs mediante extensiones (*plugins*) (MGH, U4, 1.4). En VS Code hacen falta dos: **Flutter** y **Dart**; al instalar la de Flutter, se instala también la de Dart. Esta guía usa VS Code, como los casos prácticos del libro. Android Studio sigue haciendo falta por el SDK de Android y el emulador.
 
@@ -115,6 +117,7 @@ Un proyecto se crea con `flutter create` (MGH, U4, 1.5). Lo más importante de l
 | **`pubspec.yaml`** | La **configuración** del proyecto: su nombre, las librerías que usa (dependencias) y los recursos (imágenes, fuentes, sonidos) |
 | **`android`** | Un **proyecto de Android completo** (con su módulo `app`, Gradle, el manifiesto…). Al compilar, el código de Flutter se mete en él |
 | `ios` | Lo mismo para iOS. Para compilarlo hace falta un Mac con Xcode. En esta guía no se crea |
+| `web` | Lo necesario para la web: la página `index.html` que carga la app. Se añade en el paso 9 |
 | `test` | Las pruebas automáticas |
 | `build` | Lo compilado: no se toca |
 
@@ -449,6 +452,50 @@ class _MyHomePageState extends State<MyHomePage> {
 
 </details>
 
+## Paso 9 · La misma app en el navegador
+
+Flutter es **multiplataforma**: el mismo código sirve para Android, iOS, la web y el escritorio. En el paso 5 el proyecto se creó solo para Android (`--platforms android`). Para que funcione también en el navegador, basta con **añadirle la plataforma web**. El código de `lib` no se toca.
+
+1. Para la app del emulador: en la barra de depuración de VS Code, el cuadrado rojo (**Stop**, `Mayús + F5`).
+2. En la terminal de VS Code, en la carpeta del proyecto:
+
+   ```powershell
+   flutter create --platforms web .
+   flutter devices
+   flutter run -d chrome
+   ```
+
+   | Orden | Qué hace |
+   |---|---|
+   | `flutter create --platforms web .` | Añade la plataforma web al proyecto que ya existe: el punto (`.`) es la carpeta actual. Crea la carpeta `web`, con la página `index.html` que carga la app, y no cambia `lib` ni `android` |
+   | `flutter devices` | Ahora, además del emulador (si está encendido), salen **Chrome (web)** y **Edge (web)** |
+   | `flutter run -d chrome` | Compila la app para la web y la abre en Chrome. `-d` elige el dispositivo. En VS Code, lo mismo: elegir **Chrome** en la barra de estado, abajo a la derecha, y **F5** |
+
+3. Para terminar, en la terminal donde se ejecuta, pulsa `q`.
+
+**Qué ha cambiado al compilar.** Para Android, Dart se compila a **código nativo** del procesador del móvil (AOT, MGH 1.1). Para la web, se compila a **JavaScript** (o WebAssembly), que es lo que entiende el navegador. El código de la app es el mismo: lo que cambia es la capa de abajo, el *embedder* de cada plataforma (Parte 1, punto 2).
+
+**La versión final para la web.** `flutter build web` genera en `build\web` los archivos de una página web (`index.html`, `main.dart.js`…), listos para subirlos a cualquier servidor web. Si se abre `index.html` con doble clic, no funciona: el navegador necesita que esos archivos le lleguen desde un servidor.
+
+**¿Y iOS?** `flutter create --platforms ios .` crea igual la carpeta `ios`, con el proyecto de Xcode, y el código de `lib` también es el mismo. Pero para compilar una app de iOS hace falta un **Mac con Xcode**: Apple no permite hacerlo en Windows ni en Linux. Lo mismo pasa con las apps de escritorio de Windows, que necesitan Visual Studio: es la línea con `[X]` de `flutter doctor` (paso 3).
+
+**Comprueba que…** en Chrome se abre la misma app, con la etiqueta **DEBUG**, y el botón **+** aumenta el número; en el proyecto ha aparecido la carpeta `web`.
+
+**Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
+
+1. ¿Qué hubo que cambiar en `lib/main.dart` para que la app funcione en Chrome?
+2. ¿Por qué se puede compilar la misma app para Android y para la web, y para iOS no, desde este ordenador?
+3. En la web, ¿la app usa los controles HTML del navegador (botones, textos)?
+
+<details>
+<summary>Respuestas</summary>
+
+1. Nada. Solo se añadió la plataforma web al proyecto (`flutter create --platforms web .`): el código de la app es el mismo para todas las plataformas. Eso es lo que significa multiplataforma.
+2. Para Android y la web, las herramientas están en Windows: el SDK de Android y el compilador de Dart a JavaScript. Para iOS hace falta Xcode, que solo funciona en un Mac.
+3. No: Flutter dibuja sus propios widgets con su motor (Parte 1, punto 1), también en el navegador. Por eso la app se ve igual en el móvil y en Chrome.
+
+</details>
+
 ---
 
 ## Si algo falla
@@ -462,6 +509,7 @@ class _MyHomePageState extends State<MyHomePage> {
 | `Android license status unknown` | `flutter doctor --android-licenses` y acepta todas con `y` |
 | VS Code dice *Could not find a Flutter SDK* | Cierra y abre VS Code. Si sigue, **Locate SDK** → `C:\dam2627\flutter` |
 | Al pulsar F5 la app se abre en Chrome | El dispositivo de la barra de estado de VS Code (abajo a la derecha) es Chrome: elige el emulador. Si no sale, arráncalo con `flutter emulators --launch Pixel_9` |
+| `flutter run -d chrome` dice que no encuentra el dispositivo | Falta Chrome, o Flutter no lo encuentra: prueba con Edge, `flutter run -d edge` |
 | La primera ejecución parece no avanzar | Es normal: la primera compilación tarda entre 5 y 10 minutos. En la consola de depuración se ve `Running Gradle task 'assembleDebug'…` |
 | El *hot reload* no hace nada | El archivo no se ha guardado, o la app no se ejecutó con F5 (en modo *debug*). Con `flutter run` en el terminal, pulsa `r` |
 | Error al compilar, de Gradle o de Java (`jlink`…) | Es el mismo problema que en ValoraPMDM, con un Gradle abierto por VS Code: mira esa guía, apartado «Si algo falla» |
@@ -474,6 +522,7 @@ C:\dam2627
 └── pmdm
     └── hola_flutter          el proyecto (paso 5)
         ├── android           el proyecto de Android, generado
+        ├── web               la página que carga la app en el navegador (paso 9)
         ├── lib
         │   └── main.dart     el código de la app (pasos 7 y 8)
         ├── test
