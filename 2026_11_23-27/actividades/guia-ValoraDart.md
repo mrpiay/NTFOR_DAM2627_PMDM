@@ -599,7 +599,7 @@ dart run
 
 `dart run` ejecuta el programa del proyecto, `bin/valora_dart.dart`. La primera vez lo compila, y tarda unos segundos.
 
-**6.1 · Las pruebas:**
+**Las pruebas:**
 
 | Nº | Prueba | Cómo | Resultado esperado |
 |---|---|---|---|
@@ -609,14 +609,7 @@ dart run
 | 4 | Sin conexión | Desconectar el Wi-Fi (o el cable) del ordenador y `dart run` | Para cada evaluación, «no se ha podido descargar (ClientException…)». El programa termina normalmente. Vuelve a conectarte |
 | 5 | Un `print` | En `main`, justo después de `final valoraciones = await descargar(numero);`, añade `print(valoraciones);` y `dart run` | Sale la lista, con cada valoración escrita por `toString`: `[Valoración 1: 4, Valoración 2: 5, …]` y, en la 3ª, `null`. Después, quita la línea |
 
-**6.2 · Las valoraciones reales.** Las de cada evaluación están en `valora/`, sin `ejemplo/`. Cambia la URL base en `lib/servicio_valora.dart`:
-
-```dart
-const urlBase =
-    'https://raw.githubusercontent.com/mrpiay/NTFOR_DAM2627_PMDM/main/valora/';
-```
-
-**Comprueba que…** las cinco pruebas de 6.1 dan el resultado esperado y, con la URL de 6.2, salen las evaluaciones que ya tienen valoraciones reales.
+**Comprueba que…** las cinco pruebas dan el resultado esperado.
 
 ---
 

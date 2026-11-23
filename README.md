@@ -6,7 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
-| 23 nov | Semana del 23 al 27: **Flutter** (UD2), con tres proyectos guiados, en orden: **Hola Flutter** (instalar Flutter y la primera app), **ValoraDart** (el lenguaje Dart) y **ValoraFlutter** (ValoraPMDM hecha con Flutter, para comparar las dos). La guía de **ValoraPMDM**, para repasar, suma las barras animadas y el detalle de una nota (pasos 14 y 15). El repaso, el martes 1, el miércoles 2 y el miércoles 9 ([2026_11_23-27](2026_11_23-27)) |
+| 23 nov | Semana del 23 al 27: **Flutter** (UD2), con tres proyectos guiados, en orden: **Hola Flutter** (instalar Flutter y la primera app), **ValoraDart** (el lenguaje Dart) y **ValoraFlutter** (ValoraPMDM hecha con Flutter, para comparar las dos). La guía de **ValoraPMDM**, para repasar, suma las barras animadas y el detalle de una nota (pasos 13 y 14). El repaso, el martes 1, el miércoles 2 y el miércoles 9 ([2026_11_23-27](2026_11_23-27)) |
 | 17 nov | Las **actividades guiadas (A)** se califican, una vez terminadas, por su **nivel de implementación y comprensión**: la mitad de la nota es cuánto funciona o se ha completado y la otra mitad, cuánto se sabe explicar, con 4 preguntas sobre el diseño y la arquitectura del proyecto ([rúbricas](programacion/1a-evaluacion.md#rúbricas)) |
 | 17 nov | Soluciones de los cuestionarios C1 y C2 ([2026_11_02-06/soluciones](2026_11_02-06/soluciones) y [2026_11_09-13/soluciones](2026_11_09-13/soluciones)) |
 | 17 nov | Semana del 23 al 27, de repaso: la guía de **ValoraPMDM**, una app Android con Retrofit y Room, de principio a fin ([2026_11_23-27](2026_11_23-27)) |

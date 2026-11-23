@@ -42,9 +42,8 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
   - [Paso 10 · MainActivity](#paso-10--mainactivity)
   - [Paso 11 · Probar la app](#paso-11--probar-la-app)
   - [Paso 12 · Generar e instalar el APK](#paso-12--generar-e-instalar-el-apk)
-  - [Paso 13 · Las valoraciones reales](#paso-13--las-valoraciones-reales)
-  - [Paso 14 · Animar las barras](#paso-14--animar-las-barras)
-  - [Paso 15 · El detalle de una nota](#paso-15--el-detalle-de-una-nota)
+  - [Paso 13 · Animar las barras](#paso-13--animar-las-barras)
+  - [Paso 14 · El detalle de una nota](#paso-14--el-detalle-de-una-nota)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
 - [El proyecto terminado](#el-proyecto-terminado)
@@ -82,8 +81,8 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
 | R6 | Si la descarga falla, la app avisa del motivo y sigue con lo guardado. No se cierra. Sin conexión, el aviso es «Sin conexión: se muestran las valoraciones guardadas»; si el servidor da un error, «Error del servidor (código)…»; si el archivo no tiene el formato esperado, «Los datos descargados no tienen el formato esperado…». |
 | R7 | Al girar la pantalla no se pierde nada ni se vuelve a descargar. Si en horizontal no cabe todo, se puede desplazar hacia abajo. |
 | R8 | Las valoraciones son **anónimas**: solo un número para distinguirlas y la nota. |
-| R9 | Las barras del recuento están **animadas**: al aparecer crecen desde 0 y, al cambiar de pestaña, pasan poco a poco de su tamaño anterior al nuevo. Si el sistema tiene las animaciones desactivadas, cambian de golpe (paso 14). |
-| R10 | Al **tocar una fila del recuento**, se abre una segunda pantalla con la **lista de las valoraciones con esa nota**. Las filas de una nota que no ha puesto nadie no responden. Se vuelve con la flecha de arriba o con el botón «atrás» del móvil (paso 15). |
+| R9 | Las barras del recuento están **animadas**: al aparecer crecen desde 0 y, al cambiar de pestaña, pasan poco a poco de su tamaño anterior al nuevo. Si el sistema tiene las animaciones desactivadas, cambian de golpe (paso 13). |
+| R10 | Al **tocar una fila del recuento**, se abre una segunda pantalla con la **lista de las valoraciones con esa nota**. Las filas de una nota que no ha puesto nadie no responden. Se vuelve con la flecha de arriba o con el botón «atrás» del móvil (paso 14). |
 
 ## 2. De dónde salen los datos
 
@@ -119,7 +118,7 @@ https://raw.githubusercontent.com/mrpiay/NTFOR_DAM2627_PMDM/main/valora/ejemplo/
                                                                                       valora1.json
 ```
 
-Para construir y probar la app se usan las **valoraciones de ejemplo**, en `valora/ejemplo/`: hay de la 1ª y la 2ª evaluación, 13 en cada una, con medias distintas (3.8 y 4.4). No hay archivo de la 3ª, a propósito: así se prueba que la app se salta las evaluaciones que no existen. Puedes abrir [valora1.json](https://raw.githubusercontent.com/mrpiay/NTFOR_DAM2627_PMDM/main/valora/ejemplo/valora1.json) en el navegador para ver cómo es.
+La app usa las **valoraciones de ejemplo**, en `valora/ejemplo/`: hay de la 1ª y la 2ª evaluación, 13 en cada una, con medias distintas (3.8 y 4.4). No hay archivo de la 3ª, a propósito: así se prueba que la app se salta las evaluaciones que no existen. Puedes abrir [valora1.json](https://raw.githubusercontent.com/mrpiay/NTFOR_DAM2627_PMDM/main/valora/ejemplo/valora1.json) en el navegador para ver cómo es.
 
 **Lo que puede pasar al pedir un archivo.** Cada respuesta de un servidor lleva un **código** de tres cifras que dice cómo ha ido. La app distingue estos casos:
 
@@ -160,7 +159,7 @@ Estas son las piezas que usa la app:
 | **Flow** y **StateFlow** | Un **Flow** es un dato que avisa: quien lo usa no lo lee una sola vez, sino que recibe cada valor nuevo cuando cambia. Un **StateFlow** es un Flow que siempre tiene un valor actual. | Room entrega las valoraciones como Flow; el ViewModel entrega el estado como StateFlow (`uiState`) |
 | **Activity** | La ventana de una app Android: lo primero que abre Android al pulsar el icono. | `MainActivity`, que solo muestra `PantallaValora` |
 | **Logcat** | Una ventana de Android Studio donde se ven los mensajes que escribe la app mientras funciona. | Dice cuántas valoraciones ha descargado de cada evaluación |
-| **Animación** | Un valor que, en lugar de saltar, va cambiando poco a poco hasta su objetivo, y la pantalla se dibuja con cada paso. En Compose, con funciones `animate…AsState` | Las barras del recuento (paso 14) |
+| **Animación** | Un valor que, en lugar de saltar, va cambiando poco a poco hasta su objetivo, y la pantalla se dibuja con cada paso. En Compose, con funciones `animate…AsState` | Las barras del recuento (paso 13) |
 
 ### 3.2 · Las capas
 
@@ -1480,22 +1479,7 @@ El **APK** (*Android Package*) es el archivo que se instala en un móvil.
 
 **Comprueba que…** la app instalada desde el APK se abre desde la lista de apps y, al pulsar ↻, descarga las valoraciones.
 
-## Paso 13 · Las valoraciones reales
-
-Las valoraciones reales de cada evaluación están en `valora/`, sin `ejemplo/`. Para que la app las use, solo cambia la URL base, en `ServicioValora.kt`:
-
-```kotlin
-    private const val URL_BASE =
-        "https://raw.githubusercontent.com/mrpiay/NTFOR_DAM2627_PMDM/main/valora/"
-```
-
-El resto del código no cambia: los nombres de los archivos y su formato son los mismos. Las evaluaciones que aún no tengan archivo dan 404 y no aparecen.
-
-Lo que ya estaba guardado en Room de los ejemplos se sustituye al pulsar ↻ en las evaluaciones que tengan archivo real. Para empezar de cero, desinstala la app antes de volver a pulsar ▶: al desinstalar se borra su base de datos.
-
-**Comprueba que…** tras pulsar ↻, Logcat muestra las evaluaciones que se han descargado de `valora/`.
-
-## Paso 14 · Animar las barras
+## Paso 13 · Animar las barras
 
 Hasta aquí, al cambiar de pestaña o al recargar, las barras del recuento saltan de golpe a su nuevo tamaño. En este paso se **animan**: al aparecer crecen desde 0 y, al cambiar de pestaña, pasan poco a poco del tamaño que tenían al nuevo. Así se ve qué ha cambiado entre una evaluación y otra.
 
@@ -1545,7 +1529,7 @@ import androidx.compose.runtime.setValue
 private const val DURACION_MS = 1200
 
 // ── Una fila del recuento: la nota, su barra y cuántas veces se ha dado ──
-// La barra está animada (paso 14): al aparecer, crece desde 0; al cambiar de pestaña
+// La barra está animada (paso 13): al aparecer, crece desde 0; al cambiar de pestaña
 // o al recargar, pasa poco a poco de su tamaño de antes al nuevo, en lugar de saltar
 @Composable
 fun FilaRecuento(fila: FilaNota) {
@@ -1614,7 +1598,7 @@ No hace falta añadir ninguna librería: las animaciones son parte de Compose, q
 
 **Comprueba que…** las seis pruebas dan el resultado esperado.
 
-## Paso 15 · El detalle de una nota
+## Paso 14 · El detalle de una nota
 
 Hasta aquí, la app tiene una sola pantalla. En este paso se añade una **segunda**: al tocar una fila del recuento (por ejemplo, la del 5), se abre una pantalla con **la lista de las valoraciones que tienen esa nota**, y con la flecha de arriba o el botón «atrás» del móvil se vuelve. Es lo mismo que hace ValoraFlutter, para poder comparar cómo se navega en las dos.
 
@@ -1630,43 +1614,43 @@ Hasta aquí, la app tiene una sola pantalla. En este paso se añade una **segund
 
 **Un solo ViewModel para las dos pantallas.** El ViewModel se crea **fuera** del `NavHost` y se pasa a las dos pantallas, como en el Centro de Acogida. Así, la pantalla de una nota ve las mismas valoraciones y la misma pestaña elegida que la principal, sin volver a descargar ni a leer de Room.
 
-**15.1 · La librería.** En `gradle/libs.versions.toml`, añade la versión al final de `[versions]` y la librería al final de `[libraries]`:
+**14.1 · La librería.** En `gradle/libs.versions.toml`, añade la versión al final de `[versions]` y la librería al final de `[libraries]`:
 
 ```toml
-# Navegación entre pantallas (paso 15)
+# Navegación entre pantallas (paso 14)
 navigationCompose = "2.10.2"
 ```
 
 ```toml
-# Navegación entre pantallas (paso 15)
+# Navegación entre pantallas (paso 14)
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 ```
 
 Y en `app/build.gradle.kts`, en `dependencies`, debajo de la línea de `kotlinx.serialization.json`:
 
 ```kotlin
-    // Navegación entre pantallas (paso 15)
+    // Navegación entre pantallas (paso 14)
     implementation(libs.androidx.navigation.compose)
 ```
 
 Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
 
-**15.2 · Las valoraciones de una nota, en el estado.** En `ValoraUiState.kt`, dentro de la clase, encima de `filas`, añade:
+**14.2 · Las valoraciones de una nota, en el estado.** En `ValoraUiState.kt`, dentro de la clase, encima de `filas`, añade:
 
 ```kotlin
-    // Las valoraciones de la evaluación que se muestra con una nota (paso 15)
+    // Las valoraciones de la evaluación que se muestra con una nota (paso 14)
     fun conNota(nota: Int): List<Valora> = lista.filter { it.nota == nota }
 ```
 
 `lista` son las valoraciones de la evaluación que se muestra, y `filter` se queda con las que tienen esa nota. Como siempre, el estado calcula y la pantalla solo dibuja.
 
-**15.3 · La fila del recuento, que se pueda tocar.** En `PantallaValora.kt`:
+**14.3 · La fila del recuento, que se pueda tocar.** En `PantallaValora.kt`:
 
 1. Añade el `import` de `clickable`, con los demás: `import androidx.compose.foundation.clickable`.
 2. `PantallaValora` recibe qué hacer al tocar una fila. Cambia su cabecera por:
 
    ```kotlin
-   // onNota: lo que se hace al tocar una fila del recuento (paso 15). Lo decide quien la usa: la navegación
+   // onNota: lo que se hace al tocar una fila del recuento (paso 14). Lo decide quien la usa: la navegación
    fun PantallaValora(viewModel: ValoraViewModel = viewModel(), onNota: (Int) -> Unit = {}) {
    ```
 
@@ -1679,7 +1663,7 @@ Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
    Y, para que se sepa que las filas se pueden tocar, justo debajo de la línea de `HorizontalDivider`, un texto pequeño:
 
    ```kotlin
-                       // Para que se sepa que las filas se pueden tocar (paso 15)
+                       // Para que se sepa que las filas se pueden tocar (paso 14)
                        Text(
                            "Toca una fila para ver las valoraciones con esa nota",
                            style = MaterialTheme.typography.bodySmall,
@@ -1693,7 +1677,7 @@ Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
 4. `FilaRecuento` recibe qué hacer al tocarla. Cambia su cabecera y el principio de su `Row`:
 
    ```kotlin
-   // onClick: al tocar la fila. Solo responde si alguien ha puesto esa nota (paso 15)
+   // onClick: al tocar la fila. Solo responde si alguien ha puesto esa nota (paso 14)
    fun FilaRecuento(fila: FilaNota, onClick: () -> Unit = {}) {
        …
        Row(
@@ -1706,7 +1690,7 @@ Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
 
 `PantallaValora` no sabe nada de navegación: solo avisa de qué nota se ha tocado (`onNota`). Quién decide adónde se va es la navegación, en el paso siguiente. Así la pantalla se puede usar y probar sola, como hasta ahora.
 
-**15.4 · La pantalla de una nota.** Crea `PantallaNota.kt`, en el mismo paquete:
+**14.4 · La pantalla de una nota.** Crea `PantallaNota.kt`, en el mismo paquete:
 
 | Pieza | Qué hace |
 |---|---|
@@ -1738,7 +1722,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
-// ── La pantalla de una nota: las valoraciones que la tienen (paso 15) ──
+// ── La pantalla de una nota: las valoraciones que la tienen (paso 14) ──
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaNota(viewModel: ValoraViewModel, nota: Int, onVolver: () -> Unit) {
@@ -1773,7 +1757,7 @@ fun PantallaNota(viewModel: ValoraViewModel, nota: Int, onVolver: () -> Unit) {
 }
 ```
 
-**15.5 · La navegación.** Crea `Navegacion.kt`, en el mismo paquete:
+**14.5 · La navegación.** Crea `Navegacion.kt`, en el mismo paquete:
 
 ```kotlin
 package com.example.valorapmdm
@@ -1784,7 +1768,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
-// ── Las pantallas de la app y cómo se pasa de una a otra (paso 15) ─────
+// ── Las pantallas de la app y cómo se pasa de una a otra (paso 14) ─────
 @Composable
 fun NavegacionValora() {
     // El controlador de navegación: sabe en qué pantalla se está y guarda la pila de las anteriores
@@ -1817,10 +1801,10 @@ fun NavegacionValora() {
 }
 ```
 
-**15.6 · MainActivity.** Ahora la app empieza por la navegación, que muestra la pantalla principal. En `MainActivity.kt`, cambia `PantallaValora()` por:
+**14.6 · MainActivity.** Ahora la app empieza por la navegación, que muestra la pantalla principal. En `MainActivity.kt`, cambia `PantallaValora()` por:
 
 ```kotlin
-                // Las dos pantallas y cómo se pasa de una a otra (Navegacion.kt, paso 15)
+                // Las dos pantallas y cómo se pasa de una a otra (Navegacion.kt, paso 14)
                 NavegacionValora()
 ```
 
@@ -1871,9 +1855,9 @@ fun NavegacionValora() {
 | La app se cierra al abrirla | En Logcat, sin filtro, busca la línea roja `FATAL EXCEPTION`: debajo está el error y el archivo y la línea donde ocurrió. |
 | El botón ▶ no hace nada y a su izquierda ya no pone «app» | Se ha borrado la configuración de ejecución (pasa al elegir **Delete** en el menú de los tres puntos de «app»). *Run > Edit Configurations…* → **+** → **Android App**; en *Name*, `app`; en *Module*, `ValoraPMDM.app`; **OK**. |
 | Al instalar sale «Can't find service: package» o «Activity class … does not exist» | El emulador no ha terminado de arrancar. Espera a ver la pantalla de inicio y pulsa ▶ otra vez. Si se repite: *Device Manager* → los tres puntos del Pixel 9 → **Cold Boot Now**. |
-| Las barras no se animan (paso 14) | Comprueba que la barra usa `progress = { proporcion }`, el valor animado, y no `fila.proporcion`. Si aun así cambian de golpe, mira que no esté activado **Remove animations** en *Settings → Accessibility*, ni a 0 las escalas de animación de las *Developer options* |
+| Las barras no se animan (paso 13) | Comprueba que la barra usa `progress = { proporcion }`, el valor animado, y no `fila.proporcion`. Si aun así cambian de golpe, mira que no esté activado **Remove animations** en *Settings → Accessibility*, ni a 0 las escalas de animación de las *Developer options* |
 | Al tocar una fila no pasa nada, y tiene valoraciones | En `PantallaValora`, falta pasar `onClick = { onNota(fila.nota) }` a `FilaRecuento`, o `MainActivity` sigue mostrando `PantallaValora()` en lugar de `NavegacionValora()` |
-| `Unresolved reference: NavHost` o `rememberNavController` | Falta la librería de navegación (paso 15.1) o el **Sync Now** |
+| `Unresolved reference: NavHost` o `rememberNavController` | Falta la librería de navegación (paso 14.1) o el **Sync Now** |
 | La pantalla de una nota sale vacía | Cada pantalla tiene un ViewModel distinto: el ViewModel tiene que crearse en `NavegacionValora`, fuera del `NavHost`, y pasarse a las dos |
 | Las barras no crecen al abrir la app, pero sí al cambiar de pestaña | Falta `LaunchedEffect(Unit) { mostrada = true }`, o `targetValue` no usa `mostrada` |
 | Después de cambiar un archivo en GitHub, la app sigue mostrando lo anterior | GitHub guarda los archivos en caché unos minutos. Espera y vuelve a pulsar ↻. |
@@ -1897,8 +1881,8 @@ C:\dam2627\pmdm\ValoraPMDM
 │       │   │               ├── ui
 │       │   │               │   └── theme                 colores y letras (no se tocan)
 │       │   │               ├── MainActivity.kt           el punto de entrada (pasos 10 y 15)
-│   │   │               ├── Navegacion.kt             las dos pantallas y las rutas (paso 15)
-│       │   │               ├── PantallaNota.kt           la lista de valoraciones de una nota (paso 15)
+│   │   │               ├── Navegacion.kt             las dos pantallas y las rutas (paso 14)
+│       │   │               ├── PantallaNota.kt           la lista de valoraciones de una nota (paso 14)
 │   │   │               ├── PantallaValora.kt         la pantalla, solo dibuja (pasos 9, 14 y 15)
 │       │   │               ├── ServicioValora.kt         Retrofit y la URL base (paso 6)
 │       │   │               ├── Valora.kt                 ValoraJson, Valora y aValora (paso 4)
@@ -1916,7 +1900,7 @@ C:\dam2627\pmdm\ValoraPMDM
 
 ## El proyecto terminado
 
-El proyecto terminado, con los pasos 1 a 15, está en [`ValoraPMDM.zip`](ValoraPMDM.zip): sirve para comparar con el propio y para repasar.
+El proyecto terminado, con los pasos 1 a 14, está en [`ValoraPMDM.zip`](ValoraPMDM.zip): sirve para comparar con el propio y para repasar.
 
 1. Descárgalo y descomprímelo en `C:\dam2627\pmdm`: clic derecho → **Extraer todo…** → escribe `C:\dam2627\pmdm` → **Extraer**. Queda la carpeta `C:\dam2627\pmdm\ValoraPMDM`. Si ya tienes una carpeta con ese nombre, la tuya, cámbiale antes el nombre.
 2. En Android Studio, **File → Open**, elige la carpeta `ValoraPMDM` y **OK**. Si pregunta si confías en el proyecto, **Trust Project**.
