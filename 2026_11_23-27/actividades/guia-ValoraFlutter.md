@@ -281,6 +281,8 @@ Es la misma idea que en Android con Navigation Compose: un `NavHost` con las rut
 
 ## 7. ValoraPMDM frente a ValoraFlutter
 
+La versión nativa terminada está en [`ValoraPMDM.zip`](ValoraPMDM.zip), en esta misma carpeta (cómo se abre, al final de su [guía](guia-ValoraPMDM.md#el-proyecto-terminado)): ábrela en Android Studio para comparar las dos pieza a pieza.
+
 | | ValoraPMDM (Android nativo) | ValoraFlutter (Flutter) |
 |---|---|---|
 | Lenguaje | Kotlin | Dart |
