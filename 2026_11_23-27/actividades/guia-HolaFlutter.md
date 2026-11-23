@@ -288,7 +288,7 @@ Solo afecta a esta carpeta: en los proyectos de Java de PROG la extensión sigue
    flutter emulators --launch Pixel_9
    ```
 
-   `flutter emulators` muestra los emuladores (el `Id` del Pixel 9 es `Pixel_9`) y `--launch` lo arranca. Espera a ver la pantalla de inicio del móvil. El emulador se abre en una ventana aparte, normalmente en la mitad izquierda de la pantalla: deja VS Code en la mitad derecha. Para pegar una ventana a una mitad, selecciónala y pulsa **Win + ←** o **Win + →**; también se puede arrastrar desde su borde.
+   `flutter emulators` muestra los emuladores (el `Id` del Pixel 9 es `Pixel_9`) y `--launch` lo arranca. Espera a ver la pantalla de inicio del móvil. El emulador se abre en una ventana aparte, normalmente en la mitad izquierda de la pantalla: deja VS Code en la mitad derecha. El emulador se mueve como cualquier ventana: arrastrándolo con el ratón desde su borde.
 2. **Comprueba que Flutter lo ve:**
 
    ```powershell
