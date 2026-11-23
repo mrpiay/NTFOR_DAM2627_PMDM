@@ -300,21 +300,23 @@ Solo afecta a esta carpeta: en los proyectos de Java de PROG la extensión sigue
    ```
    sdk gphone64 x86 64 (mobile) • emulator-5554 • android-x64 • Android 17 (API 37) (emulator)
    ```
-3. **Ejecuta la app:** abre `lib/main.dart`. Encima de la línea `void main() {` salen, en gris y pequeño, tres palabras: **Run | Debug | Profile**. Pulsa **Debug**.
+3. **Ejecuta la app:** abre `lib/main.dart`. Encima de la línea `void main() {` salen, en gris y pequeño, tres palabras: **Run | Debug | Profile**. Pulsa **Run**.
 
    | Opción | Qué hace |
    |---|---|
-   | **Run** | Ejecuta la app sin el depurador: sin puntos de interrupción |
-   | **Debug** | La ejecuta en modo depuración: con *hot reload*, puntos de interrupción y la barra de depuración. Es la que se usa |
+   | **Run** | Ejecuta la app, con *hot reload*. Es la que se usa |
+   | **Debug** | Lo mismo, y además con el depurador: si se pone un **punto de interrupción** (clic a la izquierda del número de una línea, sale un punto rojo), la app se para al llegar a esa línea y se pueden ver los valores de las variables. Aquí no hay nada que depurar |
    | **Profile** | La compila casi como la versión final, para medir su rendimiento. No se usa |
 
-   **Debug** es lo mismo que la tecla **F5** o *Run → Start Debugging*. En muchos portátiles, F5 es **Fn + F5**, y el menú *Run* puede estar escondido en el menú **☰**, arriba a la izquierda.
+   **Run** es lo mismo que **Ctrl + F5** o *Run → Run Without Debugging*, y **Debug**, que **F5** o *Run → Start Debugging*. En muchos portátiles, las teclas F se pulsan con **Fn**, y el menú *Run* puede estar escondido en el menú **☰**, arriba a la izquierda.
 
    Abajo a la derecha, en la barra de estado de VS Code, tiene que poner el emulador como dispositivo; si pone **Chrome** o **Windows**, haz clic ahí y elige el emulador.
 
 **La primera vez tarda mucho, entre 5 y 10 minutos:** Gradle compila el proyecto de Android y descarga lo que le falta del SDK (por ejemplo, el NDK y CMake). En la consola de depuración de VS Code se ve el progreso. Las siguientes veces tarda segundos.
 
 **Comprueba que…** en el emulador se abre **Flutter Demo Home Page**, con la etiqueta **DEBUG** arriba a la derecha, el texto *You have pushed the button this many times:*, un **0** y el botón **+**. Al pulsar **+**, el número aumenta.
+
+**La cinta DEBUG.** La pone `MaterialApp` (paso 8), que tiene la opción `debugShowCheckedModeBanner` activada por defecto. Solo sale cuando la app está compilada en **modo *debug***, que es como la compilan **Run**, **Debug** y `flutter run`: una versión de prueba, más lenta, que lleva lo necesario para el *hot reload* y el depurador. En la versión final (`flutter build apk` o `flutter build web`, paso 9) no sale. También se puede quitar en el código, con `debugShowCheckedModeBanner: false` dentro de `MaterialApp`. Android no tiene nada parecido: en ValoraPMDM no sale.
 
 ## Paso 7 · El hot reload
 
@@ -517,7 +519,7 @@ Flutter es **multiplataforma**: el mismo código sirve para Android, iOS, la web
    |---|---|
    | `flutter create --platforms web .` | Añade la plataforma web al proyecto que ya existe: el punto (`.`) es la carpeta actual. Crea la carpeta `web`, con la página `index.html` que carga la app, y no cambia `lib` ni `android` |
    | `flutter devices` | Ahora, además del emulador (si está encendido), salen **Chrome (web)** y **Edge (web)** |
-   | `flutter run -d chrome` | Compila la app para la web y la abre en Chrome. `-d` elige el dispositivo. En VS Code, lo mismo: elegir **Chrome** en la barra de estado, abajo a la derecha, y **Debug** |
+   | `flutter run -d chrome` | Compila la app para la web y la abre en Chrome. `-d` elige el dispositivo. En VS Code, lo mismo: elegir **Chrome** en la barra de estado, abajo a la derecha, y **Run** |
 
    Con otros navegadores:
 
@@ -578,12 +580,12 @@ En el navegador, `http://localhost:8000`: es la app final, sin la etiqueta **DEB
 | `flutter doctor` sigue diciendo *cmdline-tools component is missing* | En el SDK Manager de Android Studio, marca **Android SDK Command-line Tools (latest)** y **Apply** (paso 3) |
 | `Android license status unknown` | `flutter doctor --android-licenses` y acepta todas con `y` |
 | VS Code dice *Could not find a Flutter SDK* | Cierra y abre VS Code. Si sigue, **Locate SDK** → `C:\dam2627\flutter` |
-| Al pulsar **Debug** (o F5) la app se abre en Chrome | El dispositivo de la barra de estado de VS Code (abajo a la derecha) es Chrome: elige el emulador. Si no sale, arráncalo con `flutter emulators --launch Pixel_9` |
+| Al pulsar **Run** la app se abre en Chrome | El dispositivo de la barra de estado de VS Code (abajo a la derecha) es Chrome: elige el emulador. Si no sale, arráncalo con `flutter emulators --launch Pixel_9` |
 | Al abrir `build\web\index.html` con doble clic, la página sale en blanco | Es normal: necesita un servidor. Usa `python -m http.server 8000` en `build\web` y abre `http://localhost:8000` (paso 9) |
 | `python` no se reconoce al arrancar el servidor | Python no está instalado o no está en el `Path`: es el mismo que se usa en DI |
 | `flutter run -d chrome` dice que no encuentra el dispositivo | Falta Chrome, o Flutter no lo encuentra: prueba con Edge, `flutter run -d edge` |
 | La primera ejecución parece no avanzar | Es normal: la primera compilación tarda entre 5 y 10 minutos. En la consola de depuración se ve `Running Gradle task 'assembleDebug'…` |
-| El *hot reload* no hace nada | El archivo no se ha guardado, o la app no se ejecutó con F5 (en modo *debug*). Con `flutter run` en el terminal, pulsa `r` |
+| El *hot reload* no hace nada | El archivo no se ha guardado, o la app no se ejecutó desde VS Code (**Run** o **Debug**). Con `flutter run` en el terminal, pulsa `r` |
 | Abajo, en VS Code, salen «Java» y «Gradle» trabajando | Falta `.vscode/settings.json` (paso 5): créalo y recarga VS Code |
 | Error al compilar, de Gradle o de Java (`jlink`…) | Es el mismo problema que en ValoraPMDM, con un Gradle abierto por VS Code: crea `.vscode/settings.json` (paso 5) y mira la guía de ValoraPMDM, apartado «Si algo falla» |
 

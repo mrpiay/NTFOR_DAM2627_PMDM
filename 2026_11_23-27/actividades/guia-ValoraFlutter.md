@@ -123,7 +123,7 @@ MaterialApp
                             ├── Text "Toca una fila…"
                             └── FilaRecuento ×5 ── Row
                                 ├── Text "5", Icon ★
-                                ├── Expanded ── LinearProgressIndicator
+                                ├── Expanded ── TweenAnimationBuilder ── LinearProgressIndicator
                                 └── Text "3"
 ```
 
@@ -256,7 +256,7 @@ Es la misma idea que en Android con Navigation Compose: un `NavHost` con las rut
 4. Mientras, `cargarEvaluaciones` llama a `descargar` con 1, 2 y 3, una detrás de otra, y crea una `Evaluacion` con cada una que tiene archivo.
 5. Al terminar, el `FutureBuilder` se vuelve a construir solo: ahora `done` y con los datos. Devuelve una pestaña por evaluación, y en cada una, un `ResumenEvaluacion`.
 
-**Al cambiar de pestaña:** `DefaultTabController` cambia la pestaña elegida y `TabBarView` muestra su contenido. No se descarga nada.
+**Al cambiar de pestaña:** `DefaultTabController` cambia la pestaña elegida y `TabBarView` muestra su contenido, deslizándolo hacia un lado; también se puede cambiar deslizando el dedo sobre el contenido. El deslizamiento no está programado: `TabBarView` lo hace solo. No se descarga nada.
 
 **Al pulsar ↻ (R4):** `onPressed` llama a `recargar`, que hace `setState(() { _carga = cargarEvaluaciones(); })`. El estado tiene un `Future` nuevo, `build` se vuelve a ejecutar y el `FutureBuilder` vuelve a esperar: círculo y, después, los datos.
 
@@ -290,6 +290,9 @@ La versión nativa terminada está en [`ValoraPMDM.zip`](ValoraPMDM.zip), en est
 | Lenguaje | Kotlin | Dart |
 | Interfaz | Funciones `@Composable` | Widgets: clases con `build` |
 | Estructura de la pantalla | `Scaffold`, `TopAppBar`, `PrimaryTabRow` y `Tab` | `Scaffold`, `AppBar`, `TabBar` y `Tab` |
+| Colores de la app | **Dinámicos**: el tema que crea Android Studio tiene `dynamicColor = true` (en `ui/theme/Theme.kt`), y desde Android 12 la app toma los colores del fondo de pantalla del móvil (*Material You*). En el emulador sale azul; en otro móvil, de otro color; antes de Android 12, morado (`Purple40`) | **Fijos**: `ColorScheme.fromSeed(seedColor: Colors.teal)` crea todos los colores a partir del verde azulado, iguales en cualquier móvil |
+| Animar las barras | `animateFloatAsState`, con `tween(600, easing = FastOutSlowInEasing)`, y un `LaunchedEffect` para que también crezcan al abrir la app | `TweenAnimationBuilder`, con `duration` y `curve: Curves.fastOutSlowIn`: empieza siempre en `begin`, así que crecen también al abrir la app |
+| Cambiar de pestaña | El contenido cambia de golpe, y no se puede pasar a otra pestaña deslizando el dedo: `PrimaryTabRow` solo dibuja las pestañas. Para que se deslice haría falta un `HorizontalPager` | El contenido se desliza hacia un lado, y también se cambia deslizando el dedo: `TabBarView` lo trae de serie. Aunque se espere lo mismo, cada tecnología da por defecto un comportamiento distinto |
 | Columnas, filas y espacio | `Column`, `Row`, `Modifier.weight`, `Modifier.padding` | `Column`, `Row`, `Expanded`, `Padding` |
 | Navegar a otra pantalla | Navigation Compose: `NavHost` con las rutas, `navigate("nota/5")` y `popBackStack()` | `MaterialApp` con `routes`, `Navigator.pushNamed(…, arguments: …)` y `Navigator.pop` |
 | Pasar datos a la pantalla nueva | En la ruta (`nota/{nota}`); los demás datos, en el mismo ViewModel | En `arguments`, con un objeto (`DatosNota`) |
@@ -402,7 +405,9 @@ No se cambia nada: son exactamente los mismos archivos (paso 3 y paso 4 de Valor
 | `Text('Toca una fila…', style: …bodySmall?.copyWith(color: …onSurfaceVariant))` | Un texto pequeño y gris, debajo de la línea, para que se sepa que las filas se pueden tocar. `copyWith` copia el estilo cambiando solo el color, y `?.` es porque el estilo podría ser `null` |
 | `for (final nota in recuento.keys) FilaRecuento(…)` | Una fila por cada nota del recuento, de la 5 a la 1 |
 | `mainAxisSize: MainAxisSize.min` | La fila de estrellas ocupa solo lo que necesita, y así `Center` la centra |
-| `LinearProgressIndicator(value: veces / total, minHeight: 12)` | La barra: llena en la proporción de esa nota (`/` en Dart da decimal) |
+| `TweenAnimationBuilder<double>(tween: Tween(begin: 0, end: veces / total), …)` | Anima un número: lo va cambiando de `begin` (0, vacía) a `end` (la proporción de esa nota; `/` en Dart da decimal) durante `duration` (600 ms), y con cada valor vuelve a llamar a `builder`. Así la barra crece al abrir la app y al cambiar de pestaña, como en ValoraPMDM (paso 14) |
+| `curve: Curves.fastOutSlowIn` | Cómo avanza: deprisa al principio y despacio al final. Es la misma curva que `FastOutSlowInEasing` en Compose |
+| `builder: (context, valor, _) => LinearProgressIndicator(value: valor, minHeight: 12)` | La barra, dibujada con el valor animado en cada momento. El `_` es un argumento que no se usa |
 | `initialRoute: '/'` y `routes: { '/': …, '/nota': … }` | Las dos pantallas, cada una con su ruta. La primera, la de `/` |
 | `(context) => const PantallaValora()` | Una función que crea la pantalla de esa ruta: el `Navigator` la llama cuando se va a ella |
 | `InkWell(onTap: veces == 0 ? null : () { … }, child: …)` | La fila responde al toque, salvo si nadie ha puesto esa nota |
@@ -669,9 +674,15 @@ class FilaRecuento extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: LinearProgressIndicator(
-                  value: veces / total,
-                  minHeight: 12,
+                // La barra crece desde vacía hasta su proporción, en 600 ms,
+                // como en ValoraPMDM. TweenAnimationBuilder va cambiando
+                // valor de begin a end, y con cada valor vuelve a llamar a builder
+                child: TweenAnimationBuilder<double>(
+                  tween: Tween(begin: 0, end: veces / total),
+                  duration: const Duration(milliseconds: 600),
+                  curve: Curves.fastOutSlowIn,
+                  builder: (context, valor, _) =>
+                      LinearProgressIndicator(value: valor, minHeight: 12),
                 ),
               ),
             ),
@@ -840,7 +851,7 @@ flutter test
 
 ## Paso 6 · Probar la app
 
-Arranca el emulador (`flutter emulators --launch Pixel_9`), abre `lib/main.dart` y pulsa **F5**, como en «Hola Flutter».
+Arranca el emulador (`flutter emulators --launch Pixel_9`), abre `lib/main.dart` y pulsa **Run**, encima de `void main()`, como en «Hola Flutter».
 
 | Nº | Prueba | Cómo | Resultado esperado |
 |---|---|---|---|
