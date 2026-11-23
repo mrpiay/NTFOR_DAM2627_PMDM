@@ -44,6 +44,7 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
   - [Paso 12 · Generar e instalar el APK](#paso-12--generar-e-instalar-el-apk)
   - [Paso 13 · Las valoraciones reales](#paso-13--las-valoraciones-reales)
   - [Paso 14 · Animar las barras](#paso-14--animar-las-barras)
+  - [Paso 15 · El detalle de una nota](#paso-15--el-detalle-de-una-nota)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
 
@@ -81,6 +82,7 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
 | R7 | Al girar la pantalla no se pierde nada ni se vuelve a descargar. Si en horizontal no cabe todo, se puede desplazar hacia abajo. |
 | R8 | Las valoraciones son **anónimas**: solo un número para distinguirlas y la nota. |
 | R9 | Las barras del recuento están **animadas**: al aparecer crecen desde 0 y, al cambiar de pestaña, pasan poco a poco de su tamaño anterior al nuevo. Si el sistema tiene las animaciones desactivadas, cambian de golpe (paso 14). |
+| R10 | Al **tocar una fila del recuento**, se abre una segunda pantalla con la **lista de las valoraciones con esa nota**. Las filas de una nota que no ha puesto nadie no responden. Se vuelve con la flecha de arriba o con el botón «atrás» del móvil (paso 15). |
 
 ## 2. De dónde salen los datos
 
@@ -239,6 +241,8 @@ Nada de esto usa Internet.
 
 **Si la descarga falla (R6):** Kotlin lanza una **excepción**, que es su forma de avisar de un error. Hay un tipo de excepción para cada problema: `IOException` si no hay conexión, `HttpException` si el servidor responde con un error y `SerializationException` si el JSON no es como se esperaba. El ViewModel las recoge (`catch`) para que la app no se cierre, pone en el estado el aviso que corresponde y no toca Room: lo guardado sigue en pantalla.
 
+**Al tocar una fila del recuento (R10):** la fila avisa de su nota (`onNota`) y la navegación va a la ruta `"nota/5"` (`navController.navigate`). `PantallaNota` recibe el mismo ViewModel, pide al estado las valoraciones con esa nota (`conNota`) y las muestra en una lista. Con la flecha o el botón «atrás», `popBackStack` la quita y se vuelve a la principal. No se descarga nada.
+
 **Al cambiar las barras (R9):** cuando el estado trae otra proporción para una barra (otra pestaña, otros datos), la barra no la dibuja de golpe: `animateFloatAsState` va del valor que tenía al nuevo en 600 milisegundos, y la fila se dibuja en cada paso. El estado no sabe nada de la animación.
 
 **Al girar el móvil (R7):** Android destruye la ventana y la vuelve a crear con la nueva orientación. La pantalla se dibuja otra vez, pero el ViewModel no se ha destruido: tiene el mismo estado, así que se ve lo mismo y no se descarga nada.
@@ -260,6 +264,8 @@ Nada de esto usa Internet.
 | Un **aviso distinto** para cada error | Sin conexión, error del servidor y formato incorrecto se arreglan de forma distinta: el aviso y Logcat dicen cuál ha sido (R6). |
 | Escala de **1 a 5** estrellas | Como en cualquier valoración con estrellas, la mínima es una. Por eso el recuento tiene cinco filas, una por estrella. |
 | Valoraciones **anónimas** | Solo un número y la nota (R8): nada en los datos dice quién valoró. |
+| Una **segunda pantalla**, con Navigation Compose | Practica la navegación de la UD2 con la misma app, y permite comparar con ValoraFlutter, que hace lo mismo con el `Navigator` de Flutter. |
+| **Un solo ViewModel** para las dos pantallas | La pantalla de una nota usa las valoraciones que ya están cargadas: no descarga ni lee nada. |
 | **Animar** las barras | Al cambiar de pestaña, el movimiento enseña qué notas suben y cuáles bajan entre una evaluación y otra; un salto de golpe no se ve. |
 | La animación, **solo en la pantalla** | Es cómo se dibuja, no qué datos hay: el estado y el ViewModel no cambian (R9). |
 | **600 ms** y con curva que frena | Lo bastante para verse, sin que la app parezca lenta. Frenar al final se ve más natural que una velocidad constante. |
@@ -1602,6 +1608,232 @@ No hace falta añadir ninguna librería: las animaciones son parte de Compose, q
 
 **Comprueba que…** las seis pruebas dan el resultado esperado.
 
+## Paso 15 · El detalle de una nota
+
+Hasta aquí, la app tiene una sola pantalla. En este paso se añade una **segunda**: al tocar una fila del recuento (por ejemplo, la del 5), se abre una pantalla con **la lista de las valoraciones que tienen esa nota**, y con la flecha de arriba o el botón «atrás» del móvil se vuelve. Es lo mismo que hace ValoraFlutter, para poder comparar cómo se navega en las dos.
+
+**Cómo se navega en Compose.** Se usa **Navigation Compose**, como en el proyecto del Centro de Acogida (UD2, apartado 5 de los apuntes, «Navegación»):
+
+| Pieza | Qué hace |
+|---|---|
+| `rememberNavController()` | El **controlador de navegación**: sabe en qué pantalla se está y guarda en una **pila** las anteriores, para poder volver |
+| `NavHost(navController, startDestination = "resumen") { … }` | Las pantallas de la app. Cada una, con `composable("ruta") { … }`. La primera es la de `startDestination` |
+| `composable("nota/{nota}")` | Una ruta con un **argumento**: `{nota}` es la parte que cambia. `"nota/5"` es la pantalla de la nota 5 |
+| `navController.navigate("nota/5")` | Va a esa ruta: pone la pantalla encima de la pila |
+| `navController.popBackStack()` | Quita la pantalla de encima: se vuelve a la anterior. El botón «atrás» del móvil hace lo mismo sin programarlo |
+
+**Un solo ViewModel para las dos pantallas.** El ViewModel se crea **fuera** del `NavHost` y se pasa a las dos pantallas, como en el Centro de Acogida. Así, la pantalla de una nota ve las mismas valoraciones y la misma pestaña elegida que la principal, sin volver a descargar ni a leer de Room.
+
+**15.1 · La librería.** En `gradle/libs.versions.toml`, añade la versión al final de `[versions]` y la librería al final de `[libraries]`:
+
+```toml
+# Navegación entre pantallas (paso 15)
+navigationCompose = "2.10.2"
+```
+
+```toml
+# Navegación entre pantallas (paso 15)
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+```
+
+Y en `app/build.gradle.kts`, en `dependencies`, debajo de la línea de `kotlinx.serialization.json`:
+
+```kotlin
+    // Navegación entre pantallas (paso 15)
+    implementation(libs.androidx.navigation.compose)
+```
+
+Pulsa **Sync Now** en la barra amarilla, como en el paso 2.
+
+**15.2 · Las valoraciones de una nota, en el estado.** En `ValoraUiState.kt`, dentro de la clase, encima de `filas`, añade:
+
+```kotlin
+    // Las valoraciones de la evaluación que se muestra con una nota (paso 15)
+    fun conNota(nota: Int): List<Valora> = lista.filter { it.nota == nota }
+```
+
+`lista` son las valoraciones de la evaluación que se muestra, y `filter` se queda con las que tienen esa nota. Como siempre, el estado calcula y la pantalla solo dibuja.
+
+**15.3 · La fila del recuento, que se pueda tocar.** En `PantallaValora.kt`:
+
+1. Añade el `import` de `clickable`, con los demás: `import androidx.compose.foundation.clickable`.
+2. `PantallaValora` recibe qué hacer al tocar una fila. Cambia su cabecera por:
+
+   ```kotlin
+   // onNota: lo que se hace al tocar una fila del recuento (paso 15). Lo decide quien la usa: la navegación
+   fun PantallaValora(viewModel: ValoraViewModel = viewModel(), onNota: (Int) -> Unit = {}) {
+   ```
+
+3. Donde se dibujan las filas, cambia `FilaRecuento(fila)` por:
+
+   ```kotlin
+                               FilaRecuento(fila, onClick = { onNota(fila.nota) })
+   ```
+
+4. `FilaRecuento` recibe qué hacer al tocarla. Cambia su cabecera y el principio de su `Row`:
+
+   ```kotlin
+   // onClick: al tocar la fila. Solo responde si alguien ha puesto esa nota (paso 15)
+   fun FilaRecuento(fila: FilaNota, onClick: () -> Unit = {}) {
+       …
+       Row(
+           modifier = Modifier
+               .fillMaxWidth()
+               .clickable(enabled = fila.veces > 0, onClick = onClick),  // con el efecto de onda de Material
+           verticalAlignment = Alignment.CenterVertically
+       ) {
+   ```
+
+`PantallaValora` no sabe nada de navegación: solo avisa de qué nota se ha tocado (`onNota`). Quién decide adónde se va es la navegación, en el paso siguiente. Así la pantalla se puede usar y probar sola, como hasta ahora.
+
+**15.4 · La pantalla de una nota.** Crea `PantallaNota.kt`, en el mismo paquete:
+
+| Pieza | Qué hace |
+|---|---|
+| `PantallaNota(viewModel, nota, onVolver)` | Recibe el ViewModel (el mismo que la principal), la nota y qué hacer al volver |
+| `estado.conNota(nota)` | Las valoraciones de esa nota, calculadas por el estado |
+| `TopAppBar(…, navigationIcon = { IconButton(onClick = onVolver) { … } })` | La barra de arriba, con la flecha de volver a la izquierda del título |
+| `Icons.AutoMirrored.Filled.ArrowBack` | La flecha de volver. *AutoMirrored*: en idiomas que se escriben de derecha a izquierda, se da la vuelta |
+| `LazyColumn { items(valoraciones) { … } }` | Una lista que solo dibuja las filas que se ven: para cada valoración, una fila |
+| `ListItem(leadingContent = …, headlineContent = …, supportingContent = …, trailingContent = …)` | Una fila estándar de Material: icono, título, subtítulo y algo a la derecha (aquí, las estrellas, con el `Estrellas` del paso 9) |
+
+```kotlin
+package com.example.valorapmdm
+
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+
+// ── La pantalla de una nota: las valoraciones que la tienen (paso 15) ──
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PantallaNota(viewModel: ValoraViewModel, nota: Int, onVolver: () -> Unit) {
+    val estado by viewModel.uiState.collectAsStateWithLifecycle()
+    val valoraciones = estado.conNota(nota)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Nota $nota · ${estado.mostrada}ª evaluación") },
+                // La flecha de volver, a la izquierda del título
+                navigationIcon = {
+                    IconButton(onClick = onVolver) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Volver")
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
+        // LazyColumn: una lista que solo dibuja las filas que se ven
+        LazyColumn(modifier = Modifier.padding(innerPadding)) {
+            items(valoraciones) { valoracion ->
+                // ListItem: una fila estándar de Material, con icono, título y subtítulo
+                ListItem(
+                    leadingContent = { Icon(Icons.Filled.Person, contentDescription = null) },
+                    headlineContent = { Text("Valoración ${valoracion.id}") },
+                    supportingContent = { Text("${valoracion.nota} de 5") },
+                    trailingContent = { Estrellas(valoracion.nota) }
+                )
+            }
+        }
+    }
+}
+```
+
+**15.5 · La navegación.** Crea `Navegacion.kt`, en el mismo paquete:
+
+```kotlin
+package com.example.valorapmdm
+
+import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+
+// ── Las pantallas de la app y cómo se pasa de una a otra (paso 15) ─────
+@Composable
+fun NavegacionValora() {
+    // El controlador de navegación: sabe en qué pantalla se está y guarda la pila de las anteriores
+    val navController = rememberNavController()
+
+    // Un solo ViewModel para las dos pantallas: se crea fuera del NavHost, y así
+    // la pantalla de una nota ve las mismas valoraciones y la misma pestaña elegida
+    val viewModel: ValoraViewModel = viewModel()
+
+    // NavHost: cada composable(ruta) es una pantalla. La primera es "resumen"
+    NavHost(navController = navController, startDestination = "resumen") {
+        composable("resumen") {
+            PantallaValora(
+                viewModel = viewModel,
+                // Al tocar una fila, se va a la ruta de esa nota: "nota/5"
+                onNota = { nota -> navController.navigate("nota/$nota") }
+            )
+        }
+        // {nota} es un argumento: la parte de la ruta que cambia
+        composable("nota/{nota}") { entrada ->
+            val nota = entrada.arguments?.getString("nota")?.toIntOrNull() ?: 0
+            PantallaNota(
+                viewModel = viewModel,
+                nota = nota,
+                // Volver: quita esta pantalla de la pila y se ve la anterior
+                onVolver = { navController.popBackStack() }
+            )
+        }
+    }
+}
+```
+
+**15.6 · MainActivity.** Ahora la app empieza por la navegación, que muestra la pantalla principal. En `MainActivity.kt`, cambia `PantallaValora()` por:
+
+```kotlin
+                // Las dos pantallas y cómo se pasa de una a otra (Navegacion.kt, paso 15)
+                NavegacionValora()
+```
+
+**Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
+
+1. ¿Por qué el ViewModel se crea en `NavegacionValora` y no dentro de cada pantalla?
+2. ¿Cómo sabe `PantallaNota` qué nota mostrar?
+3. ¿Por qué `PantallaValora` recibe `onNota` en lugar de llamar ella a `navController.navigate`?
+4. Al volver de la pantalla de una nota, ¿se vuelven a descargar las valoraciones?
+
+<details>
+<summary>Respuestas</summary>
+
+1. Para que las dos pantallas usen **el mismo**: la de una nota ve las valoraciones y la pestaña elegida de la principal. Si cada pantalla pidiera el suyo con `viewModel()` dentro del `NavHost`, cada destino tendría uno distinto, y el de la nota no sabría qué evaluación se está mostrando.
+2. Por la ruta: `navigate("nota/5")` lleva el 5 en el texto, y `composable("nota/{nota}")` lo recoge en `entrada.arguments` y se lo pasa a `PantallaNota`.
+3. Para que la pantalla no dependa de la navegación: solo avisa de qué nota se ha tocado, y quien la usa decide qué hacer. Así se puede seguir usando y probando sola, por ejemplo, en una vista previa.
+4. No. `popBackStack` solo quita la pantalla de encima de la pila; la principal y el ViewModel siguen ahí, con sus datos.
+
+</details>
+
+**Probar el detalle.** Pulsa ▶:
+
+| Nº | Prueba | Cómo | Resultado esperado |
+|---|---|---|---|
+| 1 | Una nota | En la 1ª evaluación, tocar la fila del **5** | Se abre «Nota 5 · 1ª evaluación» con **3** valoraciones (la 2, la 6 y la 10), cada una con «5 de 5» y cinco estrellas |
+| 2 | Otra pestaña | Volver, pasar a la 2ª evaluación y tocar la fila del **5** | «Nota 5 · 2ª evaluación», con **6** valoraciones |
+| 3 | Volver | La flecha de arriba, y después lo mismo con el botón «atrás» del móvil | Se vuelve a la principal, en la misma pestaña, sin descargar nada |
+| 4 | Una nota sin valoraciones | En la 1ª evaluación, tocar la fila del **1** (0 veces) | No pasa nada |
+| 5 | Girar | En la pantalla de una nota, girar el emulador | Sigue en la misma pantalla, con la misma lista |
+
+**Comprueba que…** las cinco pruebas dan el resultado esperado, y que ValoraFlutter hace lo mismo con la misma nota (en ValoraFlutter, paso 6, pruebas 8 a 10).
+
 ---
 
 ## Si algo falla
@@ -1621,6 +1853,9 @@ No hace falta añadir ninguna librería: las animaciones son parte de Compose, q
 | El botón ▶ no hace nada y a su izquierda ya no pone «app» | Se ha borrado la configuración de ejecución (pasa al elegir **Delete** en el menú de los tres puntos de «app»). *Run > Edit Configurations…* → **+** → **Android App**; en *Name*, `app`; en *Module*, `ValoraPMDM.app`; **OK**. |
 | Al instalar sale «Can't find service: package» o «Activity class … does not exist» | El emulador no ha terminado de arrancar. Espera a ver la pantalla de inicio y pulsa ▶ otra vez. Si se repite: *Device Manager* → los tres puntos del Pixel 9 → **Cold Boot Now**. |
 | Las barras no se animan (paso 14) | Comprueba que la barra usa `progress = { proporcion }`, el valor animado, y no `fila.proporcion`. Si aun así cambian de golpe, mira que no esté activado **Remove animations** en *Settings → Accessibility*, ni a 0 las escalas de animación de las *Developer options* |
+| Al tocar una fila no pasa nada, y tiene valoraciones | En `PantallaValora`, falta pasar `onClick = { onNota(fila.nota) }` a `FilaRecuento`, o `MainActivity` sigue mostrando `PantallaValora()` en lugar de `NavegacionValora()` |
+| `Unresolved reference: NavHost` o `rememberNavController` | Falta la librería de navegación (paso 15.1) o el **Sync Now** |
+| La pantalla de una nota sale vacía | Cada pantalla tiene un ViewModel distinto: el ViewModel tiene que crearse en `NavegacionValora`, fuera del `NavHost`, y pasarse a las dos |
 | Las barras no crecen al abrir la app, pero sí al cambiar de pestaña | Falta `LaunchedEffect(Unit) { mostrada = true }`, o `targetValue` no usa `mostrada` |
 | Después de cambiar un archivo en GitHub, la app sigue mostrando lo anterior | GitHub guarda los archivos en caché unos minutos. Espera y vuelve a pulsar ↻. |
 
@@ -1642,13 +1877,15 @@ C:\dam2627\pmdm\ValoraPMDM
 │       │   │           └── valorapmdm                    los archivos de Kotlin
 │       │   │               ├── ui
 │       │   │               │   └── theme                 colores y letras (no se tocan)
-│       │   │               ├── MainActivity.kt           el punto de entrada (paso 10)
-│       │   │               ├── PantallaValora.kt         la pantalla, solo dibuja (pasos 9 y 14)
+│       │   │               ├── MainActivity.kt           el punto de entrada (pasos 10 y 15)
+│   │   │               ├── Navegacion.kt             las dos pantallas y las rutas (paso 15)
+│       │   │               ├── PantallaNota.kt           la lista de valoraciones de una nota (paso 15)
+│   │   │               ├── PantallaValora.kt         la pantalla, solo dibuja (pasos 9, 14 y 15)
 │       │   │               ├── ServicioValora.kt         Retrofit y la URL base (paso 6)
 │       │   │               ├── Valora.kt                 ValoraJson, Valora y aValora (paso 4)
 │       │   │               ├── ValoraDao.kt              las consultas de Room (paso 5)
 │       │   │               ├── ValoraDatabase.kt         la base de datos (paso 5)
-│       │   │               ├── ValoraUiState.kt          el estado y sus cálculos (paso 7)
+│       │   │               ├── ValoraUiState.kt          el estado y sus cálculos (pasos 7 y 15)
 │       │   │               └── ValoraViewModel.kt        el ViewModel (paso 8)
 │       │   └── res                                       iconos, colores y textos
 │       └── test                                          pruebas automáticas (no se usan)
