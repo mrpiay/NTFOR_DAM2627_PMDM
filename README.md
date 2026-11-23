@@ -6,6 +6,7 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 
 | Fecha | Qué cambia |
 |---|---|
+| 23 nov | Semana del 23 al 27: **Flutter** (UD2), con tres proyectos guiados, en orden: **Hola Flutter** (instalar Flutter y la primera app), **ValoraDart** (el lenguaje Dart) y **ValoraFlutter** (ValoraPMDM hecha con Flutter, para comparar las dos). La guía de **ValoraPMDM**, para repasar, suma las barras animadas y el detalle de una nota (pasos 14 y 15). El repaso, el martes 1, el miércoles 2 y el miércoles 9 ([2026_11_23-27](2026_11_23-27)) |
 | 17 nov | Las **actividades guiadas (A)** se califican, una vez terminadas, por su **nivel de implementación y comprensión**: la mitad de la nota es cuánto funciona o se ha completado y la otra mitad, cuánto se sabe explicar, con 4 preguntas sobre el diseño y la arquitectura del proyecto ([rúbricas](programacion/1a-evaluacion.md#rúbricas)) |
 | 17 nov | Soluciones de los cuestionarios C1 y C2 ([2026_11_02-06/soluciones](2026_11_02-06/soluciones) y [2026_11_09-13/soluciones](2026_11_09-13/soluciones)) |
 | 17 nov | Semana del 23 al 27, de repaso: la guía de **ValoraPMDM**, una app Android con Retrofit y Room, de principio a fin ([2026_11_23-27](2026_11_23-27)) |
@@ -15,7 +16,6 @@ Materiales del módulo de **Programación multimedia y dispositivos móviles (PM
 | 15 nov | Nueva planificación: del 16 al 20, un caso práctico corto de cada tema de la UD3 y la UD4 en la app del centro de acogida (Internet, un sensor, la ubicación, la foto, un sonido y una animación, el APK de la app); el segundo plano, Bluetooth, mapas, vídeo y Flutter, en teoría. Del 23 al 27, el martes 1 y el miércoles 2, repaso; el examen parcial, el viernes 4 de diciembre. La app integrada se hace al final del curso |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, viernes 4 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el viernes 11 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
-| 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
 
 ## Fechas importantes
 
