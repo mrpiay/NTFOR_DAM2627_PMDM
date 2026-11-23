@@ -166,7 +166,7 @@ Cada paso dice **qué se hace** y termina con **Comprueba que…**: no pases al 
 **Dónde se instala: en una ruta corta y sin caracteres raros.** Flutter y las herramientas de Android fallan en Windows con rutas largas y con rutas que llevan **ñ, tildes, espacios u otros caracteres que no sean letras inglesas, números, `-` o `_`**: por ejemplo, `C:\Users\usuario\OneDrive\Escritorio` o `C:\Program Files`. Por eso todo va en `C:\dam2627`: el SDK en `C:\dam2627\flutter` y los proyectos en `C:\dam2627\pmdm`.
 
 1. Descarga el **zip del SDK** para Windows, canal **stable**, desde la página de instalación de Flutter: [docs.flutter.dev/install/archive](https://docs.flutter.dev/install/archive). Esta guía está probada con **Flutter 3.50.1**. Ocupa casi 2 GB.
-2. Descomprímelo **en `C:\dam2627`**: clic derecho sobre el zip → **Extraer todo…** → escribe `C:\dam2627` → **Extraer**. Dentro del zip ya hay una carpeta `flutter`, así que queda `C:\dam2627\flutter`.
+2. Descomprímelo **en `C:\dam2627`**: clic derecho sobre el zip → **Extraer todo…** → escribe `C:\dam2627` → **Extraer**. Si `C:\dam2627` no existe, **Extraer todo** la crea. Dentro del zip ya hay una carpeta `flutter`, así que queda `C:\dam2627\flutter`.
 3. Borra el zip.
 
 **Comprueba que…** existe `C:\dam2627\flutter\bin\flutter.bat`. Si la ruta es `C:\dam2627\flutter\flutter\bin`, lo has descomprimido una carpeta más dentro: mueve la carpeta interior a `C:\dam2627`.
@@ -195,30 +195,38 @@ El cambio solo lo ven los terminales y programas que se abran **después**: **ci
 flutter doctor
 ```
 
-Revisa todo lo que necesita Flutter y lo marca con `[√]` (bien), `[!]` (falta algo) o `[X]` (no está). En un equipo con Android Studio, lo normal la primera vez es esto:
+Revisa todo lo que necesita Flutter y lo marca con `[✓]` (bien), `[!]` (falta algo) o `[✗]` (no está). En un equipo con Android Studio, lo normal la primera vez es esto:
 
 ```
-[√] Flutter (Channel stable, 3.50.1, on Microsoft Windows …)
-[√] Windows Version (Windows 11 or higher, …)
+[✓] Flutter (Channel stable, 3.50.1, on Microsoft Windows …)
+[✓] Windows Version (Windows 11 or higher, …)
 [!] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
-    X cmdline-tools component is missing.
-    X Android license status unknown.
-[√] Chrome - develop for the web
-[X] Visual Studio - develop Windows apps
-[√] Connected device (3 available)
-[√] Network resources
+    ✗ cmdline-tools component is missing.
+    ✗ Android license status unknown.
+[✓] Chrome - develop for the web
+[✗] Visual Studio - develop Windows apps
+[✓] Connected device (3 available)
+[✓] Network resources
 ```
 
 | Línea | Qué hacer |
 |---|---|
-| **Android toolchain · cmdline-tools** | Faltan las herramientas de línea de comandos del SDK de Android. En Android Studio: **File → Settings → Languages & Frameworks → Android SDK**, pestaña **SDK Tools**, marca **Android SDK Command-line Tools (latest)** y **Apply** → **OK** |
-| **Android toolchain · licenses** | Hay que aceptar las licencias del SDK: `flutter doctor --android-licenses`, y a cada pregunta, `y` e **Intro** |
+| **Android toolchain · cmdline-tools** | Faltan las herramientas de línea de comandos del SDK de Android. Se instalan desde el **SDK Manager** de Android Studio. En la pantalla de bienvenida (sin ningún proyecto abierto) está en el menú de los **tres puntos (⋮)**, arriba a la derecha, junto a *Clone Repository* → **SDK Manager**; con un proyecto abierto, en **Tools → SDK Manager**. En la pestaña **SDK Tools**, marca **Android SDK Command-line Tools (latest)** y pulsa **Apply** → **OK**. Al terminar la descarga, **Finish** |
+| **Android toolchain · licenses** | Hay que aceptar las licencias del SDK: `flutter doctor --android-licenses`. Cada licencia termina con la pregunta `Accept? (y/N)`: escribe `y` e **Intro**. Si dice que ya están aceptadas (por ejemplo, desde Android Studio), no hay que hacer nada |
 | **Visual Studio** | Solo hace falta para crear apps de **escritorio de Windows**. No se usan: **se ignora** |
 | **Chrome** | Para apps web. Tampoco se usan, pero no molesta |
 
-Vuelve a ejecutar `flutter doctor`.
+Vuelve a ejecutar `flutter doctor`. Ahora todo sale con `[✓]` salvo Visual Studio, y al final:
 
-**Comprueba que…** **Flutter** y **Android toolchain** salen con `[√]`. Visual Studio puede seguir con `[X]`.
+```
+[✗] Visual Studio - develop Windows apps
+…
+! Doctor found issues in 1 category.
+```
+
+Ese aviso es el de Visual Studio, que no se usa: es el resultado correcto.
+
+**Comprueba que…** **Flutter** y **Android toolchain** salen con `[✓]`. Visual Studio puede seguir con `[✗]`.
 
 ## Paso 4 · La extensión de VS Code
 
@@ -228,9 +236,10 @@ En VS Code, panel de **Extensiones** (`Ctrl + Mayús + X`), busca **Flutter** (d
 
 ## Paso 5 · Crear el proyecto
 
-En PowerShell:
+En PowerShell, una línea cada vez:
 
 ```powershell
+New-Item -ItemType Directory -Force C:\dam2627\pmdm
 cd C:\dam2627\pmdm
 flutter create --platforms android hola_flutter
 code hola_flutter
@@ -238,12 +247,37 @@ code hola_flutter
 
 | Comando | Qué hace |
 |---|---|
+| `New-Item -ItemType Directory -Force C:\dam2627\pmdm` | Crea la carpeta de los proyectos de PMDM. Si ya existe (por ejemplo, de ValoraPMDM), con `-Force` no da error y no borra nada |
+| `cd C:\dam2627\pmdm` | Entra en esa carpeta. La carpeta `hola_flutter` no hay que crearla: la crea `flutter create` |
 | `flutter create --platforms android hola_flutter` | Crea el proyecto `hola_flutter`, solo para Android (`--platforms android`). Sin esa opción crearía también las carpetas de iOS, web, Windows… Los nombres van en minúsculas y con `_` |
 | `code hola_flutter` | Abre la carpeta del proyecto en VS Code |
 
 Si VS Code pregunta si confías en los autores de la carpeta, **Yes, I trust the authors**. Abajo a la derecha puede salir que está descargando dependencias: espera a que termine.
 
-**Comprueba que…** en el Explorador de VS Code están `lib/main.dart`, `pubspec.yaml`, `android` y `test` (punto 4 de la Parte 1).
+**Que VS Code no abra el proyecto de Android.** Si en VS Code está instalada la extensión de **Java** (la de PROG), ve la carpeta `android`, que es un proyecto de Gradle, y se pone a importarlo: abajo salen «Java» y «Gradle» trabajando. Flutter no lo necesita, y además deja abierto un Gradle con el Java de VS Code que luego hace fallar a Android Studio (el error de `jlink` de ValoraPMDM). Para evitarlo, en el Explorador de VS Code:
+
+1. Clic derecho en un hueco vacío, debajo de los archivos → **New Folder…** → `.vscode` (con el punto delante).
+2. Clic derecho sobre `.vscode` → **New File…** → `settings.json`, con este contenido:
+
+   ```json
+   {
+     "java.import.gradle.enabled": false,
+     "java.gradle.buildServer.enabled": "off",
+     "gradle.autoDetect": "off"
+   }
+   ```
+
+3. Guarda (`Ctrl + S`) y recarga VS Code: `Ctrl + Mayús + P` → **Developer: Reload Window**.
+
+| Ajuste | Qué hace |
+|---|---|
+| `java.import.gradle.enabled: false` | La extensión de Java no importa proyectos de Gradle |
+| `java.gradle.buildServer.enabled: "off"` | No arranca su servidor de compilación de Gradle |
+| `gradle.autoDetect: "off"` | VS Code no busca tareas de Gradle en la carpeta |
+
+Solo afecta a esta carpeta: en los proyectos de Java de PROG la extensión sigue igual.
+
+**Comprueba que…** en el Explorador de VS Code están `lib/main.dart`, `pubspec.yaml`, `android`, `test` y `.vscode/settings.json` (punto 4 de la Parte 1), y abajo no sale nada de «Java» ni de «Gradle».
 
 ## Paso 6 · Ejecutar en el emulador
 
@@ -254,15 +288,29 @@ Si VS Code pregunta si confías en los autores de la carpeta, **Yes, I trust the
    flutter emulators --launch Pixel_9
    ```
 
-   `flutter emulators` muestra los emuladores (el `Id` del Pixel 9 es `Pixel_9`) y `--launch` lo arranca. Espera a ver la pantalla de inicio del móvil.
+   `flutter emulators` muestra los emuladores (el `Id` del Pixel 9 es `Pixel_9`) y `--launch` lo arranca. Espera a ver la pantalla de inicio del móvil. El emulador se abre en una ventana aparte, normalmente en la mitad izquierda de la pantalla: deja VS Code en la mitad derecha. Para pegar una ventana a una mitad, selecciónala y pulsa **Win + ←** o **Win + →**; también se puede arrastrar desde su borde.
 2. **Comprueba que Flutter lo ve:**
 
    ```powershell
    flutter devices
    ```
 
-   Tiene que salir una línea con **sdk gphone** o **Pixel 9** y **android**, además de Chrome y Windows.
-3. **Ejecuta la app:** abre `lib/main.dart` y pulsa **F5** (*Run → Start Debugging*). Abajo a la derecha, en la barra de estado de VS Code, tiene que poner el emulador como dispositivo; si pone **Chrome** o **Windows**, haz clic ahí y elige el emulador.
+   Tiene que salir una línea como esta, además de Windows, Chrome y Edge:
+
+   ```
+   sdk gphone64 x86 64 (mobile) • emulator-5554 • android-x64 • Android 17 (API 37) (emulator)
+   ```
+3. **Ejecuta la app:** abre `lib/main.dart`. Encima de la línea `void main() {` salen, en gris y pequeño, tres palabras: **Run | Debug | Profile**. Pulsa **Debug**.
+
+   | Opción | Qué hace |
+   |---|---|
+   | **Run** | Ejecuta la app sin el depurador: sin puntos de interrupción |
+   | **Debug** | La ejecuta en modo depuración: con *hot reload*, puntos de interrupción y la barra de depuración. Es la que se usa |
+   | **Profile** | La compila casi como la versión final, para medir su rendimiento. No se usa |
+
+   **Debug** es lo mismo que la tecla **F5** o *Run → Start Debugging*. En muchos portátiles, F5 es **Fn + F5**, y el menú *Run* puede estar escondido en el menú **☰**, arriba a la izquierda.
+
+   Abajo a la derecha, en la barra de estado de VS Code, tiene que poner el emulador como dispositivo; si pone **Chrome** o **Windows**, haz clic ahí y elige el emulador.
 
 **La primera vez tarda mucho, entre 5 y 10 minutos:** Gradle compila el proyecto de Android y descarga lo que le falta del SDK (por ejemplo, el NDK y CMake). En la consola de depuración de VS Code se ve el progreso. Las siguientes veces tarda segundos.
 
@@ -294,7 +342,7 @@ Es el código que ha creado `flutter create`, con sus comentarios en inglés. El
 | `class MyApp extends StatelessWidget` | La app es un widget sin estado. **Hereda** (`extends`) de `StatelessWidget` |
 | `const MyApp({super.key});` | El constructor, con un argumento con nombre, `key`, que pasa a la clase madre. El libro escribe `({Key? key}) : super(key: key)`, que es lo mismo, de forma más larga |
 | `@override Widget build(BuildContext context)` | Sobrescribe `build`: devuelve el árbol de widgets de este widget |
-| `MaterialApp(title: …, theme: …, home: …)` | La app de Material Design: su título, sus colores (`theme`) y la pantalla de inicio (`home`). Todos los argumentos son **con nombre** |
+| `MaterialApp(title: …, theme: …, home: …)` | La app de Material Design: su título, sus colores (`theme`) y la pantalla de inicio (`home`). Todos los argumentos son **con nombre**. El `title` (`'Flutter Demo'`) no es el de la barra de arriba: en Android sale en la lista de apps recientes, y en la web, en la pestaña del navegador (paso 9) |
 | `colorScheme: .fromSeed(seedColor: Colors.deepPurple)` | Los colores de la app, generados a partir de uno. `.fromSeed` es la forma corta de `ColorScheme.fromSeed`: Dart deduce el tipo (en el libro, siempre con el nombre completo) |
 | `class MyHomePage extends StatefulWidget` | La pantalla de inicio: un widget **con estado** |
 | `final String title;` | Su configuración: el título, que no cambia |
@@ -469,9 +517,19 @@ Flutter es **multiplataforma**: el mismo código sirve para Android, iOS, la web
    |---|---|
    | `flutter create --platforms web .` | Añade la plataforma web al proyecto que ya existe: el punto (`.`) es la carpeta actual. Crea la carpeta `web`, con la página `index.html` que carga la app, y no cambia `lib` ni `android` |
    | `flutter devices` | Ahora, además del emulador (si está encendido), salen **Chrome (web)** y **Edge (web)** |
-   | `flutter run -d chrome` | Compila la app para la web y la abre en Chrome. `-d` elige el dispositivo. En VS Code, lo mismo: elegir **Chrome** en la barra de estado, abajo a la derecha, y **F5** |
+   | `flutter run -d chrome` | Compila la app para la web y la abre en Chrome. `-d` elige el dispositivo. En VS Code, lo mismo: elegir **Chrome** en la barra de estado, abajo a la derecha, y **Debug** |
 
-3. Para terminar, en la terminal donde se ejecuta, pulsa `q`.
+   Con otros navegadores:
+
+   | Navegador | Orden |
+   |---|---|
+   | Chrome | `flutter run -d chrome` |
+   | Edge (viene con Windows, siempre está) | `flutter run -d edge` |
+   | Firefox u otro | `flutter run -d web-server`: no abre ningún navegador. En la terminal sale una dirección como `http://localhost:…`: cópiala en el navegador |
+
+   En la pestaña del navegador pone **Flutter Demo**: es el `title` de `MaterialApp` (paso 8).
+
+3. Para terminar, en la terminal donde se ejecuta, pulsa `q`. Aunque se cierre el navegador, `flutter run` sigue en marcha y la terminal no se puede usar hasta pulsar `q` (o `Ctrl + C`).
 
 **Qué ha cambiado al compilar.** Para Android, Dart se compila a **código nativo** del procesador del móvil (AOT, MGH 1.1). Para la web, se compila a **JavaScript** (o WebAssembly), que es lo que entiende el navegador. El código de la app es el mismo: lo que cambia es la capa de abajo, el *embedder* de cada plataforma (Parte 1, punto 2).
 
@@ -489,7 +547,7 @@ python -m http.server 8000
 
 En el navegador, `http://localhost:8000`: es la app final, sin la etiqueta **DEBUG**. Para parar el servidor, `Ctrl + C` en la terminal, y `cd ..\..` para volver a la carpeta del proyecto.
 
-**¿Y iOS?** `flutter create --platforms ios .` crea igual la carpeta `ios`, con el proyecto de Xcode, y el código de `lib` también es el mismo. Pero para compilar una app de iOS hace falta un **Mac con Xcode**: Apple no permite hacerlo en Windows ni en Linux. Lo mismo pasa con las apps de escritorio de Windows, que necesitan Visual Studio: es la línea con `[X]` de `flutter doctor` (paso 3).
+**¿Y iOS?** `flutter create --platforms ios .` crea igual la carpeta `ios`, con el proyecto de Xcode, y el código de `lib` también es el mismo. Pero para compilar una app de iOS hace falta un **Mac con Xcode**: Apple no permite hacerlo en Windows ni en Linux. Lo mismo pasa con las apps de escritorio de Windows, que necesitan Visual Studio: es la línea con `[✗]` de `flutter doctor` (paso 3).
 
 **Comprueba que…** en Chrome se abre la misma app, con la etiqueta **DEBUG**, y el botón **+** aumenta el número; en el proyecto ha aparecido la carpeta `web`; y en `http://localhost:8000` se abre la versión final, sin **DEBUG**.
 
@@ -520,13 +578,14 @@ En el navegador, `http://localhost:8000`: es la app final, sin la etiqueta **DEB
 | `flutter doctor` sigue diciendo *cmdline-tools component is missing* | En el SDK Manager de Android Studio, marca **Android SDK Command-line Tools (latest)** y **Apply** (paso 3) |
 | `Android license status unknown` | `flutter doctor --android-licenses` y acepta todas con `y` |
 | VS Code dice *Could not find a Flutter SDK* | Cierra y abre VS Code. Si sigue, **Locate SDK** → `C:\dam2627\flutter` |
-| Al pulsar F5 la app se abre en Chrome | El dispositivo de la barra de estado de VS Code (abajo a la derecha) es Chrome: elige el emulador. Si no sale, arráncalo con `flutter emulators --launch Pixel_9` |
+| Al pulsar **Debug** (o F5) la app se abre en Chrome | El dispositivo de la barra de estado de VS Code (abajo a la derecha) es Chrome: elige el emulador. Si no sale, arráncalo con `flutter emulators --launch Pixel_9` |
 | Al abrir `build\web\index.html` con doble clic, la página sale en blanco | Es normal: necesita un servidor. Usa `python -m http.server 8000` en `build\web` y abre `http://localhost:8000` (paso 9) |
 | `python` no se reconoce al arrancar el servidor | Python no está instalado o no está en el `Path`: es el mismo que se usa en DI |
 | `flutter run -d chrome` dice que no encuentra el dispositivo | Falta Chrome, o Flutter no lo encuentra: prueba con Edge, `flutter run -d edge` |
 | La primera ejecución parece no avanzar | Es normal: la primera compilación tarda entre 5 y 10 minutos. En la consola de depuración se ve `Running Gradle task 'assembleDebug'…` |
 | El *hot reload* no hace nada | El archivo no se ha guardado, o la app no se ejecutó con F5 (en modo *debug*). Con `flutter run` en el terminal, pulsa `r` |
-| Error al compilar, de Gradle o de Java (`jlink`…) | Es el mismo problema que en ValoraPMDM, con un Gradle abierto por VS Code: mira esa guía, apartado «Si algo falla» |
+| Abajo, en VS Code, salen «Java» y «Gradle» trabajando | Falta `.vscode/settings.json` (paso 5): créalo y recarga VS Code |
+| Error al compilar, de Gradle o de Java (`jlink`…) | Es el mismo problema que en ValoraPMDM, con un Gradle abierto por VS Code: crea `.vscode/settings.json` (paso 5) y mira la guía de ValoraPMDM, apartado «Si algo falla» |
 
 ## Los archivos del proyecto
 
@@ -535,6 +594,8 @@ C:\dam2627
 ├── flutter                   el SDK de Flutter (paso 1)
 └── pmdm
     └── hola_flutter          el proyecto (paso 5)
+        ├── .vscode
+        │   └── settings.json para que VS Code no importe el proyecto de Android (paso 5)
         ├── android           el proyecto de Android, generado
         ├── web               la página que carga la app en el navegador (paso 9)
         ├── lib

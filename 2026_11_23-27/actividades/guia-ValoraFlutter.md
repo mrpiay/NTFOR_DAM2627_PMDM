@@ -314,14 +314,25 @@ Cada paso dice **qué se hace**, trae el **código completo** y termina con **Co
 En PowerShell:
 
 ```powershell
+New-Item -ItemType Directory -Force C:\dam2627\pmdm
 cd C:\dam2627\pmdm
 flutter create --platforms android valora_flutter
 code valora_flutter
 ```
 
-Como en «Hola Flutter», se crea solo para Android y se abre en VS Code.
+Como en «Hola Flutter», se crea solo para Android y se abre en VS Code. `New-Item` crea la carpeta `pmdm` si no existe.
 
-**Comprueba que…** VS Code abre la carpeta `VALORA_FLUTTER`, con `lib/main.dart` (el contador de ejemplo), `pubspec.yaml`, `android` y `test`.
+Como en «Hola Flutter» (paso 5), crea `.vscode/settings.json` para que la extensión de Java no importe la carpeta `android`, y recarga VS Code (`Ctrl + Mayús + P` → **Developer: Reload Window**):
+
+```json
+{
+  "java.import.gradle.enabled": false,
+  "java.gradle.buildServer.enabled": "off",
+  "gradle.autoDetect": "off"
+}
+```
+
+**Comprueba que…** VS Code abre la carpeta `VALORA_FLUTTER`, con `lib/main.dart` (el contador de ejemplo), `pubspec.yaml`, `android`, `test` y `.vscode/settings.json`, y abajo no sale nada de «Java» ni de «Gradle».
 
 ## Paso 2 · La librería http y el permiso de Internet
 

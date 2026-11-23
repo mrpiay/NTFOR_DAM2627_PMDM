@@ -272,6 +272,7 @@ dart --version
 En la terminal, una línea cada vez:
 
 ```powershell
+New-Item -ItemType Directory -Force C:\dam2627\pmdm
 cd C:\dam2627\pmdm
 dart create -t console valora_dart
 code valora_dart
@@ -279,8 +280,13 @@ code valora_dart
 
 | Comando | Qué hace |
 |---|---|
+| `New-Item -ItemType Directory -Force C:\dam2627\pmdm` | Crea la carpeta de los proyectos, si no existe (con `-Force`, si ya existe, no da error ni borra nada) |
 | `dart create -t console valora_dart` | Crea un proyecto de Dart para la consola (`-t console`, la plantilla), en la carpeta `valora_dart`. Los nombres de proyecto de Dart van en minúsculas y con `_` |
 | `code valora_dart` | Abre la carpeta del proyecto en VS Code |
+
+La primera vez que se usa `dart`, antes de crear el proyecto sale un aviso largo sobre el envío de estadísticas de uso (*telemetry*, Google Analytics): es informativo, no hay que hacer nada. Al final, `dart create` escribe `Created project valora_dart…` y sugiere `cd valora_dart` y `dart run`: no hace falta, el proyecto se abre con `code`.
+
+Este proyecto no tiene carpeta `android`, así que no necesita el `.vscode/settings.json` de «Hola Flutter».
 
 La plantilla trae un ejemplo que no se usa: en el Explorador de VS Code, **borra** `lib/valora_dart.dart` y `test/valora_dart_test.dart` (clic derecho → *Delete*).
 
