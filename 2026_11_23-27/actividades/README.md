@@ -1,11 +1,12 @@
 # Actividades · semana del 23 al 27 de noviembre
 
-Esta semana se trabaja **Flutter**, el desarrollo multiplataforma de la UD2, con dos proyectos guiados, en este orden. La teoría sale del libro de McGraw-Hill, unidad 4, apartados 1 y 2. No tienen cuestionario ni cuentan para la nota.
+Esta semana se trabaja **Flutter**, el desarrollo multiplataforma de la UD2, con tres proyectos guiados, en este orden. La teoría sale del libro de McGraw-Hill, unidad 4, apartados 1 a 3. No tienen cuestionario ni cuentan para la nota.
 
 | Orden | Archivo | Qué es |
 |---|---|---|
 | 1 | [`guia-HolaFlutter.md`](guia-HolaFlutter.md) | Guía paso a paso de **Hola Flutter**: qué es Flutter y cómo está hecho, instalar el SDK, `flutter doctor`, crear el contador de ejemplo, ejecutarlo en el emulador, probar el *hot reload* y leer su código. **Empieza por aquí** |
 | 2 | [`guia-ValoraDart.md`](guia-ValoraDart.md) | Guía paso a paso de **ValoraDart**, un programa de consola en **Dart** que descarga las mismas valoraciones que ValoraPMDM y muestra su media y su recuento: variables y tipos, *null safety*, listas y mapas, funciones, clases con `fromJson`, y `Future`, `async` y `await` |
+| 3 | [`guia-ValoraFlutter.md`](guia-ValoraFlutter.md) | Guía paso a paso de **ValoraFlutter**: la app ValoraPMDM hecha con **Flutter**, con las clases de ValoraDart sin cambios. Widgets sin y con estado, `initState` y `setState`, `FutureBuilder`, pestañas y listas, una prueba automática y el APK. Termina con la comparación entre la versión nativa y la de Flutter |
 
 Para repasar la 1ª evaluación de cara al examen:
 
