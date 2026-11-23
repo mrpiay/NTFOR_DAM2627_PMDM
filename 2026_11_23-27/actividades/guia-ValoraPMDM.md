@@ -47,6 +47,7 @@ Al finalizar, tendrás una aplicación funcional y una visión general de cómo 
   - [Paso 15 · El detalle de una nota](#paso-15--el-detalle-de-una-nota)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
+- [El proyecto terminado](#el-proyecto-terminado)
 
 ---
 
@@ -1894,3 +1895,14 @@ C:\dam2627\pmdm\ValoraPMDM
 ├── build.gradle.kts                                      los plugins del proyecto (paso 2)
 └── settings.gradle.kts                                   el nombre del proyecto y sus módulos
 ```
+
+## El proyecto terminado
+
+El proyecto terminado, con los pasos 1 a 15, está en [`ValoraPMDM.zip`](ValoraPMDM.zip): sirve para comparar con el propio y para repasar.
+
+1. Descárgalo y descomprímelo en `C:\dam2627\pmdm`: clic derecho → **Extraer todo…** → escribe `C:\dam2627\pmdm` → **Extraer**. Queda la carpeta `C:\dam2627\pmdm\ValoraPMDM`. Si ya tienes una carpeta con ese nombre, la tuya, cámbiale antes el nombre.
+2. En Android Studio, **File → Open**, elige la carpeta `ValoraPMDM` y **OK**. Si pregunta si confías en el proyecto, **Trust Project**.
+3. Espera a que termine el *sync* de Gradle (abajo a la derecha). La primera vez descarga las librerías y tarda unos minutos.
+4. Arranca el emulador y pulsa ▶.
+
+El zip no trae las carpetas que genera Android Studio al compilar (`build`, `.gradle`) ni `local.properties`, que dice dónde está el SDK de Android en cada ordenador: las crea él solo al abrir el proyecto.

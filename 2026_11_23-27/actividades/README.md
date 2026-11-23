@@ -13,4 +13,5 @@ Para repasar la 1ª evaluación de cara al examen:
 | Archivo | Qué es |
 |---|---|
 | [`guia-ValoraPMDM.md`](guia-ValoraPMDM.md) | Guía paso a paso de **ValoraPMDM**, una app Android con Kotlin y Jetpack Compose que descarga valoraciones de Internet con Retrofit, las guarda con Room y muestra su media y su recuento, con las barras animadas. Junta lo trabajado en la evaluación |
+| [`ValoraPMDM.zip`](ValoraPMDM.zip) | El proyecto **ValoraPMDM** terminado, con todos los pasos de la guía, para abrir en Android Studio y comparar con el propio |
 | [`img`](img) | Las imágenes de la guía de ValoraPMDM |
