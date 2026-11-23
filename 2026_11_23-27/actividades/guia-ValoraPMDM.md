@@ -244,7 +244,7 @@ Nada de esto usa Internet.
 
 **Al tocar una fila del recuento (R10):** la fila avisa de su nota (`onNota`) y la navegación va a la ruta `"nota/5"` (`navController.navigate`). `PantallaNota` recibe el mismo ViewModel, pide al estado las valoraciones con esa nota (`conNota`) y las muestra en una lista. Con la flecha o el botón «atrás», `popBackStack` la quita y se vuelve a la principal. No se descarga nada.
 
-**Al cambiar las barras (R9):** cuando el estado trae otra proporción para una barra (otra pestaña, otros datos), la barra no la dibuja de golpe: `animateFloatAsState` va del valor que tenía al nuevo en 600 milisegundos, y la fila se dibuja en cada paso. El estado no sabe nada de la animación.
+**Al cambiar las barras (R9):** cuando el estado trae otra proporción para una barra (otra pestaña, otros datos), la barra no la dibuja de golpe: `animateFloatAsState` va del valor que tenía al nuevo en 1200 milisegundos, y la fila se dibuja en cada paso. El estado no sabe nada de la animación.
 
 **Al girar el móvil (R7):** Android destruye la ventana y la vuelve a crear con la nueva orientación. La pantalla se dibuja otra vez, pero el ViewModel no se ha destruido: tiene el mismo estado, así que se ve lo mismo y no se descarga nada.
 
@@ -269,7 +269,7 @@ Nada de esto usa Internet.
 | **Un solo ViewModel** para las dos pantallas | La pantalla de una nota usa las valoraciones que ya están cargadas: no descarga ni lee nada. |
 | **Animar** las barras | Al cambiar de pestaña, el movimiento enseña qué notas suben y cuáles bajan entre una evaluación y otra; un salto de golpe no se ve. |
 | La animación, **solo en la pantalla** | Es cómo se dibuja, no qué datos hay: el estado y el ViewModel no cambian (R9). |
-| **600 ms** y con curva que frena | Lo bastante para verse, sin que la app parezca lenta. Frenar al final se ve más natural que una velocidad constante. |
+| **1200 ms** y con curva que frena | Lo bastante para ver bien cómo cambian las barras al pasar de una evaluación a otra, sin que la app parezca lenta. Frenar al final se ve más natural que una velocidad constante. |
 | Se **respeta** «Quitar animaciones» del sistema | A algunas personas el movimiento en pantalla les marea o les distrae. Compose lo hace solo: si el sistema las desactiva, las barras cambian de golpe. |
 
 ## 6. Configuración de librerías y dependencias
@@ -1506,12 +1506,12 @@ Hasta aquí, al cambiar de pestaña o al recargar, las barras del recuento salta
 **Un ejemplo, paso a paso.** En la 1ª evaluación, la nota 5 tiene 3 de 13 valoraciones (proporción 0.23); en la 2ª, 6 de 13 (0.46). Al pasar de la pestaña 1ª a la 2ª, el estado cambia el objetivo de esa barra de 0.23 a 0.46, y el valor que se dibuja va así:
 
 ```
-tiempo (ms)    0      100    200    300    400    500    600
+tiempo (ms)    0      200    400    600    800   1000   1200
 se dibuja    0.23   0.25   0.34   0.41   0.44   0.46   0.46
                     └ arranca ┘└ rápido ┘└─ frena al final ─┘
 ```
 
-Entre una columna y otra hay unos seis dibujos más: la barra se dibuja unas 60 veces por segundo. Del 100 al 300 avanza mucho, y del 400 al 600 casi nada: así frena.
+Entre una columna y otra hay unos doce dibujos más: la barra se dibuja unas 60 veces por segundo. Del 200 al 600 avanza mucho, y del 800 al 1200 casi nada: así frena.
 
 En `PantallaValora.kt`, cambia la función **`FilaRecuento`** por esta, con la constante de encima:
 
@@ -1519,7 +1519,7 @@ En `PantallaValora.kt`, cambia la función **`FilaRecuento`** por esta, con la c
 
 | Pieza | Qué hace |
 |---|---|
-| `private const val DURACION_MS = 600` | Lo que tarda la animación: 600 milisegundos, poco más de medio segundo. Con menos, apenas se ve; con más, la app parece lenta |
+| `private const val DURACION_MS = 1200` | Lo que tarda la animación: 1200 milisegundos, poco más de un segundo. Con menos, el cambio entre una evaluación y otra apenas se ve; con más, la app parece lenta |
 | `remember { mutableStateOf(false) }` | Un estado que la fila **recuerda** entre un dibujo y el siguiente: si no, volvería a `false` cada vez. Al cambiar, la fila se vuelve a dibujar |
 | `var mostrada by …` | Con `by`, `mostrada` se usa como una variable normal (`mostrada = true`), aunque por dentro sea un estado |
 | `LaunchedEffect(Unit) { mostrada = true }` | Ejecuta su bloque una sola vez, justo después de que la fila se dibuje por primera vez. Con `Unit` no se repite nunca más mientras la fila exista |
@@ -1542,7 +1542,7 @@ import androidx.compose.runtime.setValue
 
 ```kotlin
 // Cuánto tarda una barra en llegar a su tamaño, en milisegundos
-private const val DURACION_MS = 600
+private const val DURACION_MS = 1200
 
 // ── Una fila del recuento: la nota, su barra y cuántas veces se ha dado ──
 // La barra está animada (paso 14): al aparecer, crece desde 0; al cambiar de pestaña
@@ -1605,7 +1605,7 @@ No hace falta añadir ninguna librería: las animaciones son parte de Compose, q
 
 | Nº | Prueba | Cómo | Resultado esperado |
 |---|---|---|---|
-| 1 | Al abrir | Abrir la app con las valoraciones ya guardadas | Las barras crecen desde la izquierda hasta su tamaño, en algo más de medio segundo, más despacio al final |
+| 1 | Al abrir | Abrir la app con las valoraciones ya guardadas | Las barras crecen desde la izquierda hasta su tamaño, en algo más de un segundo, más despacio al final |
 | 2 | Cambiar de pestaña | De la 1ª a la 2ª y otra vez a la 1ª | Las barras que cambian crecen o encogen hasta su nuevo tamaño: la de la nota 5 crece (de 3 a 6); la de la 3, encoge (de 3 a 1); la de la 4 no se mueve (6 en las dos) |
 | 3 | Recargar | Pulsar ↻ | Si los datos no han cambiado, las barras no se mueven: su objetivo es el mismo |
 | 4 | Girar | Girar el emulador | Las barras vuelven a crecer desde 0: al girar, la pantalla se dibuja de nuevo. Los datos no se pierden ni se descargan (R7) |
