@@ -1835,7 +1835,7 @@ fun NavegacionValora() {
 | 4 | Una nota sin valoraciones | En la 1ª evaluación, tocar la fila del **1** (0 veces) | No pasa nada |
 | 5 | Girar | En la pantalla de una nota, girar el emulador | Sigue en la misma pantalla, con la misma lista |
 
-**Comprueba que…** las cinco pruebas dan el resultado esperado, y que ValoraFlutter hace lo mismo con la misma nota (en ValoraFlutter, paso 12, pruebas 8 a 10).
+**Comprueba que…** las cinco pruebas dan el resultado esperado, y que ValoraFlutter hace lo mismo con la misma nota (en ValoraFlutter, paso 10).
 
 ---
 

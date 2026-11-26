@@ -39,10 +39,8 @@ Antes, hay que haber hecho **«Hola Flutter»** (Flutter instalado y el contador
     - [Paso 8 · El resumen de cada pestaña](#paso-8--el-resumen-de-cada-pestaña)
     - [Paso 9 · La barra animada](#paso-9--la-barra-animada)
     - [Paso 10 · La segunda pantalla](#paso-10--la-segunda-pantalla)
-  - [Paso 11 · Una prueba automática](#paso-11--una-prueba-automática)
-  - [Paso 12 · Probar la app](#paso-12--probar-la-app)
-  - [Paso 13 · Generar el APK](#paso-13--generar-el-apk)
-  - [Paso 14 · La misma app en el navegador](#paso-14--la-misma-app-en-el-navegador)
+  - [Paso 11 · Generar el APK](#paso-11--generar-el-apk)
+  - [Paso 12 · La misma app en el navegador](#paso-12--la-misma-app-en-el-navegador)
 - [Si algo falla](#si-algo-falla)
 - [Los archivos del proyecto](#los-archivos-del-proyecto)
 
@@ -252,7 +250,6 @@ Es la misma idea que en Android con Navigation Compose: un `NavHost` con las rut
 | 3 | `lib/valoracion.dart` | Los datos y los cálculos. **El mismo archivo de ValoraDart** |
 | 3 | `lib/servicio_valora.dart` | La descarga, con `http`. **El mismo archivo de ValoraDart** |
 | 4 a 10 | `lib/main.dart` | La interfaz: la app, sus dos pantallas y sus widgets |
-| 11 | `test/widget_test.dart` | Dos pruebas automáticas: el resumen y la navegación a una nota |
 
 ## 5. Cómo se mueve la información
 
@@ -365,7 +362,7 @@ Como en «Hola Flutter» (paso 5), crea `.vscode/settings.json` para que la exte
        <application
    ```
 
-   Mientras se programa (modo *debug*), Flutter ya da ese permiso. Pero el APK final (paso 13) no podría descargar nada sin él.
+   Mientras se programa (modo *debug*), Flutter ya da ese permiso. Pero el APK final (paso 11) no podría descargar nada sin él.
 
 **Comprueba que…** en `pubspec.yaml` está `http` en `dependencies` y en el manifiesto está la línea `uses-permission`.
 
@@ -466,7 +463,9 @@ Es una app que solo muestra una barra con el título y un texto en el centro. Pe
 - **`const`** delante de un widget dice que no cambia nunca: Flutter lo crea una sola vez y no lo vuelve a construir al redibujar. VS Code avisa cuando se puede poner y no está.
 - **`super.key`**: todos los widgets reciben una `key` opcional, que Flutter usa para distinguir widgets iguales. Aquí no se usa, pero se pasa siempre, por convenio.
 
-**Comprueba que…** al ejecutar la app (**Run**), se ve la barra de arriba con «Valoraciones de PMDM» y, en el centro, «Aquí irán las valoraciones». `flutter analyze` solo marca un error en `test/widget_test.dart`, porque no encuentra `MyApp`: es la prueba del contador, que se cambia en el paso 11.
+`flutter create` también trae una prueba automática del contador, `test/widget_test.dart`, que busca la clase `MyApp`. Como ya no existe, daría un error: en el Explorador, **borra** `test/widget_test.dart` (clic derecho → *Delete*).
+
+**Comprueba que…** al ejecutar la app (**Run**), se ve la barra de arriba con «Valoraciones de PMDM» y, en el centro, «Aquí irán las valoraciones». `flutter analyze` dice `No issues found!`.
 
 **Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
 
@@ -2097,7 +2096,7 @@ Al abrir:            Al tocar la fila del 4:        Al volver (pop):
 | `Navigator.pop(context)` | Quita la pantalla de encima. No hace falta escribirlo: lo hacen la flecha que el `AppBar` pone sola en la segunda pantalla y el botón «atrás» del móvil |
 | `InkWell(onTap: …)` | Hace que cualquier widget responda al toque, con el efecto de onda de Material. Con `onTap: null`, no responde |
 | `ListView.builder(itemCount: …, itemBuilder: …)` | Una lista que **crea cada fila cuando va a verse**, a partir de su posición. Para listas que dependen de los datos o que pueden ser largas |
-| `ListTile` | Una fila estándar de Material: icono a la izquierda (`leading`), título y subtítulo |
+| `ListTile` | Una fila estándar de Material: icono a la izquierda (`leading`), título y subtítulo. No lleva estrellas: todas las valoraciones de la lista tienen la misma nota, que ya está en el título de la pantalla. Igual que el `ListItem` de ValoraPMDM |
 
 **Por qué se escribe así**
 
@@ -2456,110 +2455,7 @@ class PantallaNota extends StatelessWidget {
 
 </details>
 
-## Paso 11 · Una prueba automática
-
-`flutter create` trae una prueba del contador, que ya no sirve. Abre `test/widget_test.dart` y **sustituye todo** su contenido por estas dos pruebas. Las dos usan una app de prueba con las mismas rutas que ValoraApp, pero que empieza en el resumen de una evaluación de ejemplo, sin Internet. La primera comprueba lo que sale en el resumen; la segunda toca la fila del 5 y comprueba que se abre su lista:
-
-| Pieza | Qué hace |
-|---|---|
-| `testWidgets('…', (tester) async { … })` | Una prueba de widgets. `tester` es la herramienta para dibujar y buscar |
-| `await tester.pumpWidget(…)` | Dibuja el widget, dentro de una app y una pantalla, como en la app de verdad |
-| `find.text('4.0')` | Busca un texto en la pantalla |
-| `expect(…, findsOneWidget)` | Comprueba que hay exactamente uno. `findsNWidgets(5)`, que hay cinco |
-| `find.byWidgetPredicate((w) => w is FilaRecuento && w.nota == 5)` | Busca el widget que cumple esa condición: la fila de la nota 5 |
-| `await tester.tap(…)` | Simula un toque en ese widget |
-| `await tester.pumpAndSettle()` | Espera a que acabe todo lo que se mueve: aquí, la animación del cambio de pantalla |
-
-```dart
-// Pruebas de la pantalla, sin Internet: se dibuja con datos de ejemplo
-// y se comprueba lo que sale.
-import 'package:flutter_test/flutter_test.dart';
-import 'package:material_ui/material_ui.dart';
-import 'package:valora_flutter/main.dart';
-import 'package:valora_flutter/valoracion.dart';
-
-// Tres valoraciones de ejemplo: un 4, un 5 y un 3
-final evaluacion = Evaluacion(1, [
-  Valoracion(id: 1, nota: 4),
-  Valoracion(id: 2, nota: 5),
-  Valoracion(id: 3, nota: 3),
-]);
-
-// Una app con las mismas rutas que ValoraApp, pero la primera pantalla
-// es el resumen de la evaluación de ejemplo, sin descargar nada
-Widget appDePrueba() {
-  return MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => Scaffold(body: ResumenEvaluacion(evaluacion)),
-      '/nota': (context) => const PantallaNota(),
-    },
-  );
-}
-
-void main() {
-  testWidgets('El resumen muestra la media, el total y el recuento', (
-    tester,
-  ) async {
-    // pumpWidget dibuja el widget, como en la app real
-    await tester.pumpWidget(appDePrueba());
-
-    expect(find.text('4.0'), findsOneWidget); // la media: (4 + 5 + 3) / 3
-    expect(find.text('3 valoraciones'), findsOneWidget);
-    expect(
-      find.byType(FilaRecuento),
-      findsNWidgets(5),
-    ); // una fila por nota, de la 5 a la 1
-  });
-
-  testWidgets('Al tocar la fila del 5 se ven las valoraciones con un 5', (
-    tester,
-  ) async {
-    await tester.pumpWidget(appDePrueba());
-
-    // La fila de la nota 5, y un toque en ella
-    final fila5 = find.byWidgetPredicate(
-      (w) => w is FilaRecuento && w.nota == 5,
-    );
-    await tester.tap(fila5);
-    // pumpAndSettle espera a que termine la animación de cambio de pantalla
-    await tester.pumpAndSettle();
-
-    expect(find.text('Nota 5 · 1ª evaluación'), findsOneWidget);
-    expect(find.text('Valoración 2'), findsOneWidget); // la única con un 5
-    expect(find.byType(ListTile), findsOneWidget);
-  });
-}
-```
-
-En la terminal:
-
-```powershell
-flutter test
-```
-
-**Comprueba que…** salen las dos pruebas y `All tests passed!`, y `flutter analyze` dice `No issues found!`.
-
-## Paso 12 · Probar la app
-
-Arranca el emulador (`flutter emulators --launch Pixel_9`), abre `lib/main.dart` y pulsa **Run**, encima de `void main()`, como en «Hola Flutter».
-
-| Nº | Prueba | Cómo | Resultado esperado |
-|---|---|---|---|
-| 1 | Abrir | Al arrancar | Un momento el círculo de progreso; después, las pestañas **1ª evaluación** y **2ª evaluación**. No hay 3ª |
-| 2 | 1ª evaluación | Pestaña 1ª | **3.8**, cuatro estrellas de color, «13 valoraciones» y el recuento: 5 → 3, 4 → 6, 3 → 3, 2 → 1 y 1 → 0. Lo mismo que en ValoraPMDM |
-| 3 | 2ª evaluación | Pestaña 2ª (o deslizando hacia la izquierda) | **4.4** y «13 valoraciones»: 5 → 6, 4 → 6, 3 → 1 y el resto, 0 |
-| 4 | Recargar | ↻ | Otra vez el círculo y, después, los mismos datos |
-| 5 | Sin conexión | Modo avión en el emulador (desliza desde arriba) y ↻ | «No se han podido descargar las valoraciones.» y el motivo (`ClientException…`). Quita el modo avión y ↻: vuelven los datos |
-| 6 | Girar | Elegir la 2ª y girar el emulador | Sigue en la 2ª, sin círculo de progreso: no se ha descargado nada. Se puede desplazar hasta la fila de la nota 1 |
-| 7 | Hot reload | Cambia `Colors.teal` por `Colors.orange` en `ValoraApp` y guarda | La app cambia de color al momento y sigue en la misma pestaña |
-| 8 | Detalle de una nota | En la 1ª evaluación, tocar la fila del **4** | Se abre «Nota 4 · 1ª evaluación» con **6** valoraciones, cada una con «4 de 5» |
-| 9 | Volver | La flecha de arriba, y después lo mismo con el botón «atrás» del móvil | Se vuelve a la principal, en la misma pestaña, sin círculo de progreso |
-| 10 | Una nota sin valoraciones | En la 1ª evaluación, tocar la fila del **1** (0 veces) | No pasa nada: no hay nada que mostrar |
-
-**Comprueba que…** las diez pruebas dan el resultado esperado. Las medias son las mismas que en ValoraPMDM y en ValoraDart: los tres usan los mismos datos.
-
-## Paso 13 · Generar el APK
+## Paso 11 · Generar el APK
 
 En la terminal:
 
@@ -2571,7 +2467,7 @@ Genera la versión final de la app (*release*), compilada con AOT. Tarda unos mi
 
 **Comprueba que…** la app instalada desde el APK abre sin la etiqueta **DEBUG** y descarga las valoraciones.
 
-## Paso 14 · La misma app en el navegador
+## Paso 12 · La misma app en el navegador
 
 En «Hola Flutter» (paso 9), el contador se ejecutó también en el navegador sin cambiar el código. Aquí se hace lo mismo con una app de verdad, que descarga datos de Internet y tiene dos pantallas, para comprobar que **el código de `lib` sirve igual para Android y para la web**.
 
@@ -2594,7 +2490,7 @@ En «Hola Flutter» (paso 9), el contador se ejecutó también en el navegador s
 |---|---|---|
 | Qué hace falta para ejecutarla | El SDK de Android (el que instala Android Studio) y un emulador o un móvil | Un navegador |
 | En qué se convierte el código de Dart | En código nativo del procesador del móvil (AOT) | En JavaScript (o WebAssembly), que es lo que entiende el navegador |
-| La versión final | `flutter build apk`: un archivo, `app-release.apk` (paso 13) | `flutter build web`: una carpeta, `build\web`, con `index.html` y los archivos de la app («Hola Flutter», paso 9) |
+| La versión final | `flutter build apk`: un archivo, `app-release.apk` (paso 11) | `flutter build web`: una carpeta, `build\web`, con `index.html` y los archivos de la app («Hola Flutter», paso 9) |
 | Cómo llega a quien la usa | Se instala el APK en el móvil, o se publica en una tienda como Google Play | Se sube la carpeta `build\web` a un servidor web y se abre con su dirección. No se instala nada |
 | Permiso para usar Internet | Hay que pedirlo en `AndroidManifest.xml` (paso 2) | No existe: ese archivo es solo de Android. En cambio, quien decide si la página puede leer los datos es el **servidor** de los datos (CORS, debajo) |
 | Lo que hay que cambiar en `lib` | Nada | Nada |
@@ -2624,11 +2520,11 @@ En «Hola Flutter» (paso 9), el contador se ejecutó también en el navegador s
 |---|---|
 | `Target of URI doesn't exist: 'package:http/http.dart'` | Falta `flutter pub add http` (paso 2) |
 | `Target of URI doesn't exist: 'servicio_valora.dart'` | Faltan los dos archivos de ValoraDart en `lib` (paso 3) |
-| Error en `test/widget_test.dart` con `MyApp` | Es la prueba del contador: cámbiala por la del paso 11 |
+| Error en `test/widget_test.dart` con `MyApp` | Es la prueba del contador de `flutter create`, que esta app no usa: bórrala (paso 4) |
 | La app se queda siempre en el círculo | La descarga no termina: comprueba la conexión del emulador (abre el navegador del emulador) |
 | Sale siempre «No se han podido descargar…», con conexión | La URL base de `servicio_valora.dart` está mal: ábrela en el navegador con `valora1.json` al final |
 | El APK no descarga nada, y en modo *debug* sí | Falta el permiso de Internet en el manifiesto (paso 2) |
-| En Chrome sale «No se han podido descargar…», y en el emulador funciona | El servidor de los datos no permite que una página web los lea (CORS, paso 14). Con los archivos de GitHub no pasa: comprueba la URL base de `servicio_valora.dart` |
+| En Chrome sale «No se han podido descargar…», y en el emulador funciona | El servidor de los datos no permite que una página web los lea (CORS, paso 12). Con los archivos de GitHub no pasa: comprueba la URL base de `servicio_valora.dart` |
 | `The getter '…' isn't defined` o algo en rojo | Un nombre mal escrito: compara con el código de la guía. Dart distingue mayúsculas de minúsculas |
 | Al tocar una fila, `Could not find a generator for route RouteSettings("/nota", …)` | Falta la ruta `/nota` en el mapa `routes` de `MaterialApp`, o está escrita de otra forma |
 | `Null check operator used on a null value` en `PantallaNota` | Se ha llegado a `/nota` sin `arguments`: el `pushNamed` de `FilaRecuento` tiene que llevar `arguments: DatosNota(…)` |
@@ -2642,13 +2538,11 @@ C:\dam2627\pmdm\valora_flutter
 ├── android
 │   └── app\src\main
 │       └── AndroidManifest.xml   el permiso de Internet (paso 2)
-├── web                           la página que carga la app en el navegador (paso 14)
+├── web                           la página que carga la app en el navegador (paso 12)
 ├── lib
 │   ├── main.dart                 la interfaz: la app, sus dos pantallas y sus widgets (pasos 4 a 10)
 │   ├── servicio_valora.dart      la descarga, de ValoraDart (paso 3)
 │   └── valoracion.dart           las clases, de ValoraDart (paso 3)
-├── test
-│   └── widget_test.dart          las pruebas del resumen y de la navegación (paso 11)
 ├── pubspec.yaml                  las dependencias: material_ui y http (paso 2)
-└── build                         lo compilado: el APK (paso 13) y, con `flutter build web`, la versión web
+└── build                         lo compilado: el APK (paso 11) y, con `flutter build web`, la versión web
 ```
