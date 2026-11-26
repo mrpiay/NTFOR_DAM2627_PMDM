@@ -54,20 +54,20 @@ Antes, hay que haber hecho **«Hola Flutter»** (Flutter instalado y el contador
 
 ```
 ┌──────────────────────────────────────┐
-│ Valoraciones de PMDM              ↻  │
+│ Valoraciones de PMDM     [recargar]  │
 │  1ª evaluación  │  2ª evaluación     │
 │  ═════════════                       │
 │                                      │
 │                3.8                   │
-│             ★ ★ ★ ★ ☆                │
+│             * * * * ·                │
 │           13 valoraciones            │
 │  ──────────────────────────────────  │
 │  Toca una fila para ver las …        │
-│  5 ★ ███████░░░░░░░░░░░░░░░░░░  3    │
-│  4 ★ ██████████████░░░░░░░░░░░  6    │
-│  3 ★ ███████░░░░░░░░░░░░░░░░░░  3    │
-│  2 ★ ██░░░░░░░░░░░░░░░░░░░░░░░  1    │
-│  1 ★ ░░░░░░░░░░░░░░░░░░░░░░░░░  0    │
+│  5 * ███████                    3    │
+│  4 * ██████████████             6    │
+│  3 * ███████                    3    │
+│  2 * ██                         1    │
+│  1 *                            0    │
 └──────────────────────────────────────┘
 ```
 
@@ -88,11 +88,11 @@ La pantalla de una nota, al tocar la fila del 5 en la 1ª evaluación:
 ┌──────────────────────────────────────┐
 │ ←  Nota 5 · 1ª evaluación            │
 │                                      │
-│  •  Valoración 2           ★★★★★   │
+│  •  Valoración 2                     │
 │      5 de 5                          │
-│  •  Valoración 6           ★★★★★   │
+│  •  Valoración 6                     │
 │      5 de 5                          │
-│  •  Valoración 10          ★★★★★   │
+│  •  Valoración 10                    │
 │      5 de 5                          │
 └──────────────────────────────────────┘
 ```
@@ -119,7 +119,7 @@ MaterialApp
             └── Scaffold
                 ├── appBar: AppBar
                 │   ├── title: Text "Valoraciones de PMDM"
-                │   ├── actions: IconButton ↻
+                │   ├── actions: IconButton (recargar)
                 │   └── bottom: TabBar ── Tab, Tab
                 └── body: TabBarView
                     └── ResumenEvaluacion        (sin estado)
@@ -130,7 +130,7 @@ MaterialApp
                             ├── Divider
                             ├── Text "Toca una fila…"
                             └── FilaRecuento ×5 ── Row
-                                ├── Text "5", Icon ★
+                                ├── Text "5", Icon (estrella)
                                 ├── Expanded ── TweenAnimationBuilder ── LinearProgressIndicator
                                 └── Text "3"
 ```
