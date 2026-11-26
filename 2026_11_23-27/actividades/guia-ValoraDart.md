@@ -286,6 +286,22 @@ code valora_dart
 
 La primera vez que se usa `dart`, antes de crear el proyecto sale un aviso largo sobre el envío de estadísticas de uso (*telemetry*, Google Analytics): es informativo, no hay que hacer nada. Al final, `dart create` escribe `Created project valora_dart…` y sugiere `cd valora_dart` y `dart run`: no hace falta, el proyecto se abre con `code`.
 
+**¿Con Dart solo se hacen programas de consola?** No. `console` es solo una de las plantillas de `dart create`:
+
+| Plantilla | Qué crea |
+|---|---|
+| `console` (la de por defecto, la de ValoraDart) | Un programa para la terminal |
+| `cli` | Un programa para la terminal que ya trae el análisis de argumentos (por ejemplo, `valora_dart --evaluacion 1`) |
+| `package` | Una librería, para usarla desde otros proyectos |
+| `server-shelf` | Un servidor web, con el paquete `shelf`: por ejemplo, una API |
+| `web` | Una página web hecha en Dart, que se traduce a JavaScript |
+
+Ninguna crea una aplicación con ventanas o pantallas de móvil: para eso está **Flutter**, el *framework* de interfaces que se programa en Dart, y su proyecto se crea con `flutter create`, como en «Hola Flutter». **Dart** es el lenguaje; **Flutter**, lo que se usa con él para hacer interfaces.
+
+ValoraDart es de consola para aprender el lenguaje (variables, funciones, listas, `async` y `await`, `http`) sin tener que aprender a la vez a hacer interfaces. **ValoraFlutter** hace lo mismo que ValoraDart, con pantallas.
+
+Un programa de consola también se puede convertir en un ejecutable que funciona sin tener Dart instalado: `dart compile exe bin/valora_dart.dart` crea `bin/valora_dart.exe`.
+
 Este proyecto no tiene carpeta `android`, así que no necesita el `.vscode/settings.json` de «Hola Flutter».
 
 La plantilla trae un ejemplo que no se usa: en el Explorador de VS Code, **borra** `lib/valora_dart.dart` y `test/valora_dart_test.dart` (clic derecho → *Delete*).
