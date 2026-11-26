@@ -8,6 +8,8 @@ Esta semana se trabaja **Flutter**, el desarrollo multiplataforma de la UD2, con
 | 2 | [`guia-ValoraDart.md`](guia-ValoraDart.md) | Guía paso a paso de **ValoraDart**, un programa de consola en **Dart** que descarga las mismas valoraciones que ValoraPMDM y muestra su media y su recuento: variables y tipos, *null safety*, listas y mapas, funciones, clases con `fromJson`, y `Future`, `async` y `await` |
 | 3 | [`guia-ValoraFlutter.md`](guia-ValoraFlutter.md) | Guía paso a paso de **ValoraFlutter**: la app ValoraPMDM hecha con **Flutter**, con las clases de ValoraDart sin cambios. Widgets sin y con estado, `initState` y `setState`, `FutureBuilder`, pestañas y listas, una prueba automática, el APK y la misma app en el navegador. Termina con la comparación entre la versión nativa y la de Flutter |
 
+Para comparar los lenguajes, [`kotlin-dart-java.md`](kotlin-dart-java.md) pone lado a lado los tipos de datos de Kotlin, Dart y Java: los tipos básicos y la división, las variables, los nulos, las listas, los mapas, los conjuntos y las operaciones con colecciones, y la media tal como la calculan ValoraPROG, ValoraPMDM y ValoraDart.
+
 Para repasar la 1ª evaluación de cara al examen: **ValoraPMDM** explica paso a paso, con más detalle que el proyecto del centro de acogida, la tecnología, el diseño y la arquitectura de una app Android actual. Cada parte del código va con el porqué de cada decisión y preguntas para comprobar que se entiende.
 
 | Archivo | Qué es |
