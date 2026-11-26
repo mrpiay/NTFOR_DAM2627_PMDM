@@ -433,6 +433,45 @@ String estrellas(double media) {
 }
 ```
 
+**La suma de las notas, paso a paso.** En `media`, la línea
+
+```dart
+final suma = valoraciones.map((v) => v.nota).reduce((a, b) => a + b);
+```
+
+hace dos cosas, una detrás de otra. Con tres valoraciones de ejemplo, con las notas 2, 5 y 4:
+
+1. **`valoraciones`** es una lista de objetos `Valoracion`, no de números: `print(valoraciones)` escribe `[Valoración 1: 2, Valoración 2: 5, Valoración 3: 4]`. Los objetos no se pueden sumar; hay que sacar antes la nota de cada uno.
+2. **`map`** aplica una función a **cada elemento** y da otra colección con los resultados, en el mismo orden. La función es `(v) => v.nota`: recibe una valoración, que dentro de la función se llama `v`, y devuelve su nota.
+
+   | Elemento (`v`) | `v.nota` |
+   |---|---|
+   | `Valoración 1: 2` | `2` |
+   | `Valoración 2: 5` | `5` |
+   | `Valoración 3: 4` | `4` |
+
+   El resultado, `(2, 5, 4)`, ya son números. Se escribe entre paréntesis y no entre corchetes porque `map` no da una lista, sino un `Iterable`: una colección que se puede recorrer. Para sumar no hace falta convertirla en lista.
+3. **`reduce`** junta los elementos de dos en dos con otra función, `(a, b) => a + b`, que suma: primero `2 + 5 = 7`, después `7 + 4 = 11`. `suma` vale `11`.
+
+`(v) => v.nota` es una **función sin nombre** escrita con flecha. Es lo mismo que esta, más larga:
+
+```dart
+(Valoracion v) {
+  return v.nota;
+}
+```
+
+Y toda la línea hace lo mismo que este bucle:
+
+```dart
+var suma = 0;
+for (final v in valoraciones) {
+  suma += v.nota;
+}
+```
+
+`reduce` necesita al menos un elemento: con una lista vacía lanza el error `Bad state: No element`. Por eso `media` comprueba antes `valoraciones.isEmpty` y, en ese caso, devuelve `null`.
+
 **Comprueba que…** VS Code no marca nada en rojo en el archivo. Con la terminal en la carpeta del proyecto, `dart analyze` dice `No issues found!`.
 
 **Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
