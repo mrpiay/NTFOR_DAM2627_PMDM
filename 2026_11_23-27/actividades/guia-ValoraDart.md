@@ -511,6 +511,25 @@ Future<List<Valoracion>?> descargar(int evaluacion) async {
 }
 ```
 
+**URI y URL.** En el código, la variable se llama `url`, pero su tipo es `Uri`. No es un error: son dos nombres para cosas muy parecidas.
+
+| | Qué es | Ejemplo |
+|---|---|---|
+| **URI** (*Uniform Resource Identifier*, identificador uniforme de recursos) | Un texto que **identifica** un recurso | `urn:isbn:` seguido del ISBN de un libro: dice qué libro es, pero no dónde conseguirlo |
+| **URL** (*Uniform Resource Locator*, localizador uniforme de recursos) | Un URI que además dice **dónde está** el recurso y **cómo llegar** a él: el protocolo, el servidor y la ruta | `https://raw.githubusercontent.com/…/valora1.json` |
+
+Toda URL es un URI, pero no todo URI es una URL. Dart tiene una sola clase, `Uri`, que sirve para los dos.
+
+`Uri.parse` convierte el texto en un `Uri` y lo separa en sus partes. Con la URL de `valora1.json`:
+
+| Parte | Propiedad | Valor |
+|---|---|---|
+| Protocolo (esquema) | `url.scheme` | `https` |
+| Servidor | `url.host` | `raw.githubusercontent.com` |
+| Ruta | `url.path` | `/mrpiay/NTFOR_DAM2627_PMDM/main/valora/ejemplo/valora1.json` |
+
+`http.get` pide un `Uri`, no un `String`. `http.get('https://…')`, con el texto directamente, no compila: `The argument type 'String' can't be assigned to the parameter type 'Uri'`. Así, la dirección se comprueba al convertirla: si el texto no es una dirección válida, `Uri.parse` lanza una `FormatException` antes de intentar la descarga.
+
 **Comprueba que…** `dart analyze` sigue diciendo `No issues found!`.
 
 **Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
